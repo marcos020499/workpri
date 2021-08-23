@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useReducer, useState } from 'react'
 /*
 [
   { pared1: {
@@ -15,7 +15,27 @@ import React from 'react'
 ]
 */
 
-export function FieldText({ }) {
+const useInput = () => {
+    const [inputs, dispatch] = useReducer((s, a) => ({ ...s, ...a }), {})
+    const [inputKeys, setKeys] = useState([])
+
+    const handleInput = ({ target }) => {
+        dispatch({ [target.name]: parseInt(target.value) || 0 })
+    }
+
+    const appendInput = (key) => {
+        setKeys(s => [...s, key])
+    }
+
+    const popInput = () => {
+        setKeys(s => s.slide(1))
+    }
+
+    return { inputs, inputKeys, handleInput, appendInput, popInput }
+}
+
+export function FieldText({ state, handleInput, appendInput, popInput }) {
+
     return (
         <div>
             <table>

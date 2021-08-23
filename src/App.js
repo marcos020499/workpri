@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     padding: 0%;
   }
   input {
-    text-align: center;
+    text-align: center;{{  }}
   }
 `;
 
