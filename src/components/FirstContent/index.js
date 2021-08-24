@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useState } from "react";
 import useItems from "../Hooks/Hooks";
 import Tooltip from "../Tooltip/Tooltip";
-import useInput from "../Hooks/Inputs";
+
 import {
   ContainerHeader,
   H2,
@@ -38,6 +38,9 @@ import {
   PaintContainer,
   TdFirst,
   Options,
+  IconMeter,
+  ImageColor,
+  H2Color
 } from "./style";
 
 /*
@@ -56,8 +59,8 @@ import {
 
 const getFields = (fields) => fields.split('x')
 
-const ItemList = ({ state, total, handleInput, calculateTotal }) => {
-  const { item, imper, suma } = useItems();
+const ItemList = ({ state, total0, total1, total2, total3, handleInput, calculateTotal }) => {
+  const { item, imper,  } = useItems();
   const [addOptions, setAddOptions] = useState([1])
   const [options, dispatch] = useReducer((s, a) => ({ ...s, ...a }), {
     door: [],
@@ -89,17 +92,17 @@ const ItemList = ({ state, total, handleInput, calculateTotal }) => {
         <tr>
           <th>
             <IconColor>
-              <Image
+              <ImageColor
                 src={
                   "https://res.cloudinary.com/marcos020499/image/upload/v1629305105/ICO%CC%81NOS-01_s3i78l.svg"
                 }
               />
-              <H2>Colores</H2>
+              <H2Color>Colores</H2Color>
             </IconColor>
           </th>
 
           <th>
-            <Icon>
+            <IconMeter>
               <ImageM
                 src={
                   "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-06_knbij5.svg"
@@ -109,11 +112,11 @@ const ItemList = ({ state, total, handleInput, calculateTotal }) => {
                 <Small>Metros</Small>
                 <H2>Largo</H2>
               </Meters>
-            </Icon>
+            </IconMeter>
           </th>
 
           <th>
-            <Icon>
+            <IconMeter>
               <ImageM
                 src={
                   "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-07_jzke1w.svg"
@@ -123,7 +126,7 @@ const ItemList = ({ state, total, handleInput, calculateTotal }) => {
                 <Small>Metros</Small>
                 <H2>Ancho</H2>
               </Meters>
-            </Icon>
+            </IconMeter>
           </th>
           <th>
             <Icon>
@@ -155,7 +158,7 @@ const ItemList = ({ state, total, handleInput, calculateTotal }) => {
             <TdFirst>
               <Wall>
                 <Radio type="radio" checked></Radio>
-                <WallText>Pared {index + 1}</WallText>
+                <WallText>{imper ? "Azotea":`Pared ${index + 1}` }</WallText>
 
                 <Tooltip
                   content={
@@ -174,7 +177,7 @@ const ItemList = ({ state, total, handleInput, calculateTotal }) => {
                   }
                   direction="right"
                 >
-                  <InputColor backgroundColor={imper ? "purple" : "black"} />
+                  <InputColor style={{backgroundColor: imper ? `${item1.color}`: 'white'}} />
                 </Tooltip>
               </Wall>
             </TdFirst>
@@ -184,7 +187,7 @@ const ItemList = ({ state, total, handleInput, calculateTotal }) => {
                 <InputNumber
                   type='text'
                   value={state.input1}
-                  name='input1'
+                  name={`${'input1'}${index}`}
                   onChange={handleInput}
                 />
                 mts
@@ -196,7 +199,7 @@ const ItemList = ({ state, total, handleInput, calculateTotal }) => {
                 <InputNumber
                   type='text'
                   value={state.input2}
-                  name='input2'
+                  name={`${'input2'}${index}`}
                   onChange={handleInput} />
                 mts
               </Mts>
@@ -205,21 +208,21 @@ const ItemList = ({ state, total, handleInput, calculateTotal }) => {
               <Selectors>
                 {addOptions.map((_, i) => {
                   return (
-                    <InputObject key={i} index={i} total={total} length={addOptions.length} appendInput={appendInput} popInput={popInput} />
+                    <InputObject key={i} index={i} total={''} length={addOptions.length} appendInput={appendInput} popInput={popInput} />
                   );
                 })}
               </Selectors>
             </Td>
 
-            <Td>
+            <td>
               <Selectors>
                 {addOptions.map((_, i) => {
                   return (
-                    <InputObject key={i} index={i} total={total} length={addOptions.length} appendInput={appendInput} popInput={popInput} />
+                    <InputObject key={i} index={i} total={''} length={addOptions.length} appendInput={appendInput} popInput={popInput} />
                   );
                 })}
               </Selectors>
-            </Td>
+            </td>
           </PaintContainer>
         ))}
       </Table>

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import "./Tooltip.css";
+import "./TooltipOver.css";
 
-const Tooltip = (props) => {
+const TooltipOver = (props) => {
   let timeout;
   const [active, setActive] = useState(false);
 
   const showTip = () => {
     timeout = setTimeout(() => {
       setActive(true);
-    }, props.delay || 400);
+    }, props.delay || 200);
   };
 
   const hideTip = () => {
@@ -20,8 +20,8 @@ const Tooltip = (props) => {
     <div
       className="Tooltip-Wrapper"
       // When to show the tooltip
-      onMouseUpCapture={showTip}
-      onMouseDownCapture={hideTip}
+      onMouseOver={showTip}
+      onMouseOut={hideTip}
     >
       {/* Wrapping */}
       {props.children}
@@ -35,4 +35,4 @@ const Tooltip = (props) => {
   );
 };
 
-export default Tooltip;
+export default TooltipOver;

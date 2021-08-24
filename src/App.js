@@ -1,11 +1,10 @@
 import React from "react";
 import Calculator from "./pages/Calculator";
 import { createGlobalStyle } from "styled-components";
-import { ScreenTest } from "./components/ScreenTest";
+import  ScreenTest  from "./components/ScreenTest";
 function App() {
   return (
     <div>
-      <ScreenTest />
       <Calculator />
       <GlobalStyle />
     </div>

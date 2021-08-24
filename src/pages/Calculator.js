@@ -17,7 +17,7 @@ const Index = () => {
         <FirstContent {...props} />
       </First>
       <Second>
-        <SecondContent total={props.total} />
+        <SecondContent total={props.total} total0={props.total0} total1={props.total1} total2={props.total2} total3={props.total3}/>
       </Second>
     </CalculatorPage>
   );

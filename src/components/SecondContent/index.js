@@ -2,9 +2,10 @@ import React, { useEffect, useState, memo } from "react";
 import useItems from "../Hooks/Hooks";
 import useAlgorim from "../Hooks/Algoritm";
 import useInput from "../Hooks/Inputs";
+
+import TooltipOver from "../Tooltip/TooltipOver";
 import {
   ContainerSecondSection,
-  Image,
   InputArea,
   H1,
   H2,
@@ -31,16 +32,19 @@ import {
   TdSize,
   ThDescription,
 } from "./style";
-const SecondPart = ({ total }) => {
+const SecondPart = ({ total0, total1, total2, total3, total, handleInput }) => {
   const { item, imper, liters } = useItems();
   const { four, twenty, one } = useAlgorim();
+
   return (
-    <ContainerSecondSection>
-      <Banner
+    <div>
+    <Banner
         src={
           "https://res.cloudinary.com/marcos020499/image/upload/v1629305103/BANNER_SUPERIOR-01-01_qc1rs2.png"
         }
       />
+    <ContainerSecondSection>
+      
       <H1>RESULTADO</H1>
       <H2>PRISA TE RECOMIENDA</H2>
       <ImagePaint
@@ -51,29 +55,36 @@ const SecondPart = ({ total }) => {
         }
       />
       <H>Elige la presentación </H>
-      <PaintSize>
+      <PaintSize style={{ display: imper ? 'inline-block': 'initial'}}>
         <Items>
           {item.map((item, index) => (
-            <ContainerItems key={index}>
+            <ContainerItems key={index} >
               <tr>
                 <ThDescription>
+                
+                    <TooltipOver
+                  content={
+                    item.nombre
+                  }
+                  direction="top"
+                >
                   <DescriptionText>
-                    <InputColorName
+                      <InputColorName
                       style={{ backgroundColor: `${item.color}` }}
                     />
-                    {item.nombre}
-                  </DescriptionText>
+                    {item.nombre}</DescriptionText>
+                </TooltipOver>
                 </ThDescription>
               </tr>
               <TrDes>
                 <ThDescription>
-                  <Description>Area {total}</Description>
-                  <InputArea type="text" value={total} />
+                  <Description>Area</Description>
+                  <InputArea type="text" value={`${total}index`+ ' '+ 'mts'} readonly="readonly"/>
                 </ThDescription>
 
                 <ThDescription>
                   <Description>Litros</Description>
-                  <InputAreaLiters type="text" value={liters} />
+                  <InputAreaLiters type="text" value={Math.ceil(liters)+ ' '+ 'lts'} readonly="readonly"/>
                 </ThDescription>
               </TrDes>
 
@@ -86,7 +97,7 @@ const SecondPart = ({ total }) => {
                       }
                     />
                     <Quantity>19L</Quantity>
-                    <Input type="text" value={twenty} />
+                    <Input type="text" value={twenty} onChange={handleInput}/>
                   </Size>
                 </TdSize>
 
@@ -94,11 +105,11 @@ const SecondPart = ({ total }) => {
                   <Size>
                     <ImageQuantity4L
                       src={
-                        "https://res.cloudinary.com/marcos020499/image/upload/v1629305104/BOTES_PINTURA-01_dae6zr.svg"
+                        "https://res.cloudinary.com/marcos020499/image/upload/v1629305104/BOTES_PINTURA-02_wvzqnb.svg"
                       }
                     />
                     <Quantity>4L</Quantity>
-                    <Input type="number" value={four} />
+                    <Input type="text" value={four} onChange={handleInput}/>
                   </Size>
                 </TdSize>
 
@@ -110,7 +121,7 @@ const SecondPart = ({ total }) => {
                       }
                     />
                     <Quantity>1L</Quantity>
-                    <Input type="number" value={one} />
+                    <Input type="text" value={one} onChange={handleInput}/>
                   </Size>
                 </TdSize>
               </Recipients>
@@ -122,6 +133,7 @@ const SecondPart = ({ total }) => {
         <ButtonReed>Comprar</ButtonReed>
       </ContainerButton>
     </ContainerSecondSection>
+    </div>
   );
 };
 export default memo(SecondPart);

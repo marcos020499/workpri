@@ -10,10 +10,11 @@ export const ContainerHeader = styled.div`
 export const PaintContainer = styled.tr``;
 export const Title = styled.h1`
   font-family: "RadikalBold";
-  font-size: 25px;
+  font-size: 2.7vh;
   padding: 0 0 0 4vw;
   text-align: left;
   font-weight: 1000;
+  letter-spacing: 1.7px;
   color: #003366;
   @media screen and (max-width: 768px) {
     font-size: 16px;
@@ -26,16 +27,14 @@ export const InputDiv = styled.div`
   display: flex;
 `;
 export const Button = styled.button`
-  min-width: 105px;
+  min-width: 80px;
   width: auto;
-  height: 28px;
-  letter-spacing: 0.5px;
-  line-height: 28px;
-  padding: 0 10px 0 15px;
-  font-size: 13px;
+  height: 3.7vh;
+  line-height: 3.7vh;
+  font-size: 1.5vh;
   background: #003366;
   color: white;
-  font-family: "Radikal1";
+  font-family: "RadikalMedium";
   font-weight: 1000;
   border: none;
   cursor: pointer;
@@ -76,7 +75,7 @@ export const ButtonRed = styled.button`
   }
 `;
 export const Small = styled.small`
-  font-size: 0.7vw;
+  font-size: 1vh;
   margin: none;
   padding: none;
   color: #003366;
@@ -86,16 +85,32 @@ export const Small = styled.small`
   }
 `;
 export const H2 = styled.h2`
-  font-size: 1vw;
+  font-size: 1.7vh;
   font-family: "RadikalBold";
   padding: 0 1vw 0 1vw;
+  letter-spacing: 2px;
   color: #003366;
-  margin: -0.7vw 0 0 0;
+  margin: -0.45vw 0 0 0;
+  @media screen and (max-width: 768px) {
+    font-size: 2vw;
+  }
+`;
+export const H2Color = styled.h2`
+  font-size: 1.7vh;
+  font-family: "RadikalBold";
+  padding: 0;
+  letter-spacing: 2px;
+  color: #003366;
+  margin: -0.4vw 0 0 0;
   @media screen and (max-width: 768px) {
     font-size: 2vw;
   }
 `;
 export const Icon = styled.h2`
+  font-family: "Radikal1";
+`;
+export const IconMeter = styled.h2`
+  padding: 0 1.65vw 0 1.65vw;
   font-family: "Radikal1";
 `;
 export const IconColor = styled.div`
@@ -105,7 +120,16 @@ export const IconColor = styled.div`
 export const Image = styled.img`
   margin: none;
   padding: none;
-  width: 4vw;
+  width: 5vh;
+  @media screen and (max-width: 768px) {
+    width: 11vw;
+  }
+`;
+export const ImageColor = styled.img`
+  margin: none;
+  position: relative;
+  left: -10px;
+  width: 5vh;
   @media screen and (max-width: 768px) {
     width: 11vw;
   }
@@ -113,7 +137,7 @@ export const Image = styled.img`
 export const ImageM = styled.img`
   margin: 0 0 0 0;
   padding: none;
-  width: 3.2vw;
+  width: 4vh;
   position: relative;
   top: -10px;
   @media screen and (max-width: 768px) {
@@ -125,23 +149,26 @@ export const Meters = styled.div`
   padding: none;
 `;
 export const ImageTable = styled.img`
-  width: 1.5vw;
+  width: 2.3vh;
 `;
 export const Wall = styled.div`
   display: flex;
   flex: center;
   justify-content: center;
+  width: 12vw;
 `;
 export const Options = styled.div`
   display: flex;
   flex: center;
+  width: 11.7vw;
   justify-content: center;
 `;
 export const WallText = styled.p`
-  font-size: 1.2vw;
+  font-size: 1.05vw;
+  letter-spacing: 1.6px;
   color: #003366;
   font-family: "Radikal1";
-  margin: 4px 2vh 0 1vh;
+  margin: 4px 1.5vw 0 0.2vh;
   @media screen and (max-width: 768px) {
     font-size: 2vw;
     margin: none;
@@ -162,17 +189,17 @@ export const A = styled.a`
   color: black;
 `;
 export const InputItem = styled.input`
-  width: 65px;
-  height: 20px;
+  width: 10.2vh;
+  height: 3.2vh;
   border: none;
   border-radius: 8px;
-  margin: 0 0 0 4px;
+  margin: 0 0 0 1vh;
 `;
 export const Table = styled.div`
   text-align: center;
   justify-content: center;
   width: 90%;
-  padding: 8vw 0 0 2vw;
+  padding: 6vw 0 0 2vw;
   min-height: 16vw;
   max-height: 16vw;
 `;
@@ -181,11 +208,12 @@ export const ColorsItem = styled.div`
 `;
 export const InputColor = styled.button`
   border-radius: 100%;
-  width: 1.5vw;
-  height: 1.5vw;
+  width: 2.3vh;
+  height: 2.3vh;
+  position: relative;
   background-color: white;
   border: 1.5px solid #999999;
-  margin: 0 1vw 0 1.5vw;
+  margin: 0 1vw 0 2vh;
   @media screen and (max-width: 768px) {
     width: 2vw;
     height: 4vw;
@@ -205,6 +233,7 @@ export const InputColorTooltip = styled.button`
 `;
 export const Radio = styled.input`
   background-color: #003366;
+  border: 1px solid #003366;
   width: 1.5vw;
   height: 22px;
   @media screen and (max-width: 768px) {
@@ -216,7 +245,7 @@ export const InputNumber = styled.input`
   border-top: white;
   border-left: white;
   border-right: white;
-  width: 20px;
+  width: 1.5vw;
 `;
 export const ButtonIncrement = styled.button`
   border-radius: 100%;
@@ -224,22 +253,25 @@ export const ButtonIncrement = styled.button`
   background: #b70033;
   color: white;
   padding: 0;
-  width: 15px;
-  height: 15px;
+  font-size: 1.2vh;
+  width: 1.3vh;
+  height: 1.3vh;
 `;
 export const ButtonDecrement = styled.button`
   border-radius: 100%;
   background: #b70033;
+  font-size: 1.2vh;
   padding: 0;
   color: white;
-  width: 15px;
   border: none;
-  height: 15px;
+  width: 1.3vh;
+  height: 1.3vh;
 `;
 export const Buttons = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 0 0 1vw;
+  margin: 0 0 0 1vh;
+  padding: 0 1vh 0 1.5vh;
 `;
 export const Selectors = styled.div`
   display: flex;
@@ -249,16 +281,17 @@ export const Selectors = styled.div`
 export const Mts = styled.p`
   font-family: "Radikal1";
   font-size: 10px;
-  margin: 0 0.3vw 0 0.3vw;
+  margin: 0 0 0 0.3vw;
   color: #003366;
   media screen and (max-width: 768px) {
     font-size: 2px;
   }
 `;
 export const Warning = styled.p`
-  font-family: "Radikal1";
+  font-family: "RadikalMedium";
   text-align: left;
-  font-size: 1.2vw;
+  font-size: 1.6vh;
+  letter-spacing: 1px;
   color: #b70033;
   @media screen and (max-width: 768px) {
     font-size: 2.4vw;
