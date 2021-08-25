@@ -11,7 +11,7 @@ const useItems = () => {
   const [quantity, setQuantity] = useState();
 
   useEffect(() => {
-    console.log("useItems")
+    console.log("useItems");
     const { input1, input2 } = number;
     Math.floor(setLiters((Number(input1) * Number(input2)) / 3));
   }, [number]);
@@ -20,15 +20,15 @@ const useItems = () => {
     console.log(e.target.name);
   };
   const message1 = () => {
-    's' 
-   }
+    "s";
+  };
   const initialState = { input1: "", input2: "" };
   const reducer = (s, a) => ({ ...s, ...a });
   const [state, dispatch] = useReducer(reducer, initialState);
   useEffect(() => {
     firebase
       .firestore()
-      .collection('colors')
+      .collection("colors")
       .onSnapshot((snapshot) => {
         const listItem = snapshot.docs.map((doc) => ({
           id: doc.id,

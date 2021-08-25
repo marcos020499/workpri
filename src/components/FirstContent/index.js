@@ -40,7 +40,8 @@ import {
   Options,
   IconMeter,
   ImageColor,
-  H2Color
+  H2Color,
+  H2Puertas
 } from "./style";
 
 /*
@@ -57,22 +58,30 @@ import {
 ]
 */
 
-const getFields = (fields) => fields.split('x')
+const getFields = (fields) => fields.split("x");
 
-const ItemList = ({ state, total0, total1, total2, total3, handleInput, calculateTotal }) => {
-  const { item, imper,  } = useItems();
-  const [addOptions, setAddOptions] = useState([1])
+const ItemList = ({
+  state,
+  total0,
+  total1,
+  total2,
+  total3,
+  handleInput,
+  calculateTotal,
+}) => {
+  const { item, imper } = useItems();
+  const [addOptions, setAddOptions] = useState([1]);
   const [options, dispatch] = useReducer((s, a) => ({ ...s, ...a }), {
     door: [],
     window: [],
-  })
-
+  });
+  const x = 1;
   function appendInput() {
-    setAddOptions(s => [...s, s.lenght])
+    setAddOptions((s) => [...s, s.lenght]);
   }
 
   function popInput() {
-    setAddOptions(s => s.slice(1))
+    setAddOptions((s) => s.slice(1));
   }
 
   return (
@@ -137,7 +146,7 @@ const ItemList = ({ state, total0, total1, total2, total3, handleInput, calculat
                     : "https://res.cloudinary.com/marcos020499/image/upload/v1629305105/ICO%CC%81NOS-02_xhsnm8.svg"
                 }
               />
-              <H2>{imper ? "Domos" : "Puertas"}</H2>
+              <H2Puertas>{imper ? "Domos" : "Puertas"}</H2Puertas>
             </Icon>
           </th>
           <th>
@@ -149,7 +158,7 @@ const ItemList = ({ state, total0, total1, total2, total3, handleInput, calculat
                     : "https://res.cloudinary.com/marcos020499/image/upload/v1629305106/ICO%CC%81NOS-03_p6l5gd.svg"
                 }
               />
-              <H2>{imper ? "Tragaluz" : "Ventanas"}</H2>
+              <H2Puertas>{imper ? "Tragaluz" : "Ventanas"}</H2Puertas>
             </Icon>
           </th>
         </tr>
@@ -158,7 +167,7 @@ const ItemList = ({ state, total0, total1, total2, total3, handleInput, calculat
             <TdFirst>
               <Wall>
                 <Radio type="radio" checked></Radio>
-                <WallText>{imper ? "Azotea":`Pared ${index + 1}` }</WallText>
+                <WallText>{imper ? "Azotea" : `Pared ${index + 1}`}</WallText>
 
                 <Tooltip
                   content={
@@ -177,7 +186,11 @@ const ItemList = ({ state, total0, total1, total2, total3, handleInput, calculat
                   }
                   direction="right"
                 >
-                  <InputColor style={{backgroundColor: imper ? `${item1.color}`: 'white'}} />
+                  <InputColor
+                    style={{
+                      backgroundColor: imper ? `${item1.color}` : "white",
+                    }}
+                  />
                 </Tooltip>
               </Wall>
             </TdFirst>
@@ -185,9 +198,9 @@ const ItemList = ({ state, total0, total1, total2, total3, handleInput, calculat
             <Td>
               <Mts>
                 <InputNumber
-                  type='text'
+                  type="text"
                   value={state.input1}
-                  name={`${'input1'}${index}`}
+                  name={`${"input1"}${index}`}
                   onChange={handleInput}
                 />
                 mts
@@ -197,18 +210,59 @@ const ItemList = ({ state, total0, total1, total2, total3, handleInput, calculat
             <Td>
               <Mts>
                 <InputNumber
-                  type='text'
+                  type="text"
                   value={state.input2}
-                  name={`${'input2'}${index}`}
-                  onChange={handleInput} />
+                  name={`${"input2"}${index}`}
+                  onChange={handleInput}
+                />
                 mts
               </Mts>
             </Td>
             <Td>
               <Selectors>
                 {addOptions.map((_, i) => {
-                  return (
-                    <InputObject key={i} index={i} total={''} length={addOptions.length} appendInput={appendInput} popInput={popInput} />
+                  return i === 0 ? (
+                    <Buttons>
+                      <ButtonIncrement
+                        onClick={() => {
+                          appendInput();
+                          //i = i + 1;
+                          //setAddOptions([...addOptions, i]);
+                          //console.log(addOptions);
+                        }}
+                        style={{
+                          display: addOptions.length > 4 ? "none" : "initial",
+                        }}
+                      >
+                        +
+                      </ButtonIncrement>
+                      <ButtonDecrement
+                        onClick={() => {
+                          popInput();
+                          //i = i - 1;
+                          //setAddOptions([...addOptions, i]);
+                        }}
+                        style={{
+                          display: addOptions.length === 1 ? "none" : "initial",
+                        }}
+                      >
+                        -
+                      </ButtonDecrement>
+                    </Buttons>
+                  ) : (
+                    <InputObject
+                    key={i}
+                    x={i+11}
+                    y={ index === 0 ? 1 : index === 1 ? 2: index===3 ? 3: +'' }
+                    index={i}
+                    ind={index}
+                    total={addOptions.totall}
+                    length={addOptions.length}
+                    appendInput={appendInput}
+                    popInput={popInput}
+                    state={state.int62}
+                    onCh={handleInput}
+                    />
                   );
                 })}
               </Selectors>
@@ -217,8 +271,48 @@ const ItemList = ({ state, total0, total1, total2, total3, handleInput, calculat
             <td>
               <Selectors>
                 {addOptions.map((_, i) => {
-                  return (
-                    <InputObject key={i} index={i} total={''} length={addOptions.length} appendInput={appendInput} popInput={popInput} />
+                  return i === 0 ? (
+                    <Buttons>
+                      <ButtonIncrement
+                        onClick={() => {
+                          appendInput();
+                          //i = i + 1;
+                          //setAddOptions([...addOptions, i]);
+                          //console.log(addOptions);
+                        }}
+                        style={{
+                          display: addOptions.length > 3 ? "none" : "initial",
+                        }}
+                      >
+                        +
+                      </ButtonIncrement>
+                      <ButtonDecrement
+                        onClick={() => {
+                          popInput();
+                          //i = i - 1;
+                          //setAddOptions([...addOptions, i]);
+                        }}
+                        style={{
+                          display: addOptions.length === 1 ? "none" : "initial",
+                        }}
+                      >
+                        -
+                      </ButtonDecrement>
+                    </Buttons>
+                  ) : (
+                    <InputObject
+                      key={i}
+                      x={i+54}
+                      y={ index === 0 ? 1 : index === 1 ? 2: index===3 ? 3: +'' }
+                      index={i}
+                      ind={index}
+                      total={addOptions.totall}
+                      length={addOptions.length}
+                      appendInput={appendInput}
+                      popInput={popInput}
+                      state2={state.int7}
+                      onCh={handleInput}
+                    />
                   );
                 })}
               </Selectors>
@@ -236,7 +330,7 @@ const ItemList = ({ state, total0, total1, total2, total3, handleInput, calculat
 };
 export default ItemList;
 
-function InputObject({ total, index, length, appendInput, popInput }) {
+function InputObject({ x, y ,ind, index, length, appendInput, popInput, state1, state2, handleI, onCh }) {
   return (
     <Options>
       <Mts>
@@ -245,7 +339,7 @@ function InputObject({ total, index, length, appendInput, popInput }) {
             "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-06_knbij5.svg"
           }
         />
-        <InputNumber value={total} />
+        <InputNumber type='text' value={state1} name={`${'int'}${ind*4+x +50}`} onChange={onCh}/>
         mts
       </Mts>
       <Mts>
@@ -254,7 +348,7 @@ function InputObject({ total, index, length, appendInput, popInput }) {
             "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-07_jzke1w.svg"
           }
         />
-        <InputNumber />
+        <InputNumber  type='text'  value={state2} name={`${'int'}${ind*4+x -5}`} onChange={onCh}/>
         mts
       </Mts>
 
@@ -262,7 +356,7 @@ function InputObject({ total, index, length, appendInput, popInput }) {
         <Buttons>
           <ButtonIncrement
             onClick={() => {
-              appendInput()
+              appendInput();
               //i = i + 1;
               //setAddOptions([...addOptions, i]);
               //console.log(addOptions);
@@ -273,7 +367,7 @@ function InputObject({ total, index, length, appendInput, popInput }) {
           </ButtonIncrement>
           <ButtonDecrement
             onClick={() => {
-              popInput()
+              popInput();
               //i = i - 1;
               //setAddOptions([...addOptions, i]);
             }}
@@ -281,7 +375,8 @@ function InputObject({ total, index, length, appendInput, popInput }) {
           >
             -
           </ButtonDecrement>
-        </Buttons>)}
+        </Buttons>
+      )}
     </Options>
-  )
+  );
 }

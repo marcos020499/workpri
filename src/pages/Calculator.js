@@ -5,7 +5,7 @@ import { CalculatorPage, First, Second, Banner } from "./style";
 import useInput from "../components/Hooks/Inputs";
 
 const Index = () => {
-  const props = useInput()
+  const props = useInput();
   return (
     <CalculatorPage>
       <Banner
@@ -17,7 +17,13 @@ const Index = () => {
         <FirstContent {...props} />
       </First>
       <Second>
-        <SecondContent total={props.total} total0={props.total0} total1={props.total1} total2={props.total2} total3={props.total3}/>
+        <SecondContent
+          total={props.total}
+          total0={props.total0}
+          total1={props.total1}
+          total2={props.total2}
+          total3={props.total3}
+        />
       </Second>
     </CalculatorPage>
   );

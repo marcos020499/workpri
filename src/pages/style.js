@@ -14,8 +14,8 @@ export const Banner = styled.img`
   display: none;
   @media screen and (max-width: 768px) {
     display: initial;
-    width: 100%;
-    margin: none;
+    width: 102%;
+    margin: -0.4vh 0 0 -0.5vh;
     padding: none;
     height: 40vw;
   }
@@ -31,7 +31,11 @@ export const Second = styled.div`
   padding: 0%;
   @media screen and (max-width: 768px) {
     width: 100%;
-    display: flex;
+    background: #003366;
+    height: 200vh;
     justify-content: center;
+  }
+  @media screen and (max-width: 1367px) {
+    height: 100vh;
   }
 `;
