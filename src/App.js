@@ -2,6 +2,7 @@ import React from "react";
 import Calculator from "./pages/Calculator";
 import { createGlobalStyle } from "styled-components";
 import ScreenTest from "./components/ScreenTest";
+import InputColor1 from "./components/Hooks/ImputColor";
 function App() {
   return (
     <div>

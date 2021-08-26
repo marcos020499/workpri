@@ -1,7 +1,8 @@
+import { symbol } from "prop-types";
 import React, { useEffect, useReducer, useState } from "react";
 import useItems from "../Hooks/Hooks";
 import Tooltip from "../Tooltip/Tooltip";
-
+import InputRange from 'react-input-range';
 import {
   ContainerHeader,
   H2,
@@ -41,7 +42,8 @@ import {
   IconMeter,
   ImageColor,
   H2Color,
-  H2Puertas
+  H2Puertas,
+  Mtss
 } from "./style";
 
 /*
@@ -75,7 +77,7 @@ const ItemList = ({
     door: [],
     window: [],
   });
-  const x = 1;
+
   function appendInput() {
     setAddOptions((s) => [...s, s.lenght]);
   }
@@ -89,7 +91,7 @@ const ItemList = ({
       <Title>COLORES SELECCIONADOS</Title>
       <InputDiv>
         <div>
-          {item.map((item, index) => (
+          {item.map((item, index) => index <=2&&(
             <ColorsItem key={index}>
               <InputItem style={{ backgroundColor: `${item.color}` }} />
             </ColorsItem>
@@ -162,12 +164,12 @@ const ItemList = ({
             </Icon>
           </th>
         </tr>
-        {item.map((item1, index) => (
+        {item.map((item1, index) => index < 5  &&(
           <PaintContainer key={index}>
             <TdFirst>
               <Wall>
-                <Radio type="radio" checked></Radio>
-                <WallText>{imper ? "Azotea" : `Pared ${index + 1}`}</WallText>
+                <Radio type="radio" checked={index <=2 ? true: ''}></Radio>
+                <WallText style={{ color: index >=3? '#999999': 'initial' }}>{imper ? "Azotea" : `Pared ${index + 1}`&& index >=4 ? `${' Techo'}`: `Pared ${index + 1}`}</WallText>
 
                 <Tooltip
                   content={
@@ -196,29 +198,43 @@ const ItemList = ({
             </TdFirst>
 
             <Td>
+            {index <=2?(
               <Mts>
                 <InputNumber
-                  type="text"
-                  value={state.input1}
+                  type="number"
+                  min='1'
+                  max='10'
+                  step='0.5'
+                  value={state.input10}
+                  name={`${"input1"}${index}`}
+                  onChange={handleInput}
+                />
+                
+                mts
+              </Mts>):(
+                <h1 style={{border: 'none'}}></h1>
+            )}
+            </Td>
+
+            <Td>
+            {index <=2?(
+              <Mts>
+                <InputNumber
+                  
+                  min='1'
+                  max='10'
+                  step='0.5'
+                  value={state.input20}
                   name={`${"input1"}${index}`}
                   onChange={handleInput}
                 />
                 mts
-              </Mts>
-            </Td>
-
-            <Td>
-              <Mts>
-                <InputNumber
-                  type="text"
-                  value={state.input2}
-                  name={`${"input2"}${index}`}
-                  onChange={handleInput}
-                />
-                mts
-              </Mts>
+              </Mts>):(
+                <h1 style={{border: 'none'}}></h1>
+            )}
             </Td>
             <Td>
+            {index <=2?(
               <Selectors>
                 {addOptions.map((_, i) => {
                   return i === 0 ? (
@@ -265,10 +281,13 @@ const ItemList = ({
                     />
                   );
                 })}
-              </Selectors>
+              </Selectors>):(
+                <h1 style={{border: 'none'}}></h1>
+              )}
             </Td>
 
             <td>
+            {index <=2?(
               <Selectors>
                 {addOptions.map((_, i) => {
                   return i === 0 ? (
@@ -315,7 +334,9 @@ const ItemList = ({
                     />
                   );
                 })}
-              </Selectors>
+              </Selectors>):(
+                <h1 style={{border: 'none'}}></h1>
+              )}
             </td>
           </PaintContainer>
         ))}
@@ -329,29 +350,16 @@ const ItemList = ({
   );
 };
 export default ItemList;
-
+function SpaceObject (){
+  return (
+    <div>
+    <h1 style={{ color: 'white' }}>ss</h1>
+    </div>
+  )
+}
 function InputObject({ x, y ,ind, index, length, appendInput, popInput, state1, state2, handleI, onCh }) {
   return (
     <Options>
-      <Mts>
-        <ImageTable
-          src={
-            "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-06_knbij5.svg"
-          }
-        />
-        <InputNumber type='text' value={state1} name={`${'int'}${ind*4+x +50}`} onChange={onCh}/>
-        mts
-      </Mts>
-      <Mts>
-        <ImageTable
-          src={
-            "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-07_jzke1w.svg"
-          }
-        />
-        <InputNumber  type='text'  value={state2} name={`${'int'}${ind*4+x -5}`} onChange={onCh}/>
-        mts
-      </Mts>
-
       {index === 0 && (
         <Buttons>
           <ButtonIncrement
@@ -377,6 +385,26 @@ function InputObject({ x, y ,ind, index, length, appendInput, popInput, state1, 
           </ButtonDecrement>
         </Buttons>
       )}
+      <Mtss>
+        <ImageTable
+          src={
+            "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-06_knbij5.svg"
+          }
+        />
+        <InputNumber type='number' value={state1} name={`${'int'}${ind*4+x +50}`} onChange={onCh}/>
+        mts
+      </Mtss>
+      <Mtss>
+        <ImageTable
+          src={
+            "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-07_jzke1w.svg"
+          }
+        />
+        <InputNumber  type='number'  value={state2} name={`${'int'}${ind*4+x -5}`} onChange={onCh}/>
+        mts
+      </Mtss>
+
+      
     </Options>
   );
 }

@@ -69,8 +69,11 @@ export const Recipients = styled.tr`
   margin: -2vh 0.5vh 4vh 0;
   position: relative;
   left: -10px;
+  @media screen and (max-width: 1367px) {
+    margin: -2vh 0.5vh 5vh 0;
+  }
   @media screen and (max-width: 1024px) {
-    margin: 0vh 0 2vh 0;
+    margin: 0vh 0 3vh 0;
     left: -5px;
   }
   @media screen and (max-height: 769px) {
@@ -156,7 +159,10 @@ export const Input = styled.input`
     left: 10px;
   }
   @media screen and (max-width: 1024px) {
-    width: 5vw;
+    width: 5vh;
+  }
+  @media screen and (max-width: 1367px) {
+    width: 4vh;
   }
 `;
 export const InputArea = styled.input`

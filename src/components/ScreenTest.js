@@ -25,8 +25,11 @@ import {
   ImageTable,
   Buttons,
   Options,
+  IconMeter,
+  H2Color,
 } from "../components/FirstContent/style";
 import Tooltip from "./Tooltip/Tooltip";
+import styled from "styled-components";
 /*
 [
   { pared1: {
@@ -62,6 +65,48 @@ const useInput = () => {
   return { inputs, inputKeys, handleInput, appendInput, popInput };
 };
 
+const url = {
+  Colores:
+    "https://res.cloudinary.com/marcos020499/image/upload/v1629305105/ICO%CC%81NOS-01_s3i78l.svg",
+  Largo:
+    "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-06_knbij5.svg",
+  Ancho:
+    "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-07_jzke1w.svg",
+  Puertas:
+    "https://res.cloudinary.com/marcos020499/image/upload/v1629305105/ICO%CC%81NOS-02_xhsnm8.svg",
+  Ventanas:
+    "https://res.cloudinary.com/marcos020499/image/upload/v1629305106/ICO%CC%81NOS-03_p6l5gd.svg",
+};
+
+const columns = [
+  {
+    title: "Colores",
+    image: url["Colores"],
+    size: false,
+    end: true,
+  },
+  {
+    title: "Largo",
+    image: url["Largo"],
+    size: true,
+  },
+  {
+    title: "Ancho",
+    image: url["Ancho"],
+    size: true,
+  },
+  {
+    title: "Puertas",
+    image: url["Puertas"],
+    size: false,
+  },
+  {
+    title: "Ventanas",
+    image: url["Ventanas"],
+    size: false,
+  },
+];
+
 export default function ScreenTest({
   state,
   handleInput,
@@ -82,110 +127,32 @@ export default function ScreenTest({
   function popInput() {
     setAddOptions((s) => s.slice(1));
   }
+
   return (
     <div>
       <Table>
         <tr>
-          <th>
-            <IconColor>
-              <Image
-                src={
-                  "https://res.cloudinary.com/marcos020499/image/upload/v1629305105/ICO%CC%81NOS-01_s3i78l.svg"
-                }
-              />
-              <H2>Colores</H2>
-            </IconColor>
-          </th>
-
-          <th>
-            <Icon>
-              <ImageM
-                src={
-                  "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-06_knbij5.svg"
-                }
-              />
-              <Meters>
-                <Small>Metros</Small>
-                <H2>Largo</H2>
-              </Meters>
-            </Icon>
-          </th>
-
-          <th>
-            <Icon>
-              <ImageM
-                src={
-                  "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-07_jzke1w.svg"
-                }
-              />
-              <Meters>
-                <Small>Metros</Small>
-                <H2>Ancho</H2>
-              </Meters>
-            </Icon>
-          </th>
-          <th>
-            <Icon>
-              <Image
-                src={
-                  "https://res.cloudinary.com/marcos020499/image/upload/v1629305105/ICO%CC%81NOS-02_xhsnm8.svg"
-                }
-              />
-              <H2>"Puertas"</H2>
-            </Icon>
-          </th>
-          <th>
-            <Icon>
-              <Image
-                src={
-                  "https://res.cloudinary.com/marcos020499/image/upload/v1629305106/ICO%CC%81NOS-03_p6l5gd.svg"
-                }
-              />
-              <H2>"Ventanas"</H2>
-            </Icon>
-          </th>
+          {columns.map((el, i) => (
+            <th>
+              <HeaderCol key={i} {...el} />
+            </th>
+          ))}
         </tr>
 
         <PaintContainer>
           <TdFirst>
-            <Wall>
-              <Radio type="radio" checked></Radio>
-              <WallText>Pared 1</WallText>
-
-              <Tooltip
-                content={
-                  <div>
-                    <small>Colores a elegir</small>
-                    <div>
-                      <ColorsItem>
-                        <InputColorTooltip
-                          style={{ backgroundColor: "blue" }}
-                        />
-                      </ColorsItem>
-                    </div>
-                  </div>
-                }
-                direction="right"
-              >
-                <InputColor backgroundColor={"black"} />
-              </Tooltip>
-            </Wall>
+            <FirstCol />
           </TdFirst>
 
           <Td>
-            <Mts>
-              <InputNumber />
-              mts
-            </Mts>
+            <Input />
           </Td>
 
           <Td>
-            <Mts>
-              <InputNumber />
-              mts
-            </Mts>
+            <Input />
           </Td>
           <Td>
+
             <Selectors>
               {addOptions.map((_, i) => {
                 return (
@@ -223,37 +190,14 @@ export default function ScreenTest({
     </div>
   );
 }
-/*
-<tr>
-                        <td>{[1, 2, 3, 4].map((_, i) => <Input key={i} />)}</td>
-                    </tr>
-                    <tr>
-                        <td>{[1, 2, 3, 4].map((_, i) => <Input key={i} />)}</td>
-                    </tr>*/
-function Input() {
-  return <input type="input" />;
-}
+
+
+
 function InputObject({ total, index, length, appendInput, popInput }) {
   return (
     <Options>
-      <Mts>
-        <ImageTable
-          src={
-            "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-06_knbij5.svg"
-          }
-        />
-        <InputNumber value={total} />
-        mts
-      </Mts>
-      <Mts>
-        <ImageTable
-          src={
-            "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-07_jzke1w.svg"
-          }
-        />
-        <InputNumber />
-        mts
-      </Mts>
+      <Input icon="vertical" />
+      <Input icon="horizontal" />
 
       {index === 0 && (
         <Buttons>
@@ -283,3 +227,98 @@ function InputObject({ total, index, length, appendInput, popInput }) {
     </Options>
   );
 }
+
+function HeaderCol({ title, size, end, image, disable }) {
+  const Container = HeaderContainer;
+  const TitleContainer = LabelContainer;
+  const TitleAlign = H2;
+
+  function Label() {
+    return (
+      <TitleContainer>
+        {size ? <Small>Metro</Small> : <Small>‏‏‎ ‎</Small>}
+        <TitleAlign>{title}</TitleAlign>
+      </TitleContainer>
+    );
+  }
+
+  return !disable ? (
+    <Container end={end}>
+      <Box>
+        <IconImage src={image} />
+        <Label />
+      </Box>
+    </Container>
+  ) : (
+    <></>
+  );
+}
+
+function FirstCol() {
+  return (
+    <Wall>
+      <Radio type="radio" checked></Radio>
+      <WallText>Pared 1</WallText>
+
+      <Tooltip
+        content={
+          <div>
+            <small>Colores a elegir</small>
+            <div>
+              <ColorsItem>
+                <InputColorTooltip style={{ backgroundColor: "blue" }} />
+              </ColorsItem>
+            </div>
+          </div>
+        }
+        direction="right"
+      >
+        <InputColor />
+      </Tooltip>
+    </Wall>
+  );
+}
+
+function Input({ icon }) {
+  const img = {
+    vertical:
+      "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-06_knbij5.svg",
+    horizontal:
+      "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-07_jzke1w.svg",
+  };
+
+  return (
+    <Mts>
+      {!!icon && <ImageTable src={img[icon]} />}
+      <InputNumber />
+      mts
+    </Mts>
+  );
+}
+
+const HeaderContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  font-family: "Radikal1";
+  align-items: ${({ end }) => (end ? "flex-end" : "center")};
+`;
+
+const LabelContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+`;
+
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const IconImage = styled.img`
+  margin: none;
+  padding: none;
+  width: 5vh;
+  height: 5vh;
+  align-self: center;
+`;

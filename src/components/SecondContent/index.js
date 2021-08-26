@@ -56,7 +56,7 @@ const SecondPart = ({ total0, total1, total2, total3, total, handleInput }) => {
         <H>Elige la presentación </H>
         <PaintSize style={{ display: imper ? "inline-block" : "initial" }}>
           <Items>
-            {item.map((item, index) => (
+            {item.map((item, index) => index <=2&&(
               <ContainerItems key={index}>
                 <tr>
                   <ThDescription>

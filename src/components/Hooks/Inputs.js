@@ -2,14 +2,14 @@ import React, { useState, useReducer, useEffect } from "react";
 
 function useInput() {
   const initialState = {
-    input10: 0,
-    input20: 0,
-    input11: 0,
-    input21: 0,
-    input12: 0,
-    input22: 0,
-    int62: 0,
-    int7: 0,
+    input10: 2.5,
+    input20: 3,
+    input11: 2.5,
+    input21: 3,
+    input12: 2.5,
+    input22: 3,
+    int62: 2,
+    int7: 1,
     int63: 0,
     int8: 0,
     int64: 0,
