@@ -34,7 +34,13 @@ function useInput() {
   const [total, setTotal] = useState(0);
 
   const calculateTotal = () => {
-    setTotal0((state.input10 * state.input20)- ((state.int62 * state.int7)+(state.int63 * state.int8)+(state.int64 * state.int9)+(state.int65 * state.int10)));
+    setTotal0(
+      state.input10 * state.input20 -
+        (state.int62 * state.int7 +
+          state.int63 * state.int8 +
+          state.int64 * state.int9 +
+          state.int65 * state.int10)
+    );
     setTotal1(state.input11 * state.input21);
     setTotal2(state.input12 * state.input22);
     setTotal3(state.input13 * state.input23);

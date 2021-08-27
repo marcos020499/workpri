@@ -10,7 +10,6 @@
   font-weight: bold;
 }
 @font-face {
-
   font-family: "RadikalMedium";
   src: local("RadikalMedium"),
     url("./assets/fonts/Radikal Medium.otf") format("truetype");

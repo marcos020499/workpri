@@ -4,13 +4,11 @@ export const ContainerSecondSection = styled.div`
   text-align: center;
   padding: 0%;
   margin: -1.5vh 0 0 0;
-  background: #003366;
   min-height: 21vw;
   max-height: 21vw;
   @media screen and (max-width: 768px) {
-    margin: 0 0 0 0;
+    padding: 30px 0 0 0;
     width: 100%;
-    background-color: #003366;
   }
   @media screen and (max-height: 768px) {
   }
@@ -21,11 +19,18 @@ export const Tooltips = styled(Tooltip)`
   }
 `;
 export const ContainerButton = styled.div`
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   @media screen and (max-width: 768px) {
     padding: 0 0 5vw 0;
+  }
+  @media screen and (max-width: 1367px) {
+    padding: 2vw 0 0vw 0;
+    flex-direction: column;
+  }
+  @media screen and (max-width: 1024px) {
+    padding: 30px 0 0vw 0;
   }
 `;
 export const ButtonReed = styled.button`
@@ -45,6 +50,9 @@ export const ButtonReed = styled.button`
   @media screen and (max-width: 768px) {
     font-size: 14px;
   }
+  @media screen and (max-width: 1367px) {
+    margin: 1vw 0 0vw 0;
+  }
   &:hover {
     background-color: white;
     color: black;
@@ -58,8 +66,16 @@ export const PaintSize = styled.table`
   padding: 0 0 4vh 0;
   min-height: 18vw;
   max-height: 18vw;
+  @media screen and (max-width: 1367px) {
+    min-height: 16vw;
+    max-height: 16vw;
+  }
+
   @media screen and (max-width: 768px) {
     padding: 0 0 5vw 0;
+  }
+  @media screen and (max-width: 1024px) {
+    padding: 0 0 0vw 0;
   }
   @media screen and (max-height: 769px) {
     padding: 0 0 1vh 0;
@@ -75,11 +91,11 @@ export const Recipients = styled.tr`
   left: -10px;
 
   @media screen and (max-width: 1367px) {
-    margin: -2vw 0.5vh 5vh 0;
+    margin: -2vw 0.5vh 4vw 0;
   }
   @media screen and (max-width: 1024px) {
-    margin: -2vh 0 3vh 0;
-    left: -5px;
+    margin: 0vh 0 0vh 0;
+    left: 5px;
   }
   @media screen and (max-height: 769px) {
     margin: 0vh 0 4vh 0;
@@ -100,7 +116,8 @@ export const ImageQuantity = styled.img`
     margin: 0 0vw 0 0vw;
   }
   @media screen and (max-width: 1367px) {
-    width: 6vh;
+    width: 6.5vh;
+    margin: 1vw 1vw 0 0vw;
   }
 `;
 export const ImageQuantity4L = styled.img`
@@ -111,25 +128,34 @@ export const ImageQuantity4L = styled.img`
     margin: 0 0vw 0 0vw;
   }
   @media screen and (max-width: 1367px) {
-    width: 7.5vh;
+    width: 8vh;
+    margin: 1vw 1vw 0 0vw;
   }
 `;
 export const ImageQuantity19L = styled.img`
   width: 10vh;
   color: white;
   @media screen and (max-width: 768px) {
-    width: 15vh;
+    width: 10vw;
+    margin: 0 0vw 0 0vw;
+  }
+  @media screen and (max-width: 1024px) {
+    width: 180px;
     margin: 0 0vw 0 0vw;
   }
   @media screen and (max-width: 1367px) {
     width: 8vh;
+    margin: 1vw 1vw 0 0vw;
   }
 `;
 export const ImagePaint = styled.img`
-  width: 9vw;
+  width: 7vw;
   @media screen and (max-width: 1367px) {
-    width: 70px;
+    width: 7vw;
     margin: 2vh 0 3vh 0;
+  }
+  @media screen and (max-width: 1024px) {
+    width: 120px;
   }
 `;
 export const Banner = styled.img`
@@ -138,6 +164,9 @@ export const Banner = styled.img`
   margin: -0.56vh -1vh 0 -0.66vh;
   padding: 0;
   @media screen and (max-width: 768px) {
+    display: none;
+  }
+  @media screen and (max-width: 1024px) {
     display: none;
   }
 `;
@@ -158,6 +187,7 @@ export const Input = styled.input`
   border-radius: 7px;
   width: 30px;
   text-align: center;
+  border: none;
   color: #999999;
   @media screen and (max-width: 768px) {
     margin: 0 10vw 0 1vw;
@@ -165,7 +195,7 @@ export const Input = styled.input`
     left: 10px;
   }
   @media screen and (max-width: 1024px) {
-    width: 30px;
+    width: 40px;
     font-size: 14px;
   }
   @media screen and (max-width: 1367px) {
@@ -186,6 +216,12 @@ export const InputArea = styled.input`
     font-size: 13px;
     margin: 1vh 1vh 1vh 1vh;
   }
+  @media screen and (max-width: 1024px) {
+    width: 70px;
+    position: relative;
+
+    font-size: 13px;
+  }
 `;
 export const InputAreaLiters = styled.input`
   font-family: "Radikal1";
@@ -200,6 +236,10 @@ export const InputAreaLiters = styled.input`
     font-size: 13px;
     margin: 1vh 1vh 1vh 1vh;
   }
+  @media screen and (max-width: 1024px) {
+    width: 40px;
+    position: relative;
+  }
 `;
 export const H1 = styled.h1`
   font-family: "RadikalBold";
@@ -211,7 +251,10 @@ export const H1 = styled.h1`
     display: flex;
     justify-content: center;
   }
-  
+  @media screen and (max-width: 1024px) {
+    padding: 30px 0 0 0;
+    font-size: 35px;
+  }
 `;
 export const H2 = styled.h2`
   margin: -20px 0 0 0;
@@ -227,6 +270,10 @@ export const H2 = styled.h2`
   }
   @media screen and (max-height: 769px) {
     margin: -30px 0 1vh 0;
+  }
+  @media screen and (max-width: 1024px) {
+    padding: 10px 0 0 0;
+    font-size: 20px;
   }
 `;
 export const H = styled.h2`
@@ -250,6 +297,9 @@ export const Description = styled.h3`
   @media screen and (max-width: 768px) {
     font-size: 12px;
   }
+  @media screen and (max-width: 1024px) {
+    font-size: 12px;
+  }
 `;
 export const DescriptionText = styled.h3`
   font-size: 1.4vh;
@@ -267,6 +317,12 @@ export const DescriptionText = styled.h3`
     text-align: center;
     justify-content: center;
   }
+  @media screen and (max-width: 1024px) {
+    font-size: 14px;
+    width: 260px;
+    text-align: center;
+    justify-content: center;
+  }
 `;
 export const ThDescription = styled.th`
   padding: 0 0 0 10px;
@@ -278,7 +334,7 @@ export const ThDescription = styled.th`
     margin: none;
   }
   @media screen and (max-width: 1024px) {
-    margin: 1vh 0 1vh 0;
+    margin: -2vh 0 3vh 0;
   }
   @media screen and (max-height: 769px) {
     margin: 0vh 0 1vh 0;
@@ -292,7 +348,10 @@ export const TrDes = styled.tr`
     justify-content: center;
   }
   @media screen and (max-width: 1024px) {
-    margin: 1vh 0 1vh 0;
+    margin: 0vh 0 0vh 0;
+    justify-content: center;
+    position: relative;
+    left: -15px;
   }
   @media screen and (max-height: 769px) {
     margin: 0vh 0 0vh 0;
@@ -306,23 +365,57 @@ export const Quantity = styled.p`
   @media screen and (max-width: 768px) {
     font-size: 14px;
   }
+  @media screen and (max-width: 1024px) {
+    font-size: 15px;
+  }
+  @media screen and (max-width: 1367px) {
+    margin: 0 0 0 0;
+  }
 `;
 
 export const ContainerItems = styled.div`
   min-width: 15vw;
+  @media screen and (max-width: 1367px) {
+    min-width: 16vw;
+    max-width: 16vw;
+    max-height: 20vw;
+    min-height: 20vw;
+    padding: 0 0 5vh 0;
+  }
+  @media screen and (max-width: 1024px) {
+    min-width: 250px;
+    min-height: 250px;
+    display: inline-block;
+    padding: 30px 0 2vh 0;
+  }
+
   @media screen and (max-width: 768px) {
+    min-width: 10vw;
+    max-width: 10vw;
     min-width: none;
+    min-height: none;
     display: flex;
-    padding: 5vw 0 5vw 0;
+    margin: 40px 0 5vw 0;
   }
 `;
 export const Items = styled.div`
   display: flex;
-  margin: 0 0 0 4vw;
+  margin: 0 0 0 20px;
+  @media screen and (max-width: 1367px) {
+    min-height: 300px;
+    max-height: 300px;
+  }
+  @media screen and (max-width: 1024px) {
+    display: inline-block;
+    justify-content: center;
+    margin: 0 0 0 0vw;
+  }
   @media screen and (max-width: 768px) {
+    min-height: none;
+    max-height: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    margin: 0 0 0 0vw;
   }
 `;
 export const InputColorName = styled.input`
@@ -333,9 +426,9 @@ export const InputColorName = styled.input`
   margin: 0 0.7vw 0 0;
   @media screen and (max-width: 768px) {
     width: 7px;
-  height: 10px;
-  position: relative;
-  top: -1px;
+    height: 10px;
+    position: relative;
+    top: -1px;
     margin: 4vw 1vw 0 1vw;
   }
 `;

@@ -12,7 +12,7 @@ import {
   ColorsItem,
   Radior,
   IconColor,
-  Small,
+  Smallm,
   ImageM,
   Meters,
   InputColorTooltip,
@@ -149,7 +149,6 @@ export default function ScreenTest({
             <Input />
           </Td>
           <Td>
-
             <Selectors>
               {addOptions.map((_, i) => {
                 return (
@@ -187,8 +186,6 @@ export default function ScreenTest({
     </div>
   );
 }
-
-
 
 function InputObject({ total, index, length, appendInput, popInput }) {
   return (
@@ -233,7 +230,7 @@ function HeaderCol({ title, size, end, image, disable }) {
   function Label() {
     return (
       <TitleContainer>
-        {size ? <Small>Metro</Small> : <Small>‏‏‎ ‎</Small>}
+        {size ? <Smallm>Metro</Smallm> : <Smallm>‏‏‎ ‎</Smallm>}
         <TitleAlign>{title}</TitleAlign>
       </TitleContainer>
     );
@@ -254,7 +251,7 @@ function HeaderCol({ title, size, end, image, disable }) {
 function FirstCol() {
   return (
     <Wall>
-      <Radior type="radio" checked/>
+      <Radior type="radio" checked />
       <WallText>Pared 1</WallText>
 
       <Tooltip
@@ -320,36 +317,35 @@ const IconImage = styled.img`
   align-self: center;
 `;
 const Mts = styled.p`
-font-family: "Radikal1";
-font-size: 10px;
-margin: 0 0 0 0.3vw;
-color: #003366;
-media screen and (max-width: 768px) {
-  font-size: 20px;
-}
-@media screen and (max-width: 1367px) {
-  font-size: 1vh;
-  position: relative;
-}
+  font-family: "Radikal1";
+  font-size: 10px;
+  margin: 0 0 0 0.3vw;
+  color: #003366;
+  media screen and (max-width: 768px) {
+    font-size: 20px;
+  }
+  @media screen and (max-width: 1367px) {
+    font-size: 1vh;
+    position: relative;
+  }
 `;
 const Buttons = styled.div`
-display: flex;
-flex-direction: column;
-align-items: flex-end;
-margin: 0 0 0 1vh;
-padding: 0 1vh 0 1.5vh;
-@media screen and (max-width: 1367px) {
-  position: relative;
-}
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0 0 0 1vh;
+  padding: 0 1vh 0 1.5vh;
+  @media screen and (max-width: 1367px) {
+    position: relative;
+  }
 `;
 const Selectors = styled.div`
-display: flex;
-flex-direction: column;
-font-family: "Radikal1";
-@media screen and (max-width: 1367px) {
-
-}
-media screen and (max-width: 768px) {
-  justify-content: space-between;
-}
+  display: flex;
+  flex-direction: column;
+  font-family: "Radikal1";
+  @media screen and (max-width: 1367px) {
+  }
+  media screen and (max-width: 768px) {
+    justify-content: space-between;
+  }
 `;

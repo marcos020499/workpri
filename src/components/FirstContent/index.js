@@ -1,8 +1,6 @@
-import { symbol } from "prop-types";
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useReducer, useState } from "react";
 import useItems from "../Hooks/Hooks";
 import Tooltip from "../Tooltip/Tooltip";
-import InputRange from 'react-input-range';
 import {
   ContainerHeader,
   H2,
@@ -31,7 +29,7 @@ import {
   InputDiv,
   IconColor,
   ImageTable,
-  Small,
+  Smallm,
   ImageM,
   Final,
   Meters,
@@ -44,7 +42,7 @@ import {
   H2Color,
   H2Puertas,
   Mtss,
-  WallContainer
+  WallContainer,
 } from "./style";
 
 /*
@@ -92,17 +90,20 @@ const ItemList = ({
       <Title>COLORES SELECCIONADOS</Title>
       <InputDiv>
         <div>
-          {item.map((item, index) => index <=2&&(
-            <ColorsItem key={index}>
-              <InputItem style={{ backgroundColor: `${item.color}` }} />
-            </ColorsItem>
-          ))}
+          {item.map(
+            (item, index) =>
+              index <= 2 && (
+                <ColorsItem key={index}>
+                  <InputItem style={{ backgroundColor: `${item.color}` }} />
+                </ColorsItem>
+              )
+          )}
         </div>
         <Button>Borrar todo</Button>
       </InputDiv>
       <Table>
-        <tr >
-          <th style={{paddingBottom: '40px'}}>
+        <tr>
+          <th style={{ paddingBottom: "40px" }}>
             <IconColor>
               <ImageColor
                 src={
@@ -121,7 +122,7 @@ const ItemList = ({
                 }
               />
               <Meters>
-                <Small>Metros</Small>
+                <Smallm>Metros</Smallm>
                 <H2>Largo</H2>
               </Meters>
             </IconMeter>
@@ -135,7 +136,7 @@ const ItemList = ({
                 }
               />
               <Meters>
-                <Small>Metros</Small>
+                <Smallm>Metros</Smallm>
                 <H2>Ancho</H2>
               </Meters>
             </IconMeter>
@@ -165,186 +166,219 @@ const ItemList = ({
             </Icon>
           </th>
         </tr>
-        {item.map((item1, index) => index < 5  &&(
-          <PaintContainer key={index} style={{margin: '10vw'}}>
-            <TdFirst>
-              <Wall>
-                <WallContainer>
-                <Radior type="radio" checked={index <=2 ? true: ''}/>
-                <WallText style={{ color: index >=3? '#999999': 'initial' }}>{imper ? "Azotea" : `Pared ${index + 1}`&& index >=4 ? `${' Techo'}`: `Pared ${index + 1}`}</WallText>
-                </WallContainer>
-                <Tooltip
-                  content={
-                    <div>
-                      <small>Colores a elegir</small>
-                      <div>
-                        {item.map((item, index) => (
-                          <ColorsItem key={index}>
-                            <InputColorTooltip
-                              style={{ backgroundColor: `${item.color}` }}
-                            />
-                          </ColorsItem>
-                        ))}
-                      </div>
-                    </div>
-                  }
-                  direction="right"
-                >
-                  <InputColor
-                    style={{
-                      backgroundColor: imper ? `${item1.color}` : "white",
-                    }}
-                  />
-                </Tooltip>
-              </Wall>
-            </TdFirst>
-
-            <Td>
-            {index <=2?(
-              <Mts>
-                <InputNumber
-                  type="number"
-                  min='1'
-                  max='10'
-                  step='0.5'
-                  defaultValue='3'
-                  value={state.input1}
-                  name={`${"input1"}${index}`}
-                  onChange={handleInput}
-                />
-                
-                mts
-              </Mts>):(
-                <h1 style={{border: 'none'}}></h1>
-            )}
-            </Td>
-
-            <Td>
-            {index <=2?(
-              <Mts>
-                <InputNumber
-                  type="number"
-                  defaultValue='2'
-                  min='1'
-                  max='10'
-                  step='0.5'
-                  value={state.input2}
-                  name={`${"input2"}${index}`}
-                  onChange={handleInput}
-                />
-                mts
-              </Mts>):(
-                <h1 style={{border: 'none'}}></h1>
-            )}
-            </Td>
-            <Td>
-            {index <=2?(
-              <Selectors>
-                {addOptions.map((_, i) => {
-                  return i === 0 ? (
-                    <Buttons>
-                      <ButtonIncrement
-                        onClick={() => {
-                          appendInput();
-                          //i = i + 1;
-                          //setAddOptions([...addOptions, i]);
-                          //console.log(addOptions);
-                        }}
-                        style={{
-                          display: addOptions.length > 4 ? "none" : "initial",
-
-                        }}
+        {item.map(
+          (item1, index) =>
+            index < 5 && (
+              <PaintContainer key={index} style={{ margin: "10vw" }}>
+                <TdFirst>
+                  <Wall>
+                    <WallContainer>
+                      <Radior type="radio" checked={index <= 2 ? true : ""} />
+                      <WallText
+                        style={{ color: index >= 3 ? "#999999" : "initial" }}
                       >
-                        +
-                      </ButtonIncrement>
-                      <ButtonDecrement
-                        onClick={() => {
-                          popInput();
-                          //i = i - 1;
-                          //setAddOptions([...addOptions, i]);
-                        }}
+                        {imper
+                          ? "Azotea"
+                          : `Pared ${index + 1}` && index >= 4
+                          ? `${" Techo"}`
+                          : `Pared ${index + 1}`}
+                      </WallText>
+                    </WallContainer>
+                    <Tooltip
+                      content={
+                        <div>
+                          <small>Colores a elegir</small>
+                          <div>
+                            {item.map((item, index) => (
+                              <ColorsItem key={index}>
+                                <InputColorTooltip
+                                  style={{ backgroundColor: `${item.color}` }}
+                                />
+                              </ColorsItem>
+                            ))}
+                          </div>
+                        </div>
+                      }
+                      direction="right"
+                    >
+                      <InputColor
                         style={{
-                          display: addOptions.length === 1 ? "none" : "initial",
+                          backgroundColor: imper ? `${item1.color}` : "white",
                         }}
-                      >
-                        -
-                      </ButtonDecrement>
-                    </Buttons>
+                      />
+                    </Tooltip>
+                  </Wall>
+                </TdFirst>
+
+                <Td>
+                  {index <= 2 ? (
+                    <Mts>
+                      <InputNumber
+                        type="number"
+                        min="1"
+                        max="10"
+                        step="0.5"
+                        defaultValue="3"
+                        value={state.input1}
+                        name={`${"input1"}${index}`}
+                        onChange={handleInput}
+                      />
+                      mts
+                    </Mts>
                   ) : (
-                    <InputObject
-                    key={i}
-                    x={i+11}
-                    y={ index === 0 ? 1 : index === 1 ? 2: index===3 ? 3: +'' }
-                    index={i}
-                    ind={index}
-                    total={addOptions.totall}
-                    length={addOptions.length}
-                    appendInput={appendInput}
-                    popInput={popInput}
-                    state={state.int62}
-                    onCh={handleInput}
-                    />
-                  );
-                })}
-              </Selectors>):(
-                <h1 style={{border: 'none'}}></h1>
-              )}
-            </Td>
+                    <h1 style={{ border: "none" }}></h1>
+                  )}
+                </Td>
 
-            <td>
-            {index <=2?(
-              <Selectors>
-                {addOptions.map((_, i) => {
-                  return i === 0 ? (
-                    <Buttons>
-                      <ButtonIncrement
-                        onClick={() => {
-                          appendInput();
-                          //i = i + 1;
-                          //setAddOptions([...addOptions, i]);
-                          //console.log(addOptions);
-                        }}
-                        style={{
-                          display: addOptions.length > 4 ? "none" : "initial",
-                        }}
-                      >
-                        +
-                      </ButtonIncrement>
-                      <ButtonDecrement
-                        onClick={() => {
-                          popInput();
-                          //i = i - 1;
-                          //setAddOptions([...addOptions, i]);
-                        }}
-                        style={{
-                          display: addOptions.length === 1 ? "none" : "initial",
-                        }}
-                      >
-                        -
-                      </ButtonDecrement>
-                    </Buttons>
+                <Td>
+                  {index <= 2 ? (
+                    <Mts>
+                      <InputNumber
+                        type="number"
+                        defaultValue="2"
+                        min="1"
+                        max="10"
+                        step="0.5"
+                        value={state.input2}
+                        name={`${"input2"}${index}`}
+                        onChange={handleInput}
+                      />
+                      mts
+                    </Mts>
                   ) : (
-                    <InputObject
-                      key={i}
-                      x={i+54}
-                      y={ index === 0 ? 1 : index === 1 ? 2: index===3 ? 3: +'' }
-                      index={i}
-                      ind={index}
-                      total={addOptions.totall}
-                      length={addOptions.length}
-                      appendInput={appendInput}
-                      popInput={popInput}
-                      state2={state.int7}
-                      onCh={handleInput}
-                    />
-                  );
-                })}
-              </Selectors>):(
-                <h1 style={{border: 'none'}}></h1>
-              )}
-            </td>
-          </PaintContainer>
-        ))}
+                    <h1 style={{ border: "none" }}></h1>
+                  )}
+                </Td>
+                <Td>
+                  {index <= 2 ? (
+                    <Selectors>
+                      {addOptions.map((_, i) => {
+                        return i === 0 ? (
+                          <Buttons>
+                            <ButtonIncrement
+                              onClick={() => {
+                                appendInput();
+                                //i = i + 1;
+                                //setAddOptions([...addOptions, i]);
+                                //console.log(addOptions);
+                              }}
+                              style={{
+                                display:
+                                  addOptions.length > 4 ? "none" : "initial",
+                              }}
+                            >
+                              +
+                            </ButtonIncrement>
+                            <ButtonDecrement
+                              onClick={() => {
+                                popInput();
+                                //i = i - 1;
+                                //setAddOptions([...addOptions, i]);
+                              }}
+                              style={{
+                                display:
+                                  addOptions.length === 1 ? "none" : "initial",
+                              }}
+                            >
+                              -
+                            </ButtonDecrement>
+                          </Buttons>
+                        ) : (
+                          <InputObject
+                            key={i}
+                            x={i + 11}
+                            y={
+                              index === 0
+                                ? 1
+                                : index === 1
+                                ? 2
+                                : index === 3
+                                ? 3
+                                : +""
+                            }
+                            index={i}
+                            ind={index}
+                            total={addOptions.totall}
+                            length={addOptions.length}
+                            appendInput={appendInput}
+                            popInput={popInput}
+                            state={state.int62}
+                            onCh={handleInput}
+                          />
+                        );
+                      })}
+                    </Selectors>
+                  ) : (
+                    <h1 style={{ border: "none" }}></h1>
+                  )}
+                </Td>
+
+                <td>
+                  {index <= 2 ? (
+                    <Selectors>
+                      {addOptions.map((_, i) => {
+                        return i === 0 ? (
+                          <Buttons>
+                            <ButtonIncrement
+                              onClick={() => {
+                                appendInput();
+                                //i = i + 1;
+                                //setAddOptions([...addOptions, i]);
+                                //console.log(addOptions);
+                              }}
+                              style={{
+                                display:
+                                  addOptions.length > 4 ? "none" : "initial",
+                              }}
+                            >
+                              +
+                            </ButtonIncrement>
+                            <ButtonDecrement
+                              onClick={() => {
+                                popInput();
+                                //i = i - 1;
+                                //setAddOptions([...addOptions, i]);
+                              }}
+                              style={{
+                                display:
+                                  addOptions.length === 1 ? "none" : "initial",
+                              }}
+                            >
+                              -
+                            </ButtonDecrement>
+                          </Buttons>
+                        ) : (
+                          <InputObject
+                            key={i}
+                            x={i + 54}
+                            y={
+                              index === 0
+                                ? 1
+                                : index === 1
+                                ? 2
+                                : index === 3
+                                ? 3
+                                : +""
+                            }
+                            index={i}
+                            ind={index}
+                            total={addOptions.totall}
+                            length={addOptions.length}
+                            appendInput={appendInput}
+                            popInput={popInput}
+                            state2={state.int7}
+                            onCh={handleInput}
+                          />
+                        );
+                      })}
+                    </Selectors>
+                  ) : (
+                    <h1 style={{ border: "none" }}></h1>
+                  )}
+                </td>
+              </PaintContainer>
+            )
+        )}
       </Table>
 
       <Final>
@@ -355,14 +389,26 @@ const ItemList = ({
   );
 };
 export default ItemList;
-function SpaceObject (){
+function SpaceObject() {
   return (
     <div>
-    <h1 style={{ color: 'white' }}>ss</h1>
+      <h1 style={{ color: "white" }}>ss</h1>
     </div>
-  )
+  );
 }
-function InputObject({ x, y ,ind, index, length, appendInput, popInput, state1, state2, handleI, onCh }) {
+function InputObject({
+  x,
+  y,
+  ind,
+  index,
+  length,
+  appendInput,
+  popInput,
+  state1,
+  state2,
+  handleI,
+  onCh,
+}) {
   return (
     <Options>
       {index === 0 && (
@@ -396,11 +442,16 @@ function InputObject({ x, y ,ind, index, length, appendInput, popInput, state1, 
             "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-06_knbij5.svg"
           }
         />
-        <InputNumber type='number' value={state1} name={`${'int'}${ind*4+x +50}`} onChange={onCh} 
-                  defaultValue='1'
-                  min='1'
-                  max='5'
-                  step='0.5'/>
+        <InputNumber
+          type="number"
+          value={state1}
+          name={`${"int"}${ind * 4 + x + 50}`}
+          onChange={onCh}
+          defaultValue="1"
+          min="1"
+          max="5"
+          step="0.5"
+        />
         mts
       </Mtss>
       <Mtss>
@@ -409,15 +460,18 @@ function InputObject({ x, y ,ind, index, length, appendInput, popInput, state1, 
             "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-07_jzke1w.svg"
           }
         />
-        <InputNumber  type='number'  value={state2} name={`${'int'}${ind*4+x -5}`} onChange={onCh}
-                  defaultValue='2'
-                  min='1'
-                  max='5'
-                  step='0.5' />
+        <InputNumber
+          type="number"
+          value={state2}
+          name={`${"int"}${ind * 4 + x - 5}`}
+          onChange={onCh}
+          defaultValue="2"
+          min="1"
+          max="5"
+          step="0.5"
+        />
         mts
       </Mtss>
-
-      
     </Options>
   );
 }
