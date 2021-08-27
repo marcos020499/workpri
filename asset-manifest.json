@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/workpri/static/css/main.09c6d2bc.chunk.css",
-    "main.js": "/workpri/static/js/main.a4a7d452.chunk.js",
-    "main.js.map": "/workpri/static/js/main.a4a7d452.chunk.js.map",
+    "main.js": "/workpri/static/js/main.4e90ec43.chunk.js",
+    "main.js.map": "/workpri/static/js/main.4e90ec43.chunk.js.map",
     "runtime-main.js": "/workpri/static/js/runtime-main.4a502946.js",
     "runtime-main.js.map": "/workpri/static/js/runtime-main.4a502946.js.map",
     "static/js/2.6e4a9a52.chunk.js": "/workpri/static/js/2.6e4a9a52.chunk.js",
     "static/js/2.6e4a9a52.chunk.js.map": "/workpri/static/js/2.6e4a9a52.chunk.js.map",
     "index.html": "/workpri/index.html",
-    "precache-manifest.e267356030b45f2af47aaf0291649f1c.js": "/workpri/precache-manifest.e267356030b45f2af47aaf0291649f1c.js",
+    "precache-manifest.c42f0eabf30b30423f186a676bb0d873.js": "/workpri/precache-manifest.c42f0eabf30b30423f186a676bb0d873.js",
     "service-worker.js": "/workpri/service-worker.js",
     "static/css/main.09c6d2bc.chunk.css.map": "/workpri/static/css/main.09c6d2bc.chunk.css.map",
     "static/media/index.css": "/workpri/static/media/Radikal.f39258e2.otf"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.4a502946.js",
     "static/js/2.6e4a9a52.chunk.js",
     "static/css/main.09c6d2bc.chunk.css",
-    "static/js/main.a4a7d452.chunk.js"
+    "static/js/main.4e90ec43.chunk.js"
   ]
 }
