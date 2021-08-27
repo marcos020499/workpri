@@ -26,7 +26,7 @@ import {
   Mts,
   Warning,
   Title,
-  Radio,
+  Radior,
   ButtonDiv,
   InputDiv,
   IconColor,
@@ -43,7 +43,8 @@ import {
   ImageColor,
   H2Color,
   H2Puertas,
-  Mtss
+  Mtss,
+  WallContainer
 } from "./style";
 
 /*
@@ -100,8 +101,8 @@ const ItemList = ({
         <Button>Borrar todo</Button>
       </InputDiv>
       <Table>
-        <tr>
-          <th>
+        <tr >
+          <th style={{paddingBottom: '40px'}}>
             <IconColor>
               <ImageColor
                 src={
@@ -165,12 +166,13 @@ const ItemList = ({
           </th>
         </tr>
         {item.map((item1, index) => index < 5  &&(
-          <PaintContainer key={index}>
+          <PaintContainer key={index} style={{margin: '10vw'}}>
             <TdFirst>
               <Wall>
-                <Radio type="radio" checked={index <=2 ? true: ''}></Radio>
+                <WallContainer>
+                <Radior type="radio" checked={index <=2 ? true: ''}/>
                 <WallText style={{ color: index >=3? '#999999': 'initial' }}>{imper ? "Azotea" : `Pared ${index + 1}`&& index >=4 ? `${' Techo'}`: `Pared ${index + 1}`}</WallText>
-
+                </WallContainer>
                 <Tooltip
                   content={
                     <div>
@@ -205,7 +207,8 @@ const ItemList = ({
                   min='1'
                   max='10'
                   step='0.5'
-                  value={state.input10}
+                  defaultValue='3'
+                  value={state.input1}
                   name={`${"input1"}${index}`}
                   onChange={handleInput}
                 />
@@ -220,12 +223,13 @@ const ItemList = ({
             {index <=2?(
               <Mts>
                 <InputNumber
-                  
+                  type="number"
+                  defaultValue='2'
                   min='1'
                   max='10'
                   step='0.5'
-                  value={state.input20}
-                  name={`${"input1"}${index}`}
+                  value={state.input2}
+                  name={`${"input2"}${index}`}
                   onChange={handleInput}
                 />
                 mts
@@ -248,6 +252,7 @@ const ItemList = ({
                         }}
                         style={{
                           display: addOptions.length > 4 ? "none" : "initial",
+
                         }}
                       >
                         +
@@ -300,7 +305,7 @@ const ItemList = ({
                           //console.log(addOptions);
                         }}
                         style={{
-                          display: addOptions.length > 3 ? "none" : "initial",
+                          display: addOptions.length > 4 ? "none" : "initial",
                         }}
                       >
                         +
@@ -391,7 +396,11 @@ function InputObject({ x, y ,ind, index, length, appendInput, popInput, state1, 
             "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-06_knbij5.svg"
           }
         />
-        <InputNumber type='number' value={state1} name={`${'int'}${ind*4+x +50}`} onChange={onCh}/>
+        <InputNumber type='number' value={state1} name={`${'int'}${ind*4+x +50}`} onChange={onCh} 
+                  defaultValue='1'
+                  min='1'
+                  max='5'
+                  step='0.5'/>
         mts
       </Mtss>
       <Mtss>
@@ -400,7 +409,11 @@ function InputObject({ x, y ,ind, index, length, appendInput, popInput, state1, 
             "https://res.cloudinary.com/marcos020499/image/upload/v1629305107/ICO%CC%81NOS-07_jzke1w.svg"
           }
         />
-        <InputNumber  type='number'  value={state2} name={`${'int'}${ind*4+x -5}`} onChange={onCh}/>
+        <InputNumber  type='number'  value={state2} name={`${'int'}${ind*4+x -5}`} onChange={onCh}
+                  defaultValue='2'
+                  min='1'
+                  max='5'
+                  step='0.5' />
         mts
       </Mtss>
 

@@ -5,6 +5,8 @@ export const ContainerSecondSection = styled.div`
   padding: 0%;
   margin: -1.5vh 0 0 0;
   background: #003366;
+  min-height: 21vw;
+  max-height: 21vw;
   @media screen and (max-width: 768px) {
     margin: 0 0 0 0;
     width: 100%;
@@ -41,7 +43,7 @@ export const ButtonReed = styled.button`
   border: none;
   cursor: pointer;
   @media screen and (max-width: 768px) {
-    font-size: 12px;
+    font-size: 14px;
   }
   &:hover {
     background-color: white;
@@ -54,6 +56,8 @@ export const PaintSize = styled.table`
   justify-content: center;
   text-align: center;
   padding: 0 0 4vh 0;
+  min-height: 18vw;
+  max-height: 18vw;
   @media screen and (max-width: 768px) {
     padding: 0 0 5vw 0;
   }
@@ -66,18 +70,19 @@ export const Recipients = styled.tr`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  margin: -2vh 0.5vh 4vh 0;
+  margin: -3vw 0.5vw 8vh 0;
   position: relative;
   left: -10px;
+
   @media screen and (max-width: 1367px) {
-    margin: -2vh 0.5vh 5vh 0;
+    margin: -2vw 0.5vh 5vh 0;
   }
   @media screen and (max-width: 1024px) {
-    margin: 0vh 0 3vh 0;
+    margin: -2vh 0 3vh 0;
     left: -5px;
   }
   @media screen and (max-height: 769px) {
-    margin: 0vh 0 1vh 0;
+    margin: 0vh 0 4vh 0;
   }
 `;
 export const Image = styled.img`
@@ -121,8 +126,9 @@ export const ImageQuantity19L = styled.img`
   }
 `;
 export const ImagePaint = styled.img`
-  width: 110px;
+  width: 9vw;
   @media screen and (max-width: 1367px) {
+    width: 70px;
     margin: 2vh 0 3vh 0;
   }
 `;
@@ -159,10 +165,11 @@ export const Input = styled.input`
     left: 10px;
   }
   @media screen and (max-width: 1024px) {
-    width: 5vh;
+    width: 30px;
+    font-size: 14px;
   }
   @media screen and (max-width: 1367px) {
-    width: 4vh;
+    width: 20px;
   }
 `;
 export const InputArea = styled.input`
@@ -175,7 +182,8 @@ export const InputArea = styled.input`
   border: none;
   color: #999999;
   @media screen and (max-width: 768px) {
-    width: 12vw;
+    width: 35px;
+    font-size: 13px;
     margin: 1vh 1vh 1vh 1vh;
   }
 `;
@@ -188,7 +196,8 @@ export const InputAreaLiters = styled.input`
   border: none;
   color: #999999;
   @media screen and (max-width: 768px) {
-    width: 8vw;
+    width: 35px;
+    font-size: 13px;
     margin: 1vh 1vh 1vh 1vh;
   }
 `;
@@ -198,7 +207,7 @@ export const H1 = styled.h1`
   color: white;
   letter-spacing: 4px;
   @media screen and (max-width: 768px) {
-    font-size: 3.8vw;
+    font-size: 20px;
     display: flex;
     justify-content: center;
   }
@@ -210,7 +219,7 @@ export const H2 = styled.h2`
   color: #2098ae;
   font-size: 20px;
   @media screen and (max-width: 768px) {
-    font-size: 2.7vw;
+    font-size: 15px;
     display: flex;
     margin: none;
     padding: 10vw 0 0 0;
@@ -227,8 +236,9 @@ export const H = styled.h2`
   color: white;
   font-size: 20px;
   @media screen and (max-width: 768px) {
-    font-size: 2.6vw;
+    font-size: 14px;
     display: flex;
+    padding: 0 0 20px 0;
     justify-content: center;
   }
 `;
@@ -238,7 +248,7 @@ export const Description = styled.h3`
   letter-spacing: 1px;
   font-family: "Radikal1";
   @media screen and (max-width: 768px) {
-    font-size: 2.2vw;
+    font-size: 12px;
   }
 `;
 export const DescriptionText = styled.h3`
@@ -252,7 +262,7 @@ export const DescriptionText = styled.h3`
   text-align: center;
   text-overflow: ellipsis;
   @media screen and (max-width: 768px) {
-    font-size: 2.8vw;
+    font-size: 15px;
     width: 80px;
     text-align: center;
     justify-content: center;
@@ -263,6 +273,7 @@ export const ThDescription = styled.th`
   margin: -0.5vw 0 3vw 0;
   @media screen and (max-width: 768px) {
     font-size: 2.8vw;
+    margin: -0.5vw 0 3vw 0;
     padding: 0;
     margin: none;
   }
@@ -281,7 +292,7 @@ export const TrDes = styled.tr`
     justify-content: center;
   }
   @media screen and (max-width: 1024px) {
-    margin: 1vh 0 4vh 0;
+    margin: 1vh 0 1vh 0;
   }
   @media screen and (max-height: 769px) {
     margin: 0vh 0 0vh 0;
@@ -293,7 +304,7 @@ export const Quantity = styled.p`
   margin: -5px 0 0 0;
   font-family: "Radikal1";
   @media screen and (max-width: 768px) {
-    font-size: 2.8vw;
+    font-size: 14px;
   }
 `;
 
@@ -321,10 +332,10 @@ export const InputColorName = styled.input`
   border: 1px solid #003366;
   margin: 0 0.7vw 0 0;
   @media screen and (max-width: 768px) {
-    width: 1vh;
-  height: 1vh;
+    width: 7px;
+  height: 10px;
   position: relative;
-  top: 3px;
+  top: -1px;
     margin: 4vw 1vw 0 1vw;
   }
 `;

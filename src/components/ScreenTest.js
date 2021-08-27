@@ -8,11 +8,9 @@ import {
   Icon,
   Image,
   Wall,
-  Selectors,
   Table,
   ColorsItem,
-  Mts,
-  Radio,
+  Radior,
   IconColor,
   Small,
   ImageM,
@@ -23,7 +21,6 @@ import {
   ButtonDecrement,
   ButtonIncrement,
   ImageTable,
-  Buttons,
   Options,
   IconMeter,
   H2Color,
@@ -257,7 +254,7 @@ function HeaderCol({ title, size, end, image, disable }) {
 function FirstCol() {
   return (
     <Wall>
-      <Radio type="radio" checked></Radio>
+      <Radior type="radio" checked/>
       <WallText>Pared 1</WallText>
 
       <Tooltip
@@ -321,4 +318,38 @@ const IconImage = styled.img`
   width: 5vh;
   height: 5vh;
   align-self: center;
+`;
+const Mts = styled.p`
+font-family: "Radikal1";
+font-size: 10px;
+margin: 0 0 0 0.3vw;
+color: #003366;
+media screen and (max-width: 768px) {
+  font-size: 20px;
+}
+@media screen and (max-width: 1367px) {
+  font-size: 1vh;
+  position: relative;
+}
+`;
+const Buttons = styled.div`
+display: flex;
+flex-direction: column;
+align-items: flex-end;
+margin: 0 0 0 1vh;
+padding: 0 1vh 0 1.5vh;
+@media screen and (max-width: 1367px) {
+  position: relative;
+}
+`;
+const Selectors = styled.div`
+display: flex;
+flex-direction: column;
+font-family: "Radikal1";
+@media screen and (max-width: 1367px) {
+
+}
+media screen and (max-width: 768px) {
+  justify-content: space-between;
+}
 `;

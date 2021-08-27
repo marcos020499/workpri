@@ -32,7 +32,8 @@ export const Second = styled.div`
   @media screen and (max-width: 768px) {
     width: 100%;
     background: #003366;
-    height: 200vh;
+    min-height: 900px;
+    height: 250vh;
     justify-content: center;
   }
   @media screen and (max-width: 1367px) {
