@@ -60,7 +60,7 @@ export const Button = styled.button`
   display: flex;
   justify-content: right;
   @media screen and (max-width: 768px) {
-    font-size: 14px;
+    font-size: 12.6px;
     margin: 15vw 10vw 0 0vw;
 
   }
@@ -140,10 +140,9 @@ export const H2Puertas = styled.h2`
   @media screen and (max-width: 768px) {
     font-size: 11px;
     
-    padding: 0 60px 0 1vw;
+    padding: 0 54px 0 1vw;
     justify-content: center;
     position: relative;
-    left: 15px;
   }
   @media screen and (max-width: 1367px) {
     margin: 0vw 0 1.5vw 0;
