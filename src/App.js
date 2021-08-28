@@ -3,13 +3,18 @@ import Calculator from "./pages/Calculator";
 import { createGlobalStyle } from "styled-components";
 import ScreenTest from "./components/ScreenTest";
 import InputColor1 from "./components/Hooks/ImputColor";
+import { FieldsInput } from "./components/refactor/FieldsInput";
+import { CalculatorProvider } from "./components/refactor/Provider";
 function App() {
-  return (
-    <div>
-      <Calculator />
-      <GlobalStyle />
-    </div>
-  );
+	return (
+		<CalculatorProvider>
+			<div>
+				<FieldsInput />
+				<Calculator />
+				<GlobalStyle />
+			</div>
+		</CalculatorProvider>
+	);
 }
 const GlobalStyle = createGlobalStyle`
   body {
