@@ -14,7 +14,7 @@ const Index = () => {
         }
       />
       <First>
-        <FirstContent {...props} />
+        <FirstContent {...props} state1={props.state1}/>
       </First>
       <Second>
         <SecondContent

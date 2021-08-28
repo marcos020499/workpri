@@ -415,7 +415,7 @@ export const InputColor = styled.button`
     height: 5vw;
   }
 `;
-export const InputColorTooltip = styled.option`
+export const InputColorTooltip = styled.input`
   width: 2vw;
   height: 2vw;
   background-color: white;
@@ -576,7 +576,6 @@ export const Mts = styled.p`
   top: -5px;
   margin: 0 1vh 0 1vh;
   color: #003366;
-
 
   @media screen and (max-width: 1367px) {
     font-size: 10px;
