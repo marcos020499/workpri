@@ -1,37 +1,78 @@
 import Tooltip from "../Tooltip/Tooltip";
-import React, {
-	forwardRef,
-	useImperativeHandle,
-	useReducer,
-	useRef,
-	useState,
-	useEffect,
-	useCallback,
-	useMemo,
-} from "react";
+import React, { useReducer, useState, useEffect } from "react";
 import styled from "styled-components";
 import { ColorsItem, InputColorTooltip } from "../FirstContent/style";
 import { Icons } from "./Icons";
 
-export const ExpandableInput = () => {
-	const [keys] = useState(["first", "second", "three", "four"]);
+export const ExpandableInput = ({ onTotal }) => {
+	const k = ["first", "second", "three", "four"];
+	const [keys, setKeys] = useState([]);
 	const [state, dispatch] = useReducer((s, a) => ({ ...s, ...a }), {});
+	const [hidden, setHidden] = useState(true);
 
-	function notify(key, x, y) {
-		dispatch({ [key]: x * y });
+	const sumAreas = (object) => {
+		const total = Object.keys(object).reduce(
+			(acc, key) => acc + object[key],
+			0
+		);
+		onTotal(total);
+	};
+
+	function notify(key, area) {
+		sumAreas({ ...state, [key]: area });
+		dispatch({ [key]: area });
+	}
+
+	function append() {
+		if (keys.length === 4) {
+			return;
+		}
+
+		if (keys.length === 0) {
+			setHidden(false);
+		}
+
+		setKeys((s) => [...s, k[keys.length]]);
+	}
+
+	function pop() {
+		if (keys.length === 1) {
+			setHidden(true);
+		}
+
+		dispatch({ [k[keys.length - 1]]: 0 });
+		setKeys((s) => s.slice(1));
 	}
 
 	return (
 		<div>
-			<p>{state["first"]}</p>
-			{keys.map((key, i) => (
-				<SizeInput key={i} identifier={key} onSubmit={notify} />
-			))}
+			<Row>
+				{hidden ? (
+					<SizeInput hidden />
+				) : (
+					<div>
+						{keys.map((key, i) => (
+							<SizeInput
+								key={i}
+								hidden={false}
+								identifier={key}
+								onSubmit={notify}
+							/>
+						))}
+					</div>
+				)}
+
+				<Col>
+					<Button onClick={append}>+</Button>
+					<div style={{ height: "5px" }} />
+					{!hidden && <Button onClick={pop}>-</Button>}
+				</Col>
+			</Row>
 		</div>
 	);
 };
 
-export const SizeInput = ({ identifier, onSubmit }) => {
+export const SizeInput = ({ identifier, hidden, onSubmit }) => {
 	const [val, setVal] = useState({ x: 0, y: 0 });
 
 	const submit = (k, v) => {
@@ -40,23 +81,25 @@ export const SizeInput = ({ identifier, onSubmit }) => {
 
 	useEffect(() => {
 		if (onSubmit) {
-			onSubmit(identifier, val.x, val.y);
+			onSubmit(identifier, parseInt(val.x) * parseInt(val.y));
 		}
 	}, [val.x, val.y]);
 
 	return (
-		<Row>
-			<SimpleInput
-				lIcon="vertical"
-				value={val.x}
-				onChangeText={(e) => submit("x", e.target.value)}
-			/>
-			<SimpleInput
-				lIcon="horizontal"
-				value={val.y}
-				onChangeText={(e) => submit("y", e.target.value)}
-			/>
-		</Row>
+		<div style={hidden ? { visibility: "hidden" } : {}}>
+			<Row>
+				<SimpleInput
+					lIcon="vertical"
+					value={val.x}
+					onChangeText={(e) => submit("x", e)}
+				/>
+				<SimpleInput
+					lIcon="horizontal"
+					value={val.y}
+					onChangeText={(e) => submit("y", e)}
+				/>
+			</Row>
+		</div>
 	);
 };
 
@@ -64,7 +107,12 @@ export const SimpleInput = ({ onChangeText, lIcon, value }) => {
 	return (
 		<SIContainer>
 			{lIcon && <Icons name={lIcon} size={25} />}
-			<SIInput type="number" min={0} value={value} onInput={onChangeText} />
+			<SIInput
+				type="number"
+				min={0}
+				value={value}
+				onInput={({ target }) => onChangeText(target.value)}
+			/>
 			<SILabel>mts</SILabel>
 		</SIContainer>
 	);
@@ -168,6 +216,11 @@ const Row = styled.div`
 	flex-direction: row;
 `;
 
+const Col = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
 const Separate = styled(Row)`
 	align-items: center;
 `;
@@ -195,4 +248,13 @@ const H3 = styled(Typograph)`
 
 const H4 = styled(Typograph)`
 	font-size: 1.2;
+`;
+
+const Button = styled.button`
+	height: 1em;
+	font-size: 1em;
+	background-color: red;
+	border-radius: 999px;
+	color: white;
+	border: none;
 `;

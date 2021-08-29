@@ -9,7 +9,6 @@ function App() {
 	return (
 		<CalculatorProvider>
 			<div>
-				<FieldsInput />
 				<Calculator />
 				<GlobalStyle />
 			</div>

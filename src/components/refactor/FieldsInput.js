@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import {
 	SimpleInput,
-	SizeInput,
 	TitleHead,
 	FirstCol,
 	ExpandableInput,
 } from "./Components";
+import { useCalculatorField } from "./Provider";
 
 export function FieldsInput() {
-	const [walles] = useState(new Array(4).fill(0));
+	const [walles] = useState(["wall1", "wall2", "wall3", "wall4"]);
+
 	return (
 		<div>
 			<TableHorizontal>
@@ -31,30 +32,43 @@ export function FieldsInput() {
 					</TH>
 				</THead>
 				{walles.map((el, index) => (
-					<Wall key={index} index={index + 1} />
+					<Wall key={index} index={index + 1} identifier={el} />
 				))}
 			</TableHorizontal>
 		</div>
 	);
 }
 
-function Wall({ index }) {
+function Wall({ index, identifier }) {
+	const { append } = useCalculatorField();
+	const [door, setDoor] = useState(0);
+	const [window, setWindow] = useState(0);
+	const [wallX, setWallX] = useState(0);
+	const [wallY, setWallY] = useState(0);
+
+	useEffect(() => {
+		console.log(wallX, wallY, door, window);
+		append(identifier, "wall", wallX * wallY);
+		append(identifier, "door", door);
+		append(identifier, "window", window);
+	}, [wallX, wallY, door, window]);
+
 	return (
 		<TBody>
 			<TD>
 				<FirstCol index={index} />
 			</TD>
 			<TD>
-				<SimpleInput />
+				<SimpleInput value={wallY} onChangeText={setWallY} />
 			</TD>
 			<TD>
-				<SimpleInput />
+				<SimpleInput value={wallX} onChangeText={setWallX} />
 			</TD>
 			<TD>
-				<ExpandableInput />
+				<ExpandableInput onTotal={setDoor} />
 			</TD>
 			<TD end>
-				<ExpandableInput />
+				<ExpandableInput onTotal={setWindow} />
 			</TD>
 		</TBody>
 	);
