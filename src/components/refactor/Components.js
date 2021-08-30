@@ -1,48 +1,72 @@
-import Tooltip from "../Tooltip/Tooltip";
-import React, { useReducer, useState, useEffect } from "react";
+import React, { useReducer, useState, useCallback } from "react";
 import styled from "styled-components";
-import { ColorsItem, InputColorTooltip } from "../FirstContent/style";
 import { Icons } from "./Icons";
+import { useCalculatorField } from "./Provider";
+import { Tooltip } from "./Tooltip";
 
-export const ExpandableInput = ({ onTotal }) => {
-	const k = ["first", "second", "three", "four"];
-	const [keys, setKeys] = useState([]);
-	const [state, dispatch] = useReducer((s, a) => ({ ...s, ...a }), {});
+const k = ["first", "second", "three", "four"];
+
+function useForceUpdate() {
+	const [value, setValue] = useState(0); // integer state
+	return () => setValue((value) => value + 1); // update the state to force render
+}
+
+export const Input = ({ id, identifier }) => {
+	const { putWallInfo } = useCalculatorField();
+	const [x, setX] = useState(0);
+
+	function set(value) {
+		setX(value);
+		putWallInfo(identifier, id, value);
+	}
+
+	return <SimpleInput value={x} onChangeText={set} />;
+};
+
+export const ExpandableInput = ({ id, identifier }) => {
+	const forceUpdate = useForceUpdate();
+	const { putWallInfo } = useCalculatorField();
+	const [inputs, setInputs] = useReducer((s, a) => a || s, []);
 	const [hidden, setHidden] = useState(true);
 
-	const sumAreas = (object) => {
-		const total = Object.keys(object).reduce(
-			(acc, key) => acc + object[key],
-			0
-		);
-		onTotal(total);
-	};
+	/*
+		inputs: { first, second}
+	*/
 
-	function notify(key, area) {
-		sumAreas({ ...state, [key]: area });
-		dispatch({ [key]: area });
+	const sum = (arr) =>
+		arr
+			.map(({ first, second }) => first * second)
+			.reduce((acc, el) => acc + el, 0);
+
+	function onChange(inputKey, cell, value) {
+		const old = inputs;
+		const input = old[inputKey];
+		input[cell] = value;
+		setInputs(old);
+		putWallInfo(identifier, id, sum(old));
+		forceUpdate();
 	}
 
-	function append() {
-		if (keys.length === 4) {
+	const append = () => {
+		if (inputs.length === 4) {
 			return;
 		}
+		//onChange((s) => s.concat([0]));
+		setInputs([...inputs, { first: 0, second: 0 }]);
+		setHidden(false);
+	};
 
-		if (keys.length === 0) {
-			setHidden(false);
+	const pop = () => {
+		if (inputs.length === 0) {
+			return;
 		}
-
-		setKeys((s) => [...s, k[keys.length]]);
-	}
-
-	function pop() {
-		if (keys.length === 1) {
+		const old = inputs.slice(0, -1);
+		putWallInfo(identifier, id, sum(old));
+		setInputs(old);
+		if (old.length === 0) {
 			setHidden(true);
 		}
-
-		dispatch({ [k[keys.length - 1]]: 0 });
-		setKeys((s) => s.slice(1));
-	}
+	};
 
 	return (
 		<div>
@@ -51,12 +75,13 @@ export const ExpandableInput = ({ onTotal }) => {
 					<SizeInput hidden />
 				) : (
 					<div>
-						{keys.map((key, i) => (
+						{inputs?.map((values, i) => (
 							<SizeInput
 								key={i}
 								hidden={false}
-								identifier={key}
-								onSubmit={notify}
+								values={values}
+								identifier={i}
+								onChange={onChange}
 							/>
 						))}
 					</div>
@@ -72,31 +97,23 @@ export const ExpandableInput = ({ onTotal }) => {
 	);
 };
 
-export const SizeInput = ({ identifier, hidden, onSubmit }) => {
-	const [val, setVal] = useState({ x: 0, y: 0 });
-
-	const submit = (k, v) => {
-		setVal((s) => ({ ...s, [k]: v }));
+export const SizeInput = ({ identifier, values, hidden, onChange }) => {
+	const submit = (key, value) => {
+		onChange(identifier, key, value);
 	};
-
-	useEffect(() => {
-		if (onSubmit) {
-			onSubmit(identifier, parseInt(val.x) * parseInt(val.y));
-		}
-	}, [val.x, val.y]);
 
 	return (
 		<div style={hidden ? { visibility: "hidden" } : {}}>
 			<Row>
 				<SimpleInput
 					lIcon="vertical"
-					value={val.x}
-					onChangeText={(e) => submit("x", e)}
+					value={values?.first}
+					onChangeText={(e) => submit("first", e)}
 				/>
 				<SimpleInput
 					lIcon="horizontal"
-					value={val.y}
-					onChangeText={(e) => submit("y", e)}
+					value={values?.second}
+					onChangeText={(e) => submit("second", e)}
 				/>
 			</Row>
 		</div>
@@ -111,7 +128,9 @@ export const SimpleInput = ({ onChangeText, lIcon, value }) => {
 				type="number"
 				min={0}
 				value={value}
-				onInput={({ target }) => onChangeText(target.value)}
+				onChange={(e) => {
+					onChangeText(parseInt(e.target.value));
+				}}
 			/>
 			<SILabel>mts</SILabel>
 		</SIContainer>
@@ -127,8 +146,11 @@ export const TitleHead = ({ title, icon, size, end }) => {
 			</LabelContainer>
 		);
 	}
+
+	const strEnd = end ? "true" : "false";
+
 	return (
-		<HeaderContainer end={end}>
+		<HeaderContainer end={strEnd}>
 			<Box>
 				<Icons name={icon} size={50} />
 				<Label />
@@ -137,34 +159,59 @@ export const TitleHead = ({ title, icon, size, end }) => {
 	);
 };
 
-export function FirstCol({ index, colors, selected, onSelect }) {
-	function select(color) {
-		onSelect(color);
+export function FirstCol({
+	index,
+	selectControl,
+	onSelectControl,
+	onClickColor,
+	id,
+	identifier,
+}) {
+	const { putWallInfo } = useCalculatorField();
+	const [tooltip, setTooltip] = useState(false);
+	const [select, setSelect] = useState();
+	const [colors, setColors] = useState([
+		{ color: "blue", selected: false },
+		{ color: "red", selected: true },
+		{ color: "green", selected: false },
+	]);
+
+	function onSelectColor(index) {
+		setColors((s) => s.map((el, i) => ({ ...el, selected: i === index })));
+		setTooltip(false);
+		setSelect(colors[index].color);
+		onClickColor(colors[index].color);
+		putWallInfo(identifier, id, colors[index].color);
 	}
+
 	return (
 		<Wall>
 			<Separate>
-				<RadioButton type="radio" checked />
-				<div style={{ width: "20px" }} />
+				<RadioButton
+					type="radio"
+					checked={selectControl}
+					onClick={(e) => {
+						onSelectControl((s) => !s);
+					}}
+				/>
+				<div style={{ width: "1em" }} />
 				<H4>Pared {index}</H4>
 			</Separate>
 
 			<Tooltip
-				content={
-					<div>
-						<small>Colores a elegir</small>
-						<div>
-							{colors?.map((backgroundColor, i) => (
-								<ColorsItem key={i}>
-									<InputColorTooltip style={{ backgroundColor }} />
-								</ColorsItem>
-							))}
-						</div>
-					</div>
-				}
-				direction="right"
+				colors={colors}
+				onSelect={onSelectColor}
+				visible={tooltip}
+				onClose={() => setTooltip(false)}
 			>
-				<RadioButton type="radio" checked={false} />
+				<RadioButton
+					color={select}
+					type="button"
+					checked={!!select}
+					onClick={(e) => {
+						setTooltip((s) => !s);
+					}}
+				/>
 			</Tooltip>
 		</Wall>
 	);
@@ -181,7 +228,7 @@ const SIInput = styled.input`
 	border-bottom: 1px solid #003366;
 	margin-right: 2px;
 	text-align: center;
-	max-width: 50px;
+	max-width: 30px;
 `;
 
 const SILabel = styled.p`
@@ -192,7 +239,7 @@ const HeaderContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	font-family: "Radikal1";
-	align-items: ${({ end }) => (end ? "flex-end" : "center")};
+	align-items: ${({ end }) => (end === "true" ? "flex-end" : "center")};
 `;
 
 const Box = styled.div`
@@ -207,8 +254,10 @@ const LabelContainer = styled.div`
 `;
 
 const RadioButton = styled.input`
-	width: 1.8em;
-	height: 1.8em;
+	width: 1.5em;
+	height: 1.5em;
+	background-color: ${({ color }) => `${color ? color : "transparent"}`};
+	border-radius: 999px;
 `;
 
 const Row = styled.div`
@@ -228,7 +277,7 @@ const Separate = styled(Row)`
 const Wall = styled(Row)`
 	align-items: center;
 	justify-content: space-between;
-	min-width: 180px;
+	min-width: 150px;
 `;
 
 const Typograph = styled.p`

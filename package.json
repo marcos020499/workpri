@@ -13,7 +13,7 @@
     "leaflet": "^1.7.1",
     "prettier": "^2.3.2",
     "prop-types": "^15.7.2",
-    "react": "^16.14.0",
+    "react": "^17.0.2",
     "react-dom": "^16.14.0",
     "react-hook-form": "^7.13.0",
     "react-input-number": "^5.0.19",

@@ -1,79 +1,103 @@
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import styled from "styled-components";
-import {
-	SimpleInput,
-	TitleHead,
-	FirstCol,
-	ExpandableInput,
-} from "./Components";
+import { TitleHead, FirstCol, ExpandableInput, Input } from "./Components";
 import { useCalculatorField } from "./Provider";
 
 export function FieldsInput() {
+	const { calculateTotal, clearAll } = useCalculatorField();
 	const [walles] = useState(["wall1", "wall2", "wall3", "wall4"]);
 
-	return (
-		<div>
-			<TableHorizontal>
-				<THead>
-					<TH>
-						<TitleHead title="Colores" icon="colors" end />
-					</TH>
-					<TH>
-						<TitleHead title="Largo" icon="vertical" size />
-					</TH>
-					<TH>
-						<TitleHead title="Ancho" icon="horizontal" size />
-					</TH>
-					<TH>
-						<TitleHead title="Puertas" icon="door" />
-					</TH>
-					<TH>
-						<TitleHead title="Ventanas" icon="window" />
-					</TH>
-				</THead>
-				{walles.map((el, index) => (
-					<Wall key={index} index={index + 1} identifier={el} />
-				))}
-			</TableHorizontal>
-		</div>
+	return useMemo(
+		() => (
+			<Container>
+				<TableHorizontal>
+					<THead>
+						<TH>
+							<TitleHead title="Colores" icon="colors" end />
+						</TH>
+						<TH>
+							<TitleHead title="Largo" icon="vertical" size />
+						</TH>
+						<TH>
+							<TitleHead title="Ancho" icon="horizontal" size />
+						</TH>
+						<TH>
+							<TitleHead title="Puertas" icon="door" />
+						</TH>
+						<TH>
+							<TitleHead title="Ventanas" icon="window" />
+						</TH>
+					</THead>
+					{walles.map((el, index) => (
+						<Wall key={index + "top"} index={index + 1} identifier={el} />
+					))}
+				</TableHorizontal>
+				<button onClick={calculateTotal}>CALCULAR</button>
+				<button onClick={clearAll}>CLEAR</button>
+			</Container>
+		),
+		[]
 	);
 }
 
 function Wall({ index, identifier }) {
-	const { append } = useCalculatorField();
-	const [door, setDoor] = useState(0);
-	const [window, setWindow] = useState(0);
-	const [wallX, setWallX] = useState(0);
-	const [wallY, setWallY] = useState(0);
+	const { clearWall, colors } = useCalculatorField();
+	const [select, setSelect] = useState(false);
 
 	useEffect(() => {
-		console.log(wallX, wallY, door, window);
-		append(identifier, "wall", wallX * wallY);
-		append(identifier, "door", door);
-		append(identifier, "window", window);
-	}, [wallX, wallY, door, window]);
+		if (!select) {
+			clearWall(identifier);
+		}
 
-	return (
-		<TBody>
-			<TD>
-				<FirstCol index={index} />
-			</TD>
-			<TD>
-				<SimpleInput value={wallY} onChangeText={setWallY} />
-			</TD>
-			<TD>
-				<SimpleInput value={wallX} onChangeText={setWallX} />
-			</TD>
-			<TD>
-				<ExpandableInput onTotal={setDoor} />
-			</TD>
-			<TD end>
-				<ExpandableInput onTotal={setWindow} />
-			</TD>
-		</TBody>
+		if (!colors.length) {
+			setSelect(false);
+		}
+	}, [select, colors]);
+
+	const Content = ({ children }) => {
+		return <Hidding hidden={!select}>{children}</Hidding>;
+	};
+
+	return useMemo(
+		() => (
+			<TBody key="table">
+				<TD key="first">
+					<FirstCol
+						index={index}
+						selectControl={select}
+						onSelectControl={setSelect}
+						id="color"
+						identifier={identifier}
+					/>
+				</TD>
+				<TD key="second">
+					<Content>
+						<Input id="height" identifier={identifier} />
+					</Content>
+				</TD>
+				<TD key="three">
+					<Content>
+						<Input id="width" identifier={identifier} />
+					</Content>
+				</TD>
+				<TD key="four">
+					<Content>
+						<ExpandableInput id="door" identifier={identifier} />
+					</Content>
+				</TD>
+				<TD key="five" end>
+					<Content>
+						<ExpandableInput id="window" identifier={identifier} />
+					</Content>
+				</TD>
+			</TBody>
+		),
+		[select]
 	);
 }
-
+const Container = styled.div`
+	max-width: 768;
+`;
 const TChild = styled.tr`
 	margin: 0;
 	padding: 0;
@@ -88,6 +112,12 @@ const TBody = styled(TChild)``;
 const TD = styled.td`
 	padding: 0px 10px;
 	${({ end }) => (!end ? `border-right: 1px solid #003366;` : ``)}
+`;
+
+const Hidding = styled.div`
+	display: flex;
+	flex: 1;
+	visibility: ${({ hidden }) => `${hidden ? "hidden" : "visible"}`};
 `;
 
 const TH = styled.th`

@@ -32,16 +32,13 @@ import {
 	TdSize,
 	ThDescription,
 } from "./style";
+import { useCalculatorField } from "../refactor/Provider";
 const SecondPart = ({ area, handleInput }) => {
+	const { total } = useCalculatorField();
 	const [items] = useState([1]);
-	console.log("Area: ", area);
 	return (
 		<div>
-			<Banner
-				src={
-					"https://res.cloudinary.com/marcos020499/image/upload/v1629305103/BANNER_SUPERIOR-01-01_qc1rs2.png"
-				}
-			/>
+			{total}
 			<ContainerSecondSection>
 				<H1>RESULTADO</H1>
 				<H2>PRISA TE RECOMIENDA</H2>
