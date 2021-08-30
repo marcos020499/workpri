@@ -63,7 +63,7 @@ const SecondPart = ({ area, handleInput }) => {
 									<ContainerItems key={index}>
 										<tr>
 											<ThDescription>
-												<TooltipOver content={"tool"} direction="top">
+												<TooltipOver content={item.nombre} direction="top">
 													<DescriptionText>
 														<InputColorName
 															style={{ backgroundColor: "blue" }}

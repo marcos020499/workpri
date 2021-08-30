@@ -2,7 +2,6 @@ import styled from "styled-components";
 import Tooltip from "react-simple-tooltip";
 export const ContainerSecondSection = styled.div`
   text-align: center;
- 
   @media screen and (max-width: 768px) {
     padding: 30px 0 0 0;
     width: 100%;
@@ -18,13 +17,10 @@ export const ContainerButton = styled.div`
   display: block;
   justify-content: center;
   align-items: center;
-  padding: 1vw 0 6.5vw 0;
-  @media screen and (max-width: 768px) {
-    padding: 0 0 5vw 0;
-  }
+  padding: 2vw 0 6.5vw 0;
 
   @media screen and (max-width: 1024px) {
-    padding: 30px 0 0vw 0;
+    padding: 1vw 0 0vw 0;
   }
 `;
 export const ButtonReed = styled.button`
@@ -41,11 +37,14 @@ export const ButtonReed = styled.button`
   font-weight: bolder;
   border: none;
   cursor: pointer;
-  @media screen and (max-width: 768px) {
-    font-size: 14px;
-  }
   @media screen and (max-width: 1367px) {
-    margin: 1vw 0 0vw 0;
+    margin: 0vw 0 0vw 0;
+  }
+  @media screen and (max-width: 768px) {
+    margin: 0vw 0 5vw 0;
+  }
+  @media screen and (max-width: 400px) {
+    margin: 0vw 0 5vw 0;
   }
   &:hover {
     background-color: white;
@@ -80,7 +79,7 @@ export const Recipients = styled.tr`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  margin: -3vw 0.5vw 0vh 0;
+  margin: -3vw 0.5vw 4vh 0;
   position: relative;
   left: -10px;
 
@@ -88,13 +87,11 @@ export const Recipients = styled.tr`
     margin: -2vw 0.5vh 0vw 0;
   }
   @media screen and (max-width: 1024px) {
-    margin: 0vh 0 0vh 0;
+    margin: 0;
     left: 5px;
   }
   @media screen and (max-width: 768px) {
   position: relative;
-    top: -17vw;
-    left: -15vw;
   }
 `;
 export const Image = styled.img`
@@ -153,14 +150,13 @@ export const ImagePaint = styled.img`
   }
 `;
 export const Banner = styled.img`
-  width: 101%;
+  width: 102%;
   height: auto;
-  margin: -0.56vh 0 0 -0.66vh;
+  margin: -0.56vh 0 0 -.6vh;
   position: relative;
   left: -0.08vw;
-  @media screen and (max-width: 1366px) {
-    width: 101%;
-    margin: -0.56vh 0 0 -0.5vh;
+  @media screen and (max-width: 1200px) {
+    display: none;
   }
   @media screen and (max-width: 1024px) {
     display: none;
@@ -203,6 +199,11 @@ export const Input = styled.input`
     position: relative;
     left: 10px;
   }
+  @media screen and (max-width: 400px) {
+    margin: 0 5vw 0 1vw;
+    position: relative;
+    left: 5px;
+  }
 `;
 export const InputArea = styled.input`
   font-family: "Radikal1";
@@ -212,6 +213,7 @@ export const InputArea = styled.input`
   margin: 0 4px 0 0;
   border-radius: 7px;
   border: none;
+  text-align: center;
   color: #999999;
 
   @media screen and (max-width: 1024px) {
@@ -299,12 +301,13 @@ export const Description = styled.h3`
   color: white;
   letter-spacing: 1px;
   font-family: "Radikal1";
-  @media screen and (max-width: 768px) {
-    font-size: 12px;
-  }
   @media screen and (max-width: 1024px) {
     font-size: 12px;
   }
+  @media screen and (max-width: 768px) {
+    font-size: 12px;
+  }
+
 `;
 export const DescriptionText = styled.h3`
   font-size: 1.4vh;
@@ -319,13 +322,23 @@ export const DescriptionText = styled.h3`
 
   @media screen and (max-width: 1024px) {
     font-size: 14px;
-    width: 260px;
+    width: 120px;
     text-align: center;
     justify-content: center;
   }
   @media screen and (max-width: 768px) {
     font-size: 15px;
-    width: 200px;
+    width: 110px;
+    margin: 0 3vw 0 0;
+    position: relative;
+    top: -10px
+    text-align: center;
+    justify-content: center;
+  }
+  @media screen and (max-width: 400px) {
+    font-size: 15px;
+    width: 110px;
+    margin: 0 1vw 0 0;
     position: relative;
     top: -10px
     text-align: center;
@@ -336,9 +349,7 @@ export const ThDescription = styled.th`
   padding: 0 0 0 10px;
   margin: -0.5vw 0 3vw 0;
 
-  @media screen and (max-width: 1024px) {
-    margin: -2vh 0 3vh 0;
-  }
+
   @media screen and (max-height: 769px) {
     margin: 0vh 0 1vh 0;
   }
@@ -351,9 +362,7 @@ export const ThDescription = styled.th`
 `;
 export const ThDescriptionText = styled.th`
 margin: 2vw;
-  @media screen and (max-width: 1024px) {
-    margin: -2vh 0 3vh 0;
-  }
+
   @media screen and (max-width: 768px) {
     font-size: 2.8vw;
     padding: 0;
@@ -363,18 +372,21 @@ margin: 2vw;
 export const TrDes = styled.tr`
   display: flex;
   flex-direction: row;
-  @media screen and (max-width: 1024px) {
-    margin: 0vh 0 0vh 0;
-    justify-content: center;
+  @media screen and (max-width: 1200px) {
     position: relative;
     left: -15px;
+    justify-content: center;
+  }
+  @media screen and (max-width: 1024px) {
+    left: none;
+    justify-content: center;
+    position: relative;
   }
   @media screen and (max-width: 768px) {
     align-items: center;
     justify-content: center;
     position: relative;
-    top: -17vw;
-    left: -15vw;
+
   }
 `;
 export const Quantity = styled.p`
@@ -395,22 +407,40 @@ export const Quantity = styled.p`
 
 export const ContainerItems = styled.div`
   min-width: 15vw;
+  min-height: 300px;
+  padding: 0vw 0 0 0;
   @media screen and (max-width: 1367px) {
     min-width: 16vw;
     max-width: 16vw;
     padding: 0 0 0vh 0;
   }
   @media screen and (max-width: 1024px) {
-    min-width: 250px;
-    min-height: 250px;
+    min-width: 25vw;
+    max-width:25vw;
     display: inline-block;
-    padding: 30px 0 2vh 0;
+    padding: 0 0 0vh 0;
   }
 
   @media screen and (max-width: 768px) {
+    padding: 0 0 3vh 0;
     min-width: none;
     display: flex;
-    padding: 5vw 0 5vw 0;
+    display: flex;
+  justify-content: center;
+    min-width: 90%;
+    min-height: 90%;
+    flex-direction: row;
+    align-items: center;
+  }
+  @media screen and (max-width: 600px) {
+    min-width: none;
+    display: flex;
+    display: flex;
+  justify-content: center;
+    min-width: 90%;
+    min-height: 90%;
+    flex-direction: row;
+    align-items: center;
   }
 `;
 export const Items = styled.div`
@@ -429,7 +459,14 @@ export const Items = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
-    left: -24vw;
+    
+  }
+  @media screen and (max-width: 400px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   }
 `;
 export const InputColorName = styled.input`

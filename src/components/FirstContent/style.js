@@ -45,15 +45,16 @@ export const Title = styled.h1`
 `;
 
 export const InputDiv = styled.div`
-  padding: 0 4vw 7vw 4vw;
+  padding: 0 4vw 5vw 4vw;
   justify-content: space-between;
   display: flex;
-  @media screen and (max-width: 768px) {
-    padding: 0 0 0 3vw;
-  }
   @media screen and (max-width: 1024px) {
-    padding: 0 0 0 8vw;
+    padding: 0 4vw 5vw 4vw;
   }
+  @media screen and (max-width: 768px) {
+    padding: 0 4vw 7vw 4vw;
+  }
+  
 `;
 export const Button = styled.button`
   min-width: 80px;
@@ -69,13 +70,11 @@ export const Button = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: right;
-  @media screen and (max-width: 768px) {
-    font-size: 12.6px;
-    margin: 15vw 0vw 0 2vw;
-  }
   @media screen and (max-width: 1024px) {
     font-size: 12.6px;
-    margin: 0vw 10vw 0 0vw;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 12.6px;
   }
   &:hover {
     background-color: white;
@@ -630,18 +629,17 @@ export const Warning = styled.p`
   }
 `;
 export const Final = styled.div`
-  margin: 2vw 0 0 0;
-  padding: 0 0 00vw 0;
+  margin: 0 4vw 0 5vw;
   justify-content: space-between;
   display: flex;
   align-items: center;
   @media screen and (max-width: 1367px) {
-    margin: 3vw 4vw 0 5vw;
+    margin: 2vw 4vw 0 5vw;
   }
   @media screen and (max-width: 1024px) {
-    margin: 120px 100px 0 4vw;
+    margin: 2vw 4vw 0 4vw;
   }
   @media screen and (max-width: 768px) {
-    margin: 35px 0 20px 0;
+    margin: 2vw 4vw 0 4vw;
   }
 `;

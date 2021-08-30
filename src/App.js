@@ -19,9 +19,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0%;
     padding: 0%;
-  }
-  input {
-    text-align: center;{{  }}
+	min-height: 100%;
+max-height: 100%;
   }
 `;
 

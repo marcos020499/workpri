@@ -21,7 +21,7 @@ export function CalculatorProvider({ children }) {
 	const [wall2, setWall2] = useState(initialWall);
 	const [wall3, setWall3] = useState(initialWall);
 	const [wall4, setWall4] = useState(initialWall);
-
+	const [wall5, setWall5] = useState(initialWall);
 	const [colors, setColors] = useState([1]);
 	const [total, setTotal] = useState(0);
 
@@ -42,6 +42,7 @@ export function CalculatorProvider({ children }) {
 			wall2: () => setWall2(setter),
 			wall3: () => setWall3(setter),
 			wall4: () => setWall4(setter),
+			wall5: () => setWall4(setter),
 		}[keyWall]();
 	};
 
@@ -55,6 +56,7 @@ export function CalculatorProvider({ children }) {
 			wall2: () => setWall2(initialWall),
 			wall3: () => setWall3(initialWall),
 			wall4: () => setWall4(initialWall),
+			wall5: () => setWall4(initialWall),
 		}[keyWall]();
 	};
 
@@ -63,6 +65,7 @@ export function CalculatorProvider({ children }) {
 		setWall2(initialWall);
 		setWall3(initialWall);
 		setWall4(initialWall);
+		setWall5(initialWall);
 		setColors([]);
 		setTotal(0);
 	};
@@ -83,10 +86,11 @@ export function CalculatorProvider({ children }) {
 			calculateWallArea(wall1) +
 			calculateWallArea(wall2) +
 			calculateWallArea(wall3) +
-			calculateWallArea(wall4);
+			calculateWallArea(wall4)+
+			calculateWallArea(wall5);
 		console.log(total);
 		setTotal(total);
-	}, [wall1, wall2, wall3, wall4]);
+	}, [wall1, wall2, wall3, wall4, wall5]);
 
 	return (
 		<CalculatorContext.Provider

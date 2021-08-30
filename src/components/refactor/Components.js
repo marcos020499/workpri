@@ -104,18 +104,26 @@ export const SizeInput = ({ identifier, values, hidden, onChange }) => {
 
 	return (
 		<div style={hidden ? { visibility: "hidden" } : {}}>
-			<Row>
+			<RowSimple>
 				<SimpleInput
 					lIcon="vertical"
 					value={values?.first}
+					min="1"
+                        max="10"
+                        step="0.5"
+                        defaultValue="2"
 					onChangeText={(e) => submit("first", e)}
 				/>
 				<SimpleInput
 					lIcon="horizontal"
+					min="1"
+                        max="10"
+                        step="0.5"
+                        defaultValue="1"
 					value={values?.second}
 					onChangeText={(e) => submit("second", e)}
 				/>
-			</Row>
+			</RowSimple>
 		</div>
 	);
 };
@@ -126,7 +134,10 @@ export const SimpleInput = ({ onChangeText, lIcon, value }) => {
 			{lIcon && <Icons name={lIcon} size={25} />}
 			<SIInput
 				type="number"
-				min={0}
+				min="1"
+                        max="10"
+                        step="0.5"
+                        defaultValue="3"
 				value={value}
 				onChange={(e) => {
 					onChangeText(parseInt(e.target.value));
@@ -187,7 +198,7 @@ export function FirstCol({
 	return (
 		<Wall>
 			<Separate>
-				<RadioButton
+				<RadioButtonFirst
 					type="radio"
 					checked={selectControl}
 					onClick={(e) => {
@@ -195,7 +206,7 @@ export function FirstCol({
 					}}
 				/>
 				<div style={{ width: "1em" }} />
-				<H4>Pared {index}</H4>
+				<H4>{index < 5? `${'Pared'+index}`: 'Techo'}</H4>
 			</Separate>
 
 			<Tooltip
@@ -221,18 +232,56 @@ const SIContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: baseline;
+	padding: 0 0 0 1vw;
+	@media screen and (max-width: 1367px) {
+		padding: 0 0 0 0.5vw;
+	  }
+	  @media screen and (max-width: 1200px) {
+		padding: 0 0 0 3vw;
+	}
+	@media screen and (max-width: 768px) {
+		padding: 0 0 0 2vw;
+		justify-content: space-between;
+	}
+	@media screen and (max-width: 600px) {
+		padding: 0 0 0 1vw;
+	}
+	}
 `;
 
 const SIInput = styled.input`
 	border: none;
 	border-bottom: 1px solid #003366;
-	margin-right: 2px;
-	text-align: center;
-	max-width: 30px;
+	max-width: 1.8vw;
+	max-height: 1.8vw;
+	font-size: 13px;
+	text-align: end;
+	@media screen and (max-width: 1367px) {
+		max-width: 1.8vw;
+		max-height: 1.8vw;
+	  }
+	  @media screen and (max-width: 1200px) {
+	max-width: 3vw;
+	max-height: 3vw;
+	}
+	@media screen and (max-width: 768px) {
+		max-width: 4vw;
+		font-size: 13px;
+	}
+	@media screen and (max-width: 600px) {
+		max-width: 4vw;
+		margin: 0 -7vw 0 0;
+	}
 `;
-
 const SILabel = styled.p`
-	font-size: 0.7em;
+	font-size: 0.5em;
+	color:  #003366;
+	font-family: "Radikal1";
+	@media screen and (max-width: 600px) {
+		position: relative;
+		top: 12px;
+		left: 20px;
+	}
 `;
 
 const HeaderContainer = styled.div`
@@ -241,7 +290,13 @@ font-size: 0.8em;
 	flex-direction: column;
 	font-family: "Radikal1";
 	align-items: ${({ end }) => (end === "true" ? "flex-end" : "center")};
-`;
+	@media screen and (max-width: 768px) {
+		padding: 0 0 3vw 0;
+	}
+	@media screen and (max-width: 600px) {
+		padding: 0 0 5vw 0;
+	}
+	`;
 
 const Box = styled.div`
 	display: flex;
@@ -259,16 +314,62 @@ const RadioButton = styled.input`
 	height: 1.5em;
 	background-color: ${({ color }) => `${color ? color : "transparent"}`};
 	border-radius: 999px;
+	@media screen and (max-width: 768px) {
+		position: relative;
+		left: -60px;
+		top: 5vw;
+	}
 `;
+const RadioButtonFirst = styled.input`
+	width: 1.5em;
+	height: 1.5em;
+	background-color: ${({ color }) => `${color ? color : "transparent"}`};
+	border-radius: 999px;
 
+`;
 const Row = styled.div`
 	display: flex;
 	flex-direction: row;
+	position: relative;
+	left: -5px;
+	@media screen and (max-width: 768px) {
+		margin: 0 -0vw 0 0.4vw;
+	}
+	@media screen and (max-width: 600px) {
+		margin: 0;
+	}
+	@media screen and (max-width: 400px) {
+		display: flex;
+		flex-direction: row;
+	}
+`;
+const RowSimple = styled.div`
+	display: flex;
+	flex-direction: row;
+	position: relative;
+	left: -5px;
+	max-height: 5vw;
+	margin: -0.9vw 0 0 0;
+	@media screen and (max-width: 768px) {
+		margin: 0 -0vw 0 -2vw;
+	}
+	@media screen and (max-width: 600px) {
+		margin: 0 3vw 0 1vw;
+	}
+	@media screen and (max-width: 400px) {
+		display: flex;
+		flex-direction: column;
+		margin: 0 3vw 0 1vw;
+	}
 `;
 
 const Col = styled.div`
 	display: flex;
 	flex-direction: column;
+	@media screen and (max-width: 768px) {
+		flex-direction: row;
+		position: absolute;
+	}
 `;
 
 const Separate = styled(Row)`
@@ -278,7 +379,24 @@ const Separate = styled(Row)`
 const Wall = styled(Row)`
 	align-items: center;
 	justify-content: space-between;
-	min-width: 150px;
+	min-width: 140px;
+	margin: 0 0 0 3vw;
+	padding: 0px 10px 3.5vw 0;
+	@media screen and (max-width: 1367px) {
+		margin: 0 0 0 2vw;
+	  }
+	  @media screen and (max-width: 1200px) {
+		margin: 0 2vw 0 7vw;
+	}
+	@media screen and (max-width: 768px) {
+		margin: 0 4vw 6vw 3vw;
+	}
+	@media screen and (max-width: 600px) {
+		margin: 0 -8vw 7vw 4vw;
+	}
+	@media screen and (max-width: 400px) {
+		margin: 0 -20vw 7vw 5vw;
+	}
 `;
 
 const Typograph = styled.p`
@@ -290,15 +408,33 @@ const Typograph = styled.p`
 
 const H2 = styled(Typograph)`
 	font-size: 1em;
+	@media screen and (max-width: 600px) {
+	font-size: 11px;
+	}
 `;
 
 const H3 = styled(Typograph)`
 	font-size: 0.7em;
+	@media screen and (max-width: 600px) {
+		font-size: 8px;
+		}
 `;
 
 const H4 = styled(Typograph)`
 	font-size: 1.3;
-	font-family: "Radikal1"
+	font-family: "Radikal1";
+	position: relative;
+	letter-spacing: 2px;
+	left: -10px;
+	@media screen and (max-width: 768px) {
+		font-size: 13px;
+	}
+	@media screen and (max-width: 600px) {
+		font-size: 12px;
+	}
+	@media screen and (max-width: 600px) {
+		font-size: 10px;
+	}
 `;
 
 const Button = styled.button`
@@ -309,4 +445,29 @@ color: white;
 padding: 0;
 font-size: 1.2vh;
 width: 1.3vh;
+@media screen and (max-width: 768px) {
+	position: relative;
+	font-size: 10px;
+	left: 40px;
+	top: -20px;
+	height: 2vh;
+	width: 2vh;
+	margin: 2vw;
+}
+@media screen and (max-width: 600px) {
+	position: relative;
+	left: 5px;
+	top: -20px;
+	height: 2vh;
+	width: 2vh;
+	margin: 2vw;
+}
+@media screen and (max-width: 400px) {
+	position: relative;
+	left: 13px;
+	top: -20px;
+	height: 2vh;
+	width: 2vh;
+	margin: 1.5vw;
+}
 `;

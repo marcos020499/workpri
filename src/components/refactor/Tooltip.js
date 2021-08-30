@@ -26,14 +26,20 @@ const Container = styled.div`
 
 const Content = styled.div`
 	visibility: ${({ visible }) => (visible ? "initial" : "hidden")};
-	top: 0;
-	left: 0;
+	top: -40vh;
+	left: -3vw;
 	position: absolute;
 	width: 100vw;
-	height: 100vw;
+	height: 107vh;
 	background-color: rgba(0, 0, 0, 0.3);
 	white-space: nowrap;
 	line-height: 1;
+	@media screen and (max-width: 768px) {
+		top: -100vh;
+	left: -3vw;
+		width: 100vw;
+	height: 290vh;
+		}
 `;
 
 const Box = styled.div`

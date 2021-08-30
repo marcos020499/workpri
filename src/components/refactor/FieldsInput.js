@@ -3,50 +3,19 @@ import styled from "styled-components";
 import { TitleHead, FirstCol, ExpandableInput, Input } from "./Components";
 import { useCalculatorField } from "./Provider";
 import {
-	ContainerHeader,
-	H2,
-	Td,
-	WallText,
-	InputNumber,
+
 	ButtonRed,
-	InputColor,
-	Icon,
-	Image,
 	Button,
-	ButtonIncrement,
-	ButtonDecrement,
-	Buttons,
-	Selectors,
-	Table,
-	A,
 	InputItem,
 	ColorsItem,
-	Mts,
 	Warning,
 	Title,
-	Radior,
-	ButtonDiv,
 	InputDiv,
-	IconColor,
-	ImageTable,
-	Smallm,
-	ImageM,
 	Final,
-	Meters,
-	InputColorTooltip,
-	PaintContainer,
-	TdFirst,
-	Options,
-	IconMeter,
-	ImageColor,
-	H2Color,
-	H2Puertas,
-	Mtss,
-	WallContainer,
   } from "../FirstContent/style";
 export function FieldsInput() {
 	const { calculateTotal, clearAll } = useCalculatorField();
-	const [walles] = useState(["wall1", "wall2", "wall3", "wall4"]);
+	const [walles] = useState(["wall1", "wall2", "wall3", "wall4", 'wall5']);
 
 	return useMemo(
 		() => (
@@ -162,11 +131,12 @@ const TableHorizontal = styled(TChild)`
 	text-align: center;
 	justify-content: center;
 `;
-const THead = styled(TChild)``;
+const THead = styled(TChild)`
+`;
 const TBody = styled(TChild)`
 `;
 const TD = styled.td`
-	padding: 0px 10px 35px 0;
+margin: 0;
 	${({ end }) => (!end ? `border-right: 1px solid #003366;` : ``)}
 `;
 
@@ -177,7 +147,16 @@ const Hidding = styled.div`
 `;
 
 const TH = styled.th`
-	padding: 0px 10px;
+	padding: 0px 1vw;
+	@media screen and (max-width: 1367px) {
+		padding: 0px 0.7vw;
+	  }
+	  @media screen and (max-width: 1200px) {
+		padding: 0px 1.5vw;
+	}
+	@media screen and (max-width: 768px) {
+		padding: 0 0.2vw;
+	}
 `;
 
 
