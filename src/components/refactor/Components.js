@@ -272,6 +272,11 @@ const SIInput = styled.input`
 		max-width: 4vw;
 		margin: 0 -7vw 0 0;
 	}
+	@media screen and (max-width: 400px) {
+		max-width: 4vw;
+		margin: -3vw -7vw 0 0;
+	}
+	
 `;
 const SILabel = styled.p`
 	font-size: 0.5em;
@@ -281,6 +286,10 @@ const SILabel = styled.p`
 		position: relative;
 		top: 12px;
 		left: 20px;
+	}
+	@media screen and (max-width: 400px) {
+		top: 0;
+		left: 30px;
 	}
 `;
 
@@ -351,15 +360,15 @@ const RowSimple = styled.div`
 	max-height: 5vw;
 	margin: -0.9vw 0 0 0;
 	@media screen and (max-width: 768px) {
-		margin: 0 -0vw 0 -2vw;
+		margin: 3vw 0vw 0 -2vw;
 	}
 	@media screen and (max-width: 600px) {
-		margin: 0 3vw 0 1vw;
+		margin: 3vw 3vw 0 1vw;
 	}
 	@media screen and (max-width: 400px) {
 		display: flex;
 		flex-direction: column;
-		margin: 0 3vw 0 1vw;
+		margin: 6vw 3vw 0 1vw;
 	}
 `;
 
