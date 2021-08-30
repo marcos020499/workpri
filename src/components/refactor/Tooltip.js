@@ -7,7 +7,7 @@ export function Tooltip({ children, colors, visible, onSelect, onClose }) {
 			{children}
 			<Content visible={visible} onClick={onClose} />
 			<Box visible={visible}>
-				<p>Colores a elegir</p>
+				<P>Colores a elegir</P>
 				<Row>
 					{colors?.map((el, i) => (
 						<BoxColor key={i} {...el} index={i} onClick={onSelect} />
@@ -39,13 +39,20 @@ const Content = styled.div`
 const Box = styled.div`
 	position: absolute;
 	visibility: ${({ visible }) => (visible ? "initial" : "hidden")};
-	background-color: cyan;
+	background-color: white;
+	border-radius: 6px;
 	z-index: 2;
 `;
 
 const Row = styled.div`
 	display: flex;
 	flex-direction: row;
+	width: 100px;
+	height: 45px;
+`;
+const P = styled.p`
+ color: #003366;
+ font-size: 10px;
 `;
 
 function BoxColor(props) {
@@ -61,13 +68,15 @@ function BoxColor(props) {
 }
 
 const ColorContainer = styled.div`
-	border: 3px solid ${({ selected, color }) => `${selected ? color : "black"}`};
-	width: 50px;
-	height: 50px;
+	border: 2.5px ridge #003366 ${({ selected, color }) => `${selected ? color : "black"}`};
+	width: 23px;
+	height: 23px;
+	padding: 0.4vw;
 `;
 
 const ColorInner = styled.div`
 	width: 100%;
+	border: 2px ridge #003366;
 	height: 100%;
 	background-color: ${({ color }) => `${color}`};
 `;

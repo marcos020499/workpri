@@ -236,6 +236,7 @@ const SILabel = styled.p`
 `;
 
 const HeaderContainer = styled.div`
+font-size: 0.8em;
 	display: flex;
 	flex-direction: column;
 	font-family: "Radikal1";
@@ -296,14 +297,16 @@ const H3 = styled(Typograph)`
 `;
 
 const H4 = styled(Typograph)`
-	font-size: 1.2;
+	font-size: 1.3;
+	font-family: "Radikal1"
 `;
 
 const Button = styled.button`
-	height: 1em;
-	font-size: 1em;
-	background-color: red;
-	border-radius: 999px;
-	color: white;
-	border: none;
+border-radius: 100%;
+border: none;
+background: #b70033;
+color: white;
+padding: 0;
+font-size: 1.2vh;
+width: 1.3vh;
 `;

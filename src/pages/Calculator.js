@@ -17,7 +17,9 @@ const Index = () => {
 			<Ban />
 			<Container>
 				<FieldsInput />
-				<SecondContent total={{}} />
+				<Second>
+				<SecondContent total={{}}/>
+				</Second>
 			</Container>
 		</div>
 	);
@@ -35,10 +37,30 @@ const Container = styled.div`
 `;
 
 const Banner = styled.img`
-	display: none;
-	width: 100%;
-	height: 30%;
-	@media screen and (min-width: 1216px) {
-		display: block;
-	}
+display: none;
+@media screen and (max-width: 768px) {
+	display: initial;
+	width: 10%;
+	margin: -0.4vh 0 0 -0.5vh;
+	padding: none;
+	height: 40vw;
+}
+@media screen and (max-width: 1024px) {
+	display: initial;
+	width: 103%;
+	margin: -0.4vh 0 0 -0.8vh;
+	padding: none;
+	height: 30vw;
+}
+`;
+const Second = styled.div`
+background-color: #003366;
+height: auto !important;
+position: relative;
+top: 0vw;
+min-height: 100%;
+margin: 0 -0.5vw 0 0;
+@media screen and (max-width: 1366px) {
+	top: 0vw;
+}
 `;

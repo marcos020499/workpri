@@ -2,7 +2,48 @@ import React, { useMemo, useEffect, useState } from "react";
 import styled from "styled-components";
 import { TitleHead, FirstCol, ExpandableInput, Input } from "./Components";
 import { useCalculatorField } from "./Provider";
-
+import {
+	ContainerHeader,
+	H2,
+	Td,
+	WallText,
+	InputNumber,
+	ButtonRed,
+	InputColor,
+	Icon,
+	Image,
+	Button,
+	ButtonIncrement,
+	ButtonDecrement,
+	Buttons,
+	Selectors,
+	Table,
+	A,
+	InputItem,
+	ColorsItem,
+	Mts,
+	Warning,
+	Title,
+	Radior,
+	ButtonDiv,
+	InputDiv,
+	IconColor,
+	ImageTable,
+	Smallm,
+	ImageM,
+	Final,
+	Meters,
+	InputColorTooltip,
+	PaintContainer,
+	TdFirst,
+	Options,
+	IconMeter,
+	ImageColor,
+	H2Color,
+	H2Puertas,
+	Mtss,
+	WallContainer,
+  } from "../FirstContent/style";
 export function FieldsInput() {
 	const { calculateTotal, clearAll } = useCalculatorField();
 	const [walles] = useState(["wall1", "wall2", "wall3", "wall4"]);
@@ -10,6 +51,15 @@ export function FieldsInput() {
 	return useMemo(
 		() => (
 			<Container>
+				<Title>COLORES SELECCIONADOS</Title>
+      <InputDiv>
+        <div>
+                <ColorsItem>
+                  <InputItem style={{ backgroundColor: 'blue' }} />
+                </ColorsItem>
+        </div>
+        <Button onClick={clearAll}>Borrar todo</Button>
+      </InputDiv>
 				<TableHorizontal>
 					<THead>
 						<TH>
@@ -32,8 +82,10 @@ export function FieldsInput() {
 						<Wall key={index + "top"} index={index + 1} identifier={el} />
 					))}
 				</TableHorizontal>
-				<button onClick={calculateTotal}>CALCULAR</button>
-				<button onClick={clearAll}>CLEAR</button>
+				<Final>
+        <Warning>*Tienes que llenar todos los campos</Warning>
+        <ButtonRed onClick={calculateTotal}>Calcular</ButtonRed>
+      </Final>
 			</Container>
 		),
 		[]
@@ -97,6 +149,9 @@ function Wall({ index, identifier }) {
 }
 const Container = styled.div`
 	max-width: 768;
+	@media screen and (max-width: 768px) {
+		margin: 5vw 0 0 0;
+	  }
 `;
 const TChild = styled.tr`
 	margin: 0;
@@ -108,9 +163,10 @@ const TableHorizontal = styled(TChild)`
 	justify-content: center;
 `;
 const THead = styled(TChild)``;
-const TBody = styled(TChild)``;
+const TBody = styled(TChild)`
+`;
 const TD = styled.td`
-	padding: 0px 10px;
+	padding: 0px 10px 35px 0;
 	${({ end }) => (!end ? `border-right: 1px solid #003366;` : ``)}
 `;
 
@@ -123,3 +179,5 @@ const Hidding = styled.div`
 const TH = styled.th`
 	padding: 0px 10px;
 `;
+
+

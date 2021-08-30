@@ -35,10 +35,15 @@ import {
 import { useCalculatorField } from "../refactor/Provider";
 const SecondPart = ({ area, handleInput }) => {
 	const { total } = useCalculatorField();
+	const { item, imper, liters } = useItems();
 	const [items] = useState([1]);
 	return (
 		<div>
-			{total}
+			<Banner
+        src={
+          "https://res.cloudinary.com/marcos020499/image/upload/v1629305103/BANNER_SUPERIOR-01-01_qc1rs2.png"
+        }
+      />
 			<ContainerSecondSection>
 				<H1>RESULTADO</H1>
 				<H2>PRISA TE RECOMIENDA</H2>
@@ -52,7 +57,7 @@ const SecondPart = ({ area, handleInput }) => {
 				<H>Elige la presentación </H>
 				<PaintSize style={{ display: false ? "inline-block" : "initial" }}>
 					<Items>
-						{items.map(
+						{item.map(
 							(item, index) =>
 								index <= 2 && (
 									<ContainerItems key={index}>
@@ -63,7 +68,7 @@ const SecondPart = ({ area, handleInput }) => {
 														<InputColorName
 															style={{ backgroundColor: "blue" }}
 														/>
-														{"hh"}
+														color azul 
 													</DescriptionText>
 												</TooltipOver>
 											</ThDescription>

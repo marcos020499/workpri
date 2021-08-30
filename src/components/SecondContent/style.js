@@ -2,17 +2,13 @@ import styled from "styled-components";
 import Tooltip from "react-simple-tooltip";
 export const ContainerSecondSection = styled.div`
   text-align: center;
-  padding: 0%;
-  margin: -1.5vh 0 0 0;
-  min-height: 21vw;
-  max-height: 21vw;
+ 
   @media screen and (max-width: 768px) {
     padding: 30px 0 0 0;
     width: 100%;
   }
-  @media screen and (max-height: 768px) {
-  }
 `;
+
 export const Tooltips = styled(Tooltip)`
   color: #003366;
   @media screen and (max-width: 768px) {
@@ -22,13 +18,11 @@ export const ContainerButton = styled.div`
   display: block;
   justify-content: center;
   align-items: center;
+  padding: 1vw 0 6.5vw 0;
   @media screen and (max-width: 768px) {
     padding: 0 0 5vw 0;
   }
-  @media screen and (max-width: 1367px) {
-    padding: 2vw 0 0vw 0;
-    flex-direction: column;
-  }
+
   @media screen and (max-width: 1024px) {
     padding: 30px 0 0vw 0;
   }
@@ -86,19 +80,21 @@ export const Recipients = styled.tr`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  margin: -3vw 0.5vw 8vh 0;
+  margin: -3vw 0.5vw 0vh 0;
   position: relative;
   left: -10px;
 
   @media screen and (max-width: 1367px) {
-    margin: -2vw 0.5vh 4vw 0;
+    margin: -2vw 0.5vh 0vw 0;
   }
   @media screen and (max-width: 1024px) {
     margin: 0vh 0 0vh 0;
     left: 5px;
   }
-  @media screen and (max-height: 769px) {
-    margin: 0vh 0 4vh 0;
+  @media screen and (max-width: 768px) {
+  position: relative;
+    top: -17vw;
+    left: -15vw;
   }
 `;
 export const Image = styled.img`
@@ -117,35 +113,33 @@ export const ImageQuantity = styled.img`
   }
   @media screen and (max-width: 1367px) {
     width: 6.5vh;
-    margin: 1vw 1vw 0 0vw;
+    margin: 1vw 1vw 0 1vw;
   }
 `;
 export const ImageQuantity4L = styled.img`
   width: 9vh;
   color: white;
-  @media screen and (max-width: 768px) {
-    width: 12vh;
-    margin: 0 0vw 0 0vw;
-  }
+
   @media screen and (max-width: 1367px) {
     width: 8vh;
     margin: 1vw 1vw 0 0vw;
+  }
+  @media screen and (max-width: 768px) {
+    width: 8vh;
+    margin: 0 1vw 0 1vw;
   }
 `;
 export const ImageQuantity19L = styled.img`
   width: 10vh;
   color: white;
-  @media screen and (max-width: 768px) {
-    width: 10vw;
-    margin: 0 0vw 0 0vw;
-  }
-  @media screen and (max-width: 1024px) {
-    width: 180px;
-    margin: 0 0vw 0 0vw;
-  }
   @media screen and (max-width: 1367px) {
     width: 8vh;
     margin: 1vw 1vw 0 0vw;
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 9vh;
+    margin: 0 0vw 0 0vw;
   }
 `;
 export const ImagePaint = styled.img`
@@ -159,16 +153,23 @@ export const ImagePaint = styled.img`
   }
 `;
 export const Banner = styled.img`
-  width: 101.55%;
+  width: 101%;
   height: auto;
-  margin: -0.56vh -1vh 0 -0.66vh;
-  padding: 0;
-  @media screen and (max-width: 768px) {
-    display: none;
+  margin: -0.56vh 0 0 -0.66vh;
+  position: relative;
+  left: -0.08vw;
+  @media screen and (max-width: 1366px) {
+    width: 101%;
+    margin: -0.56vh 0 0 -0.5vh;
   }
   @media screen and (max-width: 1024px) {
     display: none;
   }
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+  
+  
 `;
 export const Size = styled.div`
   font-size: 1.1vw;
@@ -189,17 +190,18 @@ export const Input = styled.input`
   text-align: center;
   border: none;
   color: #999999;
-  @media screen and (max-width: 768px) {
-    margin: 0 10vw 0 1vw;
-    position: relative;
-    left: 10px;
-  }
+
   @media screen and (max-width: 1024px) {
     width: 40px;
     font-size: 14px;
   }
   @media screen and (max-width: 1367px) {
     width: 20px;
+  }
+  @media screen and (max-width: 768px) {
+    margin: 0 5vw 0 1vw;
+    position: relative;
+    left: 10px;
   }
 `;
 export const InputArea = styled.input`
@@ -211,16 +213,17 @@ export const InputArea = styled.input`
   border-radius: 7px;
   border: none;
   color: #999999;
-  @media screen and (max-width: 768px) {
-    width: 35px;
-    font-size: 13px;
-    margin: 1vh 1vh 1vh 1vh;
-  }
+
   @media screen and (max-width: 1024px) {
     width: 70px;
     position: relative;
 
     font-size: 13px;
+  }
+  @media screen and (max-width: 768px) {
+    width: 35px;
+    font-size: 13px;
+    margin: 1vh 1vh 1vh 1vh;
   }
 `;
 export const InputAreaLiters = styled.input`
@@ -231,14 +234,15 @@ export const InputAreaLiters = styled.input`
   border-radius: 7px;
   border: none;
   color: #999999;
+
+  @media screen and (max-width: 1024px) {
+    width: 40px;
+    position: relative;
+  }
   @media screen and (max-width: 768px) {
     width: 35px;
     font-size: 13px;
     margin: 1vh 1vh 1vh 1vh;
-  }
-  @media screen and (max-width: 1024px) {
-    width: 40px;
-    position: relative;
   }
 `;
 export const H1 = styled.h1`
@@ -253,7 +257,7 @@ export const H1 = styled.h1`
   }
   @media screen and (max-width: 1024px) {
     padding: 30px 0 0 0;
-    font-size: 35px;
+    margin: 1vh 1vh 1vh 1vh;
   }
 `;
 export const H2 = styled.h2`
@@ -261,19 +265,20 @@ export const H2 = styled.h2`
   font-family: "RadikalBold";
   color: #2098ae;
   font-size: 20px;
-  @media screen and (max-width: 768px) {
-    font-size: 15px;
-    display: flex;
-    margin: none;
-    padding: 10vw 0 0 0;
-    justify-content: center;
-  }
+  
   @media screen and (max-height: 769px) {
     margin: -30px 0 1vh 0;
   }
   @media screen and (max-width: 1024px) {
     padding: 10px 0 0 0;
     font-size: 20px;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 15px;
+    display: flex;
+    margin: none;
+    padding: 10vw 0 0 0;
+    justify-content: center;
   }
 `;
 export const H = styled.h2`
@@ -311,15 +316,18 @@ export const DescriptionText = styled.h3`
   white-space: nowrap;
   text-align: center;
   text-overflow: ellipsis;
-  @media screen and (max-width: 768px) {
-    font-size: 15px;
-    width: 80px;
-    text-align: center;
-    justify-content: center;
-  }
+
   @media screen and (max-width: 1024px) {
     font-size: 14px;
     width: 260px;
+    text-align: center;
+    justify-content: center;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 15px;
+    width: 200px;
+    position: relative;
+    top: -10px
     text-align: center;
     justify-content: center;
   }
@@ -327,34 +335,46 @@ export const DescriptionText = styled.h3`
 export const ThDescription = styled.th`
   padding: 0 0 0 10px;
   margin: -0.5vw 0 3vw 0;
-  @media screen and (max-width: 768px) {
-    font-size: 2.8vw;
-    margin: -0.5vw 0 3vw 0;
-    padding: 0;
-    margin: none;
-  }
+
   @media screen and (max-width: 1024px) {
     margin: -2vh 0 3vh 0;
   }
   @media screen and (max-height: 769px) {
     margin: 0vh 0 1vh 0;
   }
+  @media screen and (max-width: 768px) {
+    font-size: 2.8vw;
+    margin: 0;
+    padding: 0;
+    margin: none;
+  }
+`;
+export const ThDescriptionText = styled.th`
+margin: 2vw;
+  @media screen and (max-width: 1024px) {
+    margin: -2vh 0 3vh 0;
+  }
+  @media screen and (max-width: 768px) {
+    font-size: 2.8vw;
+    padding: 0;
+    margin: none;
+  }
 `;
 export const TrDes = styled.tr`
   display: flex;
   flex-direction: row;
-  @media screen and (max-width: 768px) {
-    align-items: center;
-    justify-content: center;
-  }
   @media screen and (max-width: 1024px) {
     margin: 0vh 0 0vh 0;
     justify-content: center;
     position: relative;
     left: -15px;
   }
-  @media screen and (max-height: 769px) {
-    margin: 0vh 0 0vh 0;
+  @media screen and (max-width: 768px) {
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: -17vw;
+    left: -15vw;
   }
 `;
 export const Quantity = styled.p`
@@ -378,9 +398,7 @@ export const ContainerItems = styled.div`
   @media screen and (max-width: 1367px) {
     min-width: 16vw;
     max-width: 16vw;
-    max-height: 20vw;
-    min-height: 20vw;
-    padding: 0 0 5vh 0;
+    padding: 0 0 0vh 0;
   }
   @media screen and (max-width: 1024px) {
     min-width: 250px;
@@ -390,20 +408,15 @@ export const ContainerItems = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    min-width: 10vw;
-    max-width: 10vw;
     min-width: none;
-    min-height: none;
     display: flex;
-    margin: 40px 0 5vw 0;
+    padding: 5vw 0 5vw 0;
   }
 `;
 export const Items = styled.div`
   display: flex;
-  margin: 0 0 0 20px;
+  justify-content: center;
   @media screen and (max-width: 1367px) {
-    min-height: 300px;
-    max-height: 300px;
   }
   @media screen and (max-width: 1024px) {
     display: inline-block;
@@ -411,11 +424,12 @@ export const Items = styled.div`
     margin: 0 0 0 0vw;
   }
   @media screen and (max-width: 768px) {
-    min-height: none;
-    max-height: none;
     display: flex;
     flex-direction: column;
-    margin: 0 0 0 0vw;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: -24vw;
   }
 `;
 export const InputColorName = styled.input`
@@ -429,6 +443,6 @@ export const InputColorName = styled.input`
     height: 10px;
     position: relative;
     top: -1px;
-    margin: 4vw 1vw 0 1vw;
+    margin: 0vw 1vw 0 1vw;
   }
 `;

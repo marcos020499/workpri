@@ -2,7 +2,7 @@ import styled from "styled-components";
 import "../../index.css";
 export const ContainerHeader = styled.div`
   text-align: center;
-  padding: 3vw 0 0 0;
+  padding: 0vw 0 0 0;
   @media screen and (max-width: 768px) {
     width: 100vw;
     height: 800px;
@@ -45,7 +45,7 @@ export const Title = styled.h1`
 `;
 
 export const InputDiv = styled.div`
-  padding: 0 4vw 0 4vw;
+  padding: 0 4vw 7vw 4vw;
   justify-content: space-between;
   display: flex;
   @media screen and (max-width: 768px) {
@@ -630,8 +630,8 @@ export const Warning = styled.p`
   }
 `;
 export const Final = styled.div`
-  margin: 280px 4vw 0 4vw;
-  padding: 0 0 10vw 0;
+  margin: 2vw 0 0 0;
+  padding: 0 0 00vw 0;
   justify-content: space-between;
   display: flex;
   align-items: center;
