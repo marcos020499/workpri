@@ -80,6 +80,7 @@ export const ExpandableInput = ({ id, identifier }) => {
 								key={i}
 								hidden={false}
 								values={values}
+								val = {inputs.length}
 								identifier={i}
 								onChange={onChange}
 							/>
@@ -97,7 +98,7 @@ export const ExpandableInput = ({ id, identifier }) => {
 	);
 };
 
-export const SizeInput = ({ identifier, values, hidden, onChange }) => {
+export const SizeInput = ({ identifier, values, hidden, onChange, val }) => {
 	const submit = (key, value) => {
 		onChange(identifier, key, value);
 	};
@@ -106,7 +107,7 @@ export const SizeInput = ({ identifier, values, hidden, onChange }) => {
 		<div style={hidden ? { visibility: "hidden" } : {}}>
 			<RowSimple>
 				<SimpleInput
-					lIcon="vertical"
+					lIcon='vertical'
 					value={values?.first}
 					min="1"
                         max="10"
@@ -232,7 +233,7 @@ const SIContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: baseline;
-	padding: 0 0 0 1vw;
+	padding: 0.5vw 0 0 1vw;
 	@media screen and (max-width: 1367px) {
 		padding: 0 0 0 0.5vw;
 	  }
@@ -294,7 +295,7 @@ const SILabel = styled.p`
 	@media screen and (max-width: 600px) {
 		position: relative;
 		top: 12px;
-		left: 20px;
+		left: 17px;
 	}
 	@media screen and (max-width: 400px) {
 		top: 0;
@@ -355,7 +356,7 @@ const Row = styled.div`
 	position: relative;
 	left: -5px;
 	@media screen and (max-width: 768px) {
-		margin: 0 -0vw 0 0.4vw;
+		margin: 0;
 	}
 	@media screen and (max-width: 600px) {
 		margin: 0;
@@ -373,10 +374,10 @@ const RowSimple = styled.div`
 	max-height: 5vw;
 	margin: -0.9vw 0 0 0;
 	@media screen and (max-width: 768px) {
-		margin: 3vw 0vw 0 -2vw;
+		margin: -0.6vw 0vw 0 -1vw;
 	}
 	@media screen and (max-width: 600px) {
-		margin: 3vw 3vw 0 1vw;
+		margin: -0.4vw 3vw 0 1vw;
 	}
 	@media screen and (max-width: 400px) {
 		display: flex;
@@ -414,13 +415,16 @@ const Wall = styled(Row)`
 		margin: 0 0 0 2vw;
 	  }
 	  @media screen and (max-width: 1200px) {
-		margin: 0 2vw 0 7vw;
+		margin: 0 2vw 2vw 7vw;
+	}
+	@media screen and (max-width: 1024px) {
+		margin: 0 3vw 2.8vw 6vw;
 	}
 	@media screen and (max-width: 768px) {
-		margin: 0 4vw 6vw 3vw;
+		margin: 0 4vw 55px 3vw;
 	}
 	@media screen and (max-width: 600px) {
-		margin: 0 4vw 25vw 3vw;
+		margin: 0 4vw 60px 3vw;
 		max-width: 55px;
 		min-width: 55px;
 	}
@@ -450,10 +454,8 @@ const Typograph = styled.p`
 
 const H2 = styled(Typograph)`
 	font-size: 1em;
-	@media screen and (max-width: 600px) {
-	font-size: 11px;
-	}
-	@media screen and (max-width: 600px) and (orientation: landscape){
+
+	@media screen and (orientation: landscape){
 		font-size: 15px;
 	}
 `;
@@ -475,10 +477,10 @@ const H4 = styled(Typograph)`
 		font-size: 13px;
 	}
 	@media screen and (max-width: 600px) {
-		font-size: 12px;
+		font-size: 13px;
 	}
 	@media screen and (max-width: 600px) {
-		font-size: 10px;
+		font-size: 12px;
 	}
 	
 `;
@@ -495,7 +497,7 @@ width: 1.3vh;
 	position: relative;
 	font-size: 10px;
 	left: 40px;
-	top: -20px;
+	top: -30px;
 	height: 2vh;
 	width: 2vh;
 	margin: 2vw;
@@ -503,7 +505,7 @@ width: 1.3vh;
 @media screen and (max-width: 600px) {
 	position: relative;
 	left: 5px;
-	top: -20px;
+	top: -40px;
 	height: 2vh;
 	width: 2vh;
 	margin: 2vw;

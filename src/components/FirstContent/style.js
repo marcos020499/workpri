@@ -59,8 +59,8 @@ export const InputDiv = styled.div`
 export const Button = styled.button`
   min-width: 80px;
   width: auto;
-  height: 3.7vh;
-  line-height: 3.7vh;
+  height: 30px;
+  line-height: 30px;
   font-size: 1.5vh;
   background: #003366;
   color: white;
@@ -619,7 +619,7 @@ export const Mtss = styled.p`
 export const Warning = styled.p`
   font-family: "RadikalMedium";
   text-align: left;
-  font-size: 1.6vh;
+  font-size: 13px;
   letter-spacing: 1px;
   color: #b70033;
   position: relative;
@@ -629,12 +629,12 @@ export const Warning = styled.p`
   }
 `;
 export const Final = styled.div`
-  margin: 0 4vw 0 5vw;
+  margin: 3vw 4vw 0 5vw;
   justify-content: space-between;
   display: flex;
   align-items: center;
   @media screen and (max-width: 1367px) {
-    margin: -1vw 4vw 0 5vw;
+    margin: 4vw 4vw 0 5vw;
   }
   @media screen and (max-width: 1024px) {
     margin: 2vw 4vw 0 4vw;

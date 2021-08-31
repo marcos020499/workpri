@@ -17,9 +17,9 @@ export const ContainerButton = styled.div`
   display: block;
   justify-content: center;
   align-items: center;
-  padding: 2vw 0 6.5vw 0;
+  padding: 46px 0 0vw 0;
   @media screen and (max-width: 1366px) {
-    padding: 0;
+    padding: 90px 0 0vw 0;
   }
   @media screen and (max-width: 1024px) {
     padding: 1vw 0 0vw 0;
@@ -86,15 +86,14 @@ export const Recipients = styled.tr`
   left: -10px;
 
   @media screen and (max-width: 1367px) {
-    margin: -2vw 0.5vh 0vw 0;
+    margin: 0 0.5vh 0vw 0;
   }
   @media screen and (max-width: 1024px) {
     margin: 0;
     left: 5px;
   }
   @media screen and (max-width: 768px) {
-  position: relative;
-  }
+  } 
 `;
 export const Image = styled.img`
   width: 100px;
@@ -151,7 +150,7 @@ export const ImagePaint = styled.img`
   }
 `;
 export const Banner = styled.img`
-  width: 102%;
+  width: 101.5%;
   height: auto;
   margin: -0.56vh 0 0 -.5vh;
   position: relative;
@@ -159,6 +158,7 @@ export const Banner = styled.img`
   @media screen and (max-width: 1200px) {
     display: none;
   }
+
   @media screen and (max-width: 1024px) {
     display: none;
   }
@@ -267,7 +267,9 @@ export const H2 = styled.h2`
   font-family: "RadikalBold";
   color: #2098ae;
   font-size: 20px;
-  
+  @media screen and (max-width: 1024px) and (orientation: landscape){
+    font-size: 17px;
+  }
   @media screen and (max-height: 769px) {
     margin: -30px 0 1vh 0;
   }
@@ -329,7 +331,7 @@ export const DescriptionText = styled.h3`
   @media screen and (max-width: 768px) {
     font-size: 15px;
     width: 110px;
-    margin: 0 3vw 0 0;
+    margin: 0;
     position: relative;
     top: -10px
     text-align: center;
@@ -384,6 +386,7 @@ export const TrDes = styled.tr`
   }
   @media screen and (max-width: 768px) {
     align-items: center;
+    left: 0;
     justify-content: center;
     position: relative;
 
