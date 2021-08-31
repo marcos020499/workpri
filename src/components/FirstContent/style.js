@@ -3,11 +3,11 @@ import "../../index.css";
 export const ContainerHeader = styled.div`
   text-align: center;
   padding: 0vw 0 0 0;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     width: 100vw;
     height: 800px;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 768px) {
     width: 100vw;
     height: 800px;
   }
@@ -17,10 +17,10 @@ export const PaintContainer = styled.tr`
   max-width: 2vw;
   min-width: 2vw;
   @media screen and (max-width: 1367px) {
-    padding: 0 0 0vw 0;
+    padding: 0;
   }
   @media screen and (max-width: 768px) {
-    padding: 5vw 0 0vw 0;
+    padding: 3vw 0 0vw 0;
   }
 `;
 export const Title = styled.h1`
@@ -45,7 +45,7 @@ export const Title = styled.h1`
 `;
 
 export const InputDiv = styled.div`
-  padding: 0 4vw 5vw 4vw;
+  padding: 0 4vw 3vw 4vw;
   justify-content: space-between;
   display: flex;
   @media screen and (max-width: 1024px) {
@@ -341,10 +341,10 @@ export const Td = styled.td`
 `;
 export const TdFirst = styled.td`
   border-right: 1px solid #003366;
-  padding: 0 0 15px 0;
+  padding: 0 0 5px 0;
   max-height: 10vw;
   @media screen and (max-width: 1367px) {
-    padding: 0 0 10px 0;
+    padding: 0 0 0px 0;
     max-height: 10vw;
     margin: 0vw 0 5px 0;
   }
@@ -367,11 +367,11 @@ export const Table = styled.div`
   text-align: center;
   justify-content: center;
   width: 90%;
-  padding: 3.5vw 0 4.5vw 2vw;
+  padding: 3.5vw 0 .5vw 2vw;
   min-height: 17vw;
   max-height: 17vw;
   @media screen and (max-width: 1367px) {
-    width: 20vw;
+    width: 18vw;
     padding: 0vw 0 0vw 1vw;
     min-height: 600px;
     max-height: 600px;
@@ -634,7 +634,7 @@ export const Final = styled.div`
   display: flex;
   align-items: center;
   @media screen and (max-width: 1367px) {
-    margin: 2vw 4vw 0 5vw;
+    margin: -1vw 4vw 0 5vw;
   }
   @media screen and (max-width: 1024px) {
     margin: 2vw 4vw 0 4vw;

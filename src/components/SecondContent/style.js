@@ -18,7 +18,9 @@ export const ContainerButton = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2vw 0 6.5vw 0;
-
+  @media screen and (max-width: 1366px) {
+    padding: 0;
+  }
   @media screen and (max-width: 1024px) {
     padding: 1vw 0 0vw 0;
   }
@@ -38,7 +40,7 @@ export const ButtonReed = styled.button`
   border: none;
   cursor: pointer;
   @media screen and (max-width: 1367px) {
-    margin: 0vw 0 0vw 0;
+    margin: -1vw;
   }
   @media screen and (max-width: 768px) {
     margin: 0vw 0 5vw 0;
@@ -60,8 +62,8 @@ export const PaintSize = styled.table`
   min-height: 18vw;
   max-height: 18vw;
   @media screen and (max-width: 1367px) {
-    min-height: 16vw;
-    max-height: 16vw;
+    min-height: 12vw;
+    max-height: 12vw;
   }
 
   @media screen and (max-width: 768px) {
@@ -79,7 +81,7 @@ export const Recipients = styled.tr`
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  margin: -3vw 0.5vw 4vh 0;
+  margin: 0vw 0.5vw 0vh 0;
   position: relative;
   left: -10px;
 
@@ -143,7 +145,6 @@ export const ImagePaint = styled.img`
   width: 7vw;
   @media screen and (max-width: 1367px) {
     width: 7vw;
-    margin: 2vh 0 3vh 0;
   }
   @media screen and (max-width: 1024px) {
     width: 120px;
@@ -152,7 +153,7 @@ export const ImagePaint = styled.img`
 export const Banner = styled.img`
   width: 102%;
   height: auto;
-  margin: -0.56vh 0 0 -.6vh;
+  margin: -0.56vh 0 0 -.5vh;
   position: relative;
   left: -0.08vw;
   @media screen and (max-width: 1200px) {
@@ -186,13 +187,12 @@ export const Input = styled.input`
   text-align: center;
   border: none;
   color: #999999;
-
+  @media screen and (max-width: 1367px) {
+    width: 20px;
+  }
   @media screen and (max-width: 1024px) {
     width: 40px;
     font-size: 14px;
-  }
-  @media screen and (max-width: 1367px) {
-    width: 20px;
   }
   @media screen and (max-width: 768px) {
     margin: 0 5vw 0 1vw;
@@ -407,18 +407,23 @@ export const Quantity = styled.p`
 
 export const ContainerItems = styled.div`
   min-width: 15vw;
-  min-height: 300px;
+  min-height: 150px;
   padding: 0vw 0 0 0;
   @media screen and (max-width: 1367px) {
     min-width: 16vw;
     max-width: 16vw;
-    padding: 0 0 0vh 0;
+    padding: 0;
+  }
+  @media screen and (max-width: 1200px) {
+    min-width: 24vw;
+    max-width: 24vw;
+    padding: 3vw 0 0 0;
   }
   @media screen and (max-width: 1024px) {
     min-width: 25vw;
     max-width:25vw;
     display: inline-block;
-    padding: 0 0 0vh 0;
+    padding: 3vw 0 0vh 0;
   }
 
   @media screen and (max-width: 768px) {
@@ -451,7 +456,7 @@ export const Items = styled.div`
   @media screen and (max-width: 1024px) {
     display: inline-block;
     justify-content: center;
-    margin: 0 0 0 0vw;
+    margin: 0vw;
   }
   @media screen and (max-width: 768px) {
     display: flex;

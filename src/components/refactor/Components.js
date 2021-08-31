@@ -131,7 +131,7 @@ export const SizeInput = ({ identifier, values, hidden, onChange }) => {
 export const SimpleInput = ({ onChangeText, lIcon, value }) => {
 	return (
 		<SIContainer>
-			{lIcon && <Icons name={lIcon} size={25} />}
+			{lIcon && <Icons name={lIcon} size={20} />}
 			<SIInput
 				type="number"
 				min="1"
@@ -246,6 +246,11 @@ const SIContainer = styled.div`
 	@media screen and (max-width: 600px) {
 		padding: 0 0 0 1vw;
 	}
+	@media screen and (max-width: 400px) {
+		padding: 0.1vw 0 0 1vw;
+	}
+	@media screen and (max-width: 350px) {
+		padding: 0vw -2vw 0 0vw;
 	}
 `;
 
@@ -270,11 +275,15 @@ const SIInput = styled.input`
 	}
 	@media screen and (max-width: 600px) {
 		max-width: 4vw;
-		margin: 0 -7vw 0 0;
+		margin: 0 -4vw 0 0;
 	}
 	@media screen and (max-width: 400px) {
 		max-width: 4vw;
-		margin: -3vw -7vw 0 0;
+		padding: 0vw -7vw 0 0;
+	}
+	@media screen and (max-width: 350px) {
+		max-width: 4vw;
+		padding: 0vw -10vw 0 0;
 	}
 	
 `;
@@ -290,6 +299,10 @@ const SILabel = styled.p`
 	@media screen and (max-width: 400px) {
 		top: 0;
 		left: 30px;
+	}
+	@media screen and (max-width: 350px) {
+		top: 0;
+		left: 20px;
 	}
 `;
 
@@ -368,7 +381,13 @@ const RowSimple = styled.div`
 	@media screen and (max-width: 400px) {
 		display: flex;
 		flex-direction: column;
-		margin: 6vw 3vw 0 1vw;
+		margin: 2vw 8vw 9vw 4vw;
+	}
+	@media screen and (max-width: 350px) {
+		
+	}
+	@media screen and (max-width: 600px) and (orientation: landscape){
+		padding: 0vw 5vw 0vw 5vw;
 	}
 `;
 
@@ -401,10 +420,24 @@ const Wall = styled(Row)`
 		margin: 0 4vw 6vw 3vw;
 	}
 	@media screen and (max-width: 600px) {
-		margin: 0 -8vw 7vw 4vw;
+		margin: 0 4vw 25vw 3vw;
+		max-width: 55px;
+		min-width: 55px;
 	}
 	@media screen and (max-width: 400px) {
-		margin: 0 -20vw 7vw 5vw;
+		margin: 0 4vw 48vw 3vw;
+		max-width: 45px;
+		min-width: 45px;
+	}
+	@media screen and (max-width: 350px) {
+		margin: 0 4vw 48vw 4vw;
+		max-width: 40px;
+		min-width: 40px;
+	}
+	@media screen and (max-width: 600px) and (orientation: landscape){
+		margin: 0 8vw 18vw 4vw;
+		max-width: 40px;
+		min-width: 40px;
 	}
 `;
 
@@ -419,6 +452,9 @@ const H2 = styled(Typograph)`
 	font-size: 1em;
 	@media screen and (max-width: 600px) {
 	font-size: 11px;
+	}
+	@media screen and (max-width: 600px) and (orientation: landscape){
+		font-size: 15px;
 	}
 `;
 
@@ -444,6 +480,7 @@ const H4 = styled(Typograph)`
 	@media screen and (max-width: 600px) {
 		font-size: 10px;
 	}
+	
 `;
 
 const Button = styled.button`
@@ -478,5 +515,9 @@ width: 1.3vh;
 	height: 2vh;
 	width: 2vh;
 	margin: 1.5vw;
+}
+@media screen and (max-width: 600px) and (orientation: landscape){
+	width: 15px;
+	height:15px;
 }
 `;

@@ -30,6 +30,7 @@ export default Index;
 
 const Container = styled.div`
 	display: flex;
+	height: auto !important;
 	min-height: 100vh;
 	max-height: 100vh;
 	@media screen and (max-width: 1200px) {
@@ -58,8 +59,8 @@ display: none;
 }
 @media screen and (max-width: 768px) {
 	display: initial;
-	width: 101.3%;
-	margin: -0.4vh 0 0 -0.5vh;
+	width: 102%;
+	margin: -1.2vh 0 0 -0.5vh;
 	padding: none;
 	height: 30vw;
 }
@@ -71,7 +72,7 @@ min-height: 100vh;
 max-height: 100vh;
 min-width: 48%;
 max-width: 48%;
-margin: 0 -0.5vw 0 0;
+margin: 0vw -0.5vw 0 0;
 @media screen and (max-width: 1366px) {
 	top: 0vw;
 }
@@ -84,7 +85,12 @@ max-height: none;
 @media screen and (max-width: 768px) {
 	min-width: 100%;
 max-width: 100%;
-min-height: 123vh;
+min-height: 180vh;
+}
+@media screen and (max-width: 600px) {
+	min-width: 100%;
+max-width: 100%;
+min-height: 130vh;
 }
 @media screen and (max-width: 400px) {
 	min-width: 100%;
@@ -98,7 +104,7 @@ min-height: 100vh;
 max-height: 100vh;
 min-width: 52%;
 max-width: 52%;
-margin: 5vw 0 0 0;
+margin: 2vw 0 0 0;
 justify-content: center;
 @media screen and (max-width: 1200px) {
 	margin: 5vw 0 0 0;
@@ -110,18 +116,24 @@ min-height: none;
 	margin: 5vw 0 0 0;
 	min-width: 100%;
 max-width: 100%;
-min-height: 100vh;
+min-height: 130vh;
 }
 @media screen and (max-width: 768px) and (orientation: landscape){
 	margin: 5vw 0 0 0;
 	min-width: 100%;
 max-width: 100%;
-min-height: 200vh;
+min-height: 235vh;
 }
 @media screen and (max-width: 600px) and (orientation: landscape){
 	margin: 5vw 0 0 0;
 	min-width: 100%;
 max-width: 100%;
-min-height: 235vh;
+min-height: 370vh;
+}
+@media screen and (max-width: 400px) {
+	margin: 5vw 0 0 0;
+	min-width: 100%;
+max-width: 100%;
+min-height: 215vh;
 }
 `

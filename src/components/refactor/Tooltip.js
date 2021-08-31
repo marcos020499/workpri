@@ -40,6 +40,12 @@ const Content = styled.div`
 		width: 100vw;
 	height: 290vh;
 		}
+		@media screen and (max-width: 600px) {
+		top: -100vh;
+		left: -2vw;
+		width: 102vw;
+		height: 190vh;
+			}
 `;
 
 const Box = styled.div`
