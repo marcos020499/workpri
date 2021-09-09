@@ -5,14 +5,15 @@ import ScreenTest from "./components/ScreenTest";
 import InputColor1 from "./components/Hooks/ImputColor";
 import { FieldsInput } from "./components/refactor/FieldsInput";
 import { CalculatorProvider } from "./components/refactor/Provider";
+import { MProvider } from "./store";
 function App() {
 	return (
-		<CalculatorProvider>
+		<MProvider>
 			<div>
 				<Calculator />
 				<GlobalStyle />
 			</div>
-		</CalculatorProvider>
+		</MProvider>
 	);
 }
 const GlobalStyle = createGlobalStyle`

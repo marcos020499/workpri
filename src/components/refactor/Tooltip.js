@@ -1,7 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-export function Tooltip({ children, colors, visible, onSelect, onClose }) {
+export function Tooltip({
+	children,
+	select,
+	colors,
+	visible,
+	onSelect,
+	onClose,
+}) {
 	return (
 		<Container>
 			{children}
@@ -10,7 +17,13 @@ export function Tooltip({ children, colors, visible, onSelect, onClose }) {
 				<P>Colores a elegir</P>
 				<Row>
 					{colors?.map((el, i) => (
-						<BoxColor key={i} {...el} index={i} onClick={onSelect} />
+						<BoxColor
+							key={i}
+							color={el}
+							select={select}
+							index={i}
+							onClick={onSelect}
+						/>
 					))}
 				</Row>
 			</Box>
@@ -22,30 +35,22 @@ const Container = styled.div`
 	padding: none;
 	margin: none;
 	display: inline-block;
+	top: 0;
+	left: 0;
 `;
 
 const Content = styled.div`
 	visibility: ${({ visible }) => (visible ? "initial" : "hidden")};
-	top: -40vh;
-	left: -3vw;
-	position: absolute;
+	position: fixed;
 	width: 100vw;
-	height: 107vh;
+	higith: 100vh;
 	background-color: rgba(0, 0, 0, 0.3);
-	white-space: nowrap;
 	line-height: 1;
-	@media screen and (max-width: 768px) {
-		top: -100vh;
-	left: -3vw;
-		width: 100vw;
-	height: 290vh;
-		}
-		@media screen and (max-width: 600px) {
-		top: -100vh;
-		left: -2vw;
-		width: 102vw;
-		height: 190vh;
-			}
+	z-index: 2;
+	top: 0;
+	left: 0;
+	rigth: 0;
+	bottom: 0;
 `;
 
 const Box = styled.div`
@@ -53,7 +58,7 @@ const Box = styled.div`
 	visibility: ${({ visible }) => (visible ? "initial" : "hidden")};
 	background-color: white;
 	border-radius: 6px;
-	z-index: 2;
+	z-index: 3;
 `;
 
 const Row = styled.div`
@@ -63,32 +68,33 @@ const Row = styled.div`
 	height: 45px;
 `;
 const P = styled.p`
- color: #003366;
- font-size: 10px;
+	color: #003366;
+	font-size: 10px;
 `;
 
-function BoxColor(props) {
+function BoxColor({ index, color, select, onClick }) {
+	// color, select
 	function onSelect() {
-		props.onClick(props.index);
+		onClick(index);
 	}
 
 	return (
-		<ColorContainer {...props} onClick={onSelect}>
-			<ColorInner color={props.color} />
+		<ColorContainer select={select} color={color} onClick={onSelect}>
+			<ColorInner color={color} />
 		</ColorContainer>
 	);
 }
 
 const ColorContainer = styled.div`
-	border: 2.5px ridge #003366 ${({ selected, color }) => `${selected ? color : "black"}`};
+	border: 2px solid
+		${({ select, color }) => `${select === color ? color : "black"}`};
 	width: 23px;
 	height: 23px;
-	padding: 0.4vw;
+	margin: 0px 5px;
 `;
 
 const ColorInner = styled.div`
 	width: 100%;
-	border: 2px ridge #003366;
 	height: 100%;
 	background-color: ${({ color }) => `${color}`};
 `;
