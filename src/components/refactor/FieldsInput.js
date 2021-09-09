@@ -1,6 +1,6 @@
 import React, { useMemo, useEffect, useState } from "react";
 import styled from "styled-components";
-import { TitleHead, FirstCol, ExpandableInput, Input } from "./Components";
+import { TitleHead, FirstCol, ExpandableInput, Input, Input1 } from "./Components";
 import { useCalculatorField } from "./Provider";
 import {
 
@@ -62,14 +62,10 @@ export function FieldsInput() {
 }
 
 function Wall({ index, identifier }) {
-	const { clearWall, colors } = useCalculatorField();
+	
 	const [select, setSelect] = useState(false);
 
 	useEffect(() => {
-		if (!select) {
-			clearWall(identifier);
-		}
-
 		if (!colors.length) {
 			setSelect(false);
 		}
@@ -98,7 +94,7 @@ function Wall({ index, identifier }) {
 				</TD>
 				<TD key="three">
 					<Content>
-						<Input id="width" identifier={identifier} />
+						<Input1 id="width" identifier={identifier} />
 					</Content>
 				</TD>
 				<TD key="four">

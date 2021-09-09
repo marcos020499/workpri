@@ -22,6 +22,17 @@ export const Input = ({ id, identifier }) => {
 
 	return <SimpleInput value={x} onChangeText={set} />;
 };
+export const Input1 = ({ id, identifier }) => {
+	const { putWallInfo } = useCalculatorField();
+	const [x, setX] = useState(0);
+
+	function set(value) {
+		setX(value);
+		putWallInfo(identifier, id, value);
+	}
+
+	return <SimpleInput1 value={x} onChangeText={set} />;
+};
 
 export const ExpandableInput = ({ id, identifier }) => {
 	const forceUpdate = useForceUpdate();
@@ -109,18 +120,10 @@ export const SizeInput = ({ identifier, values, hidden, onChange, val }) => {
 				<SimpleInput
 					lIcon='vertical'
 					value={values?.first}
-					min="1"
-                        max="10"
-                        step="0.5"
-                        defaultValue="2"
 					onChangeText={(e) => submit("first", e)}
 				/>
 				<SimpleInput
 					lIcon="horizontal"
-					min="1"
-                        max="10"
-                        step="0.5"
-                        defaultValue="1"
 					value={values?.second}
 					onChangeText={(e) => submit("second", e)}
 				/>
@@ -135,14 +138,31 @@ export const SimpleInput = ({ onChangeText, lIcon, value }) => {
 			{lIcon && <Icons name={lIcon} size={20} />}
 			<SIInput
 				type="number"
-				min="1"
-                        max="10"
-                        step="0.5"
-                        defaultValue="3"
-				value={value}
 				onChange={(e) => {
 					onChangeText(parseInt(e.target.value));
 				}}
+				min="1"
+                        max="10"
+                        step="0.5"
+                        defaultValue='3'
+			/>
+			<SILabel>mts</SILabel>
+		</SIContainer>
+	);
+};
+export const SimpleInput1 = ({ onChangeText, lIcon, value }) => {
+	return (
+		<SIContainer>
+			{lIcon && <Icons name={lIcon} size={20} />}
+			<SIInput
+				type="number"
+				onChange={(e) => {
+					onChangeText(parseInt(e.target.value));
+				}}
+				min="1"
+                        max="10"
+                        step="0.5"
+                        defaultValue='2'
 			/>
 			<SILabel>mts</SILabel>
 		</SIContainer>

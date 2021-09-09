@@ -1,9 +1,10 @@
 {
   "name": "prisa",
-  "homepage": "https://marcos020499.github.io/workpri/",
+  "homepage": "https://prisa.somosrandom.com",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@reduxjs/toolkit": "^1.6.1",
     "css": "^3.0.0",
     "firebase": "^8.9.1",
     "format": "^0.2.2",
@@ -19,6 +20,7 @@
     "react-input-number": "^5.0.19",
     "react-input-range": "^1.3.0",
     "react-leaflet": "^3.2.1",
+    "react-redux": "^7.2.5",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.2.0",
     "react-simple-tooltip": "^2.6.3",
