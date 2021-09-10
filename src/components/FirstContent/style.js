@@ -101,6 +101,10 @@ export const ButtonRed = styled.button`
   @media screen and (max-width: 768px) {
     font-size: 14px;
   }
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+
+  }
   &:hover {
     background-color: white;
     color: black;
@@ -629,17 +633,22 @@ export const Warning = styled.p`
   }
 `;
 export const Final = styled.div`
-  margin: 3vw 4vw 0 5vw;
+  margin: 0 4vw 0 5vw;
   justify-content: space-between;
   display: flex;
   align-items: center;
   @media screen and (max-width: 1367px) {
-    margin: 4vw 4vw 0 5vw;
+    margin: 0vw 4vw 0 5vw;
   }
   @media screen and (max-width: 1024px) {
     margin: 2vw 4vw 0 4vw;
   }
   @media screen and (max-width: 768px) {
     margin: 2vw 4vw 0 4vw;
+  }
+  @media screen and (max-width: 600px) {
+    margin: auto
+    width: 90%;
+    justify-content: space-between;
   }
 `;

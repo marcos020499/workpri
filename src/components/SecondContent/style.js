@@ -17,9 +17,9 @@ export const ContainerButton = styled.div`
   display: block;
   justify-content: center;
   align-items: center;
-  padding: 46px 0 0vw 0;
+  padding: 25px 0 0vw 0;
   @media screen and (max-width: 1366px) {
-    padding: 90px 0 0vw 0;
+    padding: 50px 0 0vw 0;
   }
   @media screen and (max-width: 1024px) {
     padding: 1vw 0 0vw 0;

@@ -139,6 +139,7 @@ export const SimpleInputOwnState = ({ id, onSubmit }) => {
 				min="1"
 				max="10"
 				step="0.5"
+				defaultValue='3'
 			/>
 			<SILabel>mts</SILabel>
 		</SIContainer>
@@ -348,7 +349,7 @@ const Row = styled.div`
 		margin: 0;
 	}
 	@media screen and (max-width: 600px) {
-		margin: 0;
+		margin: 0 -10px 0 0;
 	}
 	@media screen and (max-width: 400px) {
 		display: flex;
@@ -412,7 +413,7 @@ const Wall = styled(Row)`
 		margin: 0 4vw 55px 3vw;
 	}
 	@media screen and (max-width: 600px) {
-		margin: 0 4vw 60px 3vw;
+		margin: 0 11px 60px 2vw;
 		max-width: 55px;
 		min-width: 55px;
 	}
