@@ -20,8 +20,8 @@ export const ExpandableInput = ({ id, onSubmit }) => {
 		inputs: [{ largo, ancho}]
 	*/
 	function onChange(inputKey, cell, value) {
-		const old = inputs;
-		const input = old[inputKey];
+		const old = [...inputs];
+		let input = old[inputKey];
 		input[cell] = value;
 		setInputs(old);
 		onSubmit(id, old);
@@ -34,7 +34,7 @@ export const ExpandableInput = ({ id, onSubmit }) => {
 		}
 		const old = [...inputs, { largo: 1, ancho: 1 }];
 		setInputs(old);
-		onSubmit(old);
+		onSubmit(id, old);
 		setHidden(false);
 	};
 
@@ -44,7 +44,7 @@ export const ExpandableInput = ({ id, onSubmit }) => {
 		}
 		const old = inputs.slice(0, -1);
 		setInputs(old);
-		onSubmit(old);
+		onSubmit(id, old);
 		if (old.length === 0) {
 			setHidden(true);
 		}
@@ -57,7 +57,7 @@ export const ExpandableInput = ({ id, onSubmit }) => {
 					<SizeInput hidden />
 				) : (
 					<div>
-						{inputs?.map((values, i) => (
+						{inputs.map((values, i) => (
 							<SizeInput
 								key={i}
 								hidden={false}
@@ -122,8 +122,12 @@ export const SimpleInput = ({ onChangeText, lIcon, value }) => {
 	);
 };
 
-export const SimpleInputOwnState = ({ id, onSubmit }) => {
-	const [text, setText] = useState(1);
+export const SimpleInputOwnState = ({ id, onSubmit, defaultValue }) => {
+	const [text, setText] = useState(defaultValue);
+
+	useEffect(() => {
+		onSubmit(id, parseInt(text));
+	}, []);
 
 	function onChange({ target }) {
 		setText(target.value);

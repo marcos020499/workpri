@@ -32,5 +32,10 @@ export const sendCalculator = async (body) => {
 				body: JSON.stringify(data),
 			}
 		);
-	} catch (e) {}
+
+		const d = await res.json();
+		return d;
+	} catch (e) {
+		console.log("sendCalculator", e);
+	}
 };

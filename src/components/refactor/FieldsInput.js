@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useMemo, useEffect, useState, useReducer } from "react";
 import styled from "styled-components";
 import {
@@ -17,14 +18,19 @@ import {
 	Final,
 } from "../FirstContent/style";
 import { useDispatch, useSelector } from "react-redux";
+import { appendWallAction, removeWallAction } from "../../store/infoReducer";
+import {
+	endCalculatorAction,
+	initCalculatorAction,
+} from "../../store/gestionReducer";
+
+const walles = ["wall1", "wall2", "wall3", "wall4", "wall5"];
+
 export function FieldsInput() {
 	const dispatch = useDispatch();
 	const { colors } = useSelector((state) => state);
-	const [walles] = useState(["wall1", "wall2", "wall3", "wall4", "wall5"]);
 
-	function submitInfoToCalculator() {
-		dispatch();
-	}
+	const submitInf = () => dispatch(initCalculatorAction());
 
 	return useMemo(
 		() => (
@@ -64,7 +70,7 @@ export function FieldsInput() {
 				</TableHorizontal>
 				<Final>
 					<Warning>*Tienes que llenar todos los campos</Warning>
-					<ButtonRed onClick={() => {}}>Calcular</ButtonRed>
+					<ButtonRed onClick={submitInf}>Calcular</ButtonRed>
 				</Final>
 			</Container>
 		),
@@ -73,24 +79,67 @@ export function FieldsInput() {
 }
 
 function Wall({ index, identifier }) {
+	const { isReadyToCompute, finishRecopilation } = useSelector(
+		(state) => state.gestion
+	);
+	const colors = useSelector((state) => state.colors);
+
+	const getColorByHex = (c) => colors.find((el) => el.rgb === c);
+
+	const storeDistpach = useDispatch();
 	const [color, setColor] = useState(null);
 	const [select, setSelect] = useState(false);
 	const initialState = {
-		alto: 1,
-		ancho: 1,
+		edit: false,
+		id: index + identifier,
+		color_id: null,
+		nombre: null,
+		alto: 0,
+		ancho: 0,
 		puertas: [],
 		ventanas: [],
 	};
 	const [inf, dispatch] = useReducer((s, a) => ({ ...s, ...a }), initialState);
 
 	useEffect(() => {
+		/*
+			case
+			-- select/deselect [reset] -> remove
+			-- append
+			-- submit
+
+			-- press calculate
+		*/
+
+		//select/deselect
 		if (!select) {
 			setColor(null);
+			if (inf.edit) {
+				storeDistpach(removeWallAction(inf.id));
+			}
+			dispatch(initialState);
 		}
-	}, [select, color]);
+
+		// append
+		if (select && color && inf.edit) {
+			dispatch({ edit: false });
+			storeDistpach(appendWallAction(inf));
+		}
+
+		// onCalculate
+		if (index === walles.length && !finishRecopilation) {
+			storeDistpach(endCalculatorAction());
+		}
+	}, [select, color, isReadyToCompute, finishRecopilation]);
+
+	function onColor(value) {
+		const _color = getColorByHex(value);
+		setColor(value);
+		dispatch({ color_id: _color.id, nombre: _color.nombre });
+	}
 
 	function onEdit(identifier, value) {
-		dispatch({ [identifier]: value });
+		dispatch({ [identifier]: value, edit: true });
 	}
 
 	const Content = ({ children }) => {
@@ -107,17 +156,21 @@ function Wall({ index, identifier }) {
 						onSelectControl={setSelect}
 						id="color"
 						identifier={identifier}
-						onSubmit={setColor}
+						onSubmit={onColor}
 					/>
 				</TD>
 				<TD key="second">
 					<Content>
-						<SimpleInputOwnState id="alto" onSubmit={onEdit} />
+						<SimpleInputOwnState id="alto" onSubmit={onEdit} defaultValue={3} />
 					</Content>
 				</TD>
 				<TD key="three">
 					<Content>
-						<SimpleInputOwnState id="ancho" onSubmit={onEdit} />
+						<SimpleInputOwnState
+							id="ancho"
+							onSubmit={onEdit}
+							defaultValue={2}
+						/>
 					</Content>
 				</TD>
 				<TD key="four">
@@ -143,6 +196,7 @@ function Wall({ index, identifier }) {
 		[select]
 	);
 }
+
 const Container = styled.div`
 	max-width: 768;
 	@media screen and (max-width: 768px) {

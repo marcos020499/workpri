@@ -1,46 +1,60 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { sendCalculator } from "../services/api";
 
 /*
   {
-    id,
-    rgb,
-    nombre,
-    presentaciones: [
-      {
-        litros: 0,
-        presentacion_id: "0L",
-        cantidad: 0,
-      }
-    ]
+		id -> optional for internal manager
+    color_id,
+		largo,
+		ancho,
+		nombre,
+		puretas: [{ largo, ancho}],
+		ventanas: [{ largo, ancho}]
   }
 */
 
-const initialState = {
-	isReadyToCompute: false,
-};
+const merge = (array, element) =>
+	array.reduce((acc, el) => {
+		if (el.id === element.id) {
+			acc.push(element);
+		} else {
+			acc.push(el);
+		}
+		return acc;
+	}, []);
+
+const initialState = [];
 
 const infoSlice = createSlice({
 	name: "info",
 	initialState,
 	reducers: {
-		goCalculator: (state) => {
-			state.isReadyToCompute = true;
+		appendWall: (state, action) => {
+			const old = state.find(({ id }) => id === action.payload.id);
+			if (old) {
+				// merge
+				const newState = merge(state, action.payload);
+				console.log("appendWall", newState);
+				return newState;
+			}
+			// copy
+			const newState = state.concat([action.payload]);
+			return newState;
 		},
-		finishCalculator: (state) => {
-			state.isReadyToCompute = false;
+		removeWall: (state, action) => {
+			const elementId = action.payload;
+			const newState = state.filter(({ id }) => id !== elementId);
+			console.log("removeWall", elementId, newState);
+			return newState;
 		},
 	},
 });
 
 const { actions, reducer } = infoSlice;
-const { goCalculator, finishCalculator } = actions;
+const { appendWall, removeWall } = actions;
 
 export default reducer;
 
-export const initCalculatorAction = goCalculator;
+export const appendWallAction = (element) => (dispatch) =>
+	dispatch(appendWall(element));
 
-export const calculateData = (data) => async (dispatch) => {
-	const result = await sendCalculator(data);
-	dispatch(finishCalculator());
-};
+export const removeWallAction = (id) => (dispatch) => dispatch(removeWall(id));

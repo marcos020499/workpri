@@ -23,8 +23,7 @@ const colorSlice = createSlice({
 	initialState,
 	reducers: {
 		putColors: (state, action) => {
-			state = action.payload;
-			return state;
+			return action.payload || state;
 		},
 	},
 });
