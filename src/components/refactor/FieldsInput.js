@@ -94,7 +94,7 @@ function Wall({ index, identifier }) {
 		id: index + identifier,
 		color_id: null,
 		nombre: null,
-		alto: 0,
+		largo: 0,
 		ancho: 0,
 		puertas: [],
 		ventanas: [],
@@ -161,7 +161,7 @@ function Wall({ index, identifier }) {
 				</TD>
 				<TD key="second">
 					<Content>
-						<SimpleInputOwnState id="alto" onSubmit={onEdit} defaultValue={3} />
+						<SimpleInputOwnState id="largo" onSubmit={onEdit} defaultValue={3} />
 					</Content>
 				</TD>
 				<TD key="three">

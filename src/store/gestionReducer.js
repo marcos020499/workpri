@@ -43,8 +43,8 @@ const calculateData = () => async (dispatch, getState) => {
 	}
 	console.log(getState());
 	const wlls = walles.reduce((acc, el) => {
-		const { color_id, nombre, alto, ancho, puertas, ventanas } = el;
-		acc.push({ color_id, nombre, alto, ancho, puertas, ventanas });
+		const { color_id, nombre, largo, ancho, puertas, ventanas } = el;
+		acc.push({ color_id, nombre, largo, ancho, puertas, ventanas });
 		return acc;
 	}, []);
 	const result = await sendCalculator(wlls);

@@ -2,7 +2,7 @@ let linea_id;
 export const getPresetation = async () => {
 	try {
 		const res = await fetch(
-			"https://api.tiendaenlineaprisa.mx/calcdemo/calculadora/inicializar?origen=e&origen_id=erd&color_id=643"
+			"https://api.tiendaenlineaprisa.mx/calcdemo/calculadora/inicializar?origen=e&origen_id=erd&color_id=611"
 		);
 		const data = await res.json();
 		if (data.hasOwnProperty("colores")) {
@@ -21,7 +21,7 @@ export const sendCalculator = async (body) => {
 			origen: "e",
 			origen_id: "erd",
 			color_id: "643",
-			linea_id,
+			linea_id: 'ad',
 			paredes: body,
 		};
 		console.log("sendCalculator", data);
