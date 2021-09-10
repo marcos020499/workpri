@@ -633,7 +633,7 @@ export const Warning = styled.p`
   }
 `;
 export const Final = styled.div`
-  margin: 0 4vw 0 5vw;
+  margin: 2vw 4vw 0 5vw;
   justify-content: space-between;
   display: flex;
   align-items: center;

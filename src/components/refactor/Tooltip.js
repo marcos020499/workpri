@@ -90,7 +90,7 @@ const ColorContainer = styled.div`
 		${({ select, color }) => `${select === color ? color : "black"}`};
 	width: 23px;
 	height: 23px;
-	margin: 0px 5px;
+	margin: auto;
 `;
 
 const ColorInner = styled.div`
