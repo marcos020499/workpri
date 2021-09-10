@@ -62,7 +62,6 @@ export const ExpandableInput = ({ id, onSubmit }) => {
 								key={i}
 								hidden={false}
 								values={values}
-								val={inputs.length}
 								identifier={i}
 								onChange={onChange}
 							/>
@@ -80,8 +79,9 @@ export const ExpandableInput = ({ id, onSubmit }) => {
 	);
 };
 
-export const SizeInput = ({ identifier, values, hidden, onChange, val }) => {
+export const SizeInput = ({ identifier, values, hidden, onChange }) => {
 	const submit = (key, value) => {
+		console.log("size", key, value);
 		onChange(identifier, key, value);
 	};
 
@@ -104,15 +104,20 @@ export const SizeInput = ({ identifier, values, hidden, onChange, val }) => {
 };
 
 export const SimpleInput = ({ onChangeText, lIcon, value }) => {
+	console.log("Simple item", value);
+
+	function onChange({ target }) {
+		console.log("v", value, "target", target.value);
+		onChangeText(parseFloat(target.value));
+	}
+
 	return (
 		<SIContainer>
 			{lIcon && <Icons name={lIcon} size={20} />}
 			<SIInput
 				type="number"
-				value={value || 1}
-				onChange={(e) => {
-					onChangeText(parseInt(e.target.value));
-				}}
+				value={value}
+				onChange={onChange}
 				min="1"
 				max="10"
 				step="0.5"
@@ -126,12 +131,12 @@ export const SimpleInputOwnState = ({ id, onSubmit, defaultValue }) => {
 	const [text, setText] = useState(defaultValue);
 
 	useEffect(() => {
-		onSubmit(id, parseInt(text));
+		onSubmit(id, parseFloat(text));
 	}, []);
 
 	function onChange({ target }) {
 		setText(target.value);
-		onSubmit(id, parseInt(target.value));
+		onSubmit(id, parseFloat(target.value));
 	}
 
 	return (
@@ -143,7 +148,6 @@ export const SimpleInputOwnState = ({ id, onSubmit, defaultValue }) => {
 				min="1"
 				max="10"
 				step="0.5"
-				defaultValue='3'
 			/>
 			<SILabel>mts</SILabel>
 		</SIContainer>
