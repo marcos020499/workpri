@@ -69,13 +69,9 @@ export function FieldsInput() {
 					))}
 					<Final>
 						<Warning>*Tienes que llenar todos los campos</Warning>
-						<ButtonRed onClick={() => {}}>Calcular</ButtonRed>
+						<ButtonRed onClick={submitInf}>Calcular</ButtonRed>
 					</Final>
 				</TableHorizontal>
-				<Final>
-					<Warning>*Tienes que llenar todos los campos</Warning>
-					<ButtonRed onClick={submitInf}>Calcular</ButtonRed>
-				</Final>
 			</Container>
 		),
 		[colors]
