@@ -67,6 +67,10 @@ export function FieldsInput() {
 					{walles.map((el, index) => (
 						<Wall key={index + "top"} index={index + 1} identifier={el} />
 					))}
+					<Final>
+						<Warning>*Tienes que llenar todos los campos</Warning>
+						<ButtonRed onClick={() => {}}>Calcular</ButtonRed>
+					</Final>
 				</TableHorizontal>
 				<Final>
 					<Warning>*Tienes que llenar todos los campos</Warning>

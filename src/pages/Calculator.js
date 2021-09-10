@@ -55,21 +55,28 @@ const Banner = styled.img`
 	@media screen and (max-width: 1200px) {
 		display: initial;
 		width: 102%;
-		margin: -0.6vh 0 0 -1vh;
+		margin: -1% 0 0 -1.1%;
 		padding: none;
 		height: 30vw;
 	}
 	@media screen and (max-width: 1024px) {
 		display: initial;
 		width: 103%;
-		margin: -0.4vh 0 0 -0.8vh;
+		margin: -1% 0 0 -0.8vh;
 		padding: none;
 		height: 30vw;
 	}
 	@media screen and (max-width: 1024px) and (orientation: landscape) {
 		display: initial;
 		width: 105%;
-		margin: -0.6vh -1vw 0 -1vh;
+		margin: -1vh -1vw 0 -1vh;
+		padding: none;
+		height: 30vw;
+	}
+	@media screen and (max-width: 900px) and (orientation: landscape) {
+		display: initial;
+		width: 104%;
+		margin: -1.5vh 0px 0 -10px;
 		padding: none;
 		height: 30vw;
 	}
@@ -109,15 +116,21 @@ const Second = styled.div`
 		max-width: 100%;
 		min-height: 180vh;
 	}
+	@media screen and (max-width: 768px) and (orientation: landscape) {
+		padding: 0 0 5% 0;
+	}
 	@media screen and (max-width: 600px) {
 		min-width: 100%;
 		max-width: 100%;
 		min-height: 130vh;
 	}
+	@media screen and (max-width: 600px) and (orientation: landscape) {
+		padding: 0 0 50% 0;
+	}
 	@media screen and (max-width: 400px) {
 		min-width: 100%;
 		max-width: 100%;
-		min-height: 137vh;
+		min-height: auto;
 	}
 `;
 const First = styled.div`
@@ -146,32 +159,44 @@ const First = styled.div`
 	}
 	@media screen and (max-width: 1024px) and (orientation: landscape) {
 		margin: 5vw 0 0 0;
+		padding: 0 0 10% 0;
 		min-width: 100%;
 		max-width: 100%;
-		min-height: 180vh;
+		min-height: auto;
+	}
+	@media screen and (max-width: 900px) and (orientation: landscape) {
+		margin: 5vw 0 0 0;
+		padding: 0 0 40% 0;
+		min-width: 100%;
+		max-width: 100%;
+		min-height: auto;
 	}
 	@media screen and (max-width: 768px) {
 		margin: 5vw 0 0 0;
+		padding: 0 0 30% 0;
 		min-width: 100%;
 		max-width: 100%;
-		min-height: 106vh;
+		min-height: auto;
 	}
 	@media screen and (max-width: 768px) and (orientation: landscape) {
 		margin: 5vw 0 0 0;
 		min-width: 100%;
+		padding: 0 0 80% 0;
 		max-width: 100%;
-		min-height: 240vh;
+		min-height: auto;
 	}
 	@media screen and (max-width: 700px) and (orientation: landscape) {
 		margin: 5vw 0 0 0;
 		min-width: 100%;
 		max-width: 100%;
-		min-height: 245vh;
+		padding: 0 0 90% 0;
+		min-height: auto;
 	}
-	@media screen and (max-width: 400px) {
+	@media screen and (max-width: 600px) and (orientation: landscape) {
 		margin: 5vw 0 0 0;
+		padding: 0 0 140% 0;
 		min-width: 100%;
 		max-width: 100%;
-		min-height: 215vh;
+		min-height: auto;
 	}
 `;

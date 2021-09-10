@@ -131,11 +131,11 @@ const SecondPart = ({ area, handleInput }) => {
 								)
 						)}
 					</Items>
-				</PaintSize>
-				<ContainerButton>
+					<ContainerButton>
 					<h1> </h1>
 					<ButtonReed>Comprar</ButtonReed>
 				</ContainerButton>
+				</PaintSize>
 			</ContainerSecondSection>
 		</div>
 	);
