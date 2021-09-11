@@ -1,58 +1,19 @@
 import React, { useReducer, useState } from "react";
 import useItems from "../Hooks/Hooks";
-import {FieldsInput} from '../refactor/FieldsInput'
+import { FieldsInput } from "../refactor/FieldsInput";
 import useInput from "../Hooks/Inputs";
 import {
   ContainerHeader,
-  H2,
-  Td,
-  WallText,
-  InputNumber,
   ButtonRed,
-  InputColor,
-  Icon,
-  Image,
   Button,
-  Wall,
-  ButtonIncrement,
-  ButtonDecrement,
-  Buttons,
-  Selectors,
-  Table,
-  A,
   InputItem,
   ColorsItem,
-  Mts,
   Warning,
   Title,
-  Radior,
-  ButtonDiv,
   InputDiv,
-  IconColor,
-  ImageTable,
-  Smallm,
-  ImageM,
-  Final,
-  Meters,
-  InputColorTooltip,
-  PaintContainer,
-  TdFirst,
-  Options,
-  IconMeter,
-  ImageColor,
-  H2Color,
-  H2Puertas,
-  Mtss,
-  WallContainer,
 } from "./style";
 
 const ItemList = ({
-  state,
-  total0,
-  total1,
-  total2,
-  total3,
-  handleInput,
   calculateTotal,
 }) => {
   const { item, imper } = useItems();
@@ -83,7 +44,7 @@ const ItemList = ({
         </div>
         <Button>Borrar todo</Button>
       </InputDiv>
-      <FieldsInput/>
+      <FieldsInput />
 
       <Final>
         <Warning>*Tienes que llenar todos los campos</Warning>

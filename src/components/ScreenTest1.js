@@ -35,14 +35,14 @@ import styled from "styled-components";
 import useItems from "./Hooks/Hooks";
 import useInput from "./Hooks/Inputs";
 
-const ScreenTest1 = ({ }) => {
+const ScreenTest1 = ({}) => {
   const [addOptions, setAddOptions] = useState([1]);
   const [addOptions1, setAddOptions1] = useState([1]);
   const { item } = useItems();
   function appendInput() {
     setAddOptions((s) => [...s, s.lenght]);
   }
-  const { state, handleInput } = useInput()
+  const { state, handleInput } = useInput();
   function popInput() {
     setAddOptions((s) => s.slice(1));
   }
@@ -72,28 +72,33 @@ const ScreenTest1 = ({ }) => {
                       </WallText>
                     </WallContainer>
                     <Tooltip
-                  content={
-                    <div>
-                      <small>Colores a elegir</small>
-                      <div>
-                        {item.map((item, index) => index <= 2 && ((
-                          <ColorsItem key={index}>
-                            <InputColorTooltip
-                              style={{ backgroundColor: `${item.color}` }}
-                            />
-                          </ColorsItem>
-                        )))}
-                      </div>
-                    </div>
-                  }
-                  direction="right"
-                >
-                  <InputColor
-                    style={{
-                      backgroundColor:`${item.color}`
-                    }}
-                  />
-                </Tooltip>
+                      content={
+                        <div>
+                          <small>Colores a elegir</small>
+                          <div>
+                            {item.map(
+                              (item, index) =>
+                                index <= 2 && (
+                                  <ColorsItem key={index}>
+                                    <InputColorTooltip
+                                      style={{
+                                        backgroundColor: `${item.color}`,
+                                      }}
+                                    />
+                                  </ColorsItem>
+                                )
+                            )}
+                          </div>
+                        </div>
+                      }
+                      direction="right"
+                    >
+                      <InputColor
+                        style={{
+                          backgroundColor: `${item.color}`,
+                        }}
+                      />
+                    </Tooltip>
                   </Wall>
                 </TdFirst>
                 <Td>
@@ -246,7 +251,7 @@ const ScreenTest1 = ({ }) => {
                     })}
                   </Selectors>
                 </td>
-                </PaintContainer>
+              </PaintContainer>
             )
         )}
       </table>

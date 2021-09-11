@@ -54,7 +54,6 @@ export const InputDiv = styled.div`
   @media screen and (max-width: 768px) {
     padding: 0 4vw 7vw 4vw;
   }
-  
 `;
 export const Button = styled.button`
   min-width: 80px;
@@ -103,7 +102,6 @@ export const ButtonRed = styled.button`
   }
   @media screen and (max-width: 600px) {
     font-size: 14px;
-
   }
   &:hover {
     background-color: white;
@@ -371,7 +369,7 @@ export const Table = styled.div`
   text-align: center;
   justify-content: center;
   width: 90%;
-  padding: 3.5vw 0 .5vw 2vw;
+  padding: 3.5vw 0 0.5vw 2vw;
   min-height: 17vw;
   max-height: 17vw;
   @media screen and (max-width: 1367px) {

@@ -6,13 +6,13 @@ import infoReducer from "./infoReducer";
 import gestionReducer from "./gestionReducer";
 
 const store = configureStore({
-	reducer: {
-		colors: colorsReducer,
-		info: infoReducer,
-		gestion: gestionReducer,
-	},
+  reducer: {
+    colors: colorsReducer,
+    info: infoReducer,
+    gestion: gestionReducer,
+  },
 });
 
 export function MProvider({ children }) {
-	return <Provider store={store}>{children}</Provider>;
+  return <Provider store={store}>{children}</Provider>;
 }

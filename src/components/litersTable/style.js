@@ -1,90 +1,22 @@
 import styled from "styled-components";
 import Tooltip from "react-simple-tooltip";
-export const ContainerSecondSection = styled.div`
-  text-align: center;
-  @media screen and (max-width: 768px) {
-    padding: 30px 0 0 0;
-    width: 100%;
-  }
-`;
 
 export const Tooltips = styled(Tooltip)`
   color: #003366;
   @media screen and (max-width: 768px) {
   }
 `;
-export const ContainerButton = styled.div`
-  display: block;
-  justify-content: center;
-  align-items: center;
-  padding: 25px 0 0vw 0;
-  @media screen and (max-width: 1366px) {
-    padding: 50px 0 0vw 0;
-  }
-  @media screen and (max-width: 1024px) {
-    padding: 1vw 0 0vw 0;
-  }
-`;
-export const ButtonReed = styled.button`
-  min-width: 130px;
-  width: auto;
-  height: 45px;
-  letter-spacing: 0.5px;
-  line-height: 45px;
-  padding: 0 12px 0 12px;
-  font-size: 17px;
-  background: #b70033;
-  color: white;
-  font-family: "RadikalBold";
-  font-weight: bolder;
-  border: none;
-  cursor: pointer;
-  @media screen and (max-width: 1367px) {
-    margin: -1vw;
-  }
+export const Table = styled.table`
+  margin: auto;
   @media screen and (max-width: 768px) {
-    margin: 0vw 0 5vw 0;
-  }
-  @media screen and (max-width: 400px) {
-    margin: 0vw 0 5vw 0;
-  }
-  &:hover {
-    background-color: white;
-    color: black;
-    border: 1px solid black;
   }
 `;
-export const PaintSize = styled.table`
-  font-family: "Radikal1";
-  justify-content: center;
-  text-align: center;
-  padding: 0 0 4vh 0;
-  min-height: 18vw;
-  max-height: 18vw;
-  @media screen and (max-width: 1367px) {
-    min-height: 12vw;
-    max-height: 12vw;
-  }
-
-  @media screen and (max-width: 768px) {
-    padding: 0 0 5vw 0;
-  }
-  @media screen and (max-width: 1024px) {
-    padding: 0 0 0vw 0;
-  }
-  @media screen and (max-height: 769px) {
-    padding: 0 0 1vh 0;
-  }
-`;
-export const Recipients = styled.tr`
+export const RowRecipients = styled.tr`
   font-family: "Radikal1";
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  margin: 0vw 0.5vw 0vh 0;
-  position: relative;
-  left: -10px;
-
+  margin: 0;
   @media screen and (max-width: 1367px) {
     margin: 0 0.5vh 0vw 0;
   }
@@ -93,8 +25,10 @@ export const Recipients = styled.tr`
     left: 5px;
   }
   @media screen and (max-width: 768px) {
-  } 
+  }
 `;
+export const Row = styled.tr`
+`
 export const Image = styled.img`
   width: 100px;
   color: white;
@@ -104,7 +38,6 @@ export const Image = styled.img`
 `;
 export const ImageQuantity = styled.img`
   width: 7vh;
-  color: white;
   @media screen and (max-width: 768px) {
     width: 10vh;
     margin: 0 0vw 0 0vw;
@@ -116,8 +49,6 @@ export const ImageQuantity = styled.img`
 `;
 export const ImageQuantity4L = styled.img`
   width: 9vh;
-  color: white;
-
   @media screen and (max-width: 1367px) {
     width: 8vh;
     margin: 1vw 1vw 0 0vw;
@@ -129,7 +60,6 @@ export const ImageQuantity4L = styled.img`
 `;
 export const ImageQuantity19L = styled.img`
   width: 10vh;
-  color: white;
   @media screen and (max-width: 1367px) {
     width: 8vh;
     margin: 1vw 1vw 0 0vw;
@@ -140,37 +70,8 @@ export const ImageQuantity19L = styled.img`
     margin: 0 0vw 0 0vw;
   }
 `;
-export const ImagePaint = styled.img`
-  width: 7vw;
-  @media screen and (max-width: 1367px) {
-    width: 7vw;
-  }
-  @media screen and (max-width: 1024px) {
-    width: 120px;
-  }
-`;
-export const Banner = styled.img`
-  width: 101.5%;
-  height: auto;
-  margin: -0.56vh 0 0 -.5vh;
-  position: relative;
-  left: -0.08vw;
-  @media screen and (max-width: 1200px) {
-    display: none;
-  }
-
-  @media screen and (max-width: 1024px) {
-    display: none;
-  }
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-  
-  
-`;
 export const Size = styled.div`
   font-size: 1.1vw;
-  margin: 0 0 0 -1vw;
   @media screen and (max-width: 768px) {
     text-align: center;
     align-items: center;
@@ -210,7 +111,6 @@ export const InputArea = styled.input`
   width: 6vw;
   font-size: 1.3vh;
   padding: 0.3vh 0 0.3vh 0;
-  margin: 0 4px 0 0;
   border-radius: 7px;
   border: none;
   text-align: center;
@@ -247,57 +147,7 @@ export const InputAreaLiters = styled.input`
     margin: 1vh 1vh 1vh 1vh;
   }
 `;
-export const H1 = styled.h1`
-  font-family: "RadikalBold";
-  font-size: 35px;
-  color: white;
-  letter-spacing: 4px;
-  @media screen and (max-width: 768px) {
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-  }
-  @media screen and (max-width: 1024px) {
-    padding: 30px 0 0 0;
-    margin: 1vh 1vh 1vh 1vh;
-  }
-`;
-export const H2 = styled.h2`
-  margin: -20px 0 0 0;
-  font-family: "RadikalBold";
-  color: #2098ae;
-  font-size: 20px;
-  @media screen and (max-width: 1024px) and (orientation: landscape){
-    font-size: 17px;
-  }
-  @media screen and (max-height: 769px) {
-    margin: -30px 0 1vh 0;
-  }
-  @media screen and (max-width: 1024px) {
-    padding: 10px 0 0 0;
-    font-size: 20px;
-  }
-  @media screen and (max-width: 768px) {
-    font-size: 15px;
-    display: flex;
-    margin: none;
-    padding: 10vw 0 0 0;
-    justify-content: center;
-  }
-`;
-export const H = styled.h2`
-  margin: -5px 0 0 0;
-  letter-spacing: 2px;
-  font-family: "RadikalBold";
-  color: white;
-  font-size: 20px;
-  @media screen and (max-width: 768px) {
-    font-size: 14px;
-    display: flex;
-    padding: 0 0 20px 0;
-    justify-content: center;
-  }
-`;
+
 export const Description = styled.h3`
   font-size: 0.7vw;
   color: white;
@@ -309,7 +159,6 @@ export const Description = styled.h3`
   @media screen and (max-width: 768px) {
     font-size: 12px;
   }
-
 `;
 export const DescriptionText = styled.h3`
   font-size: 1.4vh;
@@ -351,7 +200,6 @@ export const ThDescription = styled.th`
   padding: 0 0 0 10px;
   margin: -0.5vw 0 3vw 0;
 
-
   @media screen and (max-height: 769px) {
     margin: 0vh 0 1vh 0;
   }
@@ -363,17 +211,19 @@ export const ThDescription = styled.th`
   }
 `;
 export const ThDescriptionText = styled.th`
-margin: 2vw;
-
+  margin: 2vw;
   @media screen and (max-width: 768px) {
     font-size: 2.8vw;
     padding: 0;
     margin: none;
   }
 `;
-export const TrDes = styled.tr`
+export const RowDes = styled.tr`
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  position: relative;
+  left: -5px;
   @media screen and (max-width: 1200px) {
     position: relative;
     left: -15px;
@@ -389,7 +239,6 @@ export const TrDes = styled.tr`
     left: 0;
     justify-content: center;
     position: relative;
-
   }
 `;
 export const Quantity = styled.p`
@@ -424,7 +273,7 @@ export const ContainerItems = styled.div`
   }
   @media screen and (max-width: 1024px) {
     min-width: 25vw;
-    max-width:25vw;
+    max-width: 25vw;
     display: inline-block;
     padding: 3vw 0 0vh 0;
   }
@@ -434,7 +283,7 @@ export const ContainerItems = styled.div`
     min-width: none;
     display: flex;
     display: flex;
-  justify-content: center;
+    justify-content: center;
     min-width: 90%;
     min-height: 90%;
     flex-direction: row;
@@ -444,7 +293,7 @@ export const ContainerItems = styled.div`
     min-width: none;
     display: flex;
     display: flex;
-  justify-content: center;
+    justify-content: center;
     min-width: 90%;
     min-height: 90%;
     flex-direction: row;
@@ -467,7 +316,6 @@ export const Items = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
-    
   }
   @media screen and (max-width: 400px) {
     display: flex;

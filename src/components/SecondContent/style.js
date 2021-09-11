@@ -93,7 +93,7 @@ export const Recipients = styled.tr`
     left: 5px;
   }
   @media screen and (max-width: 768px) {
-  } 
+  }
 `;
 export const Image = styled.img`
   width: 100px;
@@ -152,7 +152,7 @@ export const ImagePaint = styled.img`
 export const Banner = styled.img`
   width: 101.5%;
   height: auto;
-  margin: -0.56vh 0 0 -.5vh;
+  margin: -0.56vh 0 0 -0.5vh;
   position: relative;
   left: -0.08vw;
   @media screen and (max-width: 1200px) {
@@ -165,8 +165,6 @@ export const Banner = styled.img`
   @media screen and (max-width: 768px) {
     display: none;
   }
-  
-  
 `;
 export const Size = styled.div`
   font-size: 1.1vw;
@@ -267,7 +265,7 @@ export const H2 = styled.h2`
   font-family: "RadikalBold";
   color: #2098ae;
   font-size: 20px;
-  @media screen and (max-width: 1024px) and (orientation: landscape){
+  @media screen and (max-width: 1024px) and (orientation: landscape) {
     font-size: 17px;
   }
   @media screen and (max-height: 769px) {
@@ -309,7 +307,6 @@ export const Description = styled.h3`
   @media screen and (max-width: 768px) {
     font-size: 12px;
   }
-
 `;
 export const DescriptionText = styled.h3`
   font-size: 1.4vh;
@@ -351,7 +348,6 @@ export const ThDescription = styled.th`
   padding: 0 0 0 10px;
   margin: -0.5vw 0 3vw 0;
 
-
   @media screen and (max-height: 769px) {
     margin: 0vh 0 1vh 0;
   }
@@ -363,7 +359,7 @@ export const ThDescription = styled.th`
   }
 `;
 export const ThDescriptionText = styled.th`
-margin: 2vw;
+  margin: 2vw;
 
   @media screen and (max-width: 768px) {
     font-size: 2.8vw;
@@ -389,7 +385,6 @@ export const TrDes = styled.tr`
     left: 0;
     justify-content: center;
     position: relative;
-
   }
 `;
 export const Quantity = styled.p`
@@ -424,7 +419,7 @@ export const ContainerItems = styled.div`
   }
   @media screen and (max-width: 1024px) {
     min-width: 25vw;
-    max-width:25vw;
+    max-width: 25vw;
     display: inline-block;
     padding: 3vw 0 0vh 0;
   }
@@ -434,7 +429,7 @@ export const ContainerItems = styled.div`
     min-width: none;
     display: flex;
     display: flex;
-  justify-content: center;
+    justify-content: center;
     min-width: 90%;
     min-height: 90%;
     flex-direction: row;
@@ -444,7 +439,7 @@ export const ContainerItems = styled.div`
     min-width: none;
     display: flex;
     display: flex;
-  justify-content: center;
+    justify-content: center;
     min-width: 90%;
     min-height: 90%;
     flex-direction: row;
@@ -467,7 +462,6 @@ export const Items = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
-    
   }
   @media screen and (max-width: 400px) {
     display: flex;
