@@ -5,16 +5,32 @@ export const getPresetation = async () => {
       "https://api.tiendaenlineaprisa.mx/calcdemo/calculadora/inicializar?origen=e&origen_id=erd&color_id=611"
     );
     const data = await res.json();
+    console.log('data', data)
     if (data.hasOwnProperty("colores")) {
       linea_id = data.linea_producto?.id;
-      return data.colores;
+      return data;
     }
     return [];
   } catch (e) {
     return [];
   }
 };
-
+export const getPresentation = async () => {
+  try {
+    const res = await fetch(
+      "https://api.tiendaenlineaprisa.mx/calcdemo/calculadora/inicializar?origen=e&origen_id=erd&color_id=611"
+    );
+    const data = await res.json();
+    if (data.hasOwnProperty("linea_producto")) {
+      linea_id = data.linea_producto?.id;
+      return data.linea_producto;
+    }
+    console.log('data', data)
+    return [];
+  } catch (e) {
+    return [];
+  }
+};
 export const sendCalculator = async (body) => {
   try {
     const data = {

@@ -15,14 +15,19 @@ import { useSelector } from "react-redux";
 const SecondPart = () => {
 	//const { total } = useCalculatorField();
 	const result = useSelector((state) => state.result);
+	const linea = useSelector((state) => state.linea);
 
 	return (
 		<div>
-			<Banner
-				src={
-					"https://res.cloudinary.com/marcos020499/image/upload/v1629305103/BANNER_SUPERIOR-01-01_qc1rs2.png"
-				}
-			/>
+	
+						<Banner
+					
+						src={
+							''
+						}
+					/>
+				
+
 			<ContainerSecondSection>
 				<H1>RESULTADO</H1>
 				<H2>PRISA TE RECOMIENDA</H2>

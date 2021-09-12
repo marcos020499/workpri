@@ -36,5 +36,5 @@ export default reducer;
 
 export const fetchColors = () => async (dispatch) => {
 	const colors = await getPresetation();
-	dispatch(putColors(colors.concat([])));
+  dispatch(putColors(colors.concat([])));
 };
