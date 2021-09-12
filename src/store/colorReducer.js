@@ -19,13 +19,14 @@ import { getPresetation } from "../services/api";
 const initialState = [];
 
 const colorSlice = createSlice({
-  name: "colors",
-  initialState,
-  reducers: {
-    putColors: (state, action) => {
-      return action.payload || state;
-    },
-  },
+	name: "colors",
+	initialState,
+	reducers: {
+		putColors: (state, action) => {
+			console.log(action);
+			return action.payload || state;
+		},
+	},
 });
 
 const { actions, reducer } = colorSlice;
@@ -34,6 +35,6 @@ const { putColors } = actions;
 export default reducer;
 
 export const fetchColors = () => async (dispatch) => {
-  const colors = await getPresetation();
-  dispatch(putColors(colors.concat([])));
+	const colors = await getPresetation();
+	dispatch(putColors(colors.concat([])));
 };
