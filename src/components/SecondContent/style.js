@@ -150,11 +150,8 @@ export const ImagePaint = styled.img`
   }
 `;
 export const Banner = styled.img`
-  width: 101.5%;
+  width: 100%;
   height: auto;
-  margin: -0.56vh 0 0 -0.5vh;
-  position: relative;
-  left: -0.08vw;
   @media screen and (max-width: 1200px) {
     display: none;
   }

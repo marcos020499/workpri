@@ -4,25 +4,21 @@ import { FieldsInput } from "../components/refactor/FieldsInput";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { fetchColors } from "../store/colorReducer";
+import { useSelector } from "react-redux";
 
 const Index = () => {
   const dispatch = useDispatch();
-
+  const { colors } = useSelector((state) => state);
+	const { linea_producto } = colors;
   useEffect(() => {
     dispatch(fetchColors());
   }, []);
 
-  const Ban = () => (
-    <Banner
-      src={
-        "https://res.cloudinary.com/marcos020499/image/upload/v1629305103/BANNER_SUPERIOR-01-01_qc1rs2.png"
-      }
-    />
-  );
+  
 
   return (
     <div>
-      <Ban />
+      {linea_producto && <Ban src={linea_producto.url_imagen_inspiracion} />}
       <Container>
         <First>
           <FieldsInput />
@@ -50,41 +46,11 @@ const Container = styled.div`
   }
 `;
 
-const Banner = styled.img`
+const Ban = styled.img`
   display: none;
   @media screen and (max-width: 1200px) {
     display: initial;
-    width: 102%;
-    margin: -1% 0 0 -1.1%;
-    padding: none;
-    height: 30vw;
-  }
-  @media screen and (max-width: 1024px) {
-    display: initial;
-    width: 103%;
-    margin: -1% 0 0 -0.8vh;
-    padding: none;
-    height: 30vw;
-  }
-  @media screen and (max-width: 1024px) and (orientation: landscape) {
-    display: initial;
-    width: 105%;
-    margin: -1vh -1vw 0 -1vh;
-    padding: none;
-    height: 30vw;
-  }
-  @media screen and (max-width: 900px) and (orientation: landscape) {
-    display: initial;
-    width: 104%;
-    margin: -1.5vh 0px 0 -10px;
-    padding: none;
-    height: 30vw;
-  }
-  @media screen and (max-width: 768px) {
-    display: initial;
-    width: 102%;
-    margin: -1.2vh 0 0 -0.5vh;
-    padding: none;
+    width: 100%;
     height: 30vw;
   }
 `;
