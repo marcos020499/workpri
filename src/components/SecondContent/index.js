@@ -16,7 +16,19 @@ const SecondPart = () => {
 	//const { total } = useCalculatorField();
 	const { result, colors } = useSelector((state) => state);
 	const { linea_producto } = colors;
+	const stateColors = useSelector((state) => state.colors);
+	const colors1 = stateColors.colores || [];
 
+	function getResult() {
+		return result.map ((el, i) => (
+		<SecondpartLiters key={i + "pintura"} {...el} {...i} />
+		 ))
+	}  
+	function getColors() {
+		return colors1.map ((el, i) => (
+		<SecondpartLiters key={i + "pintura"} {...el} {...i} />
+		))
+	} 
 	return (
 		<div>
 			{linea_producto && <Banner src={linea_producto.url_imagen_inspiracion} />}
@@ -27,9 +39,8 @@ const SecondPart = () => {
 				{linea_producto && <ImagePaint src={linea_producto.url_imagen} />}
 				<H>Elige la presentación </H>
 				<div style={{ display: "flex" }}>
-					{result.map((el, i) => (
-						<SecondpartLiters key={i + "pintura"} {...el} />
-					))}
+					{result.length === 0 ? getColors(): getResult()
+				}
 				</div>
 				<ContainerButton>
 					<h1> </h1>

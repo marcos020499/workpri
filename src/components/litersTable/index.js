@@ -1,7 +1,6 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
 import TooltipOver from "../Tooltip/TooltipOver";
-
 import {
 	InputArea,
 	Description,
@@ -13,8 +12,6 @@ import {
 	RowDes,
 	RowRecipients,
 	InputAreaLiters,
-	ImageQuantity19L,
-	ImageQuantity4L,
 	ContainerItems,
 	InputColorName,
 	DescriptionText,
@@ -24,14 +21,20 @@ import {
 	Table,
 } from "./style";
 
+
 const Liters = ({ color_id, nombre, rgb, area, litros, presentaciones }) => {
+	const stateColors = useSelector((state) => state.colors);
+	const colors1 = stateColors.colores || [];
+	const { result } = useSelector((state) => state);
+
 	return (
-		<Table>
+		<Table style={{margin: colors1.length === 2 || result.length === 2 ? '0 0 0 12%': 'auto' }}>
+			
 			<Items>
 				<ContainerItems>
 					<Row>
 						<ThDescription>
-							<TooltipOver content={""} direction="top">
+							<TooltipOver content={nombre} direction="top">
 								<DescriptionText>
 									<InputColorName style={{ backgroundColor: rgb }} />
 									{nombre}
@@ -39,8 +42,8 @@ const Liters = ({ color_id, nombre, rgb, area, litros, presentaciones }) => {
 							</TooltipOver>
 						</ThDescription>
 					</Row>
-
 					<RowDes>
+					
 						<ThDescription>
 							<Description>Area</Description>
 							<InputArea type="text" value={area} readonly="readonly" />
@@ -51,11 +54,10 @@ const Liters = ({ color_id, nombre, rgb, area, litros, presentaciones }) => {
 							<InputAreaLiters type="text" value={litros} readonly="readonly" />
 						</ThDescription>
 					</RowDes>
-
-					<RowRecipients>
-						{presentaciones.map((el, i) =>
-							el.cantidad ? <Can {...el} /> : null
-						)}
+					<RowRecipients >
+						{presentaciones.map((ele, index) =>
+							 index <= ele.presentacion_id ? <Can {...ele} />: null
+							 )}
 					</RowRecipients>
 				</ContainerItems>
 			</Items>
@@ -72,13 +74,17 @@ function Can({ presentacion_id, litros, cantidad }) {
 	}["_" + litros];
 
 	return (
-		<TdSize>
+		<TdSize >
 			<Size>
 				<ImageQuantity
 					src={
+						litros === 19 ?
+						'https://res.cloudinary.com/marcos020499/image/upload/v1629305104/BOTES_PINTURA-01_dae6zr.svg'
+						:
 						"https://res.cloudinary.com/marcos020499/image/upload/v1629305104/BOTES_PINTURA-02_wvzqnb.svg"
 					}
 					size={litros}
+					style={{ position: 'relative', left: '-10%' }}
 				/>
 				<Quantity>{name}</Quantity>
 				<Input type="text" defaultValue="0" value={cantidad} />

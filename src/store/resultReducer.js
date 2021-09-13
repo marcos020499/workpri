@@ -28,7 +28,8 @@ import { fetchCalculateData } from "./gestionReducer";
     }
 ]
 */
-const initialState = [];
+const initialState = [
+];
 
 const resultSlice = createSlice({
 	name: "result",

@@ -129,6 +129,7 @@ export const InputArea = styled.input`
 export const InputAreaLiters = styled.input`
 	font-family: "Radikal1";
 	width: 3.5vw;
+	text-align: center;
 	font-size: 1.3vh;
 	padding: 0.3vh 0 0.3vh 0;
 	border-radius: 7px;

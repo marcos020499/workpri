@@ -91,7 +91,6 @@ function Wall({ index, identifier }) {
 	);
 	const stateColors = useSelector((state) => state.colors);
 	const colors = stateColors.colores || [];
-	console.log(colors);
 
 	const getColorByHex = (array, c) => {
 		return array.find(({ rgb }) => {
@@ -125,7 +124,7 @@ function Wall({ index, identifier }) {
 
 			-- press calculate
 		*/
-
+    
 		//select/deselect
 
 		if (!select) {
@@ -142,7 +141,6 @@ function Wall({ index, identifier }) {
 			dispatch({ edit: false });
 			storeDistpach(appendWallAction(inf));
 		}
-
 		// onCalculate
 		if (index === walles.length && !finishRecopilation) {
 			storeDistpach(endCalculatorAction());
@@ -215,11 +213,11 @@ function Wall({ index, identifier }) {
 					</Content>
 				</TD>
 			</TBody>
+			
 		),
 		[select]
 	);
 }
-
 const Container = styled.div`
 	max-width: 768;
 	@media screen and (max-width: 768px) {

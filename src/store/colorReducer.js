@@ -16,7 +16,32 @@ import { getPresetation } from "../services/api";
   }
 */
 
-const initialState = {};
+const initialState = [
+  {
+    "id": 611,
+    "rgb": "#495073",
+    "nombre": "POLIPRISA® Blue Purple Mate",
+    "area": 0,
+    "litros": 0,
+    "presentaciones": [
+      {
+        "litros": 19,
+        "presentacion_id": 614,
+        "cantidad": 0
+      },
+      {
+        "litros": 4,
+        "presentacion_id": 613,
+        "cantidad": 0
+      },
+      {
+        "litros": 4,
+        "presentacion_id": 612,
+        "cantidad": 0
+      }
+    ]
+  }
+]
 
 const colorSlice = createSlice({
 	name: "colors",
