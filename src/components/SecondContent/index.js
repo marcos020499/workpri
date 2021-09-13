@@ -14,30 +14,17 @@ import { useSelector } from "react-redux";
 
 const SecondPart = () => {
 	//const { total } = useCalculatorField();
-	const result = useSelector((state) => state.result);
-	const linea = useSelector((state) => state.linea);
+	const { result, colors } = useSelector((state) => state);
+	const { linea_producto } = colors;
 
 	return (
 		<div>
-	
-						<Banner
-					
-						src={
-							''
-						}
-					/>
-				
+			{linea_producto && <Banner src={linea_producto.url_imagen_inspiracion} />}
 
 			<ContainerSecondSection>
 				<H1>RESULTADO</H1>
 				<H2>PRISA TE RECOMIENDA</H2>
-				<ImagePaint
-					src={
-						false
-							? "https://res.cloudinary.com/marcos020499/image/upload/v1629305104/BANNER_SUPERIOR-02_okd6me.png"
-							: "https://res.cloudinary.com/marcos020499/image/upload/v1629305104/BANNER_SUPERIOR-01_tlx0kg.png"
-					}
-				/>
+				{linea_producto && <ImagePaint src={linea_producto.url_imagen} />}
 				<H>Elige la presentación </H>
 				<div style={{ display: "flex" }}>
 					{result.map((el, i) => (
