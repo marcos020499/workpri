@@ -27,6 +27,12 @@ function useInput() {
     dispatch({ [e.target.name]: parseInt(e.target.value) || 0 });
     console.log(e.target.name);
   };
+
+
+
+
+
+  
   const [total0, setTotal0] = useState(0);
   const [total1, setTotal1] = useState(0);
   const [total2, setTotal2] = useState(0);

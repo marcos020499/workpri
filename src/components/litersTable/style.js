@@ -338,3 +338,44 @@ export const InputColorName = styled.input`
 		margin: 0vw 1vw 0 1vw;
 	}
 `;
+export const ButtonReed = styled.button`
+  min-width: 130px;
+  width: auto;
+  height: 45px;
+  letter-spacing: 0.5px;
+  line-height: 45px;
+  padding: 0 12px 0 12px;
+  font-size: 17px;
+  background: #b70033;
+  color: white;
+  font-family: "RadikalBold";
+  font-weight: bolder;
+  border: none;
+  cursor: pointer;
+  @media screen and (max-width: 1367px) {
+    margin: -1vw;
+  }
+  @media screen and (max-width: 768px) {
+    margin: 0vw 0 5vw 0;
+  }
+  @media screen and (max-width: 400px) {
+    margin: 0vw 0 5vw 0;
+  }
+  &:hover {
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+  }
+`;
+export const ContainerButton = styled.div`
+  display: block;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 0 0vw 0;
+  @media screen and (max-width: 1366px) {
+    padding: 50px 0 0vw 0;
+  }
+  @media screen and (max-width: 1024px) {
+    padding: 1vw 0 0vw 0;
+  }
+`;

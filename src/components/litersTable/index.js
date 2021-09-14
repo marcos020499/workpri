@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useReducer} from "react";
 import { useSelector } from "react-redux";
 import TooltipOver from "../Tooltip/TooltipOver";
 import {
@@ -19,6 +19,8 @@ import {
 	TdSize,
 	ThDescription,
 	Table,
+	ContainerButton,
+	ButtonReed
 } from "./style";
 
 
@@ -26,8 +28,10 @@ const Liters = ({ color_id, nombre, rgb, area, litros, presentaciones }) => {
 	const stateColors = useSelector((state) => state.colors);
 	const colors1 = stateColors.colores || [];
 	const { result } = useSelector((state) => state);
-
+	
+	
 	return (
+		<div>
 		<Table style={{margin: colors1.length === 2 || result.length === 2 ? '0 0 0 12%': 'auto' }}>
 			
 			<Items>
@@ -62,11 +66,27 @@ const Liters = ({ color_id, nombre, rgb, area, litros, presentaciones }) => {
 				</ContainerItems>
 			</Items>
 		</Table>
+	</div>
 	);
 };
 export default Liters;
 
+
 function Can({ presentacion_id, litros, cantidad }) {
+	const initialState = {
+		cantidad1L: 0,
+		cantidad4L: '',
+		cantidad19L: '',
+	  };
+	
+	const reducer = (s, a) => ({ ...s, ...a });
+  	const [state, dispatch] = useReducer(reducer, initialState);
+
+  	const handleInput = (e) => {
+    	dispatch({ [e.target.name]: parseInt(e.target.value) || 0 });
+    	console.log(e.target.name);
+  	};
+
 	const name = {
 		_1: "1L",
 		_4: "4L",
@@ -87,7 +107,7 @@ function Can({ presentacion_id, litros, cantidad }) {
 					style={{ position: 'relative', left: '-10%' }}
 				/>
 				<Quantity>{name}</Quantity>
-				<Input type="text" defaultValue="0" value={cantidad} />
+				<Input type="text" defaultValue="0" value={ cantidad } name={litros===19?'cantidad19L':litros===4?'cantidad4L':litros===1?'cantidad1L':''} onChange={handleInput}/>
 			</Size>
 		</TdSize>
 	);

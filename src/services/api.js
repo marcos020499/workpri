@@ -3,8 +3,8 @@ export const getPresetation = async () => {
 	try {
 		const res = await fetch(
 			//'https://api.tiendaenlineaprisa.mx/calcdemo/calculadora/inicializar?origen=e&origen_id=erd&color_id=611'
-			//"https://api.tiendaenlineaprisa.mx/calcdemo/calculadora/inicializar?origen=k&origen_id=erd&color_id=fa4tg"
-			'https://api.tiendaenlineaprisa.mx/calcdemo/calculadora/inicializar?origen=k&origen_id=erd&color_id=sa23d'
+			"https://api.tiendaenlineaprisa.mx/calcdemo/calculadora/inicializar?origen=k&origen_id=erd&color_id=fa4tg"
+			//'https://api.tiendaenlineaprisa.mx/calcdemo/calculadora/inicializar?origen=e&origen_id=erd&color_id=611'
 		);
 		const data = await res.json();
 		console.log("data", data);
@@ -33,15 +33,16 @@ export const getPresentation = async () => {
 		return [];
 	}
 };
-export const sendCalculator = async (body) => {
+export const sendCalculator = async (body, body1) => {
 	try {
 		const data = {
 			origen: "e",
 			origen_id: "erd",
-			color_id: "611",
 			linea_id: "ad",
-			paredes: body,
+			colores: [{color_id: body1,
+			paredes: body}],
 		};
+
 		console.log("sendCalculator", data);
 		const res = await fetch(
 			"https://api.tiendaenlineaprisa.mx/calcdemo/calculadora/calcular",

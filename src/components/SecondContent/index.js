@@ -29,6 +29,17 @@ const SecondPart = () => {
 		<SecondpartLiters key={i + "pintura"} {...el} {...i} />
 		))
 	} 
+	function getPresent() {
+		return result.map ((element) => (
+			element.presentaciones.map((elsn)=>(
+				elsn.presentacion_id + ':' + elsn.cantidad
+			))
+		))
+	}
+	function templateUrl(){
+		let url = `http://ec2-44-242-66-211.us-west-2.compute.amazonaws.com/finalizar-compra/?add-to-cart=${getPresent()},`
+		return url
+	}
 	return (
 		<div>
 			{linea_producto && <Banner src={linea_producto.url_imagen_inspiracion} />}
@@ -44,7 +55,7 @@ const SecondPart = () => {
 				</div>
 				<ContainerButton>
 					<h1> </h1>
-					<ButtonReed>Comprar</ButtonReed>
+					<a href={templateUrl()}><ButtonReed>Comprar</ButtonReed></a>
 				</ContainerButton>
 			</ContainerSecondSection>
 		</div>
