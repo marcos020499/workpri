@@ -238,58 +238,34 @@ const SIContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: baseline;
-	padding: 0.5vw 0 0 1vw;
-	@media screen and (max-width: 1367px) {
-		padding: 0 0 0 0.5vw;
-	}
-	@media screen and (max-width: 1200px) {
-		padding: 0 0 0 3vw;
-	}
+	padding: 0.5vw 0 0 0;
+	position: relative;
+	left: 15%;
+	align-items: flex-start;
 	@media screen and (max-width: 768px) {
-		padding: 0 0 0 2vw;
-		justify-content: space-between;
+		left: 0;
+		padding: 1vw 0 0 0;
 	}
 	@media screen and (max-width: 600px) {
-		padding: 0 0 0 1vw;
-	}
-	@media screen and (max-width: 400px) {
-		padding: 0.1vw 0 0 1vw;
-	}
-	@media screen and (max-width: 350px) {
-		padding: 0vw -2vw 0 0vw;
+		left: 0;
+		padding: 0.5vw -30px 0 0;
 	}
 `;
-
 const SIInput = styled.input`
 	border: none;
 	border-bottom: 1px solid #003366;
-	max-width: 1.8vw;
-	max-height: 1.8vw;
+	max-width: 33px;
+	min-height: auto;
 	font-size: 13px;
 	text-align: end;
 	@media screen and (max-width: 1367px) {
-		max-width: 1.8vw;
-		max-height: 1.8vw;
-	}
-	@media screen and (max-width: 1200px) {
-		max-width: 3vw;
-		max-height: 3vw;
-	}
-	@media screen and (max-width: 768px) {
-		max-width: 4vw;
-		font-size: 13px;
+		max-width: 35px;
+		font-size: 12px;
 	}
 	@media screen and (max-width: 600px) {
-		max-width: 4vw;
-		margin: 0 -4vw 0 0;
-	}
-	@media screen and (max-width: 400px) {
-		max-width: 4vw;
-		padding: 0vw -7vw 0 0;
-	}
-	@media screen and (max-width: 350px) {
-		max-width: 4vw;
-		padding: 0vw -10vw 0 0;
+		text-align: center;
+		max-width: 15px;
+		font-size: 12px;
 	}
 `;
 const SILabel = styled.p`
@@ -299,15 +275,15 @@ const SILabel = styled.p`
 	@media screen and (max-width: 600px) {
 		position: relative;
 		top: 12px;
-		left: 17px;
+		left: -5px;
 	}
 	@media screen and (max-width: 400px) {
 		top: 0;
-		left: 30px;
+		left: 0px;
 	}
 	@media screen and (max-width: 350px) {
 		top: 0;
-		left: 20px;
+		left: 0px;
 	}
 `;
 
@@ -358,11 +334,17 @@ const Row = styled.div`
 	flex-direction: row;
 	position: relative;
 	left: -5px;
+	@media screen and (max-width: 1200px) {
+		margin: 0 2vw 0 2vw;
+	}
+	@media screen and (max-width: 1200px) {
+		margin: 0 1.7vw 0 1.7vw;
+	}
 	@media screen and (max-width: 768px) {
 		margin: 0;
 	}
 	@media screen and (max-width: 600px) {
-		margin: 0 -10px 0 0;
+		margin: 0 -5px 0 0;
 	}
 	@media screen and (max-width: 400px) {
 		display: flex;
@@ -373,14 +355,24 @@ const RowSimple = styled.div`
 	display: flex;
 	flex-direction: row;
 	position: relative;
-	left: -5px;
-	max-height: 5vw;
+	top: 7px;
+	left: -14%;
 	margin: -0.9vw 0 0 0;
+	@media screen and (max-width: 1200px) {
+		margin: 0 3vw 0 3vw;
+		left: -20%;
+	}
+	@media screen and (max-width: 1024px) {
+		margin: 0 1.5vw 0 1.5vw;
+		left: -18%;
+	}
 	@media screen and (max-width: 768px) {
 		margin: -0.6vw 0vw 0 -1vw;
+		left: 3%;
 	}
 	@media screen and (max-width: 600px) {
-		margin: -0.4vw 3vw 0 1vw;
+		margin: -0.4vw -4vw 0 1vw;
+		left: -3%;
 	}
 	@media screen and (max-width: 400px) {
 		display: flex;
@@ -412,22 +404,23 @@ const Wall = styled(Row)`
 	justify-content: space-between;
 	min-width: 140px;
 	margin: 0 0 0 3vw;
-	padding: 0px 10px 3.5vw 0;
+	padding: 0px 1px 3.5vw 0;
 	@media screen and (max-width: 1367px) {
 		margin: 0 0 0 2vw;
 	}
 	@media screen and (max-width: 1200px) {
-		margin: 0 2vw 2vw 7vw;
+		margin: 0 4vw 55px 7vw;
 	}
 	@media screen and (max-width: 1024px) {
-		margin: 0 3vw 2.8vw 6vw;
+		margin: 0 3vw 55px 6vw;
 	}
 	@media screen and (max-width: 768px) {
 		margin: 0 4vw 55px 3vw;
 	}
 	@media screen and (max-width: 600px) {
-		margin: 0 11px 60px 2vw;
+		margin: 0 13px 60px 2vw;
 		max-width: 55px;
+		font-size: 10px;
 		min-width: 55px;
 	}
 	@media screen and (max-width: 400px) {

@@ -51,6 +51,7 @@ export function FieldsInput() {
 							</ColorsItem>
 						))}
 					</div>
+					
 					<Button onClick={() => {}}>Borrar todo</Button>
 				</InputDiv>
 				<TableHorizontal>
@@ -74,11 +75,11 @@ export function FieldsInput() {
 					{walles.map((el, index) => (
 						<Wall key={index + "top"} index={index + 1} identifier={el} />
 					))}
-					<Final>
+				</TableHorizontal>
+				<Final>
 						<Warning>*Tienes que llenar todos los campos</Warning>
 						<ButtonRed onClick={submitInf}>Calcular</ButtonRed>
 					</Final>
-				</TableHorizontal>
 			</Container>
 		),
 		[colors]
@@ -100,9 +101,19 @@ function Wall({ index, identifier }) {
 	};
 
 	const storeDistpach = useDispatch();
-
+	
 	const [color, setColor] = useState(null);
-	const [select, setSelect] = useState(null);
+	const [select, setSelect] = useState(index===1&&colors.length===0?setTimeout(() => {
+		setSelect(true);
+	  }, 400): colors.length===3&&index===3?setTimeout(() => {
+		setSelect(true);
+	  }, 400): colors.length===3&&index===2?setTimeout(() => {
+		setSelect(true);
+	  }, 400): colors.length===2&&index===2?setTimeout(() => {
+		setSelect(true);
+	  }, 400):null);
+
+	
 	const initialState = {
 		edit: false,
 		id: index + identifier,
@@ -165,6 +176,7 @@ function Wall({ index, identifier }) {
 
 	return useMemo(
 		() => (
+			
 			<TBody key="table">
 				<TD key="first">
 					<FirstCol
@@ -232,6 +244,7 @@ const TChild = styled.tr`
 const TableHorizontal = styled(TChild)`
 	text-align: center;
 	justify-content: center;
+	margin: auto;
 `;
 const THead = styled(TChild)``;
 const TBody = styled(TChild)``;
