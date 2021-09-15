@@ -45,16 +45,11 @@ export const fetchCalculateData = createAsyncThunk(
 		}
 		console.log(getState());
 		const wlls = walles.reduce((acc, el) => {
-			const { largo, ancho, puertas, ventanas } = el;
-			acc.push({ largo, ancho, puertas, ventanas });
+			const {color_id, largo, ancho, puertas, ventanas } = el;
+			acc.push({color_id: color_id, paredes:[{ largo, ancho, puertas, ventanas }]});
 			return acc;
 		}, []);
-		const wlls1 = walles.reduce((accw, elw) => {
-			const { color_id } = elw;
-			accw.push(color_id)
-			return color_id;
-		}, []);
-		const result = await sendCalculator(wlls, wlls1);
+		const result = await sendCalculator(wlls);
 		console.log("responses", result);
 		return result;
 		//dispatch(endCalculatorAction());
