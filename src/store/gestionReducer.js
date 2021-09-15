@@ -94,9 +94,9 @@ export const fetchCalculateData = createAsyncThunk(
 			return acc;
 		}, []);
 		*/
-		//const result = await sendCalculator(wlls);
+		const result = await sendCalculator(colores);
 		//console.log("responses", result);
-		//return result;
+		return result;
 		//dispatch(endCalculatorAction());
 	}
 );
