@@ -36,6 +36,23 @@ export const endCalculatorAction = () => (dispatch) => {
 	dispatch(fetchCalculateData());
 };
 
+/*
+	colores out
+	[
+		{
+			color_id,
+			paredes [
+				{
+				largo
+				ancho
+				puertas: { largo, ancho }
+				ventanas: { largo, ancho }
+				}
+			]
+		}
+	]
+*/
+
 export const fetchCalculateData = createAsyncThunk(
 	"result/fetchResult",
 	async (_, { getState }) => {
@@ -43,15 +60,43 @@ export const fetchCalculateData = createAsyncThunk(
 		if (!walles.length) {
 			return;
 		}
-		console.log(getState());
+		console.log("walles: ", walles.length);
+		console.log("walles: ", walles);
+		const normalizr = walles.reduce((acc, el) => {
+			const { color_id, largo, ancho, puertas, ventanas } = el;
+			const wall = { largo, ancho, puertas, ventanas };
+			const key = "_" + color_id;
+			if (!acc[key]) {
+				acc[key] = [];
+			}
+			acc[key].push(wall);
+			return acc;
+		}, {});
+
+		console.log("normalizer", normalizr);
+
+		const colors = Array.from(new Set(walles.map(({ color_id }) => color_id)));
+
+		const colores = colors.map((key) => {
+			return {
+				color_id: key,
+				paredes: normalizr["_" + key],
+			};
+		});
+
+		console.log("colores finales", colores);
+
+		//console.log(getState());
+		/*
 		const wlls = walles.reduce((acc, el) => {
 			const {color_id, largo, ancho, puertas, ventanas } = el;
 			acc.push({color_id: color_id, paredes:[{ largo, ancho, puertas, ventanas }]});
 			return acc;
 		}, []);
-		const result = await sendCalculator(wlls);
-		console.log("responses", result);
-		return result;
+		*/
+		//const result = await sendCalculator(wlls);
+		//console.log("responses", result);
+		//return result;
 		//dispatch(endCalculatorAction());
 	}
 );
