@@ -1,5 +1,6 @@
 import React, { useEffect, useState, memo } from "react";
 import SecondpartLiters from "../litersTable/index";
+import useInput from '../Hooks//Inputs'
 import {
 	ContainerSecondSection,
 	H1,
@@ -13,11 +14,11 @@ import {
 import { useSelector } from "react-redux";
 
 const SecondPart = () => {
-	//const { total } = useCalculatorField();
 	const { result, colors } = useSelector((state) => state);
 	const { linea_producto } = colors;
 	const stateColors = useSelector((state) => state.colors);
 	const colors1 = stateColors.colores || [];
+	const {state} = useInput()
 
 	function getResult() {
 		return result.map ((el, i) => (
@@ -32,13 +33,13 @@ const SecondPart = () => {
 	function getPresent() {
 		return result.map ((element) => (
 			element.presentaciones.map((elsn)=>(
-				elsn.presentacion_id + ':' + elsn.cantidad
+				elsn.litros===1?elsn.presentacion_id +':'+ (elsn.cantidad= state.cantidad1L): elsn.litros===4?elsn.presentacion_id +':'+ (elsn.cantidad= state.cantidad4L):elsn.litros===19?elsn.presentacion_id +':'+ (elsn.cantidad= state.cantidad19L): elsn.presentacion_id +':'+ elsn.cantidad
 			))
 		))
 	}
 	function templateUrl(){
-		let url = `http://ec2-44-242-66-211.us-west-2.compute.amazonaws.com/finalizar-compra/?add-to-cart=${getPresent()},`
-		return url
+		let url = `https://ec2-44-242-66-211.us-west-2.compute.amazonaws.com/finalizar-compra/?add-to-cart=${getPresent()},`
+		return console.log(url)
 	}
 	return (
 		<div>

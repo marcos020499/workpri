@@ -1,6 +1,8 @@
 import React, {useState, useReducer} from "react";
 import { useSelector } from "react-redux";
 import TooltipOver from "../Tooltip/TooltipOver";
+import useInput from '../Hooks//Inputs'
+
 import {
 	InputArea,
 	Description,
@@ -73,20 +75,7 @@ export default Liters;
 
 
 function Can({ presentacion_id, litros, cantidad }) {
-	const initialState = {
-		cantidad1L: 0,
-		cantidad4L: '',
-		cantidad19L: '',
-	  };
-	
-	const reducer = (s, a) => ({ ...s, ...a });
-  	const [state, dispatch] = useReducer(reducer, initialState);
-
-  	const handleInput = (e) => {
-    	dispatch({ [e.target.name]: parseInt(e.target.value) || 0 });
-    	console.log(e.target.name);
-  	};
-
+	const {state, handleInput} = useInput()
 	const name = {
 		_1: "1L",
 		_4: "4L",
@@ -107,8 +96,9 @@ function Can({ presentacion_id, litros, cantidad }) {
 					style={{ position: 'relative', left: '-10%' }}
 				/>
 				<Quantity>{name}</Quantity>
-				<Input type="text" defaultValue="0" value={ cantidad } name={litros===19?'cantidad19L':litros===4?'cantidad4L':litros===1?'cantidad1L':''} onChange={handleInput}/>
+				<Input type="text" defaultValue="0" value={ litros === 1?cantidad += state.cantidad1L: litros === 4?cantidad += state.cantidad4L:litros === 19?cantidad += state.cantidad19L: cantidad } name={litros===19?'cantidad19L':litros===4?'cantidad4L':litros===1?'cantidad1L':''} onChange={handleInput}/>
 			</Size>
+			<seconContainer {...state} {...state.cantidad1L}/>
 		</TdSize>
 	);
 }

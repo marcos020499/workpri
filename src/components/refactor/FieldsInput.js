@@ -105,7 +105,7 @@ function Wall({ index, identifier }) {
 	const [color, setColor] = useState(null);
 	const [select, setSelect] = useState(index===1&&colors.length===0?setTimeout(() => {
 		setSelect(true);
-	  }, 400): colors.length===3&&index===3?setTimeout(() => {
+	  }, 400): index===3&&colors.length===3?setTimeout(() => {
 		setSelect(true);
 	  }, 400): colors.length===3&&index===2?setTimeout(() => {
 		setSelect(true);
