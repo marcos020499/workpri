@@ -96,9 +96,8 @@ function Can({ presentacion_id, litros, cantidad }) {
 					style={{ position: 'relative', left: '-10%' }}
 				/>
 				<Quantity>{name}</Quantity>
-				<Input type="text" defaultValue="0" value={ litros === 1?cantidad += state.cantidad1L: litros === 4?cantidad += state.cantidad4L:litros === 19?cantidad += state.cantidad19L: cantidad } name={litros===19?'cantidad19L':litros===4?'cantidad4L':litros===1?'cantidad1L':''} onChange={handleInput}/>
+				<Input type="number" defaultValue="0" step="1" value={ litros === 4?state.cantidad4L === 0 ? cantidad: state.cantidad4L: cantidad } name={litros===19?'cantidad19L':litros===4?'cantidad4L':litros===1?'cantidad1L':''} onChange={handleInput}/>
 			</Size>
-			<seconContainer {...state} {...state.cantidad1L}/>
 		</TdSize>
 	);
 }

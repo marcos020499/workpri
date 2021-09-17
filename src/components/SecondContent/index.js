@@ -13,7 +13,7 @@ import {
 } from "./style";
 import { useSelector } from "react-redux";
 
-const SecondPart = () => {
+const SecondPart = ({cantidad4L}) => {
 	const { result, colors } = useSelector((state) => state);
 	const { linea_producto } = colors;
 	const stateColors = useSelector((state) => state.colors);
@@ -29,17 +29,17 @@ const SecondPart = () => {
 		return colors1.map ((el, i) => (
 		<SecondpartLiters key={i + "pintura"} {...el} {...i} />
 		))
-	} 
+	} 	
 	function getPresent() {
 		return result.map ((element) => (
-			element.presentaciones.map((elsn)=>(
-				elsn.litros===1?elsn.presentacion_id +':'+ (elsn.cantidad= state.cantidad1L): elsn.litros===4?elsn.presentacion_id +':'+ (elsn.cantidad= state.cantidad4L):elsn.litros===19?elsn.presentacion_id +':'+ (elsn.cantidad= state.cantidad19L): elsn.presentacion_id +':'+ elsn.cantidad
+			element.presentaciones.map((elsn)=>( 
+				elsn.litros===4? elsn.presentacion_id +':'+ ((state.cantidad4L === 0?state.cantidad4L = elsn.cantidad: state.cantidad4L += elsn.cantidad )) :elsn.presentacion_id +':'+ elsn.cantidad
 			))
 		))
 	}
-	function templateUrl(){
-		let url = `https://ec2-44-242-66-211.us-west-2.compute.amazonaws.com/finalizar-compra/?add-to-cart=${getPresent()},`
-		return console.log(url)
+	function templateUr(){
+		let url = `ec2-44-242-66-211.us-west-2.compute.amazonaws.com/finalizar-compra/?add-to-cart=${getPresent()},`
+		console.log(url)
 	}
 	return (
 		<div>
@@ -56,7 +56,7 @@ const SecondPart = () => {
 				</div>
 				<ContainerButton>
 					<h1> </h1>
-					<a href={templateUrl()}><ButtonReed>Comprar</ButtonReed></a>
+					<a href={templateUr()}><ButtonReed>Comprar</ButtonReed></a>
 				</ContainerButton>
 			</ContainerSecondSection>
 		</div>

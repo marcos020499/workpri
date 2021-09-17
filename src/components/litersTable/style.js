@@ -82,7 +82,8 @@ export const TdSize = styled.td`
 `;
 export const Input = styled.input`
 	border-radius: 7px;
-	width: 30px;
+	min-width: 30px;
+	max-width: 30px;
 	text-align: center;
 	border: none;
 	color: #999999;

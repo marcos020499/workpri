@@ -1,7 +1,7 @@
 import React, { useState, useReducer, useEffect } from "react";
 
 function useInput() {
- 
+
   const initialState = {
 		cantidad1L: 0,
 		cantidad4L: 0,
@@ -11,8 +11,8 @@ function useInput() {
   	const [state, dispatch] = useReducer(reducer, initialState);
 
   	const handleInput = (e) => {
-    	dispatch({ [e.target.name]: parseInt(e.target.value) || 0 });
-    	console.log(e.target.name);
+    	dispatch({ [e.target.name]: e.target.value});
+    	console.log(e.target.name +' '+ e.target.value);
   	};
 
   return {
