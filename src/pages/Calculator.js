@@ -9,12 +9,10 @@ import { useSelector } from "react-redux";
 const Index = () => {
   const dispatch = useDispatch();
   const { colors } = useSelector((state) => state);
-	const { linea_producto } = colors;
+  const { linea_producto } = colors;
   useEffect(() => {
     dispatch(fetchColors());
   }, []);
-
-  
 
   return (
     <div>
@@ -24,7 +22,7 @@ const Index = () => {
           <FieldsInput />
         </First>
         <Second>
-          <SecondContent total={{}} />
+          <SecondContent />
         </Second>
       </Container>
     </div>
@@ -62,42 +60,26 @@ const Second = styled.div`
   min-width: 48%;
   max-width: 48%;
   margin: 0vw -0.5vw 0 0;
-  @media screen and (max-width: 1366px) {
-    top: 0vw;
-  }
   @media screen and (max-width: 1200px) {
     min-width: 100%;
     max-width: 100%;
-    min-height: none;
-    max-height: none;
+    position: relative;
+    top: 300px;
   }
-  @media screen and (max-width: 1024px) and (orientation: landscape) {
-    margin: 5vw 0 0 0;
-    min-width: 102%;
-    max-width: 102%;
-    min-height: 140vh;
-  }
-  @media screen and (max-width: 768px) {
-    min-width: 100%;
+  @media screen and (max-width: 1024px) {
+		min-width: 100%;
     max-width: 100%;
-    min-height: 180vh;
-  }
-  @media screen and (max-width: 768px) and (orientation: landscape) {
-    padding: 0 0 5% 0;
-  }
-  @media screen and (max-width: 600px) {
-    min-width: 100%;
+    min-height: 900px;
+		position: relative;
+    top: 320px;
+	}
+  @media screen and (max-width: 760px) and (orientation: landscape) {
+		min-width: 100%;
     max-width: 100%;
-    min-height: 130vh;
-  }
-  @media screen and (max-width: 600px) and (orientation: landscape) {
-    padding: 0 0 50% 0;
-  }
-  @media screen and (max-width: 400px) {
-    min-width: 100%;
-    max-width: 100%;
-    min-height: auto;
-  }
+    min-height: 900px;
+		position: relative;
+    top: 640px;
+	}
 `;
 const First = styled.div`
   height: auto !important;
@@ -110,59 +92,8 @@ const First = styled.div`
   @media screen and (max-width: 1200px) {
     margin: 5vw 0 0 0;
     min-width: 100%;
-    max-width: 100%;
-    min-height: none;
-  }
-  @media screen and (max-width: 1200px) and (orientation: landscape) {
-    margin: 5vw 0 0 0;
-    min-width: 100%;
-    max-width: 100%;
-    min-height: 110vh;
-  }
-  @media screen and (max-width: 1024px) {
-    margin: 5vw 0 0 0;
-    min-height: 100vh;
-  }
-  @media screen and (max-width: 1024px) and (orientation: landscape) {
-    margin: 5vw 0 0 0;
-    padding: 0 0 10% 0;
-    min-width: 100%;
-    max-width: 100%;
-    min-height: auto;
-  }
-  @media screen and (max-width: 900px) and (orientation: landscape) {
-    margin: 5vw 0 0 0;
-    padding: 0 0 40% 0;
-    min-width: 100%;
-    max-width: 100%;
-    min-height: auto;
   }
   @media screen and (max-width: 768px) {
-    margin: 5vw 0 0 0;
-    padding: 0 0 30% 0;
     min-width: 100%;
-    max-width: 100%;
-    min-height: auto;
-  }
-  @media screen and (max-width: 768px) and (orientation: landscape) {
-    margin: 5vw 0 0 0;
-    min-width: 100%;
-    padding: 0 0 80% 0;
-    max-width: 100%;
-    min-height: auto;
-  }
-  @media screen and (max-width: 700px) and (orientation: landscape) {
-    margin: 5vw 0 0 0;
-    min-width: 100%;
-    max-width: 100%;
-    padding: 0 0 90% 0;
-    min-height: auto;
-  }
-  @media screen and (max-width: 600px) and (orientation: landscape) {
-    margin: 5vw 0 0 0;
-    padding: 0 0 140% 0;
-    min-width: 100%;
-    max-width: 100%;
-    min-height: auto;
   }
 `;
