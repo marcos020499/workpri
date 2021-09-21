@@ -86,7 +86,7 @@ const SecondPart = () => {
   return (
     <div>
 
-
+  {linea_producto && <Banner src={linea_producto.url_imagen_inspiracion} />}
       <ContainerSecondSection>
         <H1>RESULTADO</H1>
         <H2>PRISA TE RECOMIENDA</H2>
@@ -97,7 +97,7 @@ const SecondPart = () => {
         </ContainerLiters>
         <ContainerButton>
           <h1> </h1>
-          <a target="_blank" href={templateUr()}>
+          <a target="_blank" href={'/api.tiendaenlineaprisa.mx/calcdemo/calculadora/inicializar?origen=e&origen_id=erd&color_id=611'}>
             <ButtonReed>Comprar</ButtonReed>
           </a>
         </ContainerButton>

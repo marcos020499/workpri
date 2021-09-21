@@ -34,8 +34,11 @@ import {
 } from "../../store/gestionReducer";
 
 const walles = ["wall1", "wall2", "wall3", "wall4", "wall5"];
-
+const wallesFalse = ["wall1"];
 export function FieldsInput() {
+
+  const {colors1}  = useSelector((state) => state);
+  const linea_producto  = colors1;
   const dispatch = useDispatch();
   const stateColors = useSelector((state) => state.colors);
   const colors = stateColors.colores || [];
@@ -70,15 +73,30 @@ export function FieldsInput() {
                 <TitleHead title="Ancho" icon="horizontal" size />
               </TH>
               <TH>
+              {linea_producto && linea_producto.impermeabilizante === false?(
                 <TitleHead title="Puertas" icon="door" />
+               ):(
+                <TitleHead title="Domo" icon="domo" />
+              )}
               </TH>
               <TH>
-                <TitleHead title="Ventanas" icon="window" />
+              {linea_producto && linea_producto.impermeabilizante === false?(
+                <TitleHead title="Ventanas" icon="door" />
+               ):(
+                <TitleHead title="Tragaluz" icon="tragaluz" />
+              )}
               </TH>
             </THead>
-            {walles.map((el, index) => (
-              <Wall key={index + "top"} index={index + 1} identifier={el} />
-            ))}
+            {linea_producto && linea_producto.impermeabilizante === false?(
+              walles.map((el, index) => (
+                <Wall key={index + "top"} index={index + 1} identifier={el} />
+              ))
+            ):(
+              wallesFalse.map((el, index) => (
+                <Wall1 key={index + "top"}  identifier={el} />
+              ))
+            )}
+            
           </TableHorizontal>
           </Conta>
         </Container>
@@ -167,6 +185,155 @@ function Wall({ index, identifier }) {
     }
     // onCalculate
     if (index === walles.length && !finishRecopilation) {
+      storeDistpach(endCalculatorAction());
+    }
+  }, [select, color, isReadyToCompute, finishRecopilation]);
+
+  function onColor(value) {
+    const _color = getColorByHex(colors, value);
+    if (_color) {
+      setColor(value);
+      dispatch({ color_id: _color.id, nombre: _color.nombre, edit: true });
+    }
+  }
+
+  function onEdit(identifier, value) {
+    dispatch({ [identifier]: value, edit: true });
+  }
+
+  const Content = ({ children }) => {
+    return <Hidding hidden={!select}>{children}</Hidding>;
+  };
+
+  return useMemo(
+    () => (
+      <TBody key="table">
+        <TD key="first">
+          <FirstCol
+            index={index}
+            selectControl={select}
+            onSelectControl={setSelect}
+            id="color"
+            identifier={identifier}
+            onSubmit={onColor}
+          />
+        </TD>
+        <TD key="second">
+          <Content>
+            <SimpleInputOwnState
+              id="largo"
+              onSubmit={onEdit}
+              defaultValue={3}
+            />
+          </Content>
+        </TD>
+        <TD key="three">
+          <Content>
+            <SimpleInputOwnState
+              id="ancho"
+              onSubmit={onEdit}
+              defaultValue={2}
+            />
+          </Content>
+        </TD>
+        <TD key="four">
+          <Content>
+            <ExpandableInput
+              id="puertas"
+              identifier={identifier}
+              onSubmit={onEdit}
+            />
+          </Content>
+        </TD>
+        <TD key="five" end>
+          <Content>
+            <ExpandableInput
+              id="ventanas"
+              identifier={identifier}
+              onSubmit={onEdit}
+            />
+          </Content>
+        </TD>
+      </TBody>
+    ),
+    [select]
+  );
+}
+function Wall1({ index, identifier }) {
+  const { isReadyToCompute, finishRecopilation } = useSelector(
+    (state) => state.gestion
+  );
+  const stateColors = useSelector((state) => state.colors);
+  const colors = stateColors.colores || [];
+
+  const getColorByHex = (array, c) => {
+    return array.find(({ rgb }) => {
+      console.log("compare ", rgb, c);
+      return rgb === c;
+    });
+  };
+
+  const storeDistpach = useDispatch();
+
+  const [color, setColor] = useState(null);
+  const [select, setSelect] = useState(
+    index === 1 && colors.length === 0
+      ? setTimeout(() => {
+          setSelect(true);
+        }, 400)
+      : index === 2 && colors.length === 3
+      ? setTimeout(() => setSelect(true))
+      : index === 3 && colors.length === 3
+      ? setTimeout(() => setSelect(true))
+      : index === 3 && colors.length === 1
+      ? setTimeout(() => setSelect(false))
+      : index === 2 && colors.length === 1
+      ? setTimeout(() => setSelect(false))
+      : index === 3 && colors.length === 2
+      ? setTimeout(() => setSelect(false))
+      : false
+  );
+
+  const initialState = {
+    edit: false,
+    id: index + identifier,
+    color_id: null,
+    nombre: null,
+    largo: 0,
+    ancho: 0,
+    puertas: [],
+    ventanas: [],
+  };
+  const [inf, dispatch] = useReducer((s, a) => ({ ...s, ...a }), initialState);
+
+  useEffect(() => {
+    /*
+			case
+			-- select/deselect [reset] -> remove
+			-- append
+			-- submit
+
+			-- press calculate
+		*/
+
+    //select/deselect
+
+    if (!select) {
+      // deselect
+      setColor(null);
+      if (inf.edit) {
+        console.log("calculator remove");
+        storeDistpach(removeWallAction(inf.id));
+      }
+      dispatch(initialState);
+    }
+    // append
+    if (select && color && inf.edit) {
+      dispatch({ edit: false });
+      storeDistpach(appendWallAction(inf));
+    }
+    // onCalculate
+    if (index === wallesFalse.length && !finishRecopilation) {
       storeDistpach(endCalculatorAction());
     }
   }, [select, color, isReadyToCompute, finishRecopilation]);

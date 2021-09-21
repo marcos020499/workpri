@@ -15,7 +15,7 @@ export const ExpandableInput = ({ id, onSubmit }) => {
   const forceUpdate = useForceUpdate();
   const [inputs, setInputs] = useReducer((s, a) => a || s, []);
   const [hidden, setHidden] = useState(true);
-
+  
   /*
 		inputs: [{ largo, ancho}]
 	*/
@@ -181,7 +181,8 @@ export function FirstCol({ index, selectControl, onSelectControl, onSubmit }) {
   const colors = stateColors.colores || [];
   const [tooltip, setTooltip] = useState(false);
   const [select, setSelect] = useState(null);
-
+  const {colors1}  = useSelector((state) => state);
+  const linea_producto  = colors1;
   const colorsArray = colors.map((c) => c.rgb);
 
   useEffect(() => {
@@ -211,7 +212,9 @@ export function FirstCol({ index, selectControl, onSelectControl, onSubmit }) {
           }}
         />
         <div style={{ width: "1em" }} />
-        <H4>{index < 5 ? `${"Pared" + index}` : "Techo"}</H4>
+        { linea_producto && 
+              linea_producto.impermeabilizante === true?<H4>{'Azotea'}</H4>:<H4>{index < 5 ? `${"Pared" + index}` : "Techo"}</H4>
+            }
       </Separate>
 
       <Tooltip
