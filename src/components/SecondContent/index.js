@@ -60,22 +60,22 @@ const SecondPart = () => {
         elsn.litros === 4 && index === 0
           ? elsn.presentacion_id + ":" + state.cantidad4_1L
           : elsn.litros === 4 && index === 1
-          ? elsn.presentacion_id + ":" + state.cantidad4_2L
-          : elsn.litros === 4 && index === 2
-          ? elsn.presentacion_id + ":" + state.cantidad4_3L
-          : elsn.litros === 1 && index === 0
-          ? elsn.presentacion_id + ":" + state.cantidad1_1L
-          : elsn.litros === 1 && index === 1
-          ? elsn.presentacion_id + ":" + state.cantidad1_2L
-          : elsn.litros === 1 && index === 2
-          ? elsn.presentacion_id + ":" + state.cantidad1_3L
-          : elsn.litros === 19 && index === 0
-          ? elsn.presentacion_id + ":" + state.cantidad19_1L
-          : elsn.litros === 19 && index === 1
-          ? elsn.presentacion_id + ":" + state.cantidad19_2L
-          : elsn.litros === 19 && index === 2
-          ? elsn.presentacion_id + ":" + state.cantidad19_3L
-          : elsn.presentacion_id + ":" + elsn.cantidad
+            ? elsn.presentacion_id + ":" + state.cantidad4_2L
+            : elsn.litros === 4 && index === 2
+              ? elsn.presentacion_id + ":" + state.cantidad4_3L
+              : elsn.litros === 1 && index === 0
+                ? elsn.presentacion_id + ":" + state.cantidad1_1L
+                : elsn.litros === 1 && index === 1
+                  ? elsn.presentacion_id + ":" + state.cantidad1_2L
+                  : elsn.litros === 1 && index === 2
+                    ? elsn.presentacion_id + ":" + state.cantidad1_3L
+                    : elsn.litros === 19 && index === 0
+                      ? elsn.presentacion_id + ":" + state.cantidad19_1L
+                      : elsn.litros === 19 && index === 1
+                        ? elsn.presentacion_id + ":" + state.cantidad19_2L
+                        : elsn.litros === 19 && index === 2
+                          ? elsn.presentacion_id + ":" + state.cantidad19_3L
+                          : elsn.presentacion_id + ":" + elsn.cantidad
       )
     );
   }
@@ -85,7 +85,7 @@ const SecondPart = () => {
   }
   return (
     <div>
-      {linea_producto && <Banner src={linea_producto.url_imagen_inspiracion} />}
+
 
       <ContainerSecondSection>
         <H1>RESULTADO</H1>
