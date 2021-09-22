@@ -73,21 +73,21 @@ export function FieldsInput() {
                 <TitleHead title="Ancho" icon="horizontal" size />
               </TH>
               <TH>
-              {!!linea_producto?.impermeabilizante === false?(
+              {!!linea_producto?.impermeabilizante === true?(
                 <TitleHead title="Puertas" icon="door" />
                ):(
                 <TitleHead title="Domo" icon="domo" />
               )}
               </TH>
               <TH>
-              {!!linea_producto?.impermeabilizante === false?(
+              {!!linea_producto?.impermeabilizante === true?(
                 <TitleHead title="Ventanas" icon="window" />
                ):(
                 <TitleHead title="Tragaluz" icon="tragaluz" />
               )}
               </TH>
             </THead>
-            {!!linea_producto?.impermeabilizante === false?(
+            {!!linea_producto?.impermeabilizante === true?(
               walles.map((el, index) => (
                 <Wall key={index + "top"} index={index + 1} identifier={el} />
               ))

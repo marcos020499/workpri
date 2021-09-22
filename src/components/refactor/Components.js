@@ -214,7 +214,7 @@ export function FirstCol({ index, selectControl, onSelectControl, onSubmit }) {
         <div style={{ width: "1em" }} />
         
         { 
-          !!linea_producto?.impermeabilizante === false?<H4>{index < 5 ? `${"Pared" + index}` : "Techo"}</H4>:<H4>{index ===1  ? "Azotea" : ''}</H4>
+          !!linea_producto?.impermeabilizante === true?<H4>{index < 5 ? `${"Pared" + index}` : "Techo"}</H4>:<H4>Azotea</H4>
         }
       </Separate>
 
