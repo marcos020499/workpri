@@ -292,7 +292,7 @@ export const ContainerItems = styled.div`
 export const Items = styled.div`
   display: flex;
   justify-content: center;
-  margin: auto;
+  margin: -30px auto auto auto;
   @media screen and (max-width: 1367px) {
     flex-direction: row;
   }
