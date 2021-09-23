@@ -2,6 +2,10 @@ import styled from "styled-components";
 import Tooltip from "react-simple-tooltip";
 export const ContainerSecondSection = styled.div`
   text-align: center;
+  @media screen and (max-width: 1200px) {
+    padding: 50px 0 0 0;
+    width: 100%;
+  }
   @media screen and (max-width: 768px) {
     padding: 30px 0 0 0;
     width: 100%;
@@ -49,6 +53,8 @@ export const ButtonReed = styled.button`
   font-weight: bolder;
   border: none;
   cursor: pointer;
+  position: relative;
+  top: -10px;
   @media screen and (max-width: 1367px) {
     margin: -1vw;
   }
@@ -91,9 +97,10 @@ export const Banner = styled.img`
 
 export const H1 = styled.h1`
   font-family: "RadikalBold";
-  font-size: 35px;
+  font-size: 34px;
   color: white;
   letter-spacing: 4px;
+  margin: 0 0 30px 0;
   @media screen and (max-width: 768px) {
     font-size: 20px;
     display: flex;
@@ -105,10 +112,13 @@ export const H1 = styled.h1`
   }
 `;
 export const H2 = styled.h2`
-  margin: -20px 0 0 0;
   font-family: "RadikalBold";
   color: #2098ae;
   font-size: 20px;
+  letter-spacing: 1px;
+  @media screen and (max-width: 1200px) {
+    padding: 20px 0 0 0;
+  }
   @media screen and (max-width: 1024px) and (orientation: landscape) {
     font-size: 17px;
   }
@@ -132,7 +142,10 @@ export const H = styled.h2`
   letter-spacing: 2px;
   font-family: "RadikalBold";
   color: white;
-  font-size: 20px;
+  font-size: 18px;
+  @media screen and (max-width: 1200px) {
+    padding: 20px 0 0 0;
+  }
   @media screen and (max-width: 768px) {
     font-size: 14px;
     display: flex;

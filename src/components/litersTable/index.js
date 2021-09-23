@@ -139,7 +139,8 @@ function Can({
               : "https://res.cloudinary.com/marcos020499/image/upload/v1629305104/BOTES_PINTURA-02_wvzqnb.svg"
           }
           size={litros}
-          style={{ position: "relative", left: "-10%" }}
+          
+          style={{ position: "relative", left: "-3px" }}
         />
         <Quantity>{name}</Quantity>
         <Input

@@ -214,7 +214,7 @@ export function FirstCol({ index, selectControl, onSelectControl, onSubmit }) {
         <div style={{ width: "1em" }} />
         
         { 
-          !!linea_producto?.impermeabilizante === true?<H4>{index < 5 ? `${"Pared" + index}` : "Techo"}</H4>:<H4>Azotea</H4>
+          !!linea_producto?.impermeabilizante === false?<H4>{index < 5 ? `${"Pared" + index}` : "Techo"}</H4>:<H4>Azotea</H4>
         }
       </Separate>
 
@@ -266,7 +266,7 @@ const SIInput = styled.input`
     font-size: 11px;
   }
   @media screen and (max-width: 768px) {
-    max-width: 25px;
+    max-width: 30px;
     font-size: 10px;
   }
 `;
@@ -307,6 +307,9 @@ const RadioButton = styled.input`
   background-color: ${({ color }) => `${color ? color : "transparent"}`};
   border-radius: 999px;
   @media screen and (max-width: 768px) {
+    margin: 0 0 0 -60px;
+  }
+  @media screen and (max-width: 600px) {
     margin: 0 0 0 -100px;
   }
 `;
@@ -315,6 +318,9 @@ const RadioButtonFirst = styled.input`
   height: 1.5em;
   background-color: ${({ color }) => `${color ? color : "transparent"}`};
   border-radius: 999px;
+  @media screen and (max-width: 500px) {
+    margin: 0 0 0 10px;
+  }
 `;
 const Row = styled.div`
   display: flex;
@@ -328,14 +334,12 @@ const Row = styled.div`
     margin: 0 1.7vw 0 1.7vw;
     left: -20px;
   }
-  @media screen and (max-width: 768px) {
-    left: -20px;
-  }
 `;
 const RowSimple = styled.div`
   display: flex;
   flex-direction: row;
   position: relative;
+  width: 155px;
   top: 7px;
   left: -14%;
   margin: -0.9vw 0 0 0;
@@ -348,8 +352,12 @@ const RowSimple = styled.div`
     left: -18%;
   }
   @media screen and (max-width: 768px) {
-    margin: 0 -5vw 0 3vw;
-    left: -10%;
+    margin: 0.1vw -2vw 0 3vw;
+    left: -5%;
+  }
+  @media screen and (max-width: 600px) {
+    margin: 0.1vw -11vw 0 3vw;
+    left: -5%;
   }
 `;
 
@@ -382,7 +390,10 @@ const Wall = styled(Row)`
     margin: 0 3vw 55px 7vw;
   }
   @media screen and (max-width: 768px) {
-    margin: 0 -11vw 55px 8vw;
+    margin: 0 -2vw 55px 8vw;
+  }
+  @media screen and (max-width: 600px) {
+    margin: 0 -13vw 55px 8vw;
   }
 `;
 
@@ -395,7 +406,9 @@ const Typograph = styled.p`
 
 const H2 = styled(Typograph)`
   font-size: 1em;
-
+  @media screen and (max-width: 600px) {
+    font-size: 13px;
+  }
   @media screen and (orientation: landscape) {
     font-size: 15px;
   }
@@ -404,7 +417,7 @@ const H2 = styled(Typograph)`
 const H3 = styled(Typograph)`
   font-size: 0.7em;
   @media screen and (max-width: 600px) {
-    font-size: 8px;
+    font-size: 9px;
   }
 `;
 
@@ -414,6 +427,9 @@ const H4 = styled(Typograph)`
   position: relative;
   letter-spacing: 2px;
   left: -10px;
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+  }
 `;
 
 const Button = styled.button`
@@ -427,8 +443,8 @@ const Button = styled.button`
   @media screen and (max-width: 768px) {
 		position: relative;
 		font-size: 10px;
-		left: 40px;
-		top: -20px;
+		left: 50px;
+		top: -25px;
 		height: 2vh;
 		width: 2vh;
 		margin: 2vw;

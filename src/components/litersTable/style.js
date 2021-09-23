@@ -13,9 +13,13 @@ export const Table = styled.table`
 export const RowRecipients = styled.tr`
   font-family: "Radikal1";
   display: flex;
+  position: relative;
+  top: -30px;
   align-items: flex-end;
   justify-content: center;
+  text-align: center;
   @media screen and (max-width: 1367px) {
+    top: -10px;
     margin: 0 0.5vh 0vw 0;
   }
   @media screen and (max-width: 1024px) {
@@ -23,6 +27,12 @@ export const RowRecipients = styled.tr`
     max-width: 200px;
   }
   @media screen and (max-width: 768px) {
+    min-width: 150px;
+    max-width: 150px;
+  }
+  @media screen and (max-width: 400px) {
+    min-width: 130px;
+    max-width: 130px;
   }
 `;
 export const Row = styled.tr``;
@@ -36,36 +46,15 @@ export const Image = styled.img`
 export const ImageQuantity = styled.img`
   ${({ size }) => {
     const sz = {
-      _1: "7",
-      _4: "9",
+      _1: "7.5",
+      _4: "9.5",
       _19: "10",
     }["_" + size];
     return `width: ${sz}vh`;
   }}
+  
 `;
-export const ImageQuantity4L = styled.img`
-  width: 9vh;
-  @media screen and (max-width: 1367px) {
-    width: 8vh;
-    margin: 1vw 1vw 0 0vw;
-  }
-  @media screen and (max-width: 768px) {
-    width: 8vh;
-    margin: 0 1vw 0 1vw;
-  }
-`;
-export const ImageQuantity19L = styled.img`
-  width: 10vh;
-  @media screen and (max-width: 1367px) {
-    width: 8vh;
-    margin: 1vw 1vw 0 0vw;
-  }
 
-  @media screen and (max-width: 768px) {
-    width: 9vh;
-    margin: 0 0vw 0 0vw;
-  }
-`;
 export const Size = styled.div`
   font-size: 1.1vw;
   @media screen and (max-width: 768px) {
@@ -75,9 +64,13 @@ export const Size = styled.div`
 `;
 export const TdSize = styled.td`
   padding: none;
+  margin: 0;
   width: 30%;
   @media screen and (max-width: 1367px) {
     width: 35%;
+  }
+  @media screen and (max-width: 600px) {
+    width: 30%;
   }
 `;
 
@@ -96,11 +89,12 @@ export const Input = styled.input`
     font-size: 14px;
   }
   @media screen and (max-width: 768px) {
-    margin: 0 5vw 0 1vw;
+    margin: 0 8vw 0 1vw;
     position: relative;
     left: 10px;
   }
   @media screen and (max-width: 400px) {
+    width: 25px;
     margin: 0 5vw 0 1vw;
     position: relative;
     left: 5px;
@@ -108,18 +102,16 @@ export const Input = styled.input`
 `;
 export const InputArea = styled.input`
   font-family: "Radikal1";
-  width: 6vw;
+  width: 80px;
   font-size: 11px;
   padding: 0.3vh 0 0.3vh 0;
   border-radius: 7px;
   border: none;
   text-align: center;
   color: #999999;
-
   @media screen and (max-width: 1024px) {
     width: 70px;
     position: relative;
-
     font-size: 13px;
   }
   @media screen and (max-width: 768px) {
@@ -130,7 +122,7 @@ export const InputArea = styled.input`
 `;
 export const InputAreaLiters = styled.input`
   font-family: "Radikal1";
-  width: 3.5vw;
+  width: 40px;
   text-align: center;
   font-size: 11px;
   padding: 0.3vh 0 0.3vh 0;
@@ -165,7 +157,7 @@ export const DescriptionText = styled.h3`
   font-size: 1.4vh;
   color: white;
   font-family: "Radikal1";
-  width: 120px;
+  width: 130px;
   max-height: 30px;
   overflow: hidden;
   white-space: nowrap;
@@ -174,7 +166,7 @@ export const DescriptionText = styled.h3`
 
   @media screen and (max-width: 1024px) {
     font-size: 14px;
-    width: 120px;
+    width: 130px;
     text-align: center;
     justify-content: center;
   }
@@ -283,7 +275,7 @@ export const ContainerItems = styled.div`
     display: flex;
     display: flex;
     justify-content: center;
-    min-width: 90%;
+    max-width: 90%;
     min-height: 90%;
     flex-direction: row;
     align-items: center;
@@ -292,15 +284,19 @@ export const ContainerItems = styled.div`
 export const Items = styled.div`
   display: flex;
   justify-content: center;
-  margin: -30px auto auto auto;
+  margin: -20px auto auto auto;
+  max-width: 90%;
   @media screen and (max-width: 1367px) {
     flex-direction: row;
+  }
+  @media screen and (max-width: 600px) {
+    max-width: 10px;
   }
 `;
 export const InputColorName = styled.input`
   border-radius: 100%;
-  width: 0.5vh;
-  height: 0.8vh;
+  width: 10px;
+  height: 10px;
   border: 1px solid #003366;
   margin: 0 0.7vw 0 0;
   @media screen and (max-width: 768px) {

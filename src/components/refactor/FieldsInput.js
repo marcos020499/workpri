@@ -34,7 +34,7 @@ import {
 } from "../../store/gestionReducer";
 
 const walles = ["wall1", "wall2", "wall3", "wall4", "wall5"];
-const wallesFalse = ["wall1"];
+const wallesFalse = ["wall10"];
 export function FieldsInput() {
 
   const {colors1}  = useSelector((state) => state);
@@ -73,27 +73,27 @@ export function FieldsInput() {
                 <TitleHead title="Ancho" icon="horizontal" size />
               </TH>
               <TH>
-              {!!linea_producto?.impermeabilizante === true?(
+              {!!linea_producto?.impermeabilizante === false?(
                 <TitleHead title="Puertas" icon="door" />
                ):(
                 <TitleHead title="Domo" icon="domo" />
               )}
               </TH>
               <TH>
-              {!!linea_producto?.impermeabilizante === true?(
+              {!!linea_producto?.impermeabilizante === false?(
                 <TitleHead title="Ventanas" icon="window" />
                ):(
                 <TitleHead title="Tragaluz" icon="tragaluz" />
               )}
               </TH>
             </THead>
-            {!!linea_producto?.impermeabilizante === true?(
+            {!!linea_producto?.impermeabilizante === false?(
               walles.map((el, index) => (
                 <Wall key={index + "top"} index={index + 1} identifier={el} />
               ))
             ):(
               wallesFalse.map((el, index) => (
-                <Wall1   identifier={el} />
+                <Wall1 key={index + "top"} index={index + 1} identifier={el}/>
               ))
             )}
             
@@ -134,14 +134,10 @@ function Wall({ index, identifier }) {
         }, 400)
       : index === 2 && colors.length === 3
       ? setTimeout(() => setSelect(true))
-      : index === 3 && colors.length === 3
+      :index === 3 && colors.length === 3
       ? setTimeout(() => setSelect(true))
-      : index === 3 && colors.length === 1
-      ? setTimeout(() => setSelect(false))
-      : index === 2 && colors.length === 1
-      ? setTimeout(() => setSelect(false))
-      : index === 3 && colors.length === 2
-      ? setTimeout(() => setSelect(false))
+      : index === 2 && colors.length === 2
+      ? setTimeout(() => setSelect(true))
       : false
   );
 
@@ -437,6 +433,7 @@ const THead = styled(TChild)`
 `;
 const TBody = styled(TChild)`
 min-width: 1024px;
+max-width: 1600px;
 min-heigth: 1367px;
 max-heigth: 1367px;
 
