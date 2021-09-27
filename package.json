@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mui/material": "5.0.1",
     "@reduxjs/toolkit": "^1.6.1",
     "css": "^3.0.0",
     "firebase": "^8.9.1",
@@ -12,6 +13,9 @@
     "frontity": "^1.17.0",
     "gh-pages": "^3.2.3",
     "leaflet": "^1.7.1",
+    "material-ui": "1.0.0-beta.47",
+    "material-ui-color": "1.2.0",
+    "material-ui-colors": "1.0.0",
     "prettier": "^2.3.2",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",

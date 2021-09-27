@@ -13,7 +13,9 @@ import {
   InputDiv,
 } from "./style";
 
-const ItemList = ({ calculateTotal }) => {
+const ItemList = ({
+  calculateTotal,
+}) => {
   const { item, imper } = useItems();
   const [addOptions, setAddOptions] = useState([1]);
   const props1 = useInput();

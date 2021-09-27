@@ -62,4 +62,5 @@ export const Second = styled.div`
     height: 250vh;
     justify-content: center;
   }
+
 `;

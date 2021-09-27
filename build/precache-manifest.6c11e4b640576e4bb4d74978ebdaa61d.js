@@ -1,19 +1,19 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "58e154e9e5bae28e76350be5bb4b3c06",
+    "revision": "665de8ec16680ce0964d93140c69f221",
     "url": "/workpri/index.html"
   },
   {
-    "revision": "ac66868fe298fa94dbbf",
+    "revision": "9054344c42023211bb37",
     "url": "/workpri/static/css/main.96ccf19d.chunk.css"
   },
   {
-    "revision": "1c156cc308c5748687fe",
-    "url": "/workpri/static/js/2.1a6cc26a.chunk.js"
+    "revision": "876251eaa517dd797878",
+    "url": "/workpri/static/js/2.3491f3b0.chunk.js"
   },
   {
-    "revision": "ac66868fe298fa94dbbf",
-    "url": "/workpri/static/js/main.93fac3b7.chunk.js"
+    "revision": "9054344c42023211bb37",
+    "url": "/workpri/static/js/main.455eec99.chunk.js"
   },
   {
     "revision": "2316328b42cc90cd9e79",

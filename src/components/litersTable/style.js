@@ -8,27 +8,29 @@ export const Tooltips = styled(Tooltip)`
 `;
 export const Table = styled.table`
   margin: auto;
-  width: 20%;
+  min-heigth: 1067px;
+  max-heigth: 1067px;
 `;
 export const RowRecipients = styled.tr`
   font-family: "Radikal1";
   display: flex;
   position: relative;
-  top: -30px;
+  width: 155px;
+  top: -20px;
   align-items: flex-end;
   justify-content: center;
   text-align: center;
   @media screen and (max-width: 1367px) {
-    top: -10px;
-    margin: 0 0.5vh 0vw 0;
+	top: -20px;
+	width: 155px;
   }
   @media screen and (max-width: 1024px) {
     min-width: 200px;
     max-width: 200px;
   }
   @media screen and (max-width: 768px) {
-    min-width: 150px;
-    max-width: 150px;
+    min-width: 160px;
+    max-width: 160px;
   }
   @media screen and (max-width: 400px) {
     min-width: 130px;
@@ -64,10 +66,9 @@ export const Size = styled.div`
 `;
 export const TdSize = styled.td`
   padding: none;
-  margin: 0;
-  width: 30%;
+  width: 33%;
   @media screen and (max-width: 1367px) {
-    width: 35%;
+    width: 33%;
   }
   @media screen and (max-width: 600px) {
     width: 30%;
@@ -91,13 +92,11 @@ export const Input = styled.input`
   @media screen and (max-width: 768px) {
     margin: 0 8vw 0 1vw;
     position: relative;
-    left: 10px;
   }
   @media screen and (max-width: 400px) {
     width: 25px;
     margin: 0 5vw 0 1vw;
     position: relative;
-    left: 5px;
   }
 `;
 export const InputArea = styled.input`
@@ -163,7 +162,8 @@ export const DescriptionText = styled.h3`
   white-space: nowrap;
   text-align: center;
   text-overflow: ellipsis;
-
+  position: relative;
+  top: 10px;
   @media screen and (max-width: 1024px) {
     font-size: 14px;
     width: 130px;
@@ -252,6 +252,7 @@ export const Quantity = styled.p`
 
 export const ContainerItems = styled.div`
   width: 100%;
+  padding: 0 15px 0 15px;
   @media screen and (max-width: 1367px) {
     display: flex;
     flex-direction: column;
@@ -285,7 +286,7 @@ export const Items = styled.div`
   display: flex;
   justify-content: center;
   margin: -20px auto auto auto;
-  max-width: 90%;
+  max-width: 100%;
   @media screen and (max-width: 1367px) {
     flex-direction: row;
   }

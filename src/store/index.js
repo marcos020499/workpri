@@ -7,14 +7,14 @@ import gestionReducer from "./gestionReducer";
 import resultReducer from "./resultReducer";
 
 const store = configureStore({
-  reducer: {
-    colors: colorsReducer,
-    info: infoReducer,
-    gestion: gestionReducer,
-    result: resultReducer,
-  },
+	reducer: {
+		colors: colorsReducer,
+		info: infoReducer,
+		gestion: gestionReducer,
+		result: resultReducer,
+	},
 });
 
 export function MProvider({ children }) {
-  return <Provider store={store}>{children}</Provider>;
+	return <Provider store={store}>{children}</Provider>;
 }

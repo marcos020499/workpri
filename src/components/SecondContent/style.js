@@ -72,17 +72,17 @@ export const ButtonReed = styled.button`
 `;
 
 export const ImagePaint = styled.img`
-  width: 7vw;
+  width: 95px;
   @media screen and (max-width: 1367px) {
-    width: 7vw;
+    width: 95px;
   }
   @media screen and (max-width: 1024px) {
-    width: 120px;
+    width: 110px;
   }
 `;
 export const Banner = styled.img`
   width: 100%;
-  height: auto;
+  height: 20%;
   @media screen and (max-width: 1200px) {
     display: none;
   }
@@ -97,28 +97,28 @@ export const Banner = styled.img`
 
 export const H1 = styled.h1`
   font-family: "RadikalBold";
-  font-size: 34px;
+  font-size: 32px;
   color: white;
   letter-spacing: 4px;
   margin: 0 0 30px 0;
-  @media screen and (max-width: 768px) {
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
+  @media screen and (max-width: 1367px) {
+    margin: 0 0 30px 0;
   }
   @media screen and (max-width: 1024px) {
     padding: 30px 0 0 0;
     margin: 1vh 1vh 1vh 1vh;
   }
+  @media screen and (max-width: 768px) {
+    margin: 0 0 30px 0;
+    font-size: 20px;
+    justify-content: center;
+  }
 `;
 export const H2 = styled.h2`
   font-family: "RadikalBold";
   color: #2098ae;
-  font-size: 20px;
+  font-size: 19px;
   letter-spacing: 1px;
-  @media screen and (max-width: 1200px) {
-    padding: 20px 0 0 0;
-  }
   @media screen and (max-width: 1024px) and (orientation: landscape) {
     font-size: 17px;
   }
@@ -142,10 +142,7 @@ export const H = styled.h2`
   letter-spacing: 2px;
   font-family: "RadikalBold";
   color: white;
-  font-size: 18px;
-  @media screen and (max-width: 1200px) {
-    padding: 20px 0 0 0;
-  }
+  font-size: 17px;
   @media screen and (max-width: 768px) {
     font-size: 14px;
     display: flex;
@@ -153,3 +150,9 @@ export const H = styled.h2`
     justify-content: center;
   }
 `;
+export const Div = styled.div`
+  display: flex; 
+  margin: auto; 
+  justify-content: center;
+  padding: 3% 2% 0 2%;
+`
