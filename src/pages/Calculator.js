@@ -66,13 +66,14 @@ const Second = styled.div`
     top: 0vw;
   }
   @media screen and (max-width: 1200px) {
+    margin: 180px 0 0 0;
     min-width: 100%;
     max-width: 100%;
     min-height: none;
     max-height: none;
   }
-  @media screen and (max-width: 1024px) and (orientation: landscape) {
-    margin: 5vw 0 0 0;
+  @media screen and (max-width: 1024px) {
+    margin: 240px 0 0 0;
     min-width: 102%;
     max-width: 102%;
     min-height: 140vh;
@@ -81,9 +82,10 @@ const Second = styled.div`
     min-width: 100%;
     max-width: 100%;
     min-height: 180vh;
+    margin: 300px 0 0 0;
   }
   @media screen and (max-width: 768px) and (orientation: landscape) {
-    padding: 0 0 5% 0;
+    min-height: 800px;
   }
   @media screen and (max-width: 600px) {
     min-width: 100%;
@@ -91,7 +93,7 @@ const Second = styled.div`
     min-height: 130vh;
   }
   @media screen and (max-width: 600px) and (orientation: landscape) {
-    padding: 0 0 50% 0;
+    min-height: 700px;
   }
   @media screen and (max-width: 420px) {
     min-width: 100%;
@@ -114,7 +116,7 @@ const First = styled.div`
     min-height: none;
   }
   @media screen and (max-width: 1200px) and (orientation: landscape) {
-    margin: 5vw 0 0 0;
+    margin: 5vw 0 20% 0;
     min-width: 100%;
     max-width: 100%;
     min-height: 110vh;
@@ -125,7 +127,7 @@ const First = styled.div`
   }
   @media screen and (max-width: 1024px) and (orientation: landscape) {
     margin: 5vw 0 0 0;
-    padding: 0 0 10% 0;
+    padding: 0 0 20% 0;
     min-width: 100%;
     max-width: 100%;
     min-height: auto;
@@ -167,21 +169,24 @@ const First = styled.div`
   }
   @media screen and (max-width: 600px){
     margin: 5vw 0 0 0;
-    padding: 0 0 40% 0;
+    padding: 0 0 20% 0;
     min-width: 100%;
     max-width: 100%;
     min-height: auto;
   }
+  @media screen and (max-width: 600px) and (orientation: landscape) {
+    padding: 0 0 90% 0;
+  }
   @media screen and (max-width: 400px){
-    padding: 0 0 45% 0;
+    padding: 0 0 25% 0;
   }
   @media screen and (max-width: 380px){
-    padding: 0 0 55% 0;
+    padding: 0 0 30% 0;
   }
   @media screen and (max-width: 350px){
-    padding: 0 0 65% 0;
+    padding: 0 0 45% 0;
   }
   @media screen and (max-width: 330px){
-    padding: 0 0 78% 0;
+    padding: 0 0 58% 0;
   }
 `;

@@ -4,7 +4,6 @@ import React, {
 	useEffect,
 	useState,
 	useReducer,
-	useCallback,
 } from "react";
 import styled from "styled-components";
 import {
@@ -49,7 +48,7 @@ export function FieldsInput() {
 					<div>
 						{colors.map((el, i) => (
 							<ColorsItem key={i + "colores"}>
-								<InputItem disabled="disabled" style={{ backgroundColor: el.rgb }} />
+								<InputItem disabled="disabled" style={{ backgroundColor: el.rgb, boxShadow: 'rgba(0, 0, 0, 0.16) 0px 10px 36px 0px' }} />
 							</ColorsItem>
 						))}
 					</div>
@@ -85,7 +84,7 @@ export function FieldsInput() {
 						</THead>
 						{!!linea_producto?.impermeabilizante === false?(
 							walles.map((el, index) => (
-							<Wall key={index + "top"} index={index + 1} identifier={el} />
+							<Wall key={index + "top"} index={index + 1} identifier={el} length={colors}/>
 							))
 							):(
 							wallesFalse.map((el, index) => (
@@ -104,7 +103,7 @@ export function FieldsInput() {
 	);
 }
 
-function Wall({ index, identifier }) {
+function Wall({ index, identifier, }) {
 	const { isReadyToCompute, finishRecopilation } = useSelector(
 		(state) => state.gestion
 	);
@@ -117,22 +116,11 @@ function Wall({ index, identifier }) {
 			return rgb === c;
 		});
 	};
-
 	const storeDistpach = useDispatch();
-	
 	const [color, setColor] = useState(null);
-	const [select, setSelect] = useState(index===1&&colors.length===0?setTimeout(() => {
-		setSelect(true);
-	  }, 400): index===3&&colors.length===3?setTimeout(() => {
-		setSelect(true);
-	  }, 400): colors.length===3&&index===2?setTimeout(() => {
-		setSelect(true);
-	  }, 4000): colors.length===2&&index===2?setTimeout(() => {
-		setSelect(true);
-	  }, 400):
-	  null);
-
-	
+	const [select, setSelect] = useState( 
+		colors.length === 2 && index===2?!null:null
+	  );
 	const initialState = {
 		edit: false,
 		id: index + identifier,
@@ -221,7 +209,7 @@ function Wall({ index, identifier }) {
 						<SimpleInputOwnState
 							id="ancho"
 							onSubmit={onEdit}
-							defaultValue={2}
+							defaultValue={2.5}
 						/>
 					</Content>
 				</TD>

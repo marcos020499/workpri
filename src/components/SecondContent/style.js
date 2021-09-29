@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Tooltip from "react-simple-tooltip";
 export const ContainerSecondSection = styled.div`
   text-align: center;
   @media screen and (max-width: 1200px) {
@@ -31,7 +30,6 @@ export const ContainerButton = styled.div`
   display: block;
   justify-content: center;
   align-items: center;
-  padding: 25px 0 0vw 0;
   @media screen and (max-width: 1366px) {
     padding: 50px 0 0vw 0;
   }
@@ -54,8 +52,12 @@ export const ButtonReed = styled.button`
   border: none;
   cursor: pointer;
   position: relative;
-  top: -10px;
+  top: -60px;
+  @media screen and (max-width: 1500px) {
+    top: -10px;
+    }
   @media screen and (max-width: 1367px) {
+    top: -20px;
     margin: -1vw;
   }
   @media screen and (max-width: 768px) {
@@ -72,17 +74,18 @@ export const ButtonReed = styled.button`
 `;
 
 export const ImagePaint = styled.img`
-  width: 95px;
-  @media screen and (max-width: 1367px) {
-    width: 95px;
+  width: 130px;
+  @media screen and (max-width: 1500px) {
+    width: 115px;
   }
-  @media screen and (max-width: 1024px) {
-    width: 110px;
+  @media screen and (max-width: 1367px) {
+    width: 105px;
   }
 `;
 export const Banner = styled.img`
   width: 100%;
   height: 20%;
+  max-height: 300px;
   @media screen and (max-width: 1200px) {
     display: none;
   }
@@ -97,13 +100,9 @@ export const Banner = styled.img`
 
 export const H1 = styled.h1`
   font-family: "RadikalBold";
-  font-size: 32px;
+  font-size: 33px;
   color: white;
   letter-spacing: 4px;
-  margin: 0 0 30px 0;
-  @media screen and (max-width: 1367px) {
-    margin: 0 0 30px 0;
-  }
   @media screen and (max-width: 1024px) {
     padding: 30px 0 0 0;
     margin: 1vh 1vh 1vh 1vh;
@@ -119,6 +118,7 @@ export const H2 = styled.h2`
   color: #2098ae;
   font-size: 19px;
   letter-spacing: 1px;
+  margin: -20px 0 0 0;
   @media screen and (max-width: 1024px) and (orientation: landscape) {
     font-size: 17px;
   }
@@ -142,7 +142,7 @@ export const H = styled.h2`
   letter-spacing: 2px;
   font-family: "RadikalBold";
   color: white;
-  font-size: 17px;
+  font-size: 22px;
   @media screen and (max-width: 768px) {
     font-size: 14px;
     display: flex;
@@ -155,4 +155,7 @@ export const Div = styled.div`
   margin: auto; 
   justify-content: center;
   padding: 3% 2% 0 2%;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `

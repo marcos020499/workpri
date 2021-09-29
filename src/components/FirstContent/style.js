@@ -360,6 +360,7 @@ export const InputItem = styled.input`
   border: none;
   border-radius: 8px;
   margin: 0 0 0 1vh;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
   @media screen and (max-width: 768px) {
     width: 60px;
     height: 20px;

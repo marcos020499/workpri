@@ -15,22 +15,33 @@ export const RowRecipients = styled.tr`
   font-family: "Radikal1";
   display: flex;
   position: relative;
-  width: 155px;
-  top: -20px;
+  width: 180px;
+  top: -60px;
   align-items: flex-end;
   justify-content: center;
   text-align: center;
+  @media screen and (max-width: 1500px) {
+    top: -30px;
+    width: 165px;
+    left: 15px;
+    }
   @media screen and (max-width: 1367px) {
-	top: -20px;
+    top: -30px;
 	width: 155px;
   }
   @media screen and (max-width: 1024px) {
     min-width: 200px;
     max-width: 200px;
   }
+  @media screen and (max-width: 1024px) and (orientation: landscape) {
+    top: -10px;
+  }
   @media screen and (max-width: 768px) {
     min-width: 160px;
     max-width: 160px;
+  }
+  @media screen and (max-width: 768px) and (orientation: landscape) {
+    top: 0px;
   }
   @media screen and (max-width: 400px) {
     min-width: 130px;
@@ -101,7 +112,7 @@ export const Input = styled.input`
 `;
 export const InputArea = styled.input`
   font-family: "Radikal1";
-  width: 80px;
+  width: 90px;
   font-size: 11px;
   padding: 0.3vh 0 0.3vh 0;
   border-radius: 7px;
@@ -121,7 +132,7 @@ export const InputArea = styled.input`
 `;
 export const InputAreaLiters = styled.input`
   font-family: "Radikal1";
-  width: 40px;
+  width: 50px;
   text-align: center;
   font-size: 11px;
   padding: 0.3vh 0 0.3vh 0;
@@ -155,8 +166,8 @@ export const Description = styled.h3`
 export const DescriptionText = styled.h3`
   font-size: 1.4vh;
   color: white;
-  font-family: "Radikal1";
-  width: 130px;
+  font-family: "RadikalBold";
+  width: 160px;
   max-height: 30px;
   overflow: hidden;
   white-space: nowrap;
@@ -216,10 +227,8 @@ export const RowDes = styled.tr`
   flex-direction: row;
   justify-content: center;
   position: relative;
-  left: -5px;
   @media screen and (max-width: 1200px) {
     position: relative;
-    left: -15px;
     justify-content: center;
   }
   @media screen and (max-width: 1024px) {
@@ -285,10 +294,16 @@ export const ContainerItems = styled.div`
 export const Items = styled.div`
   display: flex;
   justify-content: center;
-  margin: -20px auto auto auto;
+  margin: -35px auto auto auto;
   max-width: 100%;
+  @media screen and (max-width: 1500px) {
+    margin: -15px auto auto auto;
+  }
   @media screen and (max-width: 1367px) {
     flex-direction: row;
+  }
+  @media screen and (max-width: 768px) and (orientation: landscape) {
+    padding: 0 0 10px 0;
   }
   @media screen and (max-width: 600px) {
     max-width: 10px;
@@ -297,7 +312,7 @@ export const Items = styled.div`
 export const InputColorName = styled.input`
   border-radius: 100%;
   width: 10px;
-  height: 10px;
+  height: 13px;
   border: 1px solid #003366;
   margin: 0 0.7vw 0 0;
   @media screen and (max-width: 768px) {

@@ -1,6 +1,6 @@
-import React, { useEffect, useState, memo } from "react";
+import React, {  useReducer} from "react";
 import SecondpartLiters from "../litersTable/index";
-import useInput from '../Hooks//Inputs'
+
 import {
 	ContainerSecondSection,
 	H1,
@@ -14,33 +14,76 @@ import {
 } from "./style";
 import { useSelector } from "react-redux";
 
-const SecondPart = ({cantidad4L}) => {
+const SecondPart = () => {
 	const { result, colors } = useSelector((state) => state);
 	const { linea_producto } = colors;
 	const stateColors = useSelector((state) => state.colors);
 	const colors1 = stateColors.colores || [];
-	const {state} = useInput()
-
+  const initialState = {
+    cantidad1_1L: 0,
+    cantidad1_2L: 0,
+    cantidad1_3L: 0,
+    cantidad4_1L: 0,
+    cantidad4_2L: 0,
+    cantidad4_3L: 0,
+    cantidad19_1L: 0,
+    cantidad19_2L: 0,
+    cantidad19_3L: 0,
+  };
+  const reducer = (s, a) => ({ ...s, ...a });
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const handleInput = (e) => {
+    dispatch({ [e.target.name]: e.target.value });
+  };
 	function getResult() {
-		return result.map ((el, i) => (
-		<SecondpartLiters key={i + "pintura"} {...el} {...i} />
-		 ))
-	}  
-	function getColors() {
-		return colors1.map ((el, i) => (
-		<SecondpartLiters key={i + "pintura"} {...el} {...i} />
-		))
-	} 	
-	function getPresent() {
-		return result.map ((element) => (
-			element.presentaciones.map((elsn)=>( 
-				elsn.litros===4? elsn.presentacion_id +':'+ ((state.cantidad4L === 0?state.cantidad4L = elsn.cantidad: state.cantidad4L += elsn.cantidad )) :elsn.presentacion_id +':'+ elsn.cantidad
-			))
-		))
-	}
+    return result.map((el, ind) => (
+      <SecondpartLiters
+        key={ind + "pintura"}
+        {...el}
+        {...ind}
+        {...state}
+        indSecond={ind}
+        onChanges={handleInput}
+      />
+    ));
+  }
+  function getColors() {
+    return colors1.map((el, inde) => (
+      <SecondpartLiters key={inde + "pintura"} {...el} {...inde} />
+    ));
+  }
+  function getPresent() {
+    return result.map((element, index) =>
+      element.presentaciones.map((elsn, x) => 
+            elsn.litros === 4 && index === 0
+            ? (state.cantidad4_1L>elsn.cantidad?state.cantidad4_1L = elsn.cantidad:state.cantidad4_1L<elsn.cantidad?state.cantidad4_1L = elsn.cantidad: state.cantidad4_1L )< 1 ?null: elsn.presentacion_id + ":" + state.cantidad4_1L
+          : elsn.litros === 4 && index === 1
+          ? (state.cantidad4_2L>elsn.cantidad?state.cantidad4_2L = elsn.cantidad: state.cantidad4_2L<elsn.cantidad?state.cantidad4_2L = elsn.cantidad: state.cantidad4_2L)< 1 ?null: elsn.presentacion_id + ":" + state.cantidad4_2L
+          : elsn.litros === 4 && index === 2
+          ? ( state.cantidad4_3L>elsn.cantidad?state.cantidad4_3L = elsn.cantidad: state.cantidad4_3L<elsn.cantidad?state.cantidad4_3L = elsn.cantidad: state.cantidad4_3L)< 1 ?null: elsn.presentacion_id + ":" + state.cantidad4_3L
+
+          : elsn.litros === 1 && index === 0 
+          ? (state.cantidad1_1L<elsn.cantidad?state.cantidad1_1L = elsn.cantidad:state.cantidad1_1L>elsn.cantidad?state.cantidad1_1L = elsn.cantidad: state.cantidad1_1L)< 1 ? null: elsn.presentacion_id + ":" + state.cantidad1_1L
+          : elsn.litros === 1 && index === 1
+          ? (state.cantidad1_2L>elsn.cantidad?state.cantidad1_2L = elsn.cantidad: state.cantidad1_2L<elsn.cantidad?state.cantidad1_2L = elsn.cantidad: state.cantidad1_2L)< 1 ?null: elsn.presentacion_id + ":" + state.cantidad1_2L
+          : elsn.litros === 1 && index === 2
+          ? (state.cantidad1_3L>elsn.cantidad?state.cantidad1_3L = elsn.cantidad: state.cantidad1_3L<elsn.cantidad?state.cantidad1_3L = elsn.cantidad: state.cantidad1_3L)< 1 ?null: elsn.presentacion_id + ":" + state.cantidad1_3L
+
+          : elsn.litros === 19 && index === 0
+          ? (state.cantidad19_1L>elsn.cantidad?state.cantidad19_1L = elsn.cantidad: state.cantidad19_1L<elsn.cantidad?state.cantidad19_1L = elsn.cantidad: state.cantidad19_1L)< 1 ?null: elsn.presentacion_id + ":" + state.cantidad19_1L
+          : elsn.litros === 19 && index === 1
+          ? (state.cantidad19_2L>elsn.cantidad?state.cantidad19_2L = elsn.cantidad: state.cantidad19_2L<elsn.cantidad?state.cantidad19_2L = elsn.cantidad: state.cantidad19_2L)< 1 ?null: elsn.presentacion_id + ":" + state.cantidad19_2L
+          : elsn.litros === 19 && index === 2
+          ? (state.cantidad19_3L>elsn.cantidad?state.cantidad19_3L = elsn.cantidad: state.cantidad19_3L<elsn.cantidad?state.cantidad19_3L = elsn.cantidad: state.cantidad19_3L)< 1 ?null: elsn.presentacion_id + ":" + state.cantidad19_3L
+          : null
+      )
+    );
+  }
 	function templateUr(){
-		let url = `ec2-44-242-66-211.us-west-2.compute.amazonaws.com/finalizar-compra/?add-to-cart=${getPresent()},`
-		console.log(url)
+		let url = `http://ec2-44-242-66-211.us-west-2.compute.amazonaws.com/finalizar-compra/?add-to-cart=${getPresent()},`
+		let replace = url.replace(/,,/g , ',')
+    let replace1 = replace.replace(/=,/g, '=').replace(/,,/g , ',')
+    return replace1
 	}
 	return (
 		<div>
@@ -57,7 +100,7 @@ const SecondPart = ({cantidad4L}) => {
 				</Div>
 				<ContainerButton>
 					<h1> </h1>
-					<a href={templateUr()}><ButtonReed>Comprar</ButtonReed></a>
+					<a href={templateUr()+''}><ButtonReed>Comprar</ButtonReed></a>
 				</ContainerButton>
 			</ContainerSecondSection>
 		</div>
