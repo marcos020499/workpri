@@ -44,6 +44,7 @@ export function FieldsInput() {
 		() => (
 			<Container>
 				<Title>COLORES SELECCIONADOS</Title>
+
 				<InputDiv>
 					<div>
 						{colors.map((el, i) => (
@@ -82,28 +83,35 @@ export function FieldsInput() {
 								)}
 							</TH>
 						</THead>
-						{!!linea_producto?.impermeabilizante === false?(
+						{colors.map((els, inx) => (
+						!!linea_producto?.impermeabilizante === false?(
 							walles.map((el, index) => (
-							<Wall key={index + "top"} index={index + 1} identifier={el} length={colors}/>
+							<Wall key={index + "top"} index={index + 1} identifier={el} Length={inx +1}/>
+							
 							))
 							):(
 							wallesFalse.map((el, index) => (
-							<Wall key={index + "top"} index={index + 1} identifier={el}/>
+							<Wall key={index + "top"} index={index + 1} identifier={el} />
 							))
-						)}
+						)
+						))}
 					</TableHorizontal>
 				</Conta>
+
 				<Final>
 						<Warning>*Tienes que llenar todos los campos</Warning>
-						<ButtonRed onClick={submitInf}>Calcular</ButtonRed>
+						<ButtonRed onClick={() => { submitInf();setTimeout(() => {
+							submitInf()
+						}, 500);}}>Calcular</ButtonRed>
 					</Final>
+					
 			</Container>
 		),
 		[colors]
 	);
 }
 
-function Wall({ index, identifier, }) {
+function Wall({ index, identifier, Length }) {
 	const { isReadyToCompute, finishRecopilation } = useSelector(
 		(state) => state.gestion
 	);
@@ -116,11 +124,19 @@ function Wall({ index, identifier, }) {
 			return rgb === c;
 		});
 	};
+	const Len = colors.map((el, inde)=>  {return inde +1})
 	const storeDistpach = useDispatch();
 	const [color, setColor] = useState(null);
 	const [select, setSelect] = useState( 
-		colors.length === 2 && index===2?!null:null
+		Length === 1 && index===1?!null:
+		Length === 2 && index===1?!null:
+		Length === 2 && index===2?!null:
+		Length === 3 && index===1?!null:
+		Length === 3 && index===2?!null:
+		Length === 3 && index===3?!null:
+		null
 	  );
+	  console.log('l', Length)
 	const initialState = {
 		edit: false,
 		id: index + identifier,

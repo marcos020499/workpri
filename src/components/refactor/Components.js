@@ -7,7 +7,7 @@ import { Tooltip } from "./Tooltip";
 import { indigo } from '@mui/material/colors';
 
 function useForceUpdate() {
-	const [setValue] = useState(0); // integer state
+	const [value, setValue] = useState(0); // integer state
 	return () => setValue((value) => value + 1); // update the state to force render
 }
 
@@ -118,7 +118,6 @@ export const SimpleInput = ({ onChangeText, lIcon, value }) => {
 				type="number"
 				value={value}
 				onChange={onChange}
-        defaultValue='1'
 				min="0.5"
 				max="5"
 				step="0.5"
@@ -145,7 +144,6 @@ export const SimpleInputOwnState = ({ id, onSubmit, defaultValue }) => {
 			<SIInput
 				type="number"
 				value={text}
-        defaultValue='1'
 				onChange={onChange}
 				min="0.5"
 				max="5"
