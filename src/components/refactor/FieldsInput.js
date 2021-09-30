@@ -48,7 +48,6 @@ export function FieldsInput() {
 									disabled="disabled"
 									style={{
 										backgroundColor: el.rgb,
-										boxShadow: "rgba(0, 0, 0, 0.16) 0px 10px 36px 0px",
 									}}
 								/>
 							</ColorsItem>
@@ -90,14 +89,15 @@ export function FieldsInput() {
 								)}
 							</TH>
 						</THead>
-						{colors.map((els, inx) =>
+						{colors.map((el, i) =>{
+							return i ===0?(
 							!!linea_producto?.impermeabilizante === false
 								? walles.map((el, index) => (
 										<Wall
 											key={index + "top"}
 											index={index + 1}
 											identifier={el}
-											Length={inx + 1}
+											Length={colors.length}
 										/>
 								  ))
 								: wallesFalse.map((el, index) => (
@@ -107,7 +107,9 @@ export function FieldsInput() {
 											identifier={el}
 										/>
 								  ))
-						)}
+								  ):
+								  ('')
+								})}
 					</TableHorizontal>
 				</Conta>
 
@@ -144,9 +146,6 @@ function Wall({ index, identifier, Length }) {
 			return rgb === c;
 		});
 	};
-	const Len = colors.map((el, inde) => {
-		return inde + 1;
-	});
 	const storeDistpach = useDispatch();
 	const [color, setColor] = useState(null);
 	const [select, setSelect] = useState(

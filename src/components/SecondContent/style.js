@@ -30,11 +30,15 @@ export const ContainerButton = styled.div`
   display: block;
   justify-content: center;
   align-items: center;
-  @media screen and (max-width: 1366px) {
-    padding: 50px 0 0vw 0;
-  }
+
   @media screen and (max-width: 1024px) {
     padding: 1vw 0 0vw 0;
+  }
+  @media screen and (max-height: 769px) and (orientation: landscape) {
+    padding: 30px 0 0 0;
+  }
+  @media screen and (max-height: 601px) {
+    padding: 50px 0 0 0;
   }
 `;
 export const ButtonReed = styled.button`
@@ -54,10 +58,10 @@ export const ButtonReed = styled.button`
   position: relative;
   top: -60px;
   @media screen and (max-width: 1500px) {
-    top: -10px;
+    top: -60px;
     }
   @media screen and (max-width: 1367px) {
-    top: -20px;
+    top: -40px;
     margin: -1vw;
   }
   @media screen and (max-width: 768px) {
@@ -108,7 +112,7 @@ export const H1 = styled.h1`
     margin: 1vh 1vh 1vh 1vh;
   }
   @media screen and (max-width: 768px) {
-    margin: 0 0 30px 0;
+    margin: 0 0 10px 0;
     font-size: 20px;
     justify-content: center;
   }
@@ -122,9 +126,6 @@ export const H2 = styled.h2`
   @media screen and (max-width: 1024px) and (orientation: landscape) {
     font-size: 17px;
   }
-  @media screen and (max-height: 769px) {
-    margin: -30px 0 1vh 0;
-  }
   @media screen and (max-width: 1024px) {
     padding: 10px 0 0 0;
     font-size: 20px;
@@ -135,6 +136,10 @@ export const H2 = styled.h2`
     margin: none;
     padding: 10vw 0 0 0;
     justify-content: center;
+  }
+  @media screen and (max-height: 601px) and (orientation: landscape) {
+    position: relative;
+    top: 5px;
   }
 `;
 export const H = styled.h2`

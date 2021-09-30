@@ -11,15 +11,12 @@ function useForceUpdate() {
 	return () => setValue((value) => value + 1); // update the state to force render
 }
 
-const initDoor = { largo: 2, ancho: 1 };
-const initWindow = { largo: 1, ancho: 1 };
 
 export const ExpandableInput = ({ id, onSubmit }) => {
 	const forceUpdate = useForceUpdate();
 	const [inputs, setInputs] = useReducer((s, a) => a || s, []);
 	const [hidden, setHidden] = useState(true);
 
-	const initValue = id === "puerta" ? initDoor : initWindow;
 
 	/*
 		inputs: [{ largo, ancho}]
@@ -37,7 +34,7 @@ export const ExpandableInput = ({ id, onSubmit }) => {
 		if (inputs.length === 4) {
 			return;
 		}
-		const old = [...inputs, initValue];
+		const old = [...inputs, id === "puertas" ? {largo: 2, ancho: 1} : {largo: 1, ancho: 1}];
 		setInputs(old);
 		onSubmit(id, old);
 		setHidden(false);
@@ -537,8 +534,12 @@ const Button = styled.button`
 	@media screen and (max-width: 1024px) {
 		left: -10px;
 	}
+
 	@media screen and (max-width: 1024px) and (orientation: landscape) {
 		width: 1.6vh;
+	}
+	@media screen and (max-height: 700px) and (orientation: landscape) {
+		width: 2.3vh;
 	}
 	@media screen and (max-width: 768px) {
 		position: relative;

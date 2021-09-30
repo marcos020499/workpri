@@ -34,8 +34,7 @@ export default Index;
 
 const Container = styled.div`
   display: flex;
-  min-height: 100vh;
-  max-height: 100vh;
+  height: auto;
   overflow: hidden;
   @media screen and (max-width: 1200px) {
     overflow: visible;
@@ -57,8 +56,8 @@ const Ban = styled.img`
 const Second = styled.div`
   background-color: #003366;
   height: auto !important;
-  min-height: 100vh;
-  max-height: 100vh;
+  min-height: 105vh;
+  max-height: 105vh;
   min-width: 48%;
   max-width: 48%;
   margin: 0vw -0.5vw 0 0;
@@ -94,6 +93,9 @@ const Second = styled.div`
   }
   @media screen and (max-width: 600px) and (orientation: landscape) {
     min-height: 700px;
+  }
+  @media screen and (max-height: 601px) and (orientation: landscape) {
+    margin: 340px 0 0 0;
   }
   @media screen and (max-width: 420px) {
     min-width: 100%;

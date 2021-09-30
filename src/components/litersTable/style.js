@@ -15,35 +15,42 @@ export const RowRecipients = styled.tr`
   font-family: "Radikal1";
   display: flex;
   position: relative;
-  width: 180px;
+  width: 200px;
   top: -60px;
   align-items: flex-end;
   justify-content: center;
   text-align: center;
   @media screen and (max-width: 1500px) {
-    top: -30px;
-    width: 165px;
-    left: 15px;
+    top: -50px;
+    width: 180px;
     }
   @media screen and (max-width: 1367px) {
-    top: -30px;
-	width: 155px;
-  }
-  @media screen and (max-width: 1024px) {
-    min-width: 200px;
-    max-width: 200px;
+    top: -40px;
   }
   @media screen and (max-width: 1024px) and (orientation: landscape) {
-    top: -10px;
+    top: -30px;
   }
-  @media screen and (max-width: 768px) {
-    min-width: 160px;
-    max-width: 160px;
+  @media screen and (max-height: 768px) and (orientation: landscape) {
+    top: -20px;
   }
   @media screen and (max-width: 768px) and (orientation: landscape) {
     top: 0px;
   }
+  @media screen and (max-width: 600px) {
+    min-width: 180px;
+    max-width: 180px;
+  }
+  @media screen and (max-height: 601px) {
+    top: 10px;
+    min-width: 180px;
+    max-width: 180px;
+  }
+
   @media screen and (max-width: 400px) {
+    min-width: 140px;
+    max-width: 140px;
+  }
+  @media screen and (max-width: 350px) {
     min-width: 130px;
     max-width: 130px;
   }
@@ -60,12 +67,12 @@ export const ImageQuantity = styled.img`
   ${({ size }) => {
     const sz = {
       _1: "7.5",
-      _4: "9.5",
-      _19: "10",
+      _4: "10",
+      _19: "11",
     }["_" + size];
+
     return `width: ${sz}vh`;
   }}
-  
 `;
 
 export const Size = styled.div`
@@ -104,26 +111,24 @@ export const Input = styled.input`
     margin: 0 8vw 0 1vw;
     position: relative;
   }
+  @media screen and (max-height: 601px) and (orientation: landscape) {
+    position: relative;
+    left: -15%;
+  }
   @media screen and (max-width: 400px) {
     width: 25px;
     margin: 0 5vw 0 1vw;
-    position: relative;
   }
 `;
 export const InputArea = styled.input`
   font-family: "Radikal1";
-  width: 90px;
+  width: 95px;
   font-size: 11px;
   padding: 0.3vh 0 0.3vh 0;
   border-radius: 7px;
   border: none;
   text-align: center;
   color: #999999;
-  @media screen and (max-width: 1024px) {
-    width: 70px;
-    position: relative;
-    font-size: 13px;
-  }
   @media screen and (max-width: 768px) {
     width: 35px;
     font-size: 13px;
@@ -132,18 +137,13 @@ export const InputArea = styled.input`
 `;
 export const InputAreaLiters = styled.input`
   font-family: "Radikal1";
-  width: 50px;
+  width: 55px;
   text-align: center;
   font-size: 11px;
   padding: 0.3vh 0 0.3vh 0;
   border-radius: 7px;
   border: none;
   color: #999999;
-
-  @media screen and (max-width: 1024px) {
-    width: 40px;
-    position: relative;
-  }
   @media screen and (max-width: 768px) {
     width: 35px;
     font-size: 13px;
@@ -177,27 +177,27 @@ export const DescriptionText = styled.h3`
   top: 10px;
   @media screen and (max-width: 1024px) {
     font-size: 14px;
-    width: 130px;
+    width: 160px;
     text-align: center;
     justify-content: center;
   }
   @media screen and (max-width: 768px) {
-    font-size: 15px;
-    width: 110px;
+    font-size: 14px;
+    width: 150px;
     margin: 0;
-    position: relative;
     top: -10px
-    text-align: center;
-    justify-content: center;
+  }
+  @media screen and (max-width: 600px) {
+    width: 120px;
+    font-size: 12px;
   }
   @media screen and (max-width: 400px) {
-    font-size: 15px;
+    font-size: 11px;
     width: 110px;
-    margin: 0 1vw 0 0;
-    position: relative;
-    top: -10px
-    text-align: center;
-    justify-content: center;
+  }
+  @media screen and (max-width: 340px) {
+    font-size: 10px;
+    width: 100px;
   }
 `;
 export const ThDescription = styled.th`
@@ -227,6 +227,7 @@ export const RowDes = styled.tr`
   flex-direction: row;
   justify-content: center;
   position: relative;
+  left: -4%;
   @media screen and (max-width: 1200px) {
     position: relative;
     justify-content: center;
@@ -257,16 +258,20 @@ export const Quantity = styled.p`
   @media screen and (max-width: 1367px) {
     margin: 0 0 0 0;
   }
+  @media screen and (max-height: 601px) and (orientation: landscape) {
+    position: relative;
+    left: -15%;
+  }
 `;
 
 export const ContainerItems = styled.div`
   width: 100%;
-  padding: 0 15px 0 15px;
+  display: flex;
+  flex-direction: column;
   @media screen and (max-width: 1367px) {
-    display: flex;
     flex-direction: column;
     width: 100%;
-    margin: auto;
+    margin: auto auto 0 auto;
   }
   @media screen and (max-width: 1200px) {
     display: flex;
@@ -281,12 +286,8 @@ export const ContainerItems = styled.div`
     align-items: center;
   }
   @media screen and (max-width: 600px) {
-    min-width: none;
-    display: flex;
     display: flex;
     justify-content: center;
-    max-width: 90%;
-    min-height: 90%;
     flex-direction: row;
     align-items: center;
   }
@@ -294,19 +295,41 @@ export const ContainerItems = styled.div`
 export const Items = styled.div`
   display: flex;
   justify-content: center;
-  margin: -35px auto auto auto;
+  align-items: center;
+  margin: -35px 60px 0 0;
   max-width: 100%;
   @media screen and (max-width: 1500px) {
-    margin: -15px auto auto auto;
+    margin: -15px 20px 0 auto;
   }
   @media screen and (max-width: 1367px) {
+    margin: -15px 0px 0 auto;
     flex-direction: row;
+  }
+  @media screen and (max-width: 1200px) {
+    margin: -15px 60px 0 auto;
   }
   @media screen and (max-width: 768px) and (orientation: landscape) {
     padding: 0 0 10px 0;
   }
   @media screen and (max-width: 600px) {
-    max-width: 10px;
+    margin: auto;
+    position: relative;
+    left: -12%;
+    padding: 0;
+    width: 90%;
+  }
+  @media screen and (max-height: 768px) and (orientation: landscape) {
+    left: 5%;
+  }
+  @media screen and (max-width: 400px) {
+    margin: auto;
+    position: relative;
+    left: -14%;
+    padding: 0;
+    width: 90%;
+  }
+  @media screen and (max-width: 350px) {
+    left: -15%;
   }
 `;
 export const InputColorName = styled.input`

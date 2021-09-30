@@ -360,7 +360,8 @@ export const InputItem = styled.input`
   border: none;
   border-radius: 8px;
   margin: 0 0 0 1vh;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+  box-shadow: rgba(0, 0, 0, 0.10) 10px 10px 36px 10px;
+  -webkit-appearance: none;
   @media screen and (max-width: 768px) {
     width: 60px;
     height: 20px;
@@ -637,7 +638,7 @@ export const Final = styled.div`
   display: flex;
   align-items: center;
   @media screen and (max-width: 1367px) {
-    margin: 0vw 4vw 0 5vw;
+    margin: 23px 4vw  5vw;
   }
   @media screen and (max-width: 1024px) {
     margin: 2vw 4vw 0 4vw;
