@@ -1,10 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {
-	useMemo,
-	useEffect,
-	useState,
-	useReducer,
-} from "react";
+import React, { useMemo, useEffect, useState, useReducer } from "react";
 import styled from "styled-components";
 import {
 	TitleHead,
@@ -32,8 +27,8 @@ import {
 const walles = ["wall1", "wall2", "wall3", "wall4", "wall5"];
 const wallesFalse = ["wall1"];
 export function FieldsInput() {
-	const {colors1}  = useSelector((state) => state);
-  	const linea_producto  = colors1;
+	const { colors1 } = useSelector((state) => state);
+	const linea_producto = colors1;
 	const dispatch = useDispatch();
 	const stateColors = useSelector((state) => state.colors);
 	const colors = stateColors.colores || [];
@@ -49,12 +44,24 @@ export function FieldsInput() {
 					<div>
 						{colors.map((el, i) => (
 							<ColorsItem key={i + "colores"}>
-								<InputItem disabled="disabled" style={{ backgroundColor: el.rgb, boxShadow: 'rgba(0, 0, 0, 0.16) 0px 10px 36px 0px' }} />
+								<InputItem
+									disabled="disabled"
+									style={{
+										backgroundColor: el.rgb,
+										boxShadow: "rgba(0, 0, 0, 0.16) 0px 10px 36px 0px",
+									}}
+								/>
 							</ColorsItem>
 						))}
 					</div>
-					
-					<Button onClick={() => {window.location.reload()}}>Borrar todo</Button>
+
+					<Button
+						onClick={() => {
+							window.location.reload();
+						}}
+					>
+						Borrar todo
+					</Button>
 				</InputDiv>
 				<Conta>
 					<TableHorizontal>
@@ -69,48 +76,61 @@ export function FieldsInput() {
 								<TitleHead title="Ancho" icon="horizontal" size />
 							</TH>
 							<TH>
-								{!!linea_producto?.impermeabilizante === false?(
-								<TitleHead title="Puertas" icon="door" />
-								):(
-								<TitleHead title="Domo" icon="domo" />
+								{!!linea_producto?.impermeabilizante === false ? (
+									<TitleHead title="Puertas" icon="door" />
+								) : (
+									<TitleHead title="Domo" icon="domo" />
 								)}
 							</TH>
 							<TH>
-								{!!linea_producto?.impermeabilizante === false?(
-								<TitleHead title="Ventanas" icon="window" />
-								):(
-								<TitleHead title="Tragaluz" icon="tragaluz" />
+								{!!linea_producto?.impermeabilizante === false ? (
+									<TitleHead title="Ventanas" icon="window" />
+								) : (
+									<TitleHead title="Tragaluz" icon="tragaluz" />
 								)}
 							</TH>
 						</THead>
-						{colors.map((els, inx) => (
-						!!linea_producto?.impermeabilizante === false?(
-							walles.map((el, index) => (
-							<Wall key={index + "top"} index={index + 1} identifier={el} Length={inx +1}/>
-							
-							))
-							):(
-							wallesFalse.map((el, index) => (
-							<Wall key={index + "top"} index={index + 1} identifier={el} />
-							))
-						)
-						))}
+						{colors.map((els, inx) =>
+							!!linea_producto?.impermeabilizante === false
+								? walles.map((el, index) => (
+										<Wall
+											key={index + "top"}
+											index={index + 1}
+											identifier={el}
+											Length={inx + 1}
+										/>
+								  ))
+								: wallesFalse.map((el, index) => (
+										<Wall
+											key={index + "top"}
+											index={index + 1}
+											identifier={el}
+										/>
+								  ))
+						)}
 					</TableHorizontal>
 				</Conta>
 
 				<Final>
-						<Warning>*Tienes que llenar todos los campos</Warning>
-						<ButtonRed onClick={() => { submitInf();setTimeout(() => {
-							submitInf()
-						}, 500);}}>Calcular</ButtonRed>
-					</Final>
-					
+					<Warning>*Tienes que llenar todos los campos</Warning>
+					<ButtonRed
+						onClick={() => {
+							submitInf();
+							setTimeout(() => {
+								submitInf();
+							}, 500);
+						}}
+					>
+						Calcular
+					</ButtonRed>
+				</Final>
 			</Container>
 		),
 		[colors]
 	);
 }
 
+// ROW
 function Wall({ index, identifier, Length }) {
 	const { isReadyToCompute, finishRecopilation } = useSelector(
 		(state) => state.gestion
@@ -124,19 +144,27 @@ function Wall({ index, identifier, Length }) {
 			return rgb === c;
 		});
 	};
-	const Len = colors.map((el, inde)=>  {return inde +1})
+	const Len = colors.map((el, inde) => {
+		return inde + 1;
+	});
 	const storeDistpach = useDispatch();
 	const [color, setColor] = useState(null);
-	const [select, setSelect] = useState( 
-		Length === 1 && index===1?!null:
-		Length === 2 && index===1?!null:
-		Length === 2 && index===2?!null:
-		Length === 3 && index===1?!null:
-		Length === 3 && index===2?!null:
-		Length === 3 && index===3?!null:
-		null
-	  );
-	  console.log('l', Length)
+	const [select, setSelect] = useState(
+		Length === 1 && index === 1
+			? !null
+			: Length === 2 && index === 1
+			? !null
+			: Length === 2 && index === 2
+			? !null
+			: Length === 3 && index === 1
+			? !null
+			: Length === 3 && index === 2
+			? !null
+			: Length === 3 && index === 3
+			? !null
+			: null
+	);
+	console.log("l", Length);
 	const initialState = {
 		edit: false,
 		id: index + identifier,
@@ -158,7 +186,7 @@ function Wall({ index, identifier, Length }) {
 
 			-- press calculate
 		*/
-    
+
 		//select/deselect
 
 		if (!select) {
@@ -199,7 +227,6 @@ function Wall({ index, identifier, Length }) {
 
 	return useMemo(
 		() => (
-			
 			<TBody key="table">
 				<TD key="first">
 					<FirstCol
@@ -248,65 +275,63 @@ function Wall({ index, identifier, Length }) {
 					</Content>
 				</TD>
 			</TBody>
-			
 		),
 		[select]
 	);
 }
 const Conta = styled.div`
-max-width: 768;
-overflow-x: auto;
-overflow-y: auto;
-@media screen and (max-width: 768px) {
-  margin: 5vw 0 0 0;
-}
+	max-width: 768;
+	overflow-x: auto;
+	overflow-y: auto;
+	@media screen and (max-width: 768px) {
+		margin: 5vw 0 0 0;
+	}
 `;
 const Container = styled.div`
-max-width: 768;
-@media screen and (max-width: 768px) {
-  margin: 5vw 0 0 0;
-}
+	max-width: 768;
+	@media screen and (max-width: 768px) {
+		margin: 5vw 0 0 0;
+	}
 `;
 const TChild = styled.tr`
-margin: 0;
-padding: 0;
+	margin: 0;
+	padding: 0;
 `;
 
 const TableHorizontal = styled(TChild)`
-text-align: center;
-justify-content: center;
-margin: auto;
+	text-align: center;
+	justify-content: center;
+	margin: auto;
 `;
 const THead = styled(TChild)`
-min-width: 1024px;
+	min-width: 1024px;
 `;
 const TBody = styled(TChild)`
-min-width: 1024px;
-max-width: 1600px;
-min-heigth: 1067px;
-max-heigth: 1067px;
-
+	min-width: 1024px;
+	max-width: 1600px;
+	min-heigth: 1067px;
+	max-heigth: 1067px;
 `;
 const TD = styled.td`
-margin: 0;
-${({ end }) => (!end ? `border-right: 1px solid #003366;` : ``)}
+	margin: 0;
+	${({ end }) => (!end ? `border-right: 1px solid #003366;` : ``)}
 `;
 
 const Hidding = styled.div`
-display: flex;
-flex: 1;
-visibility: ${({ hidden }) => `${hidden ? "hidden" : "visible"}`};
+	display: flex;
+	flex: 1;
+	visibility: ${({ hidden }) => `${hidden ? "hidden" : "visible"}`};
 `;
 
 const TH = styled.th`
-padding: 0px 1vw;
-@media screen and (max-width: 1367px) {
-  padding: 0px 0.7vw;
-}
-@media screen and (max-width: 1200px) {
-  padding: 0px 1.5vw;
-}
-@media screen and (max-width: 768px) {
-  padding: 0 0.2vw;
-}
+	padding: 0px 1vw;
+	@media screen and (max-width: 1367px) {
+		padding: 0px 0.7vw;
+	}
+	@media screen and (max-width: 1200px) {
+		padding: 0px 1.5vw;
+	}
+	@media screen and (max-width: 768px) {
+		padding: 0 0.2vw;
+	}
 `;
