@@ -82,12 +82,12 @@ export const ExpandableInput = ({ id, onSubmit }) => {
 	);
 };
 
+
 export const SizeInput = ({ identifier, values, hidden, onChange, inp }) => {
 	const submit = (key, value) => {
 		console.log("size", key, value);
 		onChange(identifier, key, value);
 	};
-
 	return (
 		<div style={hidden ? { visibility: "hidden" } : {}}>
 			<RowSimple
@@ -118,11 +118,27 @@ export const SimpleInput = ({ onChangeText, lIcon, value }) => {
 		//console.log("v", value, "target", target.value);
 		onChangeText(parseFloat(target.value));
 	}
+	const [width, setWidth] = useState(window.innerWidth);
 
+	useEffect(() => {
+	  function handleResize() {
+		setWidth(window.innerWidth);
+	  }
+	  window.addEventListener("resize", handleResize);
+	  return () => window.removeEventListener("resize", handleResize);
+	}, [width]);
+  
+	useEffect(() => {
+	  width < 768 && handleSideNavToggle();
+	},[width]);
+	function handleSideNavToggle() {
+	  console.log("toggle it");
+	}
 	return (
 		<SIContainer>
 			{lIcon && <Icons name={lIcon} size={20} />}
-			<SIInput
+			{width > 768  ?(
+				<SIInput
 				type="number"
 				value={value}
 				onChange={onChange}
@@ -130,6 +146,27 @@ export const SimpleInput = ({ onChangeText, lIcon, value }) => {
 				max="5"
 				step="0.5"
 			/>
+			):(
+				<form action="">
+				
+				<SIInput  list="numbers" value={value}
+						onChange={onChange}
+						/>
+				<datalist id="numbers">
+				<option value="0.5" />
+					<option value="1" />
+					<option value="1.5" />
+					<option value="2" />
+					<option value="2.5" />
+					<option value="3" />
+					<option value="3.5" />
+					<option value="4" />
+					<option value="4.5" />
+					<option value="5" />
+
+				</datalist>
+			</form>
+			)}
 			<SILabel>mts</SILabel>
 		</SIContainer>
 	);
@@ -153,15 +190,58 @@ export const SimpleInputOwnState = ({ id, onSubmit, defaultValue }) => {
 				type="number"
 				value={text}
 				onChange={onChange}
-				min="0.5"
-				max="5"
+				min="1"
+				max="10"
 				step="0.5"
 			/>
 			<SILabel>mts</SILabel>
 		</SIContainer>
 	);
 };
+export const SimpleInputOwnStateResponsive= ({ id, onSubmit, defaultValue }) => {
+	const [text, setText] = useState(defaultValue);
 
+	useEffect(() => {
+		onSubmit(id, parseFloat(text));
+	}, []);
+
+	function onChange({ target }) {
+		setText(target.value);
+		onSubmit(id, parseFloat(target.value));
+	}
+
+	return (
+		<SIContainer>
+			<form action="">
+				
+        <SIInput  list="numbers" value={text}
+				onChange={onChange}
+				/>
+        <datalist id="numbers">
+            <option value="1" />
+            <option value="1.5" />
+            <option value="2" />
+            <option value="2.5" />
+            <option value="3" />
+			<option value="3.5" />
+            <option value="4" />
+            <option value="4.5" />
+            <option value="5" />
+            <option value="5.5" />
+			<option value="6" />
+            <option value="6.5" />
+            <option value="7" />
+            <option value="7.5" />
+            <option value="8.5" />
+			<option value="9" />
+            <option value="9.5" />
+            <option value="10" />
+        </datalist>
+    </form>
+			<SILabel>mts</SILabel>
+		</SIContainer>
+	);
+};
 export const TitleHead = ({ title, icon, size, end }) => {
 	function Label() {
 		return (

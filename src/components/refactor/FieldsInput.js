@@ -223,6 +223,7 @@ function Wall({ index, identifier, Length }) {
     return <Hidding hidden={!select}>{children}</Hidding>;
   };
 
+
   return useMemo(
     () => (
       <TBody key="table">
@@ -280,7 +281,6 @@ function Wall({ index, identifier, Length }) {
 const Conta = styled.div`
   max-width: 768;
   overflow-x: auto;
-  overflow-y: auto;
   @media screen and (max-width: 768px) {
     margin: 5vw 0 0 0;
   }

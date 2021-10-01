@@ -34,6 +34,7 @@ const SecondPart = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const handleInput = (e) => {
     dispatch({ [e.target.name]: e.target.value });
+    console.log(e.target.name + e.target.value)
   };
   function getResult() {
     return result.map((el, ind) => (
@@ -79,11 +80,12 @@ const SecondPart = () => {
               : state.cantidad4_3L) < 1
             ? null
             : elsn.presentacion_id + ":" + state.cantidad4_3L
+            
           : elsn.litros === 1 && index === 0
           ? (state.cantidad1_1L < elsn.cantidad
-              ? (state.cantidad1_1L = elsn.cantidad)
+              ? state.cantidad1_1L = elsn.cantidad
               : state.cantidad1_1L > elsn.cantidad
-              ? (state.cantidad1_1L = elsn.cantidad)
+              ? state.cantidad1_1L = elsn.cantidad
               : state.cantidad1_1L) < 1
             ? null
             : elsn.presentacion_id + ":" + state.cantidad1_1L
@@ -146,7 +148,7 @@ const SecondPart = () => {
         <H2>PRISA TE RECOMIENDA</H2>
         {linea_producto && <ImagePaint src={linea_producto.url_imagen} />}
         <H>Elige la presentación </H>
-        <Div>{result.length === 0 ? getColors() : getResult()}</Div>
+        <Div style={{ position: 'relative', left: colors1.length === 1?'2%':'' }}>{result.length === 0 ? getColors() : getResult()}</Div>
         <ContainerButton>
           <h1> </h1>
           <a href={templateUr() + ""}>

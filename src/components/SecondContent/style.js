@@ -31,8 +31,8 @@ export const ContainerButton = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media screen and (max-width: 1024px) {
-    padding: 1vw 0 0vw 0;
+  @media screen and (max-width: 1200px) {
+    padding: 50px 0 0vw 0;
   }
   @media screen and (max-height: 769px) and (orientation: landscape) {
     padding: 30px 0 0 0;

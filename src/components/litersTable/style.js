@@ -66,9 +66,9 @@ export const Image = styled.img`
 export const ImageQuantity = styled.img`
   ${({ size }) => {
     const sz = {
-      _1: "7.5",
-      _4: "10",
-      _19: "11",
+      _1: "7.3",
+      _4: "9.6",
+      _19: "10.4",
     }["_" + size];
 
     return `width: ${sz}vh`;

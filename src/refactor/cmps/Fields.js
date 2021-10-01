@@ -17,6 +17,7 @@ import {
 	FirstCol,
 	ExpandableInput,
 	SimpleInputOwnState,
+	SimpleInputOwnStateResponsive
 } from "../../components/refactor/Components";
 
 export function Fields({
@@ -29,13 +30,10 @@ export function Fields({
 	onClear,
 	update,
 }) {
-	const {
-		colors1,
-		colors: { colores },
-	} = useSelector((state) => state);
-
+	const { colors1 } = useSelector((state) => state);
 	const linea_producto = colors1;
-	const colors = colores || [];
+	const stateColors = useSelector((state) => state.colors);
+	const colors = stateColors.colores || [];
 	return (
 		<Container>
 			<Title>COLORES SELECCIONADOS</Title>
@@ -61,6 +59,8 @@ export function Fields({
 				</Button>
 			</InputDiv>
 			<Conta>
+			{colors.map((el, i) =>{
+						return i ===0?(
 				<TableHorizontal>
 					<THead>
 						<TH>
@@ -87,18 +87,26 @@ export function Fields({
 							)}
 						</TH>
 					</THead>
-					<div>
-						<Wall index={1} wall={wall1} update={update} />
-						<Wall index={2} wall={wall2} update={update} />
-						<Wall index={3} wall={wall3} update={update} />
-						<Wall index={4} wall={wall4} update={update} />
-						<Wall index={5} wall={wall5} update={update} />
-					</div>
+						<Wall index={1} wall={wall1} update={update} Length={colors.length}/>
+						<Wall index={2} wall={wall2} update={update} Length={colors.length}/>
+						<Wall index={3} wall={wall3} update={update} Length={colors.length}/>
+						<Wall index={4} wall={wall4} update={update} Length={colors.length}/>
+						<Wall index={5} wall={wall5} update={update} Length={colors.length}/>
+					
 				</TableHorizontal>
+				):(
+					''
+				)
+				})}
 			</Conta>
 			<Final>
 				<Warning>*Tienes que llenar todos los campos</Warning>
-				<ButtonRed onClick={onSubmit}>Calcular</ButtonRed>
+				<ButtonRed onClick={() => {
+							onSubmit();
+							setTimeout(() => {
+								onSubmit();
+							}, 500);
+						}}>Calcular</ButtonRed>
 			</Final>
 		</Container>
 	);
@@ -107,14 +115,29 @@ export function Fields({
 const getColorByHex = (array, c) => {
 	return array.find(({ rgb }) => {
 		return rgb === c;
+		
 	});
 };
 
-function Wall({ index, wall, update }) {
+function Wall({ index, wall, update, Length }) {
 	const stateColors = useSelector((state) => state.colors);
 	const colors = stateColors.colores || [];
 
-	const [select, setSelect] = useState(false);
+	const [select, setSelect] = useState(
+		Length === 1 && index === 1
+			? !null
+			: Length === 2 && index === 1
+			? !null
+			: Length === 2 && index === 2
+			? !null
+			: Length === 3 && index === 1
+			? !null
+			: Length === 3 && index === 2
+			? !null
+			: Length === 3 && index === 3
+			? !null
+			: null
+	);
 
 	const onColor = (value) => {
 		const _color = getColorByHex(colors, value);
@@ -131,6 +154,22 @@ function Wall({ index, wall, update }) {
 		return <Hidding hidden={!select}>{children}</Hidding>;
 	};
 
+	const [width, setWidth] = useState(window.innerWidth);
+
+	useEffect(() => {
+	  function handleResize() {
+		setWidth(window.innerWidth);
+	  }
+	  window.addEventListener("resize", handleResize);
+	  return () => window.removeEventListener("resize", handleResize);
+	}, [width]);
+  
+	useEffect(() => {
+	  width < 768 && handleSideNavToggle();
+	},[width]);
+	function handleSideNavToggle() {
+	  console.log("toggle it");
+	}
 	return useMemo(
 		() => (
 			<TBody key="table">
@@ -145,20 +184,26 @@ function Wall({ index, wall, update }) {
 				</TD>
 				<TD key="second">
 					<Content>
-						<SimpleInputOwnState
-							id="largo"
+						{width > 768  ?(<SimpleInputOwnState
+							id="ancho"
 							onSubmit={onEdit}
 							defaultValue={3}
-						/>
+						/>):(<SimpleInputOwnStateResponsive
+							id="largo"
+							onSubmit={onEdit}
+						/>)}		
 					</Content>
 				</TD>
 				<TD key="three">
 					<Content>
-						<SimpleInputOwnState
+						{width > 768  ?(<SimpleInputOwnState
 							id="ancho"
 							onSubmit={onEdit}
 							defaultValue={2.5}
-						/>
+						/>):(<SimpleInputOwnStateResponsive
+							id="largo"
+							onSubmit={onEdit}
+						/>)}		
 					</Content>
 				</TD>
 				<TD key="four">
