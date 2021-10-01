@@ -1,16 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-export function Fields({
-	wall1,
-	wall2,
-	wall3,
-	wall4,
-	wall5,
-	onSubmit,
-	onClear,
-	update,
-}) {
+export function Fields({ onSubmit, onClear, update }) {
 	const { colors } = useSelector((state) => state);
 	return <div></div>;
 }
@@ -146,7 +137,7 @@ export function FieldsInput() {
 }
 
 // ROW
-function Wall({ index, identifier, Length, update }) {
+function Wall({ index, wall, identifier, Length, update }) {
 	const { isReadyToCompute, finishRecopilation } = useSelector(
 		(state) => state.gestion
 	);
