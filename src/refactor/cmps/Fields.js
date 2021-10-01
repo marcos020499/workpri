@@ -1,36 +1,95 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import { Button } from "@mui/material";
+import React, { useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+	ColorsItem,
+	InputDiv,
+	InputItem,
+	Title,
+} from "../../components/FirstContent/style";
+import { TitleHead } from "../../components/refactor/Components";
+import { initCalculatorAction } from "../../store/gestionReducer";
 
-export function Fields({ onSubmit, onClear, update }) {
-	const { colors } = useSelector((state) => state);
-	return <div></div>;
+export function Fields({
+	wall1,
+	wall2,
+	wall3,
+	wall4,
+	wall5,
+	onSubmit,
+	onClear,
+	update,
+}) {
+	const {
+		colors1,
+		colors: { colores },
+	} = useSelector((state) => state);
+
+	const linea_producto = colors1;
+	const colors = colores || [];
+	return (
+		<Container>
+			<Title>COLORES SELECCIONADOS</Title>
+			<InputDiv>
+				<div>
+					{colors.map((el, i) => (
+						<ColorsItem key={i + "colores"}>
+							<InputItem
+								disabled="disabled"
+								style={{
+									backgroundColor: el.rgb,
+								}}
+							/>
+						</ColorsItem>
+					))}
+				</div>
+				<Button
+					onClick={() => {
+						window.location.reload();
+					}}
+				>
+					Borrar todo
+				</Button>
+			</InputDiv>
+			<Conta>
+				<TableHorizontal>
+					<THead>
+						<TH>
+							<TitleHead title="Colores" icon="colors" end />
+						</TH>
+						<TH>
+							<TitleHead title="Largo" icon="vertical" size />
+						</TH>
+						<TH>
+							<TitleHead title="Ancho" icon="horizontal" size />
+						</TH>
+						<TH>
+							{!!linea_producto?.impermeabilizante === false ? (
+								<TitleHead title="Puertas" icon="door" />
+							) : (
+								<TitleHead title="Domo" icon="domo" />
+							)}
+						</TH>
+						<TH>
+							{!!linea_producto?.impermeabilizante === false ? (
+								<TitleHead title="Ventanas" icon="window" />
+							) : (
+								<TitleHead title="Tragaluz" icon="tragaluz" />
+							)}
+						</TH>
+					</THead>
+					<div>
+						<Wall index={0} wall={wall1} update={update} />
+						<Wall index={1} wall={wall2} update={update} />
+						<Wall index={2} wall={wall3} update={update} />
+						<Wall index={3} wall={wall4} update={update} />
+					</div>
+				</TableHorizontal>
+			</Conta>
+		</Container>
+	);
 }
 
-import {
-	TitleHead,
-	FirstCol,
-	ExpandableInput,
-	SimpleInputOwnState,
-} from "./Components";
-import {
-	ButtonRed,
-	Button,
-	InputItem,
-	ColorsItem,
-	Warning,
-	Title,
-	InputDiv,
-	Final,
-} from "../FirstContent/style";
-import { useDispatch, useSelector } from "react-redux";
-import { appendWallAction, removeWallAction } from "../../store/infoReducer";
-import {
-	endCalculatorAction,
-	initCalculatorAction,
-} from "../../store/gestionReducer";
-
-const walles = ["wall1", "wall2", "wall3", "wall4", "wall5"];
-const wallesFalse = ["wall1"];
 export function FieldsInput() {
 	const { colors1 } = useSelector((state) => state);
 	const linea_producto = colors1;
@@ -43,30 +102,6 @@ export function FieldsInput() {
 	return useMemo(
 		() => (
 			<Container>
-				<Title>COLORES SELECCIONADOS</Title>
-
-				<InputDiv>
-					<div>
-						{colors.map((el, i) => (
-							<ColorsItem key={i + "colores"}>
-								<InputItem
-									disabled="disabled"
-									style={{
-										backgroundColor: el.rgb,
-									}}
-								/>
-							</ColorsItem>
-						))}
-					</div>
-
-					<Button
-						onClick={() => {
-							window.location.reload();
-						}}
-					>
-						Borrar todo
-					</Button>
-				</InputDiv>
 				<Conta>
 					<TableHorizontal>
 						<THead>
