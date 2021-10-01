@@ -4,15 +4,15 @@ import { createGlobalStyle } from "styled-components";
 import { MProvider } from "./store";
 import { Page } from "./refactor/Page";
 function App() {
-	return (
-		<MProvider>
-			<div>
-				{/*<Calculator />
+  return (
+    <MProvider>
+      <div>
+        {/*<Calculator />
         <GlobalStyle /> */}
-				<Page />
-			</div>
-		</MProvider>
-	);
+        <Page />
+      </div>
+    </MProvider>
+  );
 }
 const GlobalStyle = createGlobalStyle`
   body {

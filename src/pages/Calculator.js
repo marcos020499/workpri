@@ -9,12 +9,10 @@ import { useSelector } from "react-redux";
 const Index = () => {
   const dispatch = useDispatch();
   const { colors } = useSelector((state) => state);
-	const { linea_producto } = colors;
+  const { linea_producto } = colors;
   useEffect(() => {
     dispatch(fetchColors());
   }, []);
-
-  
 
   return (
     <div>
@@ -169,7 +167,7 @@ const First = styled.div`
     max-width: 100%;
     min-height: auto;
   }
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 600px) {
     margin: 5vw 0 0 0;
     padding: 0 0 20% 0;
     min-width: 100%;
@@ -179,16 +177,16 @@ const First = styled.div`
   @media screen and (max-width: 600px) and (orientation: landscape) {
     padding: 0 0 90% 0;
   }
-  @media screen and (max-width: 400px){
+  @media screen and (max-width: 400px) {
     padding: 0 0 25% 0;
   }
-  @media screen and (max-width: 380px){
+  @media screen and (max-width: 380px) {
     padding: 0 0 30% 0;
   }
-  @media screen and (max-width: 350px){
+  @media screen and (max-width: 350px) {
     padding: 0 0 45% 0;
   }
-  @media screen and (max-width: 330px){
+  @media screen and (max-width: 330px) {
     padding: 0 0 58% 0;
   }
 `;

@@ -23,7 +23,7 @@ export const RowRecipients = styled.tr`
   @media screen and (max-width: 1500px) {
     top: -50px;
     width: 180px;
-    }
+  }
   @media screen and (max-width: 1367px) {
     top: -40px;
   }
@@ -185,7 +185,7 @@ export const DescriptionText = styled.h3`
     font-size: 14px;
     width: 150px;
     margin: 0;
-    top: -10px
+    top: -10px;
   }
   @media screen and (max-width: 600px) {
     width: 120px;

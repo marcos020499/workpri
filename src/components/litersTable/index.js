@@ -3,81 +3,94 @@ import { useSelector } from "react-redux";
 import TooltipOver from "../Tooltip/TooltipOver";
 
 import {
-	InputArea,
-	Description,
-	Quantity,
-	Input,
-	Size,
-	ImageQuantity,
-	Row,
-	RowDes,
-	RowRecipients,
-	InputAreaLiters,
-	ContainerItems,
-	InputColorName,
-	DescriptionText,
-	Items,
-	TdSize,
-	ThDescription,
-	Table,
+  InputArea,
+  Description,
+  Quantity,
+  Input,
+  Size,
+  ImageQuantity,
+  Row,
+  RowDes,
+  RowRecipients,
+  InputAreaLiters,
+  ContainerItems,
+  InputColorName,
+  DescriptionText,
+  Items,
+  TdSize,
+  ThDescription,
+  Table,
 } from "./style";
 
-
 const Liters = ({
-	nombre,
-	rgb,
-	area,
-	litros,
-	presentaciones,
-	cantidad4_1L,
-	cantidad4_2L,
-	cantidad4_3L,
-	cantidad1_1L,
-	cantidad1_2L,
-	cantidad1_3L,
-	cantidad19_1L,
-	cantidad19_2L,
-	cantidad19_3L,
-	onChanges,
-	indSecond,
-  }) => {
-	const stateColors = useSelector((state) => state.colors);
-	const colors1 = stateColors.colores || [];
-	const { result } = useSelector((state) => state);
-	
-	
-	return (
-		<div>
-		<Table style={{margin: colors1.length === 2 || result.length === 2 ? '0 0 0 12%': 'auto' }}>
-			<Items>
-				<ContainerItems>
-					<Row>
-						<ThDescription>
-							<TooltipOver content={nombre} direction="top">
-								<DescriptionText>
-									<InputColorName disabled="disabled" style={{ backgroundColor: rgb }} />
-									{nombre}
-								</DescriptionText>
-							</TooltipOver>
-						</ThDescription>
-					</Row>
-					<RowDes>
-					
-						<ThDescription>
-							<Description>Area</Description>
-							<InputArea type="text" value={area + ' mts'} readonly="readonly" />
-						</ThDescription>
+  nombre,
+  rgb,
+  area,
+  litros,
+  presentaciones,
+  cantidad4_1L,
+  cantidad4_2L,
+  cantidad4_3L,
+  cantidad1_1L,
+  cantidad1_2L,
+  cantidad1_3L,
+  cantidad19_1L,
+  cantidad19_2L,
+  cantidad19_3L,
+  onChanges,
+  indSecond,
+}) => {
+  const stateColors = useSelector((state) => state.colors);
+  const colors1 = stateColors.colores || [];
+  const { result } = useSelector((state) => state);
 
-						<ThDescription>
-							<Description>Litros</Description>
-							<InputAreaLiters type="text" value={litros + ' lts'} readonly="readonly" />
-						</ThDescription>
-					</RowDes>
-					<RowRecipients >
-					{presentaciones.map((ele, index) =>
+  return (
+    <div>
+      <Table
+        style={{
+          margin:
+            colors1.length === 2 || result.length === 2 ? "0 0 0 12%" : "auto",
+        }}
+      >
+        <Items>
+          <ContainerItems>
+            <Row>
+              <ThDescription>
+                <TooltipOver content={nombre} direction="top">
+                  <DescriptionText>
+                    <InputColorName
+                      disabled="disabled"
+                      style={{ backgroundColor: rgb }}
+                    />
+                    {nombre}
+                  </DescriptionText>
+                </TooltipOver>
+              </ThDescription>
+            </Row>
+            <RowDes>
+              <ThDescription>
+                <Description>Area</Description>
+                <InputArea
+                  type="text"
+                  value={area + " mts"}
+                  readonly="readonly"
+                />
+              </ThDescription>
+
+              <ThDescription>
+                <Description>Litros</Description>
+                <InputAreaLiters
+                  type="text"
+                  value={litros + " lts"}
+                  readonly="readonly"
+                />
+              </ThDescription>
+            </RowDes>
+            <RowRecipients>
+              {presentaciones.map((ele, index) =>
                 index <= ele.presentacion_id ? (
                   <Can
-				  	key={index + "presentaciones"}
+                    key={index + "presentaciones"}
                     {...ele}
                     i={indSecond}
                     state4_1={cantidad4_1L}
@@ -93,52 +106,59 @@ const Liters = ({
                   />
                 ) : null
               )}
-					</RowRecipients>
-				</ContainerItems>
-			</Items>
-		</Table>
-	</div>
-	);
+            </RowRecipients>
+          </ContainerItems>
+        </Items>
+      </Table>
+    </div>
+  );
 };
 export default Liters;
 
-
 function Can({
-	litros,
-	cantidad,
-	state4_1,
-	state4_2,
-	state4_3,
-	state1_1,
-	state1_2,
-	state1_3,
-	state19_1,
-	state19_2,
-	state19_3,
-	onChanges1,
-	i,
-  }) {
-	const name = {
-		_1: "1L",
-		_4: "4L",
-		_19: "19L",
-	}["_" + litros];
+  litros,
+  cantidad,
+  state4_1,
+  state4_2,
+  state4_3,
+  state1_1,
+  state1_2,
+  state1_3,
+  state19_1,
+  state19_2,
+  state19_3,
+  onChanges1,
+  i,
+}) {
+  const name = {
+    _1: "1L",
+    _4: "4L",
+    _19: "19L",
+  }["_" + litros];
 
-	return (
-		<TdSize>
-			<Size>
-				<ImageQuantity
-					src={
-						litros === 19 ?
-						'https://res.cloudinary.com/marcos020499/image/upload/v1629305104/BOTES_PINTURA-01_dae6zr.svg'
-						:
-						"https://res.cloudinary.com/marcos020499/image/upload/v1629305104/BOTES_PINTURA-02_wvzqnb.svg"
-					}
-					size={litros}
-					style={{ position: 'relative',  left:litros===1?'-10%': litros===4?'-22%': '-25%'}}
-				/>
-				<Quantity>{name}</Quantity>
-				<Input type="number" min='0' max='10' defaultValue="0" step="1" value={
+  return (
+    <TdSize>
+      <Size>
+        <ImageQuantity
+          src={
+            litros === 19
+              ? "https://res.cloudinary.com/marcos020499/image/upload/v1629305104/BOTES_PINTURA-01_dae6zr.svg"
+              : "https://res.cloudinary.com/marcos020499/image/upload/v1629305104/BOTES_PINTURA-02_wvzqnb.svg"
+          }
+          size={litros}
+          style={{
+            position: "relative",
+            left: litros === 1 ? "-10%" : litros === 4 ? "-22%" : "-25%",
+          }}
+        />
+        <Quantity>{name}</Quantity>
+        <Input
+          type="number"
+          min="0"
+          max="10"
+          defaultValue="0"
+          step="1"
+          value={
             litros === 4 && i === 0
               ? state4_1 === 0
                 ? cantidad
@@ -197,8 +217,10 @@ function Can({
               : litros === 1 && i === 2
               ? "cantidad1_3L"
               : ""
-          } onChange={onChanges1}/>
-			</Size>
-		</TdSize>
-	);
+          }
+          onChange={onChanges1}
+        />
+      </Size>
+    </TdSize>
+  );
 }

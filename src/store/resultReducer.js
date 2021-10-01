@@ -28,18 +28,17 @@ import { fetchCalculateData } from "./gestionReducer";
     }
 ]
 */
-const initialState = [
-];
+const initialState = [];
 
 const resultSlice = createSlice({
-	name: "result",
-	initialState,
-	extraReducers: (builder) => {
-		builder.addCase(fetchCalculateData.fulfilled, (_, { payload }) => {
-			console.log("object result ", payload);
-			return payload;
-		});
-	},
+  name: "result",
+  initialState,
+  extraReducers: (builder) => {
+    builder.addCase(fetchCalculateData.fulfilled, (_, { payload }) => {
+      console.log("object result ", payload);
+      return payload;
+    });
+  },
 });
 
 export default resultSlice.reducer;
