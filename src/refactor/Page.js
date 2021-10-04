@@ -3,77 +3,76 @@ import { useDispatch } from "react-redux";
 import { fetchCalculateDataV2, fetchColors } from "../store/colorReducer";
 import SecondPart from "../components/SecondContent";
 import { Fields } from "./cmps/Fields";
+import Banner from '../components/banner/index768'
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 export function Page() {
-	const dispatch = useDispatch();
-	const { colors } = useSelector((state) => state);
-	const { linea_producto } = colors;
-	useEffect(() => {
-		dispatch(fetchColors());
-	}, []);
-
-	const init = () => ({
-		color_id: null,
-		largo: 0,
-		ancho: 0,
-		puertas: [],
-		ventanas: [],
-	});
-	const [wall1, setWall1] = useState(init());
-	const [wall2, setWall2] = useState(init());
-	const [wall3, setWall3] = useState(init());
-	const [wall4, setWall4] = useState(init());
-	const [wall5, setWall5] = useState(init());
-	const [ready, setReady] = useState(false);
-	/*
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchColors());
+  }, []);
+  const init = () => ({
+    color_id: null,
+    largo: 0,
+    ancho: 0,
+    puertas: [],
+    ventanas: [],
+  });
+  const [wall1, setWall1] = useState(init());
+  const [wall2, setWall2] = useState(init());
+  const [wall3, setWall3] = useState(init());
+  const [wall4, setWall4] = useState(init());
+  const [wall5, setWall5] = useState(init());
+  const [wall6, setWall6] = useState(init());
+  const [ready, setReady] = useState(false);
+  /*
 	console.log("WALL1", wall1);
 	console.log("WALL2", wall2);
 	console.log("WALL3", wall3);
 	console.log("WALL4", wall4);
   */
 
-	const update = (index, key, value) => {
-		//console.log("UPDATE", index, key, value);
-		const setter = [setWall1, setWall2, setWall3, setWall4, setWall5][index];
-		setter((prev) => ({ ...prev, [key]: value }));
-	};
-	
-	useEffect(() => {
-		if (ready) {
-			dispatch(fetchCalculateDataV2([wall1, wall2, wall3, wall4, wall5]));
-			setReady(false);
-		}
-	}, [ready, wall1, wall2, wall3, wall4, wall5]);
+  const update = (index, key, value) => {
+    //console.log("UPDATE", index, key, value);
+    const setter = [setWall1, setWall2, setWall3, setWall4, setWall5, setWall6][index];
+    setter((prev) => ({ ...prev, [key]: value }));
+  };
 
-	const onSubmit = () => {
-		setReady(true);
-	};
+  useEffect(() => {
+    if (ready) {
+      dispatch(fetchCalculateDataV2([wall1, wall2, wall3, wall4, wall5, wall6]));
+      setReady(false);
+    }
+  }, [ready, wall1, wall2, wall3, wall4, wall5, wall6]);
 
-	return useMemo(
-		() => (
-			<div>
-			{linea_producto && <Ban src={linea_producto.url_imagen_inspiracion} />}
-			<Container>
-				<First>
-					<Fields
-						wall1={wall1}
-						wall2={wall2}
-						wall3={wall3}
-						wall4={wall4}
-						wall5={wall5}
-						onSubmit={onSubmit}
-						update={update}
-					/>
-				</First>
-				<Second>
-					<SecondPart />
-				</Second>
-			</Container>
-			</div>
-		),
-		[]
-	);
+  const onSubmit = () => {
+    setReady(true);
+  };
+  return useMemo(
+    () => (
+      <div>
+        <Banner/>
+        <Container>
+          <First>
+            <Fields
+              wall1={wall1}
+              wall2={wall2}
+              wall3={wall3}
+              wall4={wall4}
+              wall5={wall5}
+              wall6={wall6}
+              onSubmit={onSubmit}
+              update={update}
+            />
+          </First>
+          <Second>
+            <SecondPart />
+          </Second>
+        </Container>
+      </div>
+    ),
+    []
+  );
 }
 const Container = styled.div`
   display: flex;
@@ -88,14 +87,6 @@ const Container = styled.div`
   }
 `;
 
-const Ban = styled.img`
-  display: none;
-  @media screen and (max-width: 1200px) {
-    display: initial;
-    width: 100%;
-    height: 30vw;
-  }
-`;
 const Second = styled.div`
   background-color: #003366;
   height: auto !important;
@@ -212,7 +203,7 @@ const First = styled.div`
     max-width: 100%;
     min-height: auto;
   }
-  @media screen and (max-width: 600px){
+  @media screen and (max-width: 600px) {
     margin: 5vw 0 0 0;
     padding: 0 0 20% 0;
     min-width: 100%;
@@ -222,16 +213,16 @@ const First = styled.div`
   @media screen and (max-width: 600px) and (orientation: landscape) {
     padding: 0 0 90% 0;
   }
-  @media screen and (max-width: 400px){
+  @media screen and (max-width: 400px) {
     padding: 0 0 25% 0;
   }
-  @media screen and (max-width: 380px){
+  @media screen and (max-width: 380px) {
     padding: 0 0 30% 0;
   }
-  @media screen and (max-width: 350px){
+  @media screen and (max-width: 350px) {
     padding: 0 0 45% 0;
   }
-  @media screen and (max-width: 330px){
+  @media screen and (max-width: 330px) {
     padding: 0 0 58% 0;
   }
 `;

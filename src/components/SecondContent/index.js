@@ -1,11 +1,10 @@
 import React, { useReducer } from "react";
 import SecondpartLiters from "../litersTable/index";
-
+import Banner from '../banner/index'
 import {
   ContainerSecondSection,
   H1,
   H2,
-  Banner,
   ImagePaint,
   H,
   ContainerButton,
@@ -34,9 +33,9 @@ const SecondPart = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const handleInput = (e) => {
     dispatch({ [e.target.name]: e.target.value });
-    console.log(e.target.name + e.target.value)
+    console.log(e.target.name + e.target.value);
   };
-  function getResult() {
+  function getResult(linea_producto) {
     return result.map((el, ind) => (
       <SecondpartLiters
         key={ind + "pintura"}
@@ -56,83 +55,88 @@ const SecondPart = () => {
   function getPresent() {
     return result.map((element, index) =>
       element.presentaciones.map((elsn, x) =>
-        elsn.litros === 4 && index === 0
-          ? (state.cantidad4_1L > elsn.cantidad
-              ? (state.cantidad4_1L = elsn.cantidad)
-              : state.cantidad4_1L < elsn.cantidad
-              ? (state.cantidad4_1L = elsn.cantidad)
-              : state.cantidad4_1L) < 1
+        elsn.litros === 1 && index === 0
+          ? (state.cantidad1_1L === 0
+              ? (state.cantidad1_1L = elsn.cantidad)
+              : state.cantidad1_1L) === 0
             ? null
-            : elsn.presentacion_id + ":" + state.cantidad4_1L
-          : elsn.litros === 4 && index === 1
-          ? (state.cantidad4_2L > elsn.cantidad
-              ? (state.cantidad4_2L = elsn.cantidad)
-              : state.cantidad4_2L < elsn.cantidad
-              ? (state.cantidad4_2L = elsn.cantidad)
-              : state.cantidad4_2L) < 1
-            ? null
-            : elsn.presentacion_id + ":" + state.cantidad4_2L
-          : elsn.litros === 4 && index === 2
-          ? (state.cantidad4_3L > elsn.cantidad
-              ? (state.cantidad4_3L = elsn.cantidad)
-              : state.cantidad4_3L < elsn.cantidad
-              ? (state.cantidad4_3L = elsn.cantidad)
-              : state.cantidad4_3L) < 1
-            ? null
-            : elsn.presentacion_id + ":" + state.cantidad4_3L
-            
-          : elsn.litros === 1 && index === 0
-          ? (state.cantidad1_1L < elsn.cantidad
-              ? state.cantidad1_1L = elsn.cantidad
-              : state.cantidad1_1L > elsn.cantidad
-              ? state.cantidad1_1L = elsn.cantidad
-              : state.cantidad1_1L) < 1
+            : state.cantidad1_1L === 0
             ? null
             : elsn.presentacion_id + ":" + state.cantidad1_1L
-          : elsn.litros === 1 && index === 1
-          ? (state.cantidad1_2L > elsn.cantidad
-              ? (state.cantidad1_2L = elsn.cantidad)
-              : state.cantidad1_2L < elsn.cantidad
-              ? (state.cantidad1_2L = elsn.cantidad)
-              : state.cantidad1_2L) < 1
+          : elsn.litros === 4 && index === 0
+          ? (state.cantidad4_1L === 0
+              ? (state.cantidad4_1L = elsn.cantidad)
+              : state.cantidad4_1L) === 0
             ? null
-            : elsn.presentacion_id + ":" + state.cantidad1_2L
-          : elsn.litros === 1 && index === 2
-          ? (state.cantidad1_3L > elsn.cantidad
+            : state.cantidad4_1L === 0
+            ? null
+            : elsn.presentacion_id + ":" + state.cantidad4_1L
+          : elsn.litros === 19 && index === 0
+          ? (state.cantidad19_1L === 0
+              ? (state.cantidad19_1L = elsn.cantidad)
+              : state.cantidad19_1L) === 0
+            ? null
+            : state.cantidad19_1L === 0
+            ? null
+            : elsn.presentacion_id + ":" + state.cantidad19_1L:
+
+
+            elsn.litros === 1 && index === 1
+            ? (state.cantidad1_2L === 1
+                ? (state.cantidad1_2L = elsn.cantidad)
+                : state.cantidad1_2L) === 1
+              ? null
+              : state.cantidad1_2L === 1
+              ? null
+              : elsn.presentacion_id + ":" + state.cantidad1_2L
+            : elsn.litros === 4 && index === 1
+            ? (state.cantidad4_2L === 1
+                ? (state.cantidad4_2L = elsn.cantidad)
+                : state.cantidad4_2L) === 1
+              ? null
+              : state.cantidad4_2L === 1
+              ? null
+              : elsn.presentacion_id + ":" + state.cantidad4_2L
+            : elsn.litros === 19 && index === 1
+            ? (state.cantidad19_2L === 1
+                ? (state.cantidad19_2L = elsn.cantidad)
+                : state.cantidad19_2L) === 1
+              ? null
+              : state.cantidad19_2L === 1
+              ? null
+              : elsn.presentacion_id + ":" + state.cantidad19_2L:
+
+
+              elsn.litros === 1 && index === 2
+          ? (state.cantidad1_3L === 2
               ? (state.cantidad1_3L = elsn.cantidad)
-              : state.cantidad1_3L < elsn.cantidad
-              ? (state.cantidad1_3L = elsn.cantidad)
-              : state.cantidad1_3L) < 1
+              : state.cantidad1_3L) === 2
+            ? null
+            : state.cantidad1_3L === 2
             ? null
             : elsn.presentacion_id + ":" + state.cantidad1_3L
-          : elsn.litros === 19 && index === 0
-          ? (state.cantidad19_1L > elsn.cantidad
-              ? (state.cantidad19_1L = elsn.cantidad)
-              : state.cantidad19_1L < elsn.cantidad
-              ? (state.cantidad19_1L = elsn.cantidad)
-              : state.cantidad19_1L) < 1
+          : elsn.litros === 4 && index === 2
+          ? (state.cantidad4_3L === 2
+              ? (state.cantidad4_3L = elsn.cantidad)
+              : state.cantidad4_3L) === 2
             ? null
-            : elsn.presentacion_id + ":" + state.cantidad19_1L
-          : elsn.litros === 19 && index === 1
-          ? (state.cantidad19_2L > elsn.cantidad
-              ? (state.cantidad19_2L = elsn.cantidad)
-              : state.cantidad19_2L < elsn.cantidad
-              ? (state.cantidad19_2L = elsn.cantidad)
-              : state.cantidad19_2L) < 1
+            : state.cantidad4_3L === 2
             ? null
-            : elsn.presentacion_id + ":" + state.cantidad19_2L
+            : elsn.presentacion_id + ":" + state.cantidad4_3L
           : elsn.litros === 19 && index === 2
-          ? (state.cantidad19_3L > elsn.cantidad
+          ? (state.cantidad19_3L === 2
               ? (state.cantidad19_3L = elsn.cantidad)
-              : state.cantidad19_3L < elsn.cantidad
-              ? (state.cantidad19_3L = elsn.cantidad)
-              : state.cantidad19_3L) < 1
+              : state.cantidad19_3L) === 2
+            ? null
+            : state.cantidad19_3L === 2
             ? null
             : elsn.presentacion_id + ":" + state.cantidad19_3L
+
           : null
       )
     );
   }
+
   function templateUr() {
     let url = `http://ec2-44-242-66-211.us-west-2.compute.amazonaws.com/finalizar-compra/?add-to-cart=${getPresent()},`;
     let replace = url.replace(/,,/g, ",");
@@ -141,18 +145,25 @@ const SecondPart = () => {
   }
   return (
     <div>
-      {linea_producto && <Banner src={linea_producto.url_imagen_inspiracion} />}
+      <Banner/>
 
       <ContainerSecondSection>
         <H1>RESULTADO</H1>
         <H2>PRISA TE RECOMIENDA</H2>
         {linea_producto && <ImagePaint src={linea_producto.url_imagen} />}
         <H>Elige la presentación </H>
-        <Div style={{ position: 'relative', left: colors1.length === 1?'2%':'' }}>{result.length === 0 ? getColors() : getResult()}</Div>
+        <Div
+          style={{
+            position: "relative",
+            left: colors1.length === 1 ? "2%" : "",
+          }}
+        >
+          {result.length === 0 ? getColors() : getResult()}
+        </Div>
         <ContainerButton>
           <h1> </h1>
-          <a href={templateUr() + ""}>
-            <ButtonReed>Comprar</ButtonReed>
+          <a href={templateUr()+ ''}>
+                     <ButtonReed>Comprar</ButtonReed>
           </a>
         </ContainerButton>
       </ContainerSecondSection>

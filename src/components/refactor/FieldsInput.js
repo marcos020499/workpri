@@ -223,7 +223,6 @@ function Wall({ index, identifier, Length }) {
     return <Hidding hidden={!select}>{children}</Hidding>;
   };
 
-
   return useMemo(
     () => (
       <TBody key="table">

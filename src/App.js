@@ -7,8 +7,7 @@ function App() {
   return (
     <MProvider>
       <div>
-        {/*<Calculator />
-        <GlobalStyle /> */}
+        <GlobalStyle />
         <Page />
       </div>
     </MProvider>
