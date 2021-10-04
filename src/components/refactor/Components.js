@@ -284,24 +284,6 @@ export function FirstCol({ index, selectControl, onSelectControl, onSubmit }) {
     if (index === 1 && colorsArray.length === 1) {
       onSelectColor(0);
     }
-    if (index === 1 && colorsArray.length === 2) {
-      onSelectColor(0);
-    }
-    if (index === 2 && colorsArray.length === 2) {
-      onSelectColor(1);
-    }
-    if (index === 1 && colorsArray.length === 3) {
-      onSelectColor(0);
-    }
-    if (index === 2 && colorsArray.length === 3) {
-      onSelectColor(1);
-    }
-    if (index === 3 && colorsArray.length === 3) {
-      onSelectColor(2);
-    }
-    if (index === 6 && colorsArray.length === 1) {
-      onSelectColor(0);
-    }
     if (!selectControl) {
       setSelect(null);
     }

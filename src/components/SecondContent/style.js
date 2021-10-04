@@ -88,8 +88,8 @@ export const ImagePaint = styled.img`
 `;
 export const Banner = styled.img`
   width: 100%;
-  height: 20%;
   max-height: 300px;
+  min-height: 300px;
   @media screen and (max-width: 1200px) {
     display: none;
   }

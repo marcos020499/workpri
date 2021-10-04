@@ -163,6 +163,7 @@ const SecondPart = () => {
         <ContainerButton>
           <h1> </h1>
           <a href={templateUr()+ ''}>
+            {console.log('hello',templateUr())}
                      <ButtonReed>Comprar</ButtonReed>
           </a>
         </ContainerButton>
