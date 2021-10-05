@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import SecondpartLiters from "../litersTable/index";
-import Banner from '../banner/index'
+import Banner from "../banner/index";
 import {
   ContainerSecondSection,
   H1,
@@ -63,6 +63,22 @@ const SecondPart = () => {
             : state.cantidad1_1L === 0
             ? null
             : elsn.presentacion_id + ":" + state.cantidad1_1L
+          : elsn.litros === 1 && index === 1
+          ? (state.cantidad1_2L === 0
+              ? (state.cantidad1_2L = elsn.cantidad)
+              : state.cantidad1_2L) === 0
+            ? null
+            : state.cantidad1_2L === 0
+            ? null
+            : elsn.presentacion_id + ":" + state.cantidad1_2L
+          : elsn.litros === 1 && index === 2
+          ? (state.cantidad1_3L === 0
+              ? (state.cantidad1_3L = elsn.cantidad)
+              : state.cantidad1_3L) === 0
+            ? null
+            : state.cantidad1_3L === 0
+            ? null
+            : elsn.presentacion_id + ":" + state.cantidad1_3L
           : elsn.litros === 4 && index === 0
           ? (state.cantidad4_1L === 0
               ? (state.cantidad4_1L = elsn.cantidad)
@@ -71,6 +87,22 @@ const SecondPart = () => {
             : state.cantidad4_1L === 0
             ? null
             : elsn.presentacion_id + ":" + state.cantidad4_1L
+          : elsn.litros === 4 && index === 1
+          ? (state.cantidad4_2L === 0
+              ? (state.cantidad4_2L = elsn.cantidad)
+              : state.cantidad4_2L) === 0
+            ? null
+            : state.cantidad4_2L === 0
+            ? null
+            : elsn.presentacion_id + ":" + state.cantidad4_2L
+          : elsn.litros === 4 && index === 2
+          ? (state.cantidad4_3L === 0
+              ? (state.cantidad4_3L = elsn.cantidad)
+              : state.cantidad4_3L) === 0
+            ? null
+            : state.cantidad4_3L === 0
+            ? null
+            : elsn.presentacion_id + ":" + state.cantidad4_3L
           : elsn.litros === 19 && index === 0
           ? (state.cantidad19_1L === 0
               ? (state.cantidad19_1L = elsn.cantidad)
@@ -78,60 +110,23 @@ const SecondPart = () => {
             ? null
             : state.cantidad19_1L === 0
             ? null
-            : elsn.presentacion_id + ":" + state.cantidad19_1L:
-
-
-            elsn.litros === 1 && index === 1
-            ? (state.cantidad1_2L === 1
-                ? (state.cantidad1_2L = elsn.cantidad)
-                : state.cantidad1_2L) === 1
-              ? null
-              : state.cantidad1_2L === 1
-              ? null
-              : elsn.presentacion_id + ":" + state.cantidad1_2L
-            : elsn.litros === 4 && index === 1
-            ? (state.cantidad4_2L === 1
-                ? (state.cantidad4_2L = elsn.cantidad)
-                : state.cantidad4_2L) === 1
-              ? null
-              : state.cantidad4_2L === 1
-              ? null
-              : elsn.presentacion_id + ":" + state.cantidad4_2L
-            : elsn.litros === 19 && index === 1
-            ? (state.cantidad19_2L === 1
-                ? (state.cantidad19_2L = elsn.cantidad)
-                : state.cantidad19_2L) === 1
-              ? null
-              : state.cantidad19_2L === 1
-              ? null
-              : elsn.presentacion_id + ":" + state.cantidad19_2L:
-
-
-              elsn.litros === 1 && index === 2
-          ? (state.cantidad1_3L === 2
-              ? (state.cantidad1_3L = elsn.cantidad)
-              : state.cantidad1_3L) === 2
+            : elsn.presentacion_id + ":" + state.cantidad19_1L
+          :  elsn.litros === 19 && index === 1
+          ? (state.cantidad19_2L === 0
+              ? (state.cantidad19_2L = elsn.cantidad)
+              : state.cantidad19_2L) === 0
             ? null
-            : state.cantidad1_3L === 2
+            : state.cantidad19_2L === 0
             ? null
-            : elsn.presentacion_id + ":" + state.cantidad1_3L
-          : elsn.litros === 4 && index === 2
-          ? (state.cantidad4_3L === 2
-              ? (state.cantidad4_3L = elsn.cantidad)
-              : state.cantidad4_3L) === 2
-            ? null
-            : state.cantidad4_3L === 2
-            ? null
-            : elsn.presentacion_id + ":" + state.cantidad4_3L
-          : elsn.litros === 19 && index === 2
-          ? (state.cantidad19_3L === 2
+            : elsn.presentacion_id + ":" + state.cantidad19_2L:
+            elsn.litros === 19 && index === 2
+          ? (state.cantidad19_3L === 0
               ? (state.cantidad19_3L = elsn.cantidad)
-              : state.cantidad19_3L) === 2
+              : state.cantidad19_3L) === 0
             ? null
-            : state.cantidad19_3L === 2
+            : state.cantidad19_3L === 0
             ? null
             : elsn.presentacion_id + ":" + state.cantidad19_3L
-
           : null
       )
     );
@@ -145,7 +140,7 @@ const SecondPart = () => {
   }
   return (
     <div>
-      <Banner/>
+      <Banner />
 
       <ContainerSecondSection>
         <H1>RESULTADO</H1>
@@ -162,9 +157,8 @@ const SecondPart = () => {
         </Div>
         <ContainerButton>
           <h1> </h1>
-          <a href={templateUr()+ ''}>
-            {console.log('hello',templateUr())}
-                     <ButtonReed>Comprar</ButtonReed>
+          <a href={templateUr() + ""}>
+            <ButtonReed>Comprar</ButtonReed>
           </a>
         </ContainerButton>
       </ContainerSecondSection>

@@ -1,6 +1,5 @@
 import React, { useReducer } from "react";
-import {Banner} from "../SecondContent/style";
-
+import { Banner } from "../SecondContent/style";
 
 import { useSelector } from "react-redux";
 

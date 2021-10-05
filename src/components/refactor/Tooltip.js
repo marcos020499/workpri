@@ -68,8 +68,9 @@ const Row = styled.div`
   height: 45px;
 `;
 const P = styled.p`
+font-family: "RadikalMedium";
   color: #003366;
-  font-size: 10px;
+  font-size: 11px;
 `;
 
 function BoxColor({ index, color, select, onClick }) {
@@ -86,8 +87,7 @@ function BoxColor({ index, color, select, onClick }) {
 }
 
 const ColorContainer = styled.div`
-  border: 2px solid
-    ${({ select, color }) => `${select === color ? color : "black"}`};
+  border: 2px solid black;
   width: 23px;
   height: 23px;
   margin: auto;

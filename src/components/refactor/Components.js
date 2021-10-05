@@ -3,9 +3,10 @@ import React, { useReducer, useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { Icons } from "./Icons";
+import { toast } from 'react-toastify';
 import { Tooltip } from "./Tooltip";
 import { indigo } from "@mui/material/colors";
-
+toast.configure();
 function useForceUpdate() {
   const [value, setValue] = useState(0); // integer state
   return () => setValue((value) => value + 1); // update the state to force render
@@ -146,19 +147,18 @@ export const SimpleInput = ({ onChangeText, lIcon, value }) => {
           step="0.5"
         />
       ) : (
-        <Select   value={value}
-        onChange={onChange} >
+        <Select value={value} onChange={onChange}>
           <option value="0.5">1</option>
           <option value="1">1</option>
-          <option value="1.5" >1.5</option>
-          <option value="2" >2</option>
-          <option value="2.5" >2.5</option>
+          <option value="1.5">1.5</option>
+          <option value="2">2</option>
+          <option value="2.5">2.5</option>
           <option value="3">3</option>
-          <option value="3.5" >3.5</option>
-          <option value="4" >4</option>
-          <option value="4.5" >4.5</option>
-          <option value="5" >5</option>
-    </Select>
+          <option value="3.5">3.5</option>
+          <option value="4">4</option>
+          <option value="4.5">4.5</option>
+          <option value="5">5</option>
+        </Select>
       )}
       <SILabel>mts</SILabel>
     </SIContainer>
@@ -209,30 +209,30 @@ export const SimpleInputOwnStateResponsive = ({
 
   return (
     <SIContainer>
-    
-      <Select   value={text}
-        onChange={onChange} >
-          <option value="1">1</option>
-          <option value="1.5" >1.5</option>
-          <option value="2" >2</option>
-          <option value="2.5" >2.5</option>
-          <option value="3" selected='selected' >3</option>
-          <option value="3.5" >3.5</option>
-          <option value="4" >4</option>
-          <option value="4.5" >4.5</option>
-          <option value="5" >5</option>
-          <option value="5.5" >5.5</option>
-          <option value="6" >6</option>
-          <option value="6.5" >6.5</option>
-          <option value="7" >7</option>
-          <option value="7.5" >7.5</option>
-          <option value="8" >8</option>
-          <option value="8.5" >8.5</option>
-          <option value="9" >9</option>
-          <option value="9.5" >9.5</option>
-          <option value="10" >10</option>
-    </Select>
-    
+      <Select value={text} onChange={onChange}>
+        <option value="1">1</option>
+        <option value="1.5">1.5</option>
+        <option value="2">2</option>
+        <option value="2.5">2.5</option>
+        <option value="3" selected="selected">
+          3
+        </option>
+        <option value="3.5">3.5</option>
+        <option value="4">4</option>
+        <option value="4.5">4.5</option>
+        <option value="5">5</option>
+        <option value="5.5">5.5</option>
+        <option value="6">6</option>
+        <option value="6.5">6.5</option>
+        <option value="7">7</option>
+        <option value="7.5">7.5</option>
+        <option value="8">8</option>
+        <option value="8.5">8.5</option>
+        <option value="9">9</option>
+        <option value="9.5">9.5</option>
+        <option value="10">10</option>
+      </Select>
+
       <SILabel>mts</SILabel>
     </SIContainer>
   );
@@ -264,8 +264,6 @@ export function FirstCol({ index, selectControl, onSelectControl, onSubmit }) {
   const colors = stateColors.colores || [];
   const [tooltip, setTooltip] = useState(false);
   const [select, setSelect] = useState(null);
-  const { colors1 } = useSelector((state) => state);
-  const linea_producto = colors1;
   const colorsArray = colors.map((c) => c.rgb);
   const [selectedValue, setSelectedValue] = React.useState("a");
 
@@ -284,8 +282,11 @@ export function FirstCol({ index, selectControl, onSelectControl, onSubmit }) {
     if (index === 1 && colorsArray.length === 1) {
       onSelectColor(0);
     }
+    if (index === 6 && colorsArray.length === 6) {
+      onSelectColor(0);
+    }
     if (!selectControl) {
-      setSelect(null);
+      setSelect();
     }
   }, [selectControl, colors, onSelectColor]);
 
@@ -295,6 +296,7 @@ export function FirstCol({ index, selectControl, onSelectControl, onSubmit }) {
     setSelect(colorsArray[index]);
     onSubmit(colorsArray[index]);
   }
+  console.log('x')
 
   return (
     <Wall>
@@ -314,7 +316,7 @@ export function FirstCol({ index, selectControl, onSelectControl, onSubmit }) {
           }}
         />
         <div style={{ width: "1em" }} />
-        {index<6 ? (
+        {index < 6 ? (
           <H4>{index < 5 ? `${"Pared" + index}` : "Techo"}</H4>
         ) : (
           <H4>Azotea</H4>
@@ -382,10 +384,10 @@ const SILabel = styled.p`
     font-size: 7px;
   }
 `;
-const Select = styled.select `
-font-size: 10px;
-max-width: 50px;
-`
+const Select = styled.select`
+  font-size: 10px;
+  max-width: 50px;
+`;
 const HeaderContainer = styled.div`
   font-size: 0.8em;
   display: flex;

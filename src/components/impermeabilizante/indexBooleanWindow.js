@@ -1,6 +1,6 @@
 import React from "react";
-import styled from 'styled-components'
-import {TitleHead} from '../refactor/Components'
+import styled from "styled-components";
+import { TitleHead } from "../refactor/Components";
 import { useSelector } from "react-redux";
 
 const ThDoor = () => {
@@ -9,12 +9,12 @@ const ThDoor = () => {
 
   return (
     <TH>
-                  {!!linea_producto?.impermeabilizante === false ? (
-                    <TitleHead title="Ventanas" icon="window" />
-                  ) : (
-                    <TitleHead title="Tragaluz" icon="tragaluz" />
-                  )}
-                </TH>
+      {!!linea_producto?.impermeabilizante === false ? (
+        <TitleHead title="Ventanas" icon="window" />
+      ) : (
+        <TitleHead title="Tragaluz" icon="tragaluz" />
+      )}
+    </TH>
   );
 };
 export default ThDoor;

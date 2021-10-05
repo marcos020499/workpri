@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { fetchCalculateDataV2, fetchColors } from "../store/colorReducer";
 import SecondPart from "../components/SecondContent";
 import { Fields } from "./cmps/Fields";
-import Banner from '../components/banner/index768'
+import Banner from "../components/banner/index768";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 export function Page() {
@@ -34,13 +34,17 @@ export function Page() {
 
   const update = (index, key, value) => {
     //console.log("UPDATE", index, key, value);
-    const setter = [setWall1, setWall2, setWall3, setWall4, setWall5, setWall6][index];
+    const setter = [setWall1, setWall2, setWall3, setWall4, setWall5, setWall6][
+      index
+    ];
     setter((prev) => ({ ...prev, [key]: value }));
   };
 
   useEffect(() => {
     if (ready) {
-      dispatch(fetchCalculateDataV2([wall1, wall2, wall3, wall4, wall5, wall6]));
+      dispatch(
+        fetchCalculateDataV2([wall1, wall2, wall3, wall4, wall5, wall6])
+      );
       setReady(false);
     }
   }, [ready, wall1, wall2, wall3, wall4, wall5, wall6]);
@@ -51,7 +55,7 @@ export function Page() {
   return useMemo(
     () => (
       <div>
-        <Banner/>
+        <Banner />
         <Container>
           <First>
             <Fields

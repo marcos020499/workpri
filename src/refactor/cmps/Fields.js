@@ -1,9 +1,9 @@
 import React, { useMemo, useState, useReducer, useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import ThDoor from '../../components/impermeabilizante/indexBooleanDoor'
-import ThWindow from '../../components/impermeabilizante/indexBooleanWindow'
-import useBoolean from '../../components/impermeabilizante/useBoolean'
+import ThDoor from "../../components/impermeabilizante/indexBooleanDoor";
+import ThWindow from "../../components/impermeabilizante/indexBooleanWindow";
+import useBoolean from "../../components/impermeabilizante/useBoolean";
 import {
   ColorsItem,
   InputDiv,
@@ -38,7 +38,7 @@ export function Fields({
   const linea_producto = colors1;
   const stateColors = useSelector((state) => state.colors);
   const colors = stateColors.colores || [];
-  const {x} = useBoolean()
+  const { x } = useBoolean();
   return (
     <Container>
       <Title>COLORES SELECCIONADOS</Title>
@@ -77,50 +77,50 @@ export function Fields({
                 <TH>
                   <TitleHead title="Ancho" icon="horizontal" size />
                 </TH>
-                <ThDoor/>
-                <ThWindow/>
+                <ThDoor />
+                <ThWindow />
               </THead>
-              {x === false?(
-                
+              {x === false ? (
                 <>
-              <Wall
-                index={1}
-                wall={wall1}
-                update={update}
-                Length={colors.length}
-              />
-              <Wall
-                index={2}
-                wall={wall2}
-                update={update}
-                Length={colors.length}
-              />
-              <Wall
-                index={3}
-                wall={wall3}
-                update={update}
-                Length={colors.length}
-              />
-              <Wall
-                index={4}
-                wall={wall4}
-                update={update}
-                Length={colors.length}
-              />
-              <Wall
-                index={5}
-                wall={wall5}
-                update={update}
-                Length={colors.length}
-              />
-            </>):(
-              <Wall
-              index={6}
-              wall={wall6}
-              update={update}
-              Length={colors.length}
-            />
-            )}
+                  <Wall
+                    index={1}
+                    wall={wall1}
+                    update={update}
+                    Length={colors.length}
+                  />
+                  <Wall
+                    index={2}
+                    wall={wall2}
+                    update={update}
+                    Length={colors.length}
+                  />
+                  <Wall
+                    index={3}
+                    wall={wall3}
+                    update={update}
+                    Length={colors.length}
+                  />
+                  <Wall
+                    index={4}
+                    wall={wall4}
+                    update={update}
+                    Length={colors.length}
+                  />
+                  <Wall
+                    index={5}
+                    wall={wall5}
+                    update={update}
+                    Length={colors.length}
+                  />
+                </>
+              ) : (
+                <Wall
+                  index={6}
+                  wall={wall6}
+                  update={update}
+                  Length={colors.length}
+                />
+              )}
             </TableHorizontal>
           ) : (
             ""
@@ -166,9 +166,9 @@ function Wall({ index, wall, update, Length }) {
       : Length === 3 && index === 2
       ? !null
       : Length === 3 && index === 3
-      ? !null:
-      Length === 1 && index === 6?
-      !null
+      ? !null
+      : Length === 1 && index === 6
+      ? !null
       : null
   );
 
@@ -224,7 +224,11 @@ function Wall({ index, wall, update, Length }) {
                 defaultValue={3}
               />
             ) : (
-              <SimpleInputOwnStateResponsive defaultValue={3}  id="largo" onSubmit={onEdit}  />
+              <SimpleInputOwnStateResponsive
+                defaultValue={3}
+                id="largo"
+                onSubmit={onEdit}
+              />
             )}
           </Content>
         </TD>
@@ -237,7 +241,11 @@ function Wall({ index, wall, update, Length }) {
                 defaultValue={2.5}
               />
             ) : (
-              <SimpleInputOwnStateResponsive defaultValue={2.5}  id="ancho" onSubmit={onEdit} />
+              <SimpleInputOwnStateResponsive
+                defaultValue={2.5}
+                id="ancho"
+                onSubmit={onEdit}
+              />
             )}
           </Content>
         </TD>

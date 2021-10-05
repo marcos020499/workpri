@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 import TooltipOver from "../Tooltip/TooltipOver";
 
 import {
@@ -168,151 +168,153 @@ function Can({
         />
         <Quantity>{name}</Quantity>
         {width > 768 ? (
-        <Input
-        type="number"
-        min="0"
-        max="10"
-        defaultValue="0"
-        step="1"
-        value={
-          litros === 4 && i === 0
-            ? state4_1 === 0
-              ? cantidad
-              : state4_1
-            : litros === 4 && i === 1
-            ? state4_2 === 0
-              ? cantidad
-              : state4_2
-            : litros === 4 && i === 2
-            ? state4_3 === 0
-              ? cantidad
-              : state4_3
-            : litros === 1 && i === 0
-            ? state1_1 === 0
-              ? cantidad
-              : state1_1
-            : litros === 1 && i === 1
-            ? state1_2 === 0
-              ? cantidad
-              : state1_2
-            : litros === 1 && i === 2
-            ? state1_3 === 0
-              ? cantidad
-              : state1_3
-            : litros === 19 && i === 0
-            ? state19_1 === 0
-              ? cantidad
-              : state19_1
-            : litros === 19 && i === 1
-            ? state19_2 === 0
-              ? cantidad
-              : state19_2
-            : litros === 19 && i === 2
-            ? state19_3 === 0
-              ? cantidad
-              : state19_3
-            : cantidad
-        }
-        name={
-          litros === 19 && i === 0
-            ? "cantidad19_1L"
-            : litros === 19 && i === 1
-            ? "cantidad19_2L"
-            : litros === 19 && i === 2
-            ? "cantidad19_3L"
-            : litros === 4 && i === 0
-            ? "cantidad4_1L"
-            : litros === 4 && i === 1
-            ? "cantidad4_2L"
-            : litros === 4 && i === 2
-            ? "cantidad4_3L"
-            : litros === 1 && i === 0
-            ? "cantidad1_1L"
-            : litros === 1 && i === 1
-            ? "cantidad1_2L"
-            : litros === 1 && i === 2
-            ? "cantidad1_3L"
-            : ""
-        }
-        onChange={onChanges1}
-      />
-      ) : (
-        <select  
-        value={
-          litros === 4 && i === 0
-            ? state4_1 === 0
-              ? cantidad
-              : state4_1
-            : litros === 4 && i === 1
-            ? state4_2 === 0
-              ? cantidad
-              : state4_2
-            : litros === 4 && i === 2
-            ? state4_3 === 0
-              ? cantidad
-              : state4_3
-            : litros === 1 && i === 0
-            ? state1_1 === 0
-              ? cantidad
-              : state1_1
-            : litros === 1 && i === 1
-            ? state1_2 === 0
-              ? cantidad
-              : state1_2
-            : litros === 1 && i === 2
-            ? state1_3 === 0
-              ? cantidad
-              : state1_3
-            : litros === 19 && i === 0
-            ? state19_1 === 0
-              ? cantidad
-              : state19_1
-            : litros === 19 && i === 1
-            ? state19_2 === 0
-              ? cantidad
-              : state19_2
-            : litros === 19 && i === 2
-            ? state19_3 === 0
-              ? cantidad
-              : state19_3
-            : cantidad
-        }
-        name={
-          litros === 19 && i === 0
-            ? "cantidad19_1L"
-            : litros === 19 && i === 1
-            ? "cantidad19_2L"
-            : litros === 19 && i === 2
-            ? "cantidad19_3L"
-            : litros === 4 && i === 0
-            ? "cantidad4_1L"
-            : litros === 4 && i === 1
-            ? "cantidad4_2L"
-            : litros === 4 && i === 2
-            ? "cantidad4_3L"
-            : litros === 1 && i === 0
-            ? "cantidad1_1L"
-            : litros === 1 && i === 1
-            ? "cantidad1_2L"
-            : litros === 1 && i === 2
-            ? "cantidad1_3L"
-            : ""
-        }
-        onChange={onChanges1} >
-          <option value="0" disabled='disabled'>0</option>
-          <option value="1">1</option>
-          <option value="2" >2</option>
-          <option value="3">3</option>
-          <option value="4" >4</option>
-          <option value="5" >5</option>
-          <option value="1">6</option>
-          <option value="2" >7</option>
-          <option value="3">8</option>
-          <option value="4" >9</option>
-          <option value="5" >10</option>
-    </select>
-      )}
-      
+          <Input
+            type="number"
+            min="0"
+            max="10"
+            defaultValue="0"
+            step="1"
+            value={
+              litros === 4 && i === 0
+                ? state4_1 === 0
+                  ? cantidad
+                  : state4_1
+                : litros === 4 && i === 1
+                ? state4_2 === 0
+                  ? cantidad
+                  : state4_2
+                : litros === 4 && i === 2
+                ? state4_3 === 0
+                  ? cantidad
+                  : state4_3
+                : litros === 1 && i === 0
+                ? state1_1 === 0
+                  ? cantidad
+                  : state1_1
+                : litros === 1 && i === 1
+                ? state1_2 === 0
+                  ? cantidad
+                  : state1_2
+                : litros === 1 && i === 2
+                ? state1_3 === 0
+                  ? cantidad
+                  : state1_3
+                : litros === 19 && i === 0
+                ? state19_1 === 0
+                  ? cantidad
+                  : state19_1
+                : litros === 19 && i === 1
+                ? state19_2 === 0
+                  ? cantidad
+                  : state19_2
+                : litros === 19 && i === 2
+                ? state19_3 === 0
+                  ? cantidad
+                  : state19_3
+                : cantidad
+            }
+            name={
+              litros === 19 && i === 0
+                ? "cantidad19_1L"
+                : litros === 19 && i === 1
+                ? "cantidad19_2L"
+                : litros === 19 && i === 2
+                ? "cantidad19_3L"
+                : litros === 4 && i === 0
+                ? "cantidad4_1L"
+                : litros === 4 && i === 1
+                ? "cantidad4_2L"
+                : litros === 4 && i === 2
+                ? "cantidad4_3L"
+                : litros === 1 && i === 0
+                ? "cantidad1_1L"
+                : litros === 1 && i === 1
+                ? "cantidad1_2L"
+                : litros === 1 && i === 2
+                ? "cantidad1_3L"
+                : ""
+            }
+            onChange={onChanges1}
+          />
+        ) : (
+          <select
+            value={
+              litros === 4 && i === 0
+                ? state4_1 === 0
+                  ? cantidad
+                  : state4_1
+                : litros === 4 && i === 1
+                ? state4_2 === 0
+                  ? cantidad
+                  : state4_2
+                : litros === 4 && i === 2
+                ? state4_3 === 0
+                  ? cantidad
+                  : state4_3
+                : litros === 1 && i === 0
+                ? state1_1 === 0
+                  ? cantidad
+                  : state1_1
+                : litros === 1 && i === 1
+                ? state1_2 === 0
+                  ? cantidad
+                  : state1_2
+                : litros === 1 && i === 2
+                ? state1_3 === 0
+                  ? cantidad
+                  : state1_3
+                : litros === 19 && i === 0
+                ? state19_1 === 0
+                  ? cantidad
+                  : state19_1
+                : litros === 19 && i === 1
+                ? state19_2 === 0
+                  ? cantidad
+                  : state19_2
+                : litros === 19 && i === 2
+                ? state19_3 === 0
+                  ? cantidad
+                  : state19_3
+                : cantidad
+            }
+            name={
+              litros === 19 && i === 0
+                ? "cantidad19_1L"
+                : litros === 19 && i === 1
+                ? "cantidad19_2L"
+                : litros === 19 && i === 2
+                ? "cantidad19_3L"
+                : litros === 4 && i === 0
+                ? "cantidad4_1L"
+                : litros === 4 && i === 1
+                ? "cantidad4_2L"
+                : litros === 4 && i === 2
+                ? "cantidad4_3L"
+                : litros === 1 && i === 0
+                ? "cantidad1_1L"
+                : litros === 1 && i === 1
+                ? "cantidad1_2L"
+                : litros === 1 && i === 2
+                ? "cantidad1_3L"
+                : ""
+            }
+            onChange={onChanges1}
+          >
+            <option value="0" disabled="disabled">
+              0
+            </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="1">6</option>
+            <option value="2">7</option>
+            <option value="3">8</option>
+            <option value="4">9</option>
+            <option value="5">10</option>
+          </select>
+        )}
       </Size>
     </TdSize>
   );
