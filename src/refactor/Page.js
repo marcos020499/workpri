@@ -39,6 +39,13 @@ export function Page() {
     ];
     setter((prev) => ({ ...prev, [key]: value }));
   };
+  const onClean = (index) => {
+    
+    const setter = [setWall1, setWall2, setWall3, setWall4, setWall5, setWall6][
+      index
+    ];
+    setter(init());
+  };
 
   useEffect(() => {
     if (ready) {
@@ -67,6 +74,7 @@ export function Page() {
               wall6={wall6}
               onSubmit={onSubmit}
               update={update}
+              onClean={onClean}
             />
           </First>
           <Second>

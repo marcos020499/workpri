@@ -279,15 +279,31 @@ export function FirstCol({ index, selectControl, onSelectControl, onSubmit }) {
     inputProps: { "aria-label": item },
   });
   useEffect(() => {
-    if (index === 1 && colorsArray.length === 1) {
-      onSelectColor(0);
-    }
-    if (index === 6 && colorsArray.length === 6) {
-      onSelectColor(0);
-    }
     if (!selectControl) {
       setSelect();
     }
+    if (index === 1 && colorsArray.length === 2 && select === null) {
+      onSelectColor(0)
+    }
+    if (index === 2 && colorsArray.length === 2 && select === null) {
+      onSelectColor(1)
+    }
+    if (index === 1 && colorsArray.length === 3 && select === null) {
+      onSelectColor(0)
+    }
+    if (index === 2 && colorsArray.length === 3 && select === null) {
+      onSelectColor(1)
+    }
+    if (index === 3 && colorsArray.length === 3 && select === null) {
+      onSelectColor(2)
+    }
+    if (index === 6 && colorsArray.length === 1 && select === null) {
+      onSelectColor(0)
+    }
+    if (index === 1 && colorsArray.length === 1 && select === null) {
+      onSelectColor(0)
+    }
+    
   }, [selectControl, colors, onSelectColor]);
 
   function onSelectColor(index) {
@@ -296,7 +312,6 @@ export function FirstCol({ index, selectControl, onSelectControl, onSubmit }) {
     setSelect(colorsArray[index]);
     onSubmit(colorsArray[index]);
   }
-  console.log('x')
 
   return (
     <Wall>
@@ -338,6 +353,7 @@ export function FirstCol({ index, selectControl, onSelectControl, onSubmit }) {
             selectControl && setTooltip((s) => !s);
           }}
         />
+        {console.log('onselect '+ selectControl + ' ' + select)}
       </Tooltip>
     </Wall>
   );

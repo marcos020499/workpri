@@ -116,7 +116,7 @@ export const Input = styled.input`
     left: -15%;
   }
   @media screen and (max-width: 400px) {
-    width: 25px;
+    width: 22px;
     margin: 0 5vw 0 1vw;
   }
 `;
@@ -130,7 +130,7 @@ export const InputArea = styled.input`
   text-align: center;
   color: #999999;
   @media screen and (max-width: 768px) {
-    width: 35px;
+    width: 55px;
     font-size: 13px;
     margin: 1vh 1vh 1vh 1vh;
   }
@@ -188,16 +188,16 @@ export const DescriptionText = styled.h3`
     top: -10px;
   }
   @media screen and (max-width: 600px) {
-    width: 120px;
+    width: 110px;
     font-size: 12px;
   }
   @media screen and (max-width: 400px) {
     font-size: 11px;
-    width: 110px;
+    width: 100px;
   }
   @media screen and (max-width: 340px) {
     font-size: 10px;
-    width: 100px;
+    width: 90px;
   }
 `;
 export const ThDescription = styled.th`

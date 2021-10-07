@@ -158,9 +158,10 @@ export const H = styled.h2`
 export const Div = styled.div`
   display: flex;
   margin: auto;
+  
   justify-content: center;
-  padding: 3% 2% 0 2%;
   @media screen and (max-width: 768px) {
     flex-direction: column;
+    margin: auto auto auto auto;
   }
 `;

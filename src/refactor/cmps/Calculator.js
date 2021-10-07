@@ -58,7 +58,7 @@ export function Calculator() {
               ? (state.cantidad4_1L = elsn.cantidad)
               : state.cantidad4_1L < elsn.cantidad
               ? (state.cantidad4_1L = elsn.cantidad)
-              : state.cantidad4_1L) < 1
+              : state.cantidad4_1L) === 1
             ? null
             : elsn.presentacion_id + ":" + state.cantidad4_1L
           : elsn.litros === 4 && index === 1
@@ -66,7 +66,7 @@ export function Calculator() {
               ? (state.cantidad4_2L = elsn.cantidad)
               : state.cantidad4_2L < elsn.cantidad
               ? (state.cantidad4_2L = elsn.cantidad)
-              : state.cantidad4_2L) < 1
+              : state.cantidad4_2L) === 1
             ? null
             : elsn.presentacion_id + ":" + state.cantidad4_2L
           : elsn.litros === 4 && index === 2
@@ -74,7 +74,7 @@ export function Calculator() {
               ? (state.cantidad4_3L = elsn.cantidad)
               : state.cantidad4_3L < elsn.cantidad
               ? (state.cantidad4_3L = elsn.cantidad)
-              : state.cantidad4_3L) < 1
+              : state.cantidad4_3L) === 1
             ? null
             : elsn.presentacion_id + ":" + state.cantidad4_3L
           : elsn.litros === 1 && index === 0
@@ -82,7 +82,7 @@ export function Calculator() {
               ? (state.cantidad1_1L = elsn.cantidad)
               : state.cantidad1_1L > elsn.cantidad
               ? (state.cantidad1_1L = elsn.cantidad)
-              : state.cantidad1_1L) < 1
+              : state.cantidad1_1L) === 1
             ? null
             : elsn.presentacion_id + ":" + state.cantidad1_1L
           : elsn.litros === 1 && index === 1
@@ -90,7 +90,7 @@ export function Calculator() {
               ? (state.cantidad1_2L = elsn.cantidad)
               : state.cantidad1_2L < elsn.cantidad
               ? (state.cantidad1_2L = elsn.cantidad)
-              : state.cantidad1_2L) < 1
+              : state.cantidad1_2L) === 1
             ? null
             : elsn.presentacion_id + ":" + state.cantidad1_2L
           : elsn.litros === 1 && index === 2
@@ -98,7 +98,7 @@ export function Calculator() {
               ? (state.cantidad1_3L = elsn.cantidad)
               : state.cantidad1_3L < elsn.cantidad
               ? (state.cantidad1_3L = elsn.cantidad)
-              : state.cantidad1_3L) < 1
+              : state.cantidad1_3L) === 1
             ? null
             : elsn.presentacion_id + ":" + state.cantidad1_3L
           : elsn.litros === 19 && index === 0
@@ -106,7 +106,7 @@ export function Calculator() {
               ? (state.cantidad19_1L = elsn.cantidad)
               : state.cantidad19_1L < elsn.cantidad
               ? (state.cantidad19_1L = elsn.cantidad)
-              : state.cantidad19_1L) < 1
+              : state.cantidad19_1L) === 1
             ? null
             : elsn.presentacion_id + ":" + state.cantidad19_1L
           : elsn.litros === 19 && index === 1
@@ -114,7 +114,7 @@ export function Calculator() {
               ? (state.cantidad19_2L = elsn.cantidad)
               : state.cantidad19_2L < elsn.cantidad
               ? (state.cantidad19_2L = elsn.cantidad)
-              : state.cantidad19_2L) < 1
+              : state.cantidad19_2L) === 1
             ? null
             : elsn.presentacion_id + ":" + state.cantidad19_2L
           : elsn.litros === 19 && index === 2
@@ -122,7 +122,7 @@ export function Calculator() {
               ? (state.cantidad19_3L = elsn.cantidad)
               : state.cantidad19_3L < elsn.cantidad
               ? (state.cantidad19_3L = elsn.cantidad)
-              : state.cantidad19_3L) < 1
+              : state.cantidad19_3L) === 1
             ? null
             : elsn.presentacion_id + ":" + state.cantidad19_3L
           : null
@@ -148,6 +148,7 @@ export function Calculator() {
         <ContainerButton>
           <h1> </h1>
           <a href={templateUr() + ""}>
+          {console.log(templateUr() + "")}
             <ButtonReed>Comprar</ButtonReed>
           </a>
         </ContainerButton>

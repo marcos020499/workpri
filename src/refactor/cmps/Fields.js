@@ -30,9 +30,8 @@ export function Fields({
   wall5,
   wall6,
   onSubmit,
-  onClear,
-  update,
-  valueWall,
+  onClean,
+  update
 }) {
   const { colors1 } = useSelector((state) => state);
   const linea_producto = colors1;
@@ -87,30 +86,35 @@ export function Fields({
                     wall={wall1}
                     update={update}
                     Length={colors.length}
+                    onClean={onClean}
                   />
                   <Wall
                     index={2}
                     wall={wall2}
                     update={update}
                     Length={colors.length}
+                    onClean={onClean}
                   />
                   <Wall
                     index={3}
                     wall={wall3}
                     update={update}
                     Length={colors.length}
+                    onClean={onClean}
                   />
                   <Wall
                     index={4}
                     wall={wall4}
                     update={update}
                     Length={colors.length}
+                    onClean={onClean}
                   />
                   <Wall
                     index={5}
                     wall={wall5}
                     update={update}
                     Length={colors.length}
+                    onClean={onClean}
                   />
                 </>
               ) : (
@@ -119,6 +123,7 @@ export function Fields({
                   wall={wall6}
                   update={update}
                   Length={colors.length}
+                  onClean={onClean}
                 />
               )}
             </TableHorizontal>
@@ -150,7 +155,7 @@ const getColorByHex = (array, c) => {
   });
 };
 
-function Wall({ index, wall, update, Length }) {
+function Wall({ index, update, Length, onClean }) {
   const stateColors = useSelector((state) => state.colors);
   const colors = stateColors.colores || [];
 
@@ -177,11 +182,18 @@ function Wall({ index, wall, update, Length }) {
     if (_color) {
       update(index - 1, "color_id", _color.id);
     }
+
   };
 
   const onEdit = (identifier, value) => {
     update(index - 1, identifier, value);
   };
+
+  useEffect(() => {
+    if (select === false) {
+      onClean && onClean(index - 1);
+    }
+  },[select]);
 
   const Content = ({ children }) => {
     return <Hidding hidden={!select}>{children}</Hidding>;
@@ -203,6 +215,8 @@ function Wall({ index, wall, update, Length }) {
   function handleSideNavToggle() {
     console.log("toggle it");
   }
+  
+  
   return useMemo(
     () => (
       <TBody key="table">
